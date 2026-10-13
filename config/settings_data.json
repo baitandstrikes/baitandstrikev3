@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "current": {
     "color_accent": "#252525",
@@ -7,6 +16,22 @@
     "body_font": "montserrat_n4",
     "heading_font": "montserrat_n2",
     "page_width": 1440,
-    "animations": true
+    "animations": true,
+    "sections": {
+      "cart-drawer": {
+        "type": "cart-drawer",
+        "settings": {}
+      }
+    },
+    "content_for_index": [],
+    "blocks": {
+      "13759667579245410970": {
+        "type": "shopify://apps/bmt-b2b-wholesale/blocks/app-embed/f476de00-6707-40af-8cee-f53b60634fe3",
+        "disabled": false,
+        "settings": {
+          "enable_modification": true
+        }
+      }
+    }
   }
 }
