@@ -1,0 +1,125 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero-slideshow",
+      "settings": {},
+      "blocks": {
+        "s1": {
+          "type": "slide",
+          "settings": {
+            "eyebrow": "BAITANDSTRIKE",
+            "title": "Temukan strike berikutnya.",
+            "text": "Peralatan mancing pilihan. Dari tackle box ke perairan terbuka.",
+            "button_label": "JELAJAHI KATALOG",
+            "alignment": "left"
+          }
+        },
+        "s2": {
+          "type": "slide",
+          "settings": {
+            "eyebrow": "READY FOR YOUR NEXT TRIP",
+            "title": "Siap ke mana pun arus membawa.",
+            "text": "Joran, reel, senar, dan umpan untuk petualangan kamu.",
+            "button_label": "TEMUKAN PERLENGKAPAN",
+            "alignment": "left"
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2"
+      ]
+    },
+    "intro": {
+      "type": "rich-text",
+      "settings": {}
+    },
+    "categories": {
+      "type": "collection-tiles",
+      "settings": {},
+      "blocks": {
+        "c0": {
+          "type": "collection",
+          "settings": {
+            "title": "Joran",
+            "button_label": "JELAJAHI"
+          }
+        },
+        "c1": {
+          "type": "collection",
+          "settings": {
+            "title": "Reel",
+            "button_label": "JELAJAHI"
+          }
+        },
+        "c2": {
+          "type": "collection",
+          "settings": {
+            "title": "Umpan",
+            "button_label": "JELAJAHI"
+          }
+        },
+        "c3": {
+          "type": "collection",
+          "settings": {
+            "title": "Aksesori",
+            "button_label": "JELAJAHI"
+          }
+        }
+      },
+      "block_order": [
+        "c0",
+        "c1",
+        "c2",
+        "c3"
+      ]
+    },
+    "products": {
+      "type": "featured-collection",
+      "settings": {}
+    },
+    "story": {
+      "type": "image-with-text",
+      "settings": {}
+    },
+    "partners": {
+      "type": "promo-banner",
+      "settings": {
+        "link": "/pages/contact"
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "settings": {},
+      "blocks": {
+        "q1": {
+          "type": "question",
+          "settings": {
+            "question": "Bagaimana cara memesan?",
+            "answer": "<p>Pilih produk dan varian, tambahkan ke keranjang, lalu lanjutkan checkout untuk memilih pengiriman dan pembayaran.</p>"
+          }
+        },
+        "q2": {
+          "type": "question",
+          "settings": {
+            "question": "Bagaimana menghubungi tim BNS?",
+            "answer": "<p>Gunakan halaman Hubungi Kami atau telepon 0877-9536-1519 pada jam operasional.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2"
+      ]
+    }
+  },
+  "order": [
+    "hero",
+    "intro",
+    "categories",
+    "products",
+    "story",
+    "partners",
+    "faq"
+  ]
+}

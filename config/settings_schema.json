@@ -1,0 +1,72 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "BNS Current",
+    "theme_version": "1.0.0",
+    "theme_author": "BAITANDSTRIKE",
+    "theme_documentation_url": "https://help.shopify.com/en/manual/online-store/themes",
+    "theme_support_url": "https://help.shopify.com/en/manual/online-store/themes"
+  },
+  {
+    "name": "Warna dan tampilan",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_accent",
+        "label": "Biru BNS",
+        "default": "#3282C0"
+      },
+      {
+        "type": "color",
+        "id": "color_secondary",
+        "label": "Kuning BNS",
+        "default": "#FCDD16"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Teks",
+        "default": "#14212B"
+      },
+      {
+        "type": "color",
+        "id": "color_background",
+        "label": "Latar",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "font_picker",
+        "id": "body_font",
+        "label": "Font isi",
+        "default": "assistant_n4"
+      },
+      {
+        "type": "font_picker",
+        "id": "heading_font",
+        "label": "Font judul",
+        "default": "assistant_n4"
+      },
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon"
+      },
+      {
+        "type": "range",
+        "id": "page_width",
+        "label": "Lebar halaman",
+        "min": 1000,
+        "max": 1600,
+        "step": 20,
+        "unit": "px",
+        "default": 1440
+      },
+      {
+        "type": "checkbox",
+        "id": "animations",
+        "label": "Animasi masuk",
+        "default": true
+      }
+    ]
+  }
+]

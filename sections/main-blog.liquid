@@ -1,0 +1,7 @@
+<section class="section wrap"><h1>{{ blog.title | escape }}</h1>{% paginate blog.articles by 9 %}<div class="blog-grid">{% for article in blog.articles %}<article class="blog-card">{% if article.image %}<a href="{{ article.url }}">{{ article.image | image_url: width: 900 | image_tag: loading: 'lazy', widths: '300, 600, 900', sizes: '(min-width:750px) 33vw, 100vw' }}</a>{% endif %}<p class="eyebrow">{{ article.published_at | date: '%d %B %Y' }}</p><h2><a href="{{ article.url }}">{{ article.title | escape }}</a></h2><div class="rte">{{ article.excerpt_or_content | strip_html | truncate: 200 }}</div><a class="text-link" href="{{ article.url }}">{{ 'general.read_more' | t }} →</a></article>{% endfor %}</div><div class="pagination">{{ paginate | default_pagination }}</div>{% endpaginate %}</section>
+{% schema %}
+{
+  "name": "Main Blog",
+  "settings": []
+}
+{% endschema %}

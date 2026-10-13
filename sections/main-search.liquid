@@ -1,0 +1,7 @@
+<section class="section wrap"><div class="search-page-heading"><h1>{{ 'general.search' | t }}</h1><form action="{{ routes.search_url }}" method="get" class="search-form" role="search"><label class="visually-hidden" for="SearchPageQuery">{{ 'general.search' | t }}</label><input id="SearchPageQuery" type="search" name="q" value="{{ search.terms | escape }}" required><input type="hidden" name="options[prefix]" value="last"><button class="button">{{ 'general.search' | t }}</button></form></div>{% if search.performed %}<p>{{ 'general.results' | t: count: search.results_count }}</p>{% paginate search.results by 24 %}<div class="product-grid">{% for item in search.results %}{% if item.object_type == 'product' %}{% render 'product-card', product: item %}{% else %}<article class="content-card"><p class="eyebrow">{{ item.object_type | escape }}</p><h2><a href="{{ item.url }}">{{ item.title | escape }}</a></h2><p>{{ item.content | strip_html | truncate: 150 }}</p></article>{% endif %}{% endfor %}</div><div class="pagination">{{ paginate | default_pagination }}</div>{% endpaginate %}{% endif %}</section>
+{% schema %}
+{
+  "name": "Main Search",
+  "settings": []
+}
+{% endschema %}

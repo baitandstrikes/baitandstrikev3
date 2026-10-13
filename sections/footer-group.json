@@ -1,0 +1,33 @@
+{
+  "type": "footer",
+  "name": "Footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "settings": {},
+      "blocks": {
+        "help": {
+          "type": "menu",
+          "settings": {
+            "title": "Bantuan",
+            "menu": "footer"
+          }
+        },
+        "shop": {
+          "type": "menu",
+          "settings": {
+            "title": "Jelajahi",
+            "menu": "main-menu"
+          }
+        }
+      },
+      "block_order": [
+        "help",
+        "shop"
+      ]
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

@@ -1,0 +1,7 @@
+<section class="section wrap auth-page"><h1>{{ 'customer.activate' | t }}</h1>{% form 'activate_customer_password' %}{{ form.errors | default_errors }}<label for="ActivatePassword">{{ 'general.password' | t }}</label><input id="ActivatePassword" type="password" name="customer[password]" autocomplete="new-password" required><label for="ActivateConfirm">{{ 'customer.confirm_password' | t }}</label><input id="ActivateConfirm" type="password" name="customer[password_confirmation]" autocomplete="new-password" required><button class="button">{{ 'customer.activate' | t }}</button><button name="decline" class="text-link">{{ 'customer.decline' | t }}</button>{% endform %}</section>
+{% schema %}
+{
+  "name": "Main Activate Account",
+  "settings": []
+}
+{% endschema %}

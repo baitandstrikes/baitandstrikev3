@@ -1,0 +1,28 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "settings": {},
+      "blocks": {
+        "shipping": {
+          "type": "accordion",
+          "settings": {
+            "heading": "Pengiriman & pembayaran",
+            "text": "<p>Opsi pengiriman dan pembayaran tersedia di checkout. Biaya akhir mengikuti alamat tujuan dan pengaturan toko.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "shipping"
+      ]
+    },
+    "recommendations": {
+      "type": "product-recommendations",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "recommendations"
+  ]
+}

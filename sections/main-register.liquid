@@ -1,0 +1,7 @@
+<section class="section wrap auth-page"><h1>{{ 'general.register' | t }}</h1>{% form 'create_customer' %}{{ form.errors | default_errors }}<label for="FirstName">{{ 'customer.first_name' | t }}</label><input id="FirstName" name="customer[first_name]" autocomplete="given-name" required><label for="LastName">{{ 'customer.last_name' | t }}</label><input id="LastName" name="customer[last_name]" autocomplete="family-name"><label for="RegisterEmail">{{ 'general.email' | t }}</label><input id="RegisterEmail" type="email" name="customer[email]" autocomplete="email" required><label for="RegisterPassword">{{ 'general.password' | t }}</label><input id="RegisterPassword" type="password" name="customer[password]" autocomplete="new-password" required><button class="button">{{ 'general.register' | t }}</button>{% endform %}<a class="text-link" href="{{ routes.account_login_url }}">{{ 'general.login' | t }}</a></section>
+{% schema %}
+{
+  "name": "Main Register",
+  "settings": []
+}
+{% endschema %}

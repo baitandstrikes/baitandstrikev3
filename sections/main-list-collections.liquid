@@ -1,0 +1,7 @@
+<section class="section wrap"><h1>{{ 'general.collections' | t }}</h1>{% paginate collections by 24 %}<div class="collection-tiles">{% for collection in collections %}<a class="collection-tile" href="{{ collection.url }}">{% if collection.featured_image %}{{ collection.featured_image | image_url: width: 900 | image_tag: loading: 'lazy', widths: '300, 600, 900', sizes: '(min-width:750px) 25vw, 50vw' }}{% else %}{{ 'collection-1' | placeholder_svg_tag: 'placeholder' }}{% endif %}<div class="tile-shade"></div><div class="tile-copy"><h2>{{ collection.title | escape }}</h2><span>{{ 'general.view_all' | t }} →</span></div></a>{% endfor %}</div><div class="pagination">{{ paginate | default_pagination }}</div>{% endpaginate %}</section>
+{% schema %}
+{
+  "name": "Main List Collections",
+  "settings": []
+}
+{% endschema %}

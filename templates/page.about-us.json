@@ -1,0 +1,27 @@
+{
+  "sections": {
+    "intro": {
+      "type": "rich-text",
+      "settings": {
+        "eyebrow": "TENTANG BAITANDSTRIKE",
+        "title": "Dari satu strike, ke petualangan berikutnya.",
+        "text": "<p>BAITANDSTRIKE menyediakan peralatan mancing dan aksesori untuk pemancing, toko, reseller, dan dealer.</p>"
+      }
+    },
+    "story": {
+      "type": "image-with-text",
+      "settings": {}
+    },
+    "partners": {
+      "type": "promo-banner",
+      "settings": {
+        "link": "/pages/contact"
+      }
+    }
+  },
+  "order": [
+    "intro",
+    "story",
+    "partners"
+  ]
+}

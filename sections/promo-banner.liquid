@@ -1,0 +1,54 @@
+<section class="promo-banner reveal" style="--promo-bg:{{ section.settings.background }};--promo-ink:{{ section.settings.foreground }}"><div class="wrap"><p class="eyebrow">{{ section.settings.eyebrow | escape }}</p><h2>{{ section.settings.title | escape }}</h2><div class="rte">{{ section.settings.text }}</div>{% if section.settings.link != blank %}<a class="button button-white" href="{{ section.settings.link }}">{{ section.settings.button_label | escape }}</a>{% endif %}</div></section>
+{% schema %}
+{
+  "name": "Promo Banner",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Teks kecil",
+      "default": "BNS PARTNERS"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Judul",
+      "default": "Tumbuh bersama BAITANDSTRIKE."
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Isi",
+      "default": "<p>Untuk toko, reseller, dan dealer. Temukan perlengkapan mancing untuk kebutuhan bisnis kamu.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Teks tombol",
+      "default": "Hubungi kami"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Tautan"
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Latar",
+      "default": "#123F5F"
+    },
+    {
+      "type": "color",
+      "id": "foreground",
+      "label": "Teks",
+      "default": "#FFFFFF"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Promo Banner"
+    }
+  ]
+}
+{% endschema %}

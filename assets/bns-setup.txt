@@ -1,0 +1,69 @@
+BNS CURRENT 1.0 — PANDUAN PEMASANGAN
+Tema Shopify custom BAITANDSTRIKE. Dibangun dari nol dengan susunan visual yang terinspirasi referensi Symmetry. Ini bukan tema Symmetry resmi.
+
+1. UNGGAH
+Shopify Admin > Online Store > Themes > Add theme / Import theme > Upload zip.
+Unggah BNS_Current_Theme_v1.zip secara langsung. Jangan unzip saat mengunggah.
+Tema masuk sebagai tema baru. Pilih Preview dan Customize sebelum Publish.
+
+2. ATUR HEADER
+Pilih Header > unggah logo BNS, pilih menu utama, dan atur ukuran logo.
+Mega menu membaca menu Shopify bertingkat hingga 3 tingkat.
+Pilih menu yang sudah mempunyai tautan benar ke kategori, merek, About Us, dan Contact.
+Header transparan hanya di homepage. Header menjadi solid saat scroll.
+
+3. ATUR HOMEPAGE
+Hero Slideshow: pasang foto banner desktop dan mobile, teks, serta tautan tiap slide.
+Kedua slide awal memakai ilustrasi laut bawaan, bukan foto katalog. Foto tidak diambil dari demo Symmetry.
+Collection Tiles: pilih koleksi Joran, Reel, Umpan, dan Aksesori. Pasang gambar koleksi/foto sendiri jika diinginkan.
+Jika kategori belum diatur, tombol kategori mengarah ke seluruh katalog.
+Featured Collection: pilih koleksi unggulan. Jika belum dipilih, tema mencoba membaca koleksi all.
+Image With Text: pasang gambar editorial BNS dan sesuaikan isi.
+Promo Banner: atur tujuan CTA partner. Tautan awal /pages/contact; pastikan halaman tersebut tersedia atau ganti tautannya.
+Teks, warna, gambar, posisi, dan pilihan produk dapat diubah lewat Theme Editor.
+
+4. HALAMAN
+Tema menyediakan template default untuk katalog, produk, pencarian, keranjang, koleksi, blog, artikel, 404, dan password.
+Template tambahan: page.about-us, page.contact, page.faq.
+Buat/pilih halaman di Online Store > Pages lalu tetapkan template yang sesuai.
+Penggunaan ZIP tidak membuat halaman, koleksi, menu, atau produk baru di Shopify.
+Halaman contact memakai alamat dan nomor telepon BNS. Tautan peta bisa diisi di Customize.
+
+5. KATALOG DAN PRODUK
+Harga, SKU, stok, varian, deskripsi dan foto produk dibaca dari Shopify.
+Tema tidak mengubah harga, stok, produk, SKU, varian atau foto toko.
+Pilihan varian meminta render ulang section ke Shopify, sehingga tidak perlu memuat seluruh daftar varian ke JavaScript.
+Thumbnail gambar, zoom, video Shopify, external video dan model 3D didukung.
+Quick view memakai section main-product; pengaturannya mengikuti default section. Detail produk lengkap tersedia lewat link.
+Setelan filter berasal dari Shopify Search & Discovery. Aktifkan filter yang dibutuhkan di toko.
+Pencarian memakai pencarian Shopify. Tema tidak menambahkan mesin pencarian eksternal.
+
+6. KERANJANG DAN CHECKOUT
+Klik ikon keranjang atau tambah produk akan membuka drawer di kanan.
+Ubah jumlah/hapus produk memakai key baris keranjang agar varian dengan properti berbeda tidak salah diubah.
+Checkout memakai Shopify. Metode pembayaran, ongkir, pajak dan kurir tetap mengikuti konfigurasi toko.
+Jika tambah ke keranjang berhasil tetapi refresh drawer gagal, pengguna diarahkan ke halaman keranjang. Permintaan tambah tidak diulang otomatis.
+Saat membuka drawer dari halaman cart, gunakan drawer atau halaman cart secara konsisten untuk perubahan jumlah.
+
+7. AKUN DAN B2B
+Template akun pelanggan klasik tersedia: login, daftar, reset password, aktivasi, account, orders, addresses.
+Jika toko memakai akun pelanggan baru, tautan akun diarahkan ke akun hosted Shopify; tema tidak menggantikan halaman hosted tersebut.
+Tema mempunyai area app blocks di halaman produk dan mendukung app embeds lewat mekanisme Shopify.
+Tema tidak menciptakan tier harga Bronze/Silver/Gold atau diskon B2B sendiri. Harga B2B memerlukan konfigurasi/app harga toko yang sesuai.
+Kompatibilitas dengan BMT atau app B2B lain belum diuji pada toko live. Aktifkan app embed kembali pada tema baru lalu uji harga produk, keranjang, dan checkout.
+
+8. FOOTER
+Pilih menu footer dan menu katalog. Isi tautan Instagram, TikTok, YouTube dan Facebook dengan URL akun resmi.
+Ikon sosial hanya ditampilkan jika tautannya diisi. Newsletter memakai customer form Shopify.
+Payment icons membaca metode pembayaran yang dikenali Shopify.
+
+9. VALIDASI DAN TES
+Pengecekan Shopify Liquid, JSON, schema, template, referensi snippet dan syntax JavaScript telah dijalankan secara lokal.
+10 tes interaksi lokal mencakup: varian, quantity rule, klik berulang, stock error, cart line key, cart remove, quick view, slideshow, menu mobile, dan pencarian.
+Pemeriksaan browser desktop/mobile memakai katalog simulasi, bukan produk/harga toko.
+Tes lokal memakai respons Shopify API yang disimulasikan. Belum diunggah, dipublish, atau dites checkout/transaksi langsung pada toko BNS.
+Sebelum publish: periksa link menu/kategori, foto hero, harga B2B jika memakai app, tambah/update/hapus cart, login, kontak, newsletter, serta checkout di preview.
+
+KODE
+Struktur theme OS 2.0: assets, config, layout, locales, sections, snippets, templates.
+JavaScript dan CSS ditulis mandiri tanpa library frontend. SVG kategori/laut adalah ilustrasi yang bisa diganti melalui gambar section.

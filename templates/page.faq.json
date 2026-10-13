@@ -1,0 +1,28 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {}
+    },
+    "faq": {
+      "type": "faq",
+      "settings": {},
+      "blocks": {
+        "q1": {
+          "type": "question",
+          "settings": {
+            "question": "Bagaimana cara memesan?",
+            "answer": "<p>Pilih produk, tentukan varian dan jumlah, lalu lanjutkan melalui keranjang dan checkout.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q1"
+      ]
+    }
+  },
+  "order": [
+    "main",
+    "faq"
+  ]
+}

@@ -1,0 +1,7 @@
+<section class="section wrap cart-page"><h1>{{ 'cart.title' | t }}</h1>{% if cart.empty? %}<p>{{ 'cart.empty' | t }}</p><a class="button" href="{{ routes.all_products_collection_url }}">{{ 'general.continue' | t }}</a>{% else %}<form action="{{ routes.cart_url }}" method="post" id="CartPageForm"><div class="cart-page-layout"><div>{% render 'cart-lines', cart: cart %}<button class="button button-small" name="update">{{ 'cart.update' | t }}</button></div><div class="cart-summary"><label for="CartNote">{{ 'cart.note' | t }}</label><textarea id="CartNote" name="note" rows="3">{{ cart.note | escape }}</textarea>{% for discount in cart.cart_level_discount_applications %}<p>{{ discount.title | escape }} −{{ discount.total_allocated_amount | money }}</p>{% endfor %}<div class="subtotal"><span>{{ 'cart.subtotal' | t }}</span><strong>{{ cart.total_price | money }}</strong></div><p>{{ 'cart.taxes' | t }}</p><button class="button checkout-button" name="checkout">{{ 'cart.checkout' | t }} →</button></div></div></form>{% endif %}</section>
+{% schema %}
+{
+  "name": "Main Cart",
+  "settings": []
+}
+{% endschema %}

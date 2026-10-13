@@ -1,0 +1,7 @@
+<section class="section wrap narrow"><a class="text-link" href="{{ routes.account_url }}">← {{ 'general.account' | t }}</a><h1>{{ 'customer.addresses' | t }}</h1>{% paginate customer.addresses by 10 %}{% for address in customer.addresses %}<article class="address-card">{{ address | format_address }}{% if address == customer.default_address %}<p>{{ 'customer.default' | t }}</p>{% endif %}<details><summary>{{ 'customer.edit_address' | t }}</summary>{% form 'customer_address', address %}{{ form.errors | default_errors }}{% assign suffix = address.id | append: '' %}{% render 'address-form', form: form, suffix: suffix %}{% endform %}</details><form action="{{ routes.account_addresses_url }}/{{ address.id }}" method="post" data-confirm-delete><input type="hidden" name="_method" value="delete"><button class="text-link">{{ 'customer.delete_address' | t }}</button></form></article>{% endfor %}{{ paginate | default_pagination }}{% endpaginate %}<details><summary>{{ 'customer.add_address' | t }}</summary>{% form 'customer_address', customer.new_address %}{{ form.errors | default_errors }}{% render 'address-form', form: form, suffix: 'new' %}{% endform %}</details></section>
+{% schema %}
+{
+  "name": "Main Addresses",
+  "settings": []
+}
+{% endschema %}

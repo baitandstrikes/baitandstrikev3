@@ -1,0 +1,7 @@
+<section class="section wrap auth-page"><h1>{{ 'general.login' | t }}</h1>{% form 'customer_login' %}{{ form.errors | default_errors }}<label for="LoginEmail">{{ 'general.email' | t }}</label><input id="LoginEmail" type="email" name="customer[email]" autocomplete="email" required><label for="LoginPassword">{{ 'general.password' | t }}</label><input id="LoginPassword" type="password" name="customer[password]" autocomplete="current-password" required><button class="button">{{ 'general.login' | t }}</button>{% endform %}<a class="text-link" href="{{ routes.account_register_url }}">{{ 'general.register' | t }}</a><details class="recover"><summary>{{ 'general.forgot' | t }}</summary>{% form 'recover_customer_password' %}{{ form.errors | default_errors }}{% if form.posted_successfully? %}<p role="status">{{ 'customer.recover_ok' | t }}</p>{% endif %}<label for="RecoverEmail">{{ 'general.email' | t }}</label><input id="RecoverEmail" name="email" type="email" autocomplete="email" required><button class="button">{{ 'general.submit' | t }}</button>{% endform %}</details></section>
+{% schema %}
+{
+  "name": "Main Login",
+  "settings": []
+}
+{% endschema %}

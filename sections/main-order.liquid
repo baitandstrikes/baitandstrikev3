@@ -1,0 +1,7 @@
+<section class="section wrap"><a class="text-link" href="{{ routes.account_url }}">← {{ 'general.account' | t }}</a><h1>{{ 'customer.order' | t }} {{ order.name }}</h1><p>{{ order.created_at | date: '%d %B %Y' }} · {{ order.financial_status_label }} · {{ order.fulfillment_status_label }}</p><div class="table-scroll"><table><tbody>{% for item in order.line_items %}<tr><td><a href="{{ item.url }}">{{ item.title | escape }}</a><small>{{ item.sku | escape }}</small>{% if item.fulfillment %}<p>{{ item.fulfillment.tracking_company | escape }}{% if item.fulfillment.tracking_url %} <a href="{{ item.fulfillment.tracking_url }}">{{ item.fulfillment.tracking_number | escape }}</a>{% endif %}</p>{% endif %}</td><td>{{ item.quantity }}</td><td>{{ item.final_line_price | money }}</td></tr>{% endfor %}</tbody></table></div><p>{{ 'cart.subtotal' | t }}: {{ order.subtotal_price | money }}</p>{% for shipping in order.shipping_methods %}<p>{{ shipping.title | escape }}: {{ shipping.price | money }}</p>{% endfor %}{% for tax in order.tax_lines %}<p>{{ tax.title | escape }}: {{ tax.price | money }}</p>{% endfor %}<p><strong>{{ 'cart.total' | t }}: {{ order.total_price | money_with_currency }}</strong></p><div class="contact-layout"><div><h2>{{ 'customer.billing_address' | t }}</h2>{{ order.billing_address | format_address }}</div><div><h2>{{ 'customer.shipping_address' | t }}</h2>{{ order.shipping_address | format_address }}</div></div></section>
+{% schema %}
+{
+  "name": "Main Order",
+  "settings": []
+}
+{% endschema %}

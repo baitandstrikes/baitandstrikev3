@@ -1,0 +1,45 @@
+<section class="section wrap faq reveal"><p class="eyebrow">{{ section.settings.eyebrow | escape }}</p><h2>{{ section.settings.title | escape }}</h2>{% for block in section.blocks %}<details {{ block.shopify_attributes }}><summary><span class="faq-number">{{ forloop.index | prepend: '0' }}</span>{{ block.settings.question | escape }}{% render 'icon', name: 'plus' %}</summary><div class="rte">{{ block.settings.answer }}</div></details>{% endfor %}</section>
+{% schema %}
+{
+  "name": "Faq",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Teks kecil",
+      "default": "BANTUAN"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Judul",
+      "default": "Pertanyaan yang sering ditanyakan"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "question",
+      "name": "Pertanyaan",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Pertanyaan",
+          "default": "Bagaimana cara memesan?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Jawaban",
+          "default": "<p>Pilih produk dan varian, masukkan ke keranjang, lalu lanjutkan checkout.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Faq"
+    }
+  ]
+}
+{% endschema %}

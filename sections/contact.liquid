@@ -1,0 +1,55 @@
+<section class="section wrap"><h1>{{ page.title | default: section.settings.title | escape }}</h1><div class="contact-layout"><div><div class="rte">{{ section.settings.text }}{{ page.content }}</div><h2>{{ section.settings.info_title | escape }}</h2><p>{{ section.settings.address | escape }}</p><p><a href="tel:{{ section.settings.phone | remove: ' ' | remove: '-' }}">{{ section.settings.phone | escape }}</a></p><p>{{ section.settings.hours | escape }}</p>{% if section.settings.map_url != blank %}<a class="text-link" href="{{ section.settings.map_url }}">{{ section.settings.map_label | escape }} →</a>{% endif %}</div><div>{% form 'contact' %}{% if form.posted_successfully? %}<p role="status">{{ 'general.success' | t }}</p>{% endif %}{{ form.errors | default_errors }}<label for="ContactName">{{ 'general.name' | t }}</label><input id="ContactName" name="contact[name]" autocomplete="name" value="{{ form.name | default: customer.name | escape }}" required><label for="ContactEmail">{{ 'general.email' | t }}</label><input id="ContactEmail" type="email" name="contact[email]" autocomplete="email" value="{{ form.email | default: customer.email | escape }}" required><label for="ContactPhone">{{ 'general.phone' | t }}</label><input id="ContactPhone" type="tel" name="contact[phone]" autocomplete="tel"><label for="ContactMessage">{{ 'general.message' | t }}</label><textarea id="ContactMessage" name="contact[body]" rows="6" required>{{ form.body | escape }}</textarea><button class="button">{{ 'general.submit' | t }}</button>{% endform %}</div></div></section>
+{% schema %}
+{
+  "name": "Contact",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Judul",
+      "default": "Hubungi Kami"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Pengantar",
+      "default": "<p>Hubungi tim BNS untuk pertanyaan produk dan kerja sama bisnis.</p>"
+    },
+    {
+      "type": "text",
+      "id": "info_title",
+      "label": "Judul alamat",
+      "default": "BAITANDSTRIKE"
+    },
+    {
+      "type": "text",
+      "id": "address",
+      "label": "Alamat",
+      "default": "Jl. Makaliwe Raya No.36, Grogol, Jakarta Barat 11450"
+    },
+    {
+      "type": "text",
+      "id": "phone",
+      "label": "Telepon",
+      "default": "0877-9536-1519"
+    },
+    {
+      "type": "text",
+      "id": "hours",
+      "label": "Jam operasional",
+      "default": "Senin–Jumat 09.00–17.00 · Sabtu 09.00–13.30"
+    },
+    {
+      "type": "url",
+      "id": "map_url",
+      "label": "Tautan Google Maps"
+    },
+    {
+      "type": "text",
+      "id": "map_label",
+      "label": "Teks tautan peta",
+      "default": "Lihat lokasi"
+    }
+  ]
+}
+{% endschema %}

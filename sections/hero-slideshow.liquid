@@ -1,0 +1,126 @@
+<section class="hero" data-slideshow data-autoplay="{{ section.settings.autoplay }}" data-delay="{{ section.settings.delay | times: 1000 }}" style="--hero-height:{{ section.settings.height }}vh;--hero-overlay:{{ section.settings.overlay | divided_by: 100.0 }}" aria-roledescription="carousel" aria-label="{{ section.settings.label | escape }}"><div class="hero-slides">{% for block in section.blocks %}<div class="hero-slide{% if forloop.first %} is-active{% endif %}" data-slide {% unless forloop.first %}inert aria-hidden="true"{% endunless %} {{ block.shopify_attributes }}>
+{% if block.settings.image %}{% if block.settings.mobile_image %}<picture><source media="(max-width:749px)" srcset="{{ block.settings.mobile_image | image_url: width: 1000 }}">{% endif %}{% if forloop.first %}{{ block.settings.image | image_url: width: 2400 | image_tag: class: 'hero-image', loading: 'eager', fetchpriority: 'high', widths: '750, 1100, 1500, 2000, 2400', sizes: '100vw' }}{% else %}{{ block.settings.image | image_url: width: 2400 | image_tag: class: 'hero-image', loading: 'lazy', widths: '750, 1100, 1500, 2000, 2400', sizes: '100vw' }}{% endif %}{% if block.settings.mobile_image %}</picture>{% endif %}{% else %}<img class="hero-image" src="{{ 'ocean.svg' | asset_url }}" width="1920" height="1100" alt=""{% unless forloop.first %} loading="lazy"{% endunless %}>{% endif %}
+<div class="hero-shade"></div><div class="hero-copy wrap align-{{ block.settings.alignment }}"><p class="eyebrow">{{ block.settings.eyebrow | escape }}</p><h1>{{ block.settings.title | escape }}</h1>{% if block.settings.text != blank %}<p class="hero-description">{{ block.settings.text | escape }}</p>{% endif %}{% if block.settings.button_label != blank %}<a class="button button-white" href="{{ block.settings.link | default: routes.all_products_collection_url }}">{{ block.settings.button_label | escape }}</a>{% endif %}</div></div>{% endfor %}</div>
+{% if section.blocks.size > 1 %}<div class="slide-controls"><button class="icon-button" data-slide-prev aria-label="{{ 'general.previous' | t }}">{% render 'icon', name: 'arrow' %}</button><div class="slide-dots">{% for block in section.blocks %}<button class="slide-dot{% if forloop.first %} is-active{% endif %}" data-slide-to="{{ forloop.index0 }}" aria-label="{{ 'general.slide' | t: number: forloop.index }}"{% if forloop.first %} aria-current="true"{% endif %}></button>{% endfor %}</div><button class="icon-button" data-slide-next aria-label="{{ 'general.next' | t }}">{% render 'icon', name: 'arrow' %}</button>{% if section.settings.autoplay %}<button class="slide-pause" data-slide-pause data-pause="{{ 'general.pause' | t }}" data-play="{{ 'general.play' | t }}" aria-label="{{ 'general.pause' | t }}">Ⅱ</button>{% endif %}</div>{% endif %}</section>
+{% schema %}
+{
+  "name": "Hero Slideshow",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Label aksesibilitas",
+      "default": "Pilihan BAITANDSTRIKE"
+    },
+    {
+      "type": "range",
+      "id": "height",
+      "label": "Tinggi desktop",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "vh",
+      "default": 90
+    },
+    {
+      "type": "range",
+      "id": "overlay",
+      "label": "Overlay gambar",
+      "min": 0,
+      "max": 70,
+      "step": 5,
+      "unit": "%",
+      "default": 25
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Putar otomatis",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "delay",
+      "label": "Jeda slide",
+      "min": 3,
+      "max": 12,
+      "step": 1,
+      "unit": "s",
+      "default": 7
+    }
+  ],
+  "max_blocks": 6,
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Gambar desktop"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "Gambar mobile"
+        },
+        {
+          "type": "text",
+          "id": "eyebrow",
+          "label": "Teks kecil",
+          "default": "BAITANDSTRIKE"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Judul",
+          "default": "Temukan strike berikutnya."
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Deskripsi",
+          "default": "Peralatan mancing pilihan untuk setiap petualangan."
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Teks tombol",
+          "default": "Jelajahi katalog"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Tautan tombol"
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": "Posisi teks",
+          "options": [
+            {
+              "value": "left",
+              "label": "Kiri"
+            },
+            {
+              "value": "center",
+              "label": "Tengah"
+            },
+            {
+              "value": "right",
+              "label": "Kanan"
+            }
+          ],
+          "default": "left"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Slideshow"
+    }
+  ]
+}
+{% endschema %}

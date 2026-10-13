@@ -1,0 +1,7 @@
+<section class="section wrap"><div class="section-heading"><h1>{{ 'general.account' | t }}</h1><a class="text-link" href="{{ routes.account_logout_url }}">{{ 'general.logout' | t }}</a></div><p>{{ customer.name | escape }}</p><a class="text-link" href="{{ routes.account_addresses_url }}">{{ 'customer.addresses' | t }}</a><h2>{{ 'customer.orders' | t }}</h2>{% paginate customer.orders by 20 %}{% if customer.orders.size > 0 %}<div class="table-scroll"><table><thead><tr><th>{{ 'customer.order' | t }}</th><th>{{ 'customer.date' | t }}</th><th>{{ 'customer.payment' | t }}</th><th>{{ 'customer.fulfillment' | t }}</th><th>{{ 'cart.total' | t }}</th></tr></thead><tbody>{% for order in customer.orders %}<tr><td><a href="{{ order.customer_url }}">{{ order.name }}</a></td><td>{{ order.created_at | date: '%d %B %Y' }}</td><td>{{ order.financial_status_label }}</td><td>{{ order.fulfillment_status_label }}</td><td>{{ order.total_price | money_with_currency }}</td></tr>{% endfor %}</tbody></table></div>{% else %}<p>{{ 'customer.no_orders' | t }}</p>{% endif %}{{ paginate | default_pagination }}{% endpaginate %}</section>
+{% schema %}
+{
+  "name": "Main Account",
+  "settings": []
+}
+{% endschema %}

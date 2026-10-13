@@ -1,0 +1,53 @@
+<section class="section editorial reveal{% if section.settings.reverse %} is-reversed{% endif %}"><div class="editorial-image">{% if section.settings.image %}{{ section.settings.image | image_url: width: 1600 | image_tag: loading: 'lazy', widths: '500, 800, 1200, 1600', sizes: '(min-width: 750px) 50vw, 100vw' }}{% else %}<img src="{{ 'ocean.svg' | asset_url }}" width="1920" height="1100" loading="lazy" alt="">{% endif %}</div><div class="editorial-copy"><p class="eyebrow">{{ section.settings.eyebrow | escape }}</p><h2>{{ section.settings.title | escape }}</h2><div class="rte">{{ section.settings.text }}</div>{% if section.settings.button_label != blank %}<a class="button" href="{{ section.settings.link | default: routes.all_products_collection_url }}">{{ section.settings.button_label | escape }}</a>{% endif %}</div></section>
+{% schema %}
+{
+  "name": "Image With Text",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Gambar"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Teks kecil",
+      "default": "BUILT FOR THE WATER"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Judul",
+      "default": "Perlengkapan tepat. Petualangan lebih jauh."
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Isi",
+      "default": "<p>Lengkapi tackle box kamu dengan pilihan perlengkapan BAITANDSTRIKE.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Teks tombol",
+      "default": "Jelajahi katalog"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Tautan"
+    },
+    {
+      "type": "checkbox",
+      "id": "reverse",
+      "label": "Balik posisi gambar",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image With Text"
+    }
+  ]
+}
+{% endschema %}

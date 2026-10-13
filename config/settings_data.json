@@ -1,0 +1,12 @@
+{
+  "current": {
+    "color_accent": "#3282C0",
+    "color_secondary": "#FCDD16",
+    "color_text": "#14212B",
+    "color_background": "#FFFFFF",
+    "body_font": "assistant_n4",
+    "heading_font": "assistant_n4",
+    "page_width": 1440,
+    "animations": true
+  }
+}
