@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "hero": {
@@ -60,60 +51,6 @@
         "link": ""
       }
     },
-    "categories": {
-      "type": "collection-tiles",
-      "blocks": {
-        "c0": {
-          "type": "collection",
-          "settings": {
-            "collection": "fishing-rods-joran",
-            "title": "Joran",
-            "button_label": "JELAJAHI",
-            "link": "/collections/fishing-rods-joran",
-            "image_url": "https://cdn.shopify.com/s/files/1/0837/1195/1076/collections/KATEGORI-JORAN.png?v=1790579253"
-          }
-        },
-        "c1": {
-          "type": "collection",
-          "settings": {
-            "collection": "reel",
-            "title": "Reel",
-            "button_label": "JELAJAHI",
-            "link": "/collections/reel",
-            "image_url": "https://cdn.shopify.com/s/files/1/0837/1195/1076/collections/KATEGORI-REEL.png?v=1790579279"
-          }
-        },
-        "c2": {
-          "type": "collection",
-          "settings": {
-            "collection": "fishing-bait",
-            "title": "Umpan",
-            "button_label": "JELAJAHI",
-            "link": "/collections/fishing-bait",
-            "image_url": "https://cdn.shopify.com/s/files/1/0837/1195/1076/collections/THUMNAIL_MINNOW.png?v=1790579216"
-          }
-        },
-        "c3": {
-          "type": "collection",
-          "settings": {
-            "collection": "fishing-accesories",
-            "title": "Aksesori",
-            "button_label": "JELAJAHI",
-            "link": "/collections/fishing-accesories",
-            "image_url": "https://cdn.shopify.com/s/files/1/0837/1195/1076/collections/KATEGORI-AKSESORIS.png?v=1790579373"
-          }
-        }
-      },
-      "block_order": [
-        "c0",
-        "c1",
-        "c2",
-        "c3"
-      ],
-      "settings": {
-        "title": "Pilih perlengkapanmu"
-      }
-    },
     "countdown": {
       "type": "countdown-promo",
       "settings": {
@@ -162,13 +99,22 @@
         "title": "Jurnal BNS",
         "blog": ""
       }
+    },
+    "new_arrivals": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "new-arrival",
+        "eyebrow": "BARU DI BNS",
+        "title": "New Arrival",
+        "limit": 8
+      }
     }
   },
   "order": [
     "hero",
     "intro",
-    "categories",
     "countdown",
+    "new_arrivals",
     "products",
     "story",
     "partners",

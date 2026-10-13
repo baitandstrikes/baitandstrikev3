@@ -172,10 +172,11 @@ const init = (scope = document) => {
  });
 };
 document.addEventListener('click', async event => {
- const trigger = event.target.closest('[data-open-cart], [data-close-dialog], [data-quick-view], [data-menu-toggle], [data-search-toggle], [data-quantity], [data-cart-delta], [data-cart-remove], [data-gallery-select], [data-zoom], [data-carousel-prev], [data-carousel-next], [data-share]');
+ const trigger = event.target.closest('[data-open-cart], [data-open-account], [data-close-dialog], [data-quick-view], [data-menu-toggle], [data-search-toggle], [data-quantity], [data-cart-delta], [data-cart-remove], [data-gallery-select], [data-zoom], [data-carousel-prev], [data-carousel-next], [data-share]');
  if (!trigger) return;
  if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
  if (trigger.matches('[data-open-cart]')) { event.preventDefault(); const drawer = document.getElementById('CartDrawer'); openDialog(drawer); try { await refreshCart(); } catch { displayError(drawer, config.error, '[data-cart-error]'); } }
+ if (trigger.matches('[data-open-account]')) { event.preventDefault(); openDialog(document.getElementById('AccountDialog')); }
  if (trigger.matches('[data-close-dialog]')) { trigger.closest('dialog').close(); lockBody(); }
  if (trigger.matches('[data-quick-view]')) { event.preventDefault(); await quickView(trigger); }
  if (trigger.matches('[data-menu-toggle]')) { const header = trigger.closest('[data-header]'); const opened = header.classList.toggle('menu-open'); trigger.setAttribute('aria-expanded', String(opened)); }
