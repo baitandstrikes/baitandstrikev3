@@ -1,27 +1,193 @@
 {
   "sections": {
-    "intro": {
-      "type": "rich-text",
+    "about": {
+      "type": "about-business",
       "settings": {
-        "eyebrow": "TENTANG BAITANDSTRIKE",
-        "title": "Dari satu strike, ke petualangan berikutnya.",
-        "text": "<p>BAITANDSTRIKE menyediakan peralatan mancing dan aksesori untuk pemancing, toko, reseller, dan dealer.</p>"
-      }
-    },
-    "story": {
-      "type": "image-with-text",
-      "settings": {}
-    },
-    "partners": {
-      "type": "promo-banner",
-      "settings": {
-        "link": "/pages/contact"
-      }
+        "hero_background_position": "center center",
+        "hero_overlay": 35,
+        "eyebrow": "BAITANDSTRIKE B2B",
+        "heading": "Your Trusted B2B Fishing Partner",
+        "hero_text": "Partner bisnis untuk kebutuhan fishing, tackle, accessories, dan perlengkapan memancing dengan fokus pada supply, harga kompetitif, dan partnership jangka panjang.",
+        "primary_label": "Become a B2B Partner",
+        "secondary_label": "Contact Our Team",
+        "intro_eyebrow": "Built for Business",
+        "intro_heading": "Lebih dari sekadar supplier.",
+        "intro_text": "<p>Kami memahami bahwa kebutuhan bisnis berbeda dengan kebutuhan retail. BAITANDSTRIKE membantu toko fishing, reseller, marketplace seller, distributor, dan partner bisnis mendapatkan produk dengan proses pengadaan yang lebih praktis.</p>",
+        "services_eyebrow": "What We Offer",
+        "services_heading": "Solusi untuk kebutuhan bisnis Anda.",
+        "audience_eyebrow": "Who We Serve",
+        "audience_heading": "Partner untuk berbagai bisnis fishing.",
+        "why_eyebrow": "Why BAITANDSTRIKE",
+        "why_heading": "Dibangun dengan prinsip business first.",
+        "cta_eyebrow": "Let's Work Together",
+        "cta_heading": "Ready to grow your fishing business?",
+        "cta_text": "Mari berdiskusi mengenai kebutuhan produk dan pengadaan bisnis Anda.",
+        "cta_label": "Join B2B Program",
+        "primary_link": "/pages/contact",
+        "secondary_link": "/pages/contact",
+        "cta_link": "/pages/contact"
+      },
+      "blocks": {
+        "b0": {
+          "type": "stat",
+          "settings": {
+            "number": "01",
+            "label": "Business First"
+          }
+        },
+        "b1": {
+          "type": "stat",
+          "settings": {
+            "number": "02",
+            "label": "Reliable Supply"
+          }
+        },
+        "b2": {
+          "type": "stat",
+          "settings": {
+            "number": "03",
+            "label": "Competitive Pricing"
+          }
+        },
+        "b3": {
+          "type": "stat",
+          "settings": {
+            "number": "04",
+            "label": "Long-Term Partnership"
+          }
+        },
+        "b4": {
+          "type": "service",
+          "settings": {
+            "title": "Wide Product Selection",
+            "text": "Beragam kebutuhan fishing, tackle, accessories, dan produk pendukung bisnis."
+          }
+        },
+        "b5": {
+          "type": "service",
+          "settings": {
+            "title": "Competitive Pricing",
+            "text": "Skema B2B yang membantu partner mendapatkan harga yang lebih kompetitif."
+          }
+        },
+        "b6": {
+          "type": "service",
+          "settings": {
+            "title": "Business Procurement",
+            "text": "Dukungan pengadaan untuk kebutuhan stok dan pemesanan dalam jumlah besar."
+          }
+        },
+        "b7": {
+          "type": "service",
+          "settings": {
+            "title": "Long-Term Partnership",
+            "text": "Kami membangun hubungan bisnis jangka panjang melalui komunikasi dan konsistensi."
+          }
+        },
+        "b8": {
+          "type": "audience",
+          "settings": {
+            "icon": "01",
+            "title": "Fishing Store",
+            "text": "Solusi pengadaan untuk toko fishing dan retail."
+          }
+        },
+        "b9": {
+          "type": "audience",
+          "settings": {
+            "icon": "02",
+            "title": "Reseller",
+            "text": "Produk untuk mendukung bisnis reseller Anda."
+          }
+        },
+        "b10": {
+          "type": "audience",
+          "settings": {
+            "icon": "03",
+            "title": "Marketplace Seller",
+            "text": "Perluas katalog dan pilihan produk yang Anda jual."
+          }
+        },
+        "b11": {
+          "type": "audience",
+          "settings": {
+            "icon": "04",
+            "title": "Distributor & Dealer",
+            "text": "Peluang kerja sama pengadaan dan distribusi."
+          }
+        },
+        "b12": {
+          "type": "audience",
+          "settings": {
+            "icon": "05",
+            "title": "Community & Organization",
+            "text": "Kebutuhan event, komunitas, dan kegiatan fishing."
+          }
+        },
+        "b13": {
+          "type": "audience",
+          "settings": {
+            "icon": "06",
+            "title": "Other Business",
+            "text": "Punya kebutuhan khusus? Diskusikan dengan tim kami."
+          }
+        },
+        "b14": {
+          "type": "why",
+          "settings": {
+            "number": "01",
+            "title": "Business First",
+            "text": "Fokus pada nilai bisnis, margin, kualitas, dan kebutuhan partner."
+          }
+        },
+        "b15": {
+          "type": "why",
+          "settings": {
+            "number": "02",
+            "title": "Reliable Supply",
+            "text": "Membantu partner menjaga ketersediaan produk untuk operasional toko."
+          }
+        },
+        "b16": {
+          "type": "why",
+          "settings": {
+            "number": "03",
+            "title": "Competitive Pricing",
+            "text": "Skema B2B untuk mendukung struktur harga dan margin bisnis."
+          }
+        },
+        "b17": {
+          "type": "why",
+          "settings": {
+            "number": "04",
+            "title": "Long-Term Partnership",
+            "text": "Membangun hubungan yang berkelanjutan, bukan sekadar transaksi."
+          }
+        }
+      },
+      "block_order": [
+        "b0",
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6",
+        "b7",
+        "b8",
+        "b9",
+        "b10",
+        "b11",
+        "b12",
+        "b13",
+        "b14",
+        "b15",
+        "b16",
+        "b17"
+      ]
     }
   },
   "order": [
-    "intro",
-    "story",
-    "partners"
+    "about"
   ]
 }
