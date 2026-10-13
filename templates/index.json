@@ -100,27 +100,100 @@
     },
     "faq": {
       "type": "faq",
-      "settings": {},
       "blocks": {
-        "q1": {
+        "faq_pjhyrx": {
           "type": "question",
           "settings": {
-            "question": "Bagaimana cara memesan?",
-            "answer": "<p>Pilih produk dan varian, tambahkan ke keranjang, lalu lanjutkan checkout untuk memilih pengiriman dan pembayaran.</p>"
+            "question": "Apakah BAITANDSTRIKE menjual alat pancing untuk pemula?",
+            "answer": "<p>Ya. Kami menyediakan perlengkapan untuk pemancing pemula hingga berpengalaman. Jika bingung memilih, hubungi kami agar bisa dibantu menyesuaikan kebutuhan dan budget.</p>"
           }
         },
-        "q2": {
+        "faq_bDimMR": {
           "type": "question",
           "settings": {
-            "question": "Bagaimana menghubungi tim BNS?",
-            "answer": "<p>Gunakan halaman Hubungi Kami atau telepon 0877-9536-1519 pada jam operasional.</p>"
+            "question": "Bagaimana cara memilih joran yang sesuai?",
+            "answer": "<p>Pemilihan joran tergantung teknik memancing, target ikan, lokasi, serta ukuran lure atau umpan. Hubungi tim BAITANDSTRIKE untuk mendapatkan rekomendasi.</p>"
+          }
+        },
+        "faq_3BA4XL": {
+          "type": "question",
+          "settings": {
+            "question": "Apakah produk yang tersedia original?",
+            "answer": "<p>Kami mengutamakan produk berkualitas dari brand terpercaya. Detail brand dan spesifikasi tersedia pada halaman masing-masing produk.</p>"
+          }
+        },
+        "faq_z9WHNG": {
+          "type": "question",
+          "settings": {
+            "question": "Bagaimana cara melakukan pemesanan?",
+            "answer": "<p>Pilih produk, tentukan varian dan jumlah, tambahkan ke cart, lalu lanjutkan ke checkout dan ikuti instruksi pembayaran.</p>"
+          }
+        },
+        "faq_HDTe86": {
+          "type": "question",
+          "settings": {
+            "question": "Metode pembayaran apa saja yang tersedia?",
+            "answer": "<p>Metode pembayaran mengikuti opsi yang tersedia pada checkout toko Shopify. Pilihan dapat berbeda sesuai pengaturan pembayaran toko.</p>"
+          }
+        },
+        "faq_XCV6gF": {
+          "type": "question",
+          "settings": {
+            "question": "Berapa lama proses pengiriman pesanan?",
+            "answer": "<p>Waktu pengiriman tergantung kurir, tujuan, dan layanan yang dipilih. Estimasi akan mengikuti informasi pada checkout.</p>"
+          }
+        },
+        "faq_QggDWq": {
+          "type": "question",
+          "settings": {
+            "question": "Apakah bisa konsultasi sebelum membeli?",
+            "answer": "<p>Tentu. Kamu bisa berkonsultasi mengenai joran, reel, senar, lure, kail, dan perlengkapan lainnya sebelum membeli.</p>"
+          }
+        },
+        "faq_VitEeT": {
+          "type": "question",
+          "settings": {
+            "question": "Apakah barang bisa ditukar atau dikembalikan?",
+            "answer": "<p>Kebijakan retur atau penukaran mengikuti ketentuan toko. Pastikan membaca kebijakan retur sebelum melakukan pembelian.</p>"
+          }
+        },
+        "faq_Nm78KG": {
+          "type": "question",
+          "settings": {
+            "question": "Apakah BAITANDSTRIKE menerima pesanan dalam jumlah banyak?",
+            "answer": "<p>Untuk kebutuhan komunitas, usaha, atau pembelian dalam jumlah besar, silakan hubungi kami untuk mengecek ketersediaan dan penawaran.</p>"
+          }
+        },
+        "faq_G49n6b": {
+          "type": "question",
+          "settings": {
+            "question": "Bagaimana cara menghubungi BAITANDSTRIKE?",
+            "answer": "<p>Gunakan halaman Contact Us untuk mengirim pertanyaan. Sertakan detail produk atau kebutuhan agar tim kami dapat membantu lebih cepat.</p>"
           }
         }
       },
       "block_order": [
-        "q1",
-        "q2"
-      ]
+        "faq_pjhyrx",
+        "faq_bDimMR",
+        "faq_3BA4XL",
+        "faq_z9WHNG",
+        "faq_HDTe86",
+        "faq_XCV6gF",
+        "faq_QggDWq",
+        "faq_VitEeT",
+        "faq_Nm78KG",
+        "faq_G49n6b"
+      ],
+      "name": "BAITANDSTRIKE FAQ",
+      "settings": {
+        "eyebrow": "BAITANDSTRIKE",
+        "title": "Frequently Asked Questions",
+        "subtitle": "Temukan jawaban seputar produk pancing, pemesanan, pembayaran, pengiriman, dan layanan BAITANDSTRIKE.",
+        "contact_title": "Masih punya pertanyaan?",
+        "contact_text": "Tim BAITANDSTRIKE siap membantu kamu, dengan klik tombol Whatsapp.",
+        "contact_button": "HUBUNGI KAMI",
+        "contact_link": "https://wa.me/6287795361519"
+      }
     },
     "countdown": {
       "type": "countdown-promo",
