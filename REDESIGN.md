@@ -29,3 +29,11 @@ The repository has no real photography or configured store data. Therefore scree
 ## Content imported from the original repository
 
 FAQ: ten questions and answers from baitandstrikes/baitandstrike templates/page.about-us.json, also synchronized to the homepage. Contact: copy and complete address, phone, WhatsApp, opening hours and directions from templates/page.contact.json and sections/contact-page-custom.liquid. About Us: default text and all 18 preset blocks from sections/bns-b2b-about.liquid, adapted to the new design. The source about-us template itself contained FAQ, so it was not used as the business profile. About CTA links route to Contact because the new theme does not implement the old B2B registration pages. Assign Shopify pages to the faq, contact and about-us templates after installing.
+
+## Reference features and imagery
+
+Source: active theme of bns-fishing-store.myshopify.com, inspected through the connected Shopify account on 13 October 2026. Hero banner, secondary banner/editorial image, logo and four category images reference verified source Shopify CDN URLs. Layout, spacing, typography, palette and both stylesheet files are unchanged. Source images retain their original artwork; blue in an image is not a theme palette change. Product imagery remains managed by the destination catalog.
+
+Adds multi-variant ordering (50 variants per page), server-enforced quantity rules, contextual volume prices, cart drawer handoff and native company/location controls. BMT Wholesale app embed is enabled using the already-installed app identifier observed in other destination themes. Existing BMT registration/login page bodies remain store-managed, rendered by the new wholesale-registration template. BMT prices, approvals and registration forms depend on the destination app configuration; no source customer/company/pricing data or credentials are copied. About/B2B links point to the existing destination registration page. Editorial video button opens the same source video. FAQ is removed from the homepage and remains a separate page.
+
+The reference storefront is password protected. No live registration, wholesale approval or checkout was submitted. The BMT embed may apply its own app styling; global theme CSS is unchanged. No external source app scripts or source credentials were copied.
