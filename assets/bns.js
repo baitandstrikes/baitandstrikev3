@@ -214,5 +214,6 @@ window.addEventListener('scroll', () => { if (!scrollQueued) { scrollQueued = tr
 document.addEventListener('shopify:section:load', event => init(event.target));
 document.addEventListener('shopify:section:unload', event => event.target.querySelector('[data-slideshow]')?.dispatchEvent(new Event('bns:unload')));
 document.addEventListener('shopify:block:select', event => { const slide = event.target.closest('[data-slide]'); if (slide) { const hero = slide.closest('[data-slideshow]'); hero.dispatchEvent(new CustomEvent('bns:slide', { detail: [...hero.querySelectorAll('[data-slide]')].indexOf(slide) })); } });
+document.addEventListener('bns:cart-refresh', async () => { try { await refreshCart(); openDialog(document.getElementById('CartDrawer')); toast(config.added); } catch { window.location.assign(config.cart); } });
 updateHeader(); init();
 })();

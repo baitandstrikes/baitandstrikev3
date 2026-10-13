@@ -1,0 +1,4 @@
+{% doc %}
+Shows Shopify company context and existing destination B2B account links.
+{% enddoc %}
+{% if customer.b2b? %}<div class="product-extra"><p>{{ 'b2b.company' | t }}: {{ customer.current_company.name | escape }}</p>{% if customer.current_location %}<p>{{ 'b2b.location' | t }}: {{ customer.current_location.name | escape }}</p>{% endif %}{% if customer.company_available_locations_count > 1 %}<details class="product-accordion"><summary>{{ 'b2b.switch' | t }}{% render 'icon', name: 'plus' %}</summary><ul>{% for location in customer.company_available_locations %}<li>{% if location.current? %}{{ location.name | escape }}{% else %}<a class="text-link" href="{{ location.url_to_set_as_current }}">{{ location.name | escape }}</a>{% endif %}</li>{% endfor %}</ul></details>{% endif %}</div>{% endif %}

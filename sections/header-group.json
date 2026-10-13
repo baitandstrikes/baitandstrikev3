@@ -8,7 +8,9 @@
     },
     "header": {
       "type": "header",
-      "settings": {}
+      "settings": {
+        "logo_url": "https://cdn.shopify.com/s/files/1/0837/1195/1076/files/IMG_05521.png?v=1787120124"
+      }
     }
   },
   "order": [
