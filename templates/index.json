@@ -11,10 +11,6 @@
   "sections": {
     "hero": {
       "type": "hero-slideshow",
-      "settings": {
-        "height": 95,
-        "overlay": 15
-      },
       "blocks": {
         "s1": {
           "type": "slide",
@@ -23,6 +19,7 @@
             "title": "Temukan strike berikutnya.",
             "text": "",
             "button_label": "JELAJAHI KATALOG",
+            "link": "",
             "alignment": "left",
             "image_url": "https://cdn.shopify.com/s/files/1/0837/1195/1076/files/DESAIN_STIKER_KACA-OFFLINE_STORE_BNS.png?v=1789183669"
           }
@@ -30,10 +27,12 @@
         "s2": {
           "type": "slide",
           "settings": {
+            "image": "shopify://shop_images/Gemini_Generated_Image_5uf86i5uf86i5uf8.jpg",
             "eyebrow": "READY FOR YOUR NEXT TRIP",
             "title": "Siap ke mana pun arus membawa.",
             "text": "",
             "button_label": "TEMUKAN PERLENGKAPAN",
+            "link": "",
             "alignment": "left",
             "image_url": "https://cdn.shopify.com/s/files/1/0837/1195/1076/files/back.png?v=1788340231"
           }
@@ -42,58 +41,66 @@
       "block_order": [
         "s1",
         "s2"
-      ]
+      ],
+      "settings": {
+        "label": "Pilihan BAITANDSTRIKE",
+        "height": 95,
+        "overlay": 15,
+        "autoplay": true,
+        "delay": 7
+      }
     },
     "intro": {
       "type": "rich-text",
       "settings": {
         "eyebrow": "BAITANDSTRIKE",
         "title": "“Kami percaya pada kualitas perlengkapan, petualangan di alam terbuka, dan cerita yang dibawa pulang dari setiap trip.”",
-        "text": "<p>Temukan perlengkapan pilihan untuk strike berikutnya.</p>"
+        "text": "<p>Temukan perlengkapan pilihan untuk strike berikutnya.</p>",
+        "button_label": "Kenali BNS",
+        "link": ""
       }
     },
     "categories": {
       "type": "collection-tiles",
-      "settings": {},
       "blocks": {
         "c0": {
           "type": "collection",
           "settings": {
+            "collection": "fishing-rods-joran",
             "title": "Joran",
             "button_label": "JELAJAHI",
-            "collection": "fishing-rods-joran",
-            "image_url": "https://cdn.shopify.com/s/files/1/0837/1195/1076/collections/KATEGORI-JORAN.png?v=1790579253",
-            "link": "/collections/fishing-rods-joran"
+            "link": "/collections/fishing-rods-joran",
+            "image_url": "https://cdn.shopify.com/s/files/1/0837/1195/1076/collections/KATEGORI-JORAN.png?v=1790579253"
           }
         },
         "c1": {
           "type": "collection",
           "settings": {
+            "collection": "reel",
             "title": "Reel",
             "button_label": "JELAJAHI",
-            "collection": "reel",
-            "image_url": "https://cdn.shopify.com/s/files/1/0837/1195/1076/collections/KATEGORI-REEL.png?v=1790579279",
-            "link": "/collections/reel"
+            "link": "/collections/reel",
+            "image_url": "https://cdn.shopify.com/s/files/1/0837/1195/1076/collections/KATEGORI-REEL.png?v=1790579279"
           }
         },
         "c2": {
           "type": "collection",
           "settings": {
+            "collection": "fishing-bait",
             "title": "Umpan",
             "button_label": "JELAJAHI",
-            "collection": "fishing-bait",
-            "image_url": "https://cdn.shopify.com/s/files/1/0837/1195/1076/collections/THUMNAIL_MINNOW.png?v=1790579216",
-            "link": "/collections/fishing-bait"
+            "link": "/collections/fishing-bait",
+            "image_url": "https://cdn.shopify.com/s/files/1/0837/1195/1076/collections/THUMNAIL_MINNOW.png?v=1790579216"
           }
         },
         "c3": {
           "type": "collection",
           "settings": {
+            "collection": "fishing-accesories",
             "title": "Aksesori",
             "button_label": "JELAJAHI",
-            "collection": "fishing-accesories",
-            "image_url": "https://cdn.shopify.com/s/files/1/0837/1195/1076/collections/KATEGORI-AKSESORIS.png?v=1790579373",
-            "link": "/collections/fishing-accesories"
+            "link": "/collections/fishing-accesories",
+            "image_url": "https://cdn.shopify.com/s/files/1/0837/1195/1076/collections/KATEGORI-AKSESORIS.png?v=1790579373"
           }
         }
       },
@@ -102,37 +109,59 @@
         "c1",
         "c2",
         "c3"
-      ]
+      ],
+      "settings": {
+        "title": "Pilih perlengkapanmu"
+      }
+    },
+    "countdown": {
+      "type": "countdown-promo",
+      "settings": {
+        "title": "Pilihan untuk trip berikutnya",
+        "end": "",
+        "label": "Jelajahi koleksi",
+        "link": ""
+      }
     },
     "products": {
       "type": "featured-collection",
       "settings": {
-        "title": "Pilihan favorit",
+        "collection": "fishing-rods-joran",
         "eyebrow": "",
-        "collection": "fishing-rods-joran"
+        "title": "Pilihan favorit",
+        "limit": 8
       }
     },
     "story": {
       "type": "image-with-text",
       "settings": {
-        "image_url": "https://cdn.shopify.com/s/files/1/0837/1195/1076/files/back.png?v=1788340231",
+        "eyebrow": "BUILT FOR THE WATER",
+        "title": "Perlengkapan tepat. Petualangan lebih jauh.",
+        "text": "<p>Lengkapi tackle box kamu dengan pilihan perlengkapan BAITANDSTRIKE.</p>",
+        "button_label": "Tonton video",
         "link": "https://www.youtube.com/watch?v=QPwc3fP30kE",
-        "button_label": "Tonton video"
+        "reverse": false,
+        "image_url": "https://cdn.shopify.com/s/files/1/0837/1195/1076/files/back.png?v=1788340231"
       }
     },
     "partners": {
       "type": "promo-banner",
       "settings": {
-        "link": "/pages/wholesale-registration-form"
+        "eyebrow": "BNS PARTNERS",
+        "title": "Tumbuh bersama BAITANDSTRIKE.",
+        "text": "<p>Untuk toko, reseller, dan dealer. Temukan perlengkapan mancing untuk kebutuhan bisnis kamu.</p>",
+        "button_label": "Hubungi kami",
+        "link": "/pages/wholesale-registration-form",
+        "background": "#eeeae5",
+        "foreground": "#333333"
       }
-    },
-    "countdown": {
-      "type": "countdown-promo",
-      "settings": {}
     },
     "journal": {
       "type": "journal",
-      "settings": {}
+      "settings": {
+        "title": "Jurnal BNS",
+        "blog": ""
+      }
     }
   },
   "order": [
