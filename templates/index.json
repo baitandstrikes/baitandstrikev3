@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "hero": {
@@ -102,13 +93,35 @@
             "link": "/collections/fishing-accesories",
             "image_url": "https://cdn.shopify.com/s/files/1/0837/1195/1076/collections/KATEGORI-AKSESORIS.png?v=1790579373"
           }
+        },
+        "c4": {
+          "type": "collection",
+          "settings": {
+            "collection": "fishing-line",
+            "title": "Fishing Line",
+            "button_label": "JELAJAHI",
+            "link": "/collections/fishing-line",
+            "image_url": "https://cdn.shopify.com/s/files/1/0838/8824/2905/collections/fishing-line-collection.png?v=1791293657"
+          }
+        },
+        "c5": {
+          "type": "collection",
+          "settings": {
+            "collection": "hook",
+            "title": "Hook",
+            "button_label": "JELAJAHI",
+            "link": "/collections/hook",
+            "image_url": "https://cdn.shopify.com/s/files/1/0838/8824/2905/collections/konsep-gambar-kail-pancing-besar-quadruple.png?v=1791293672"
+          }
         }
       },
       "block_order": [
         "c0",
         "c1",
         "c2",
-        "c3"
+        "c3",
+        "c4",
+        "c5"
       ],
       "settings": {
         "title": "Pilih perlengkapanmu"
@@ -162,6 +175,15 @@
         "title": "Jurnal BNS",
         "blog": ""
       }
+    },
+    "new_arrivals": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "new-arrival",
+        "eyebrow": "BARU DI BNS",
+        "title": "New Arrival",
+        "limit": 8
+      }
     }
   },
   "order": [
@@ -169,6 +191,7 @@
     "intro",
     "categories",
     "countdown",
+    "new_arrivals",
     "products",
     "story",
     "partners",
