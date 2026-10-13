@@ -1,8 +1,8 @@
 [
   {
     "name": "theme_info",
-    "theme_name": "BNS Current",
-    "theme_version": "1.0.0",
+    "theme_name": "BNS Atelier",
+    "theme_version": "2.0.0",
     "theme_author": "BAITANDSTRIKE",
     "theme_documentation_url": "https://help.shopify.com/en/manual/online-store/themes",
     "theme_support_url": "https://help.shopify.com/en/manual/online-store/themes"
@@ -13,20 +13,20 @@
       {
         "type": "color",
         "id": "color_accent",
-        "label": "Biru BNS",
-        "default": "#3282C0"
+        "label": "Warna tombol",
+        "default": "#252525"
       },
       {
         "type": "color",
         "id": "color_secondary",
-        "label": "Kuning BNS",
-        "default": "#FCDD16"
+        "label": "Warna sekunder",
+        "default": "#E8E2DA"
       },
       {
         "type": "color",
         "id": "color_text",
         "label": "Teks",
-        "default": "#14212B"
+        "default": "#333333"
       },
       {
         "type": "color",
@@ -38,13 +38,13 @@
         "type": "font_picker",
         "id": "body_font",
         "label": "Font isi",
-        "default": "assistant_n4"
+        "default": "montserrat_n4"
       },
       {
         "type": "font_picker",
         "id": "heading_font",
         "label": "Font judul",
-        "default": "assistant_n4"
+        "default": "montserrat_n2"
       },
       {
         "type": "image_picker",

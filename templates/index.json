@@ -2,14 +2,17 @@
   "sections": {
     "hero": {
       "type": "hero-slideshow",
-      "settings": {},
+      "settings": {
+        "height": 95,
+        "overlay": 15
+      },
       "blocks": {
         "s1": {
           "type": "slide",
           "settings": {
             "eyebrow": "BAITANDSTRIKE",
             "title": "Temukan strike berikutnya.",
-            "text": "Peralatan mancing pilihan. Dari tackle box ke perairan terbuka.",
+            "text": "",
             "button_label": "JELAJAHI KATALOG",
             "alignment": "left"
           }
@@ -19,7 +22,7 @@
           "settings": {
             "eyebrow": "READY FOR YOUR NEXT TRIP",
             "title": "Siap ke mana pun arus membawa.",
-            "text": "Joran, reel, senar, dan umpan untuk petualangan kamu.",
+            "text": "",
             "button_label": "TEMUKAN PERLENGKAPAN",
             "alignment": "left"
           }
@@ -32,7 +35,11 @@
     },
     "intro": {
       "type": "rich-text",
-      "settings": {}
+      "settings": {
+        "eyebrow": "BAITANDSTRIKE",
+        "title": "“Kami percaya pada kualitas perlengkapan, petualangan di alam terbuka, dan cerita yang dibawa pulang dari setiap trip.”",
+        "text": "<p>Temukan perlengkapan pilihan untuk strike berikutnya.</p>"
+      }
     },
     "categories": {
       "type": "collection-tiles",
@@ -76,7 +83,10 @@
     },
     "products": {
       "type": "featured-collection",
-      "settings": {}
+      "settings": {
+        "title": "Pilihan favorit",
+        "eyebrow": ""
+      }
     },
     "story": {
       "type": "image-with-text",
@@ -111,15 +121,25 @@
         "q1",
         "q2"
       ]
+    },
+    "countdown": {
+      "type": "countdown-promo",
+      "settings": {}
+    },
+    "journal": {
+      "type": "journal",
+      "settings": {}
     }
   },
   "order": [
     "hero",
     "intro",
     "categories",
+    "countdown",
     "products",
     "story",
     "partners",
+    "journal",
     "faq"
   ]
 }

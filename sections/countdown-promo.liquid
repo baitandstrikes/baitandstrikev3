@@ -1,0 +1,36 @@
+<section class="countdown-promo" data-countdown="{{ section.settings.end | escape }}"><h2>{{ section.settings.title | escape }}</h2><div class="countdown-clock" data-countdown-clock hidden>{% assign units = 'days,hours,minutes,seconds' | split: ',' %}{% for unit in units %}{% assign key = 'general.' | append: unit %}<span><b data-time="{{ unit }}">00</b><small>{{ key | t }}</small></span>{% endfor %}</div>{% if section.settings.label != blank %}<a class="button" href="{{ section.settings.link | default: routes.all_products_collection_url }}">{{ section.settings.label | escape }}</a>{% endif %}</section>
+{% schema %}
+{
+  "name": "Countdown Promotion",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Judul",
+      "default": "Pilihan untuk trip berikutnya"
+    },
+    {
+      "type": "text",
+      "id": "end",
+      "label": "Akhir promosi (ISO 8601)",
+      "info": "Contoh: 2026-12-31T23:59:00+07:00. Countdown disembunyikan setelah berakhir."
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Tombol",
+      "default": "Jelajahi koleksi"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Tautan"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Countdown Promotion"
+    }
+  ]
+}
+{% endschema %}
