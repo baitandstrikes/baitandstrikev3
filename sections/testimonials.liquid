@@ -1,0 +1,37 @@
+<section class="section testimonials" data-testimonials><div class="wrap"><p class="eyebrow">{{ section.settings.title | escape }}</p>{% for block in section.blocks %}<div data-testimonial{% unless forloop.first %} hidden{% endunless %} {{ block.shopify_attributes }}><div class="rte testimonial-text">{{ block.settings.quote }}</div><p class="testimonial-author">{{ block.settings.author | escape }}</p></div>{% endfor %}{% if section.blocks.size > 1 %}<div class="testimonial-controls"><button class="icon-button" data-testimonial-prev aria-label="{{ 'general.previous' | t }}">←</button><button class="icon-button" data-testimonial-next aria-label="{{ 'general.next' | t }}">→</button></div>{% endif %}</div></section>
+{% schema %}
+{
+  "name": "Testimonials",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Judul",
+      "default": "Cerita pelanggan"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "quote",
+      "name": "Testimoni",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "quote",
+          "label": "Testimoni"
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Nama pelanggan"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonials"
+    }
+  ]
+}
+{% endschema %}

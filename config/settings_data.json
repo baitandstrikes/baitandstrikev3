@@ -1,11 +1,11 @@
 {
   "current": {
-    "color_accent": "#3282C0",
-    "color_secondary": "#FCDD16",
-    "color_text": "#14212B",
+    "color_accent": "#252525",
+    "color_secondary": "#E8E2DA",
+    "color_text": "#333333",
     "color_background": "#FFFFFF",
-    "body_font": "assistant_n4",
-    "heading_font": "assistant_n4",
+    "body_font": "montserrat_n4",
+    "heading_font": "montserrat_n2",
     "page_width": 1440,
     "animations": true
   }
