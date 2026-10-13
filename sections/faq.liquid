@@ -1,4 +1,4 @@
-<section class="section wrap faq reveal"><p class="eyebrow">{{ section.settings.eyebrow | escape }}</p><h2>{{ section.settings.title | escape }}</h2>{% for block in section.blocks %}<details {{ block.shopify_attributes }}><summary><span class="faq-number">{{ forloop.index | prepend: '0' }}</span>{{ block.settings.question | escape }}{% render 'icon', name: 'plus' %}</summary><div class="rte">{{ block.settings.answer }}</div></details>{% endfor %}</section>
+<section class="section wrap faq reveal"><p class="eyebrow">{{ section.settings.eyebrow | escape }}</p><h2>{{ section.settings.title | escape }}</h2>{% if section.settings.subtitle != blank %}<p>{{ section.settings.subtitle | escape }}</p>{% endif %}{% for block in section.blocks %}<details {{ block.shopify_attributes }}><summary><span class="faq-number">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span>{{ block.settings.question | escape }}{% render 'icon', name: 'plus' %}</summary><div class="rte">{{ block.settings.answer }}</div></details>{% endfor %}{% if section.settings.contact_title != blank %}<div class="business-cta align-center"><h3>{{ section.settings.contact_title | escape }}</h3><p>{{ section.settings.contact_text | escape }}</p>{% if section.settings.contact_link != blank %}<a class="button" href="{{ section.settings.contact_link }}">{{ section.settings.contact_button | escape }}</a>{% endif %}</div>{% endif %}</section>
 {% schema %}
 {
   "name": "Faq",
@@ -14,6 +14,31 @@
       "id": "title",
       "label": "Judul",
       "default": "Pertanyaan yang sering ditanyakan"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Pengantar"
+    },
+    {
+      "type": "text",
+      "id": "contact_title",
+      "label": "Judul bantuan"
+    },
+    {
+      "type": "textarea",
+      "id": "contact_text",
+      "label": "Teks bantuan"
+    },
+    {
+      "type": "text",
+      "id": "contact_button",
+      "label": "Tombol bantuan"
+    },
+    {
+      "type": "url",
+      "id": "contact_link",
+      "label": "Tautan bantuan"
     }
   ],
   "blocks": [

@@ -1,11 +1,24 @@
 {
   "sections": {
-    "main": {
+    "contact": {
       "type": "contact",
-      "settings": {}
+      "settings": {
+        "title": "Contact Us",
+        "text": "<p>We're here to help with your fishing gear, orders, wholesale inquiries and more.</p>",
+        "info_title": "Our Location",
+        "address": "Jl. Makaliwe Raya No.36, RT.2/RW.5, Grogol, Kec. Grogol Petamburan, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11450",
+        "phone": "0877-9536-1519",
+        "hours": "MON — FRI 09:00 — 17:00 · SATURDAY 09:00 — 13:30 · SUNDAY CLOSED",
+        "map_url": "https://www.google.com/maps/search/?api=1&query=Jl.+Makaliwe+Raya+No.36+Jakarta+Barat",
+        "map_label": "GET DIRECTIONS",
+        "whatsapp": "https://wa.me/6287795361519",
+        "whatsapp_label": "CHAT ON WHATSAPP",
+        "form_heading": "Send Us Your Question",
+        "success_message": "Thank you. Your message has been sent."
+      }
     }
   },
   "order": [
-    "main"
+    "contact"
   ]
 }
