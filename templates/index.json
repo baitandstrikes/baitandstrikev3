@@ -51,82 +51,6 @@
         "link": ""
       }
     },
-    "categories": {
-      "type": "collection-tiles",
-      "blocks": {
-        "c0": {
-          "type": "collection",
-          "settings": {
-            "collection": "fishing-rods-joran",
-            "title": "Joran",
-            "button_label": "JELAJAHI",
-            "link": "/collections/fishing-rods-joran",
-            "image_url": "https://cdn.shopify.com/s/files/1/0837/1195/1076/collections/KATEGORI-JORAN.png?v=1790579253"
-          }
-        },
-        "c1": {
-          "type": "collection",
-          "settings": {
-            "collection": "reel",
-            "title": "Reel",
-            "button_label": "JELAJAHI",
-            "link": "/collections/reel",
-            "image_url": "https://cdn.shopify.com/s/files/1/0837/1195/1076/collections/KATEGORI-REEL.png?v=1790579279"
-          }
-        },
-        "c2": {
-          "type": "collection",
-          "settings": {
-            "collection": "fishing-bait",
-            "title": "Umpan",
-            "button_label": "JELAJAHI",
-            "link": "/collections/fishing-bait",
-            "image_url": "https://cdn.shopify.com/s/files/1/0837/1195/1076/collections/THUMNAIL_MINNOW.png?v=1790579216"
-          }
-        },
-        "c3": {
-          "type": "collection",
-          "settings": {
-            "collection": "fishing-accesories",
-            "title": "Aksesori",
-            "button_label": "JELAJAHI",
-            "link": "/collections/fishing-accesories",
-            "image_url": "https://cdn.shopify.com/s/files/1/0837/1195/1076/collections/KATEGORI-AKSESORIS.png?v=1790579373"
-          }
-        },
-        "c4": {
-          "type": "collection",
-          "settings": {
-            "collection": "fishing-line",
-            "title": "Fishing Line",
-            "button_label": "JELAJAHI",
-            "link": "/collections/fishing-line",
-            "image_url": "https://cdn.shopify.com/s/files/1/0838/8824/2905/collections/fishing-line-collection.png?v=1791293657"
-          }
-        },
-        "c5": {
-          "type": "collection",
-          "settings": {
-            "collection": "hook",
-            "title": "Hook",
-            "button_label": "JELAJAHI",
-            "link": "/collections/hook",
-            "image_url": "https://cdn.shopify.com/s/files/1/0838/8824/2905/collections/konsep-gambar-kail-pancing-besar-quadruple.png?v=1791293672"
-          }
-        }
-      },
-      "block_order": [
-        "c0",
-        "c1",
-        "c2",
-        "c3",
-        "c4",
-        "c5"
-      ],
-      "settings": {
-        "title": "Pilih perlengkapanmu"
-      }
-    },
     "countdown": {
       "type": "countdown-promo",
       "settings": {
@@ -189,7 +113,6 @@
   "order": [
     "hero",
     "intro",
-    "categories",
     "countdown",
     "new_arrivals",
     "products",
