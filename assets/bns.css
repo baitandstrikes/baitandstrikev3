@@ -7,3 +7,53 @@
 .page-index .site-header.is-transparent{margin-bottom:-142px}
 @media(max-width:989px) and (min-width:750px){.page-index .site-header.is-transparent{margin-bottom:-131px}}
 @media(max-width:749px){.page-index .site-header.is-transparent{margin-bottom:-76px}}
+
+
+/* Collection price range: keep min/max fields aligned and readable */
+.catalog-filters .price-range{
+  display:grid;
+  grid-template-columns:minmax(0,1fr);
+  gap:12px;
+  width:100%;
+  min-width:0;
+}
+.catalog-filters .price-range label{
+  display:block;
+  width:100%;
+  min-width:0;
+  margin:0;
+  font-size:12px;
+  line-height:1.4;
+}
+.catalog-filters .price-range input[type="number"]{
+  display:block;
+  width:100%;
+  min-width:0;
+  max-width:100%;
+  min-height:44px;
+  margin:6px 0 0;
+  padding:10px 12px;
+  font-size:14px;
+  line-height:1.2;
+  border:1px solid #ccd5da;
+  border-radius:0;
+  box-sizing:border-box;
+}
+@media(max-width:749px){
+  .catalog-filters .filter-form .filter-group:has(.price-range){grid-column:1/-1;min-width:0}
+  .mobile-filter-dialog .catalog-filters .price-range{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:12px;
+  }
+  .mobile-filter-dialog .catalog-filters .price-range label{
+    min-width:0;
+    overflow-wrap:anywhere;
+  }
+  .mobile-filter-dialog .catalog-filters .price-range input[type="number"]{
+    width:100%;
+    min-width:0;
+    max-width:100%;
+    padding:10px 8px;
+    font-size:16px;
+  }
+}
