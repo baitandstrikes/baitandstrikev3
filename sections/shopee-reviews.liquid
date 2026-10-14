@@ -88,56 +88,85 @@
   #BnsShopeeReviews-{{ section.id }} {
     --bns-review-blue: {{ section.settings.accent_color }};
     --bns-review-yellow: {{ section.settings.star_color }};
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
     padding-top: {{ section.settings.padding_top }}px;
     padding-bottom: {{ section.settings.padding_bottom }}px;
+    overflow: clip;
   }
+  #BnsShopeeReviews-{{ section.id }} *,
+  #BnsShopeeReviews-{{ section.id }} *::before,
+  #BnsShopeeReviews-{{ section.id }} *::after { box-sizing: border-box; }
   #BnsShopeeReviews-{{ section.id }} .bns-reviews-heading {
-    display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 24px;
+    display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin: 0 0 26px;
   }
+  #BnsShopeeReviews-{{ section.id }} .bns-reviews-heading > div:first-child { min-width: 0; }
   #BnsShopeeReviews-{{ section.id }} .bns-reviews-eyebrow {
     margin: 0 0 8px; color: var(--bns-review-blue); font-size: .75rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase;
   }
   #BnsShopeeReviews-{{ section.id }} .bns-reviews-heading h2 {
-    margin: 0; font-size: clamp(1.6rem, 3vw, 2.5rem); line-height: 1.1;
+    margin: 0; max-width: 100%; font-size: clamp(1.6rem, 3vw, 2.5rem); line-height: 1.12; overflow-wrap: anywhere;
   }
-  #BnsShopeeReviews-{{ section.id }} .bns-reviews-intro { margin: 10px 0 0; max-width: 650px; opacity: .76; }
+  #BnsShopeeReviews-{{ section.id }} .bns-reviews-intro { margin: 10px 0 0; max-width: 650px; line-height: 1.6; opacity: .76; }
   #BnsShopeeReviews-{{ section.id }} .bns-reviews-total {
     flex: 0 0 auto; display: flex; align-items: center; gap: 10px; padding: 12px 16px; border-radius: 12px; background: color-mix(in srgb, var(--bns-review-blue) 10%, transparent);
   }
   #BnsShopeeReviews-{{ section.id }} .bns-reviews-total strong { font-size: 1.6rem; line-height: 1; }
   #BnsShopeeReviews-{{ section.id }} .bns-reviews-total span { max-width: 90px; font-size: .78rem; line-height: 1.25; }
-  #BnsShopeeReviews-{{ section.id }} .bns-review-filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
+  #BnsShopeeReviews-{{ section.id }} .bns-review-filters {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 0 0 20px; max-width: 100%;
+  }
   #BnsShopeeReviews-{{ section.id }} .bns-review-filters button {
-    border: 1px solid rgba(50,130,192,.28); border-radius: 999px; padding: 8px 14px; background: transparent; color: inherit; font: inherit; font-size: .86rem; cursor: pointer;
+    flex: 0 0 auto; min-height: 40px; border: 1px solid rgba(50,130,192,.28); border-radius: 999px; padding: 8px 14px; background: transparent; color: inherit; font: inherit; font-size: .86rem; line-height: 1.2; cursor: pointer; transition: background .18s ease, color .18s ease, border-color .18s ease;
   }
   #BnsShopeeReviews-{{ section.id }} .bns-review-filters button.is-active { border-color: var(--bns-review-blue); background: var(--bns-review-blue); color: #fff; }
-  #BnsShopeeReviews-{{ section.id }} .bns-review-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  #BnsShopeeReviews-{{ section.id }} .bns-review-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: stretch; gap: 18px; }
   #BnsShopeeReviews-{{ section.id }} .bns-review-card {
-    min-width: 0; display: flex; flex-direction: column; padding: 20px; border: 1px solid rgba(40,50,60,.12); border-radius: 16px; background: var(--color-background, #fff); box-shadow: 0 5px 20px rgba(20,35,45,.045);
+    min-width: 0; display: flex; flex-direction: column; padding: 22px; border: 1px solid rgba(40,50,60,.12); border-radius: 16px; background: var(--color-background, #fff); box-shadow: 0 5px 20px rgba(20,35,45,.045); overflow-wrap: anywhere;
   }
-  #BnsShopeeReviews-{{ section.id }} .bns-review-card-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+  #BnsShopeeReviews-{{ section.id }} .bns-review-card-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px 12px; }
   #BnsShopeeReviews-{{ section.id }} .bns-review-stars { color: var(--bns-review-yellow); letter-spacing: 2px; white-space: nowrap; }
   #BnsShopeeReviews-{{ section.id }} .bns-shopee-source { display: inline-flex; align-items: center; gap: 5px; font-size: .72rem; font-weight: 700; opacity: .72; }
   #BnsShopeeReviews-{{ section.id }} .bns-shopee-source span { color: #ee4d2d; font-size: .7rem; }
-  #BnsShopeeReviews-{{ section.id }} .bns-review-category { align-self: flex-start; margin: 16px 0 8px; padding: 4px 9px; border-radius: 6px; background: color-mix(in srgb, var(--bns-review-blue) 10%, transparent); color: var(--bns-review-blue); font-size: .72rem; font-weight: 800; }
+  #BnsShopeeReviews-{{ section.id }} .bns-review-category { align-self: flex-start; margin: 15px 0 9px; padding: 5px 10px; border-radius: 6px; background: color-mix(in srgb, var(--bns-review-blue) 10%, transparent); color: var(--bns-review-blue); font-size: .72rem; font-weight: 800; line-height: 1.3; }
   #BnsShopeeReviews-{{ section.id }} .bns-review-images { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 14px; }
-  #BnsShopeeReviews-{{ section.id }} .bns-review-images img { display: block; width: 92px; height: 92px; object-fit: cover; border-radius: 8px; border: 1px solid rgba(40,50,60,.12); }
-  #BnsShopeeReviews-{{ section.id }} .bns-review-text { margin: 0 0 14px; padding: 0; font-size: .98rem; line-height: 1.65; overflow-wrap: anywhere; }
-  #BnsShopeeReviews-{{ section.id }} .bns-review-product { margin: auto 0 14px; padding-top: 12px; font-size: .8rem; font-weight: 700; opacity: .72; }
-  #BnsShopeeReviews-{{ section.id }} .bns-review-footer { display: flex; align-items: end; justify-content: space-between; gap: 12px; margin-top: auto; padding-top: 14px; border-top: 1px solid rgba(40,50,60,.1); }
-  #BnsShopeeReviews-{{ section.id }} .bns-review-author { margin: 0; font-size: .86rem; font-weight: 800; }
-  #BnsShopeeReviews-{{ section.id }} .bns-review-date { margin: 3px 0 0; font-size: .74rem; opacity: .62; }
-  #BnsShopeeReviews-{{ section.id }} .bns-review-link { flex: 0 0 auto; color: var(--bns-review-blue); font-size: .78rem; font-weight: 800; text-decoration: none; }
-  #BnsShopeeReviews-{{ section.id }} .bns-review-link:hover { text-decoration: underline; }
-  #BnsShopeeReviews-{{ section.id }} .bns-reviews-note { margin: 18px 0 0; font-size: .76rem; opacity: .62; }
+  #BnsShopeeReviews-{{ section.id }} .bns-review-images a { display: block; flex: 0 0 88px; width: 88px; max-width: calc(50% - 4px); border-radius: 9px; overflow: hidden; }
+  #BnsShopeeReviews-{{ section.id }} .bns-review-images img { display: block; width: 100%; aspect-ratio: 1 / 1; height: auto; object-fit: cover; border-radius: 9px; border: 1px solid rgba(40,50,60,.12); transition: transform .2s ease; }
+  #BnsShopeeReviews-{{ section.id }} .bns-review-images a:hover img { transform: scale(1.04); }
+  #BnsShopeeReviews-{{ section.id }} .bns-review-text { margin: 0 0 14px; padding: 0; font-size: .96rem; line-height: 1.7; overflow-wrap: anywhere; word-break: normal; }
+  #BnsShopeeReviews-{{ section.id }} .bns-review-product { margin: auto 0 14px; padding-top: 12px; font-size: .8rem; line-height: 1.5; font-weight: 700; opacity: .72; overflow-wrap: anywhere; }
+  #BnsShopeeReviews-{{ section.id }} .bns-review-footer { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 10px 16px; margin-top: auto; padding-top: 14px; border-top: 1px solid rgba(40,50,60,.1); }
+  #BnsShopeeReviews-{{ section.id }} .bns-review-footer > div { min-width: 0; }
+  #BnsShopeeReviews-{{ section.id }} .bns-review-author { margin: 0; font-size: .86rem; font-weight: 800; overflow-wrap: anywhere; }
+  #BnsShopeeReviews-{{ section.id }} .bns-review-date { margin: 3px 0 0; font-size: .74rem; line-height: 1.4; opacity: .62; }
+  #BnsShopeeReviews-{{ section.id }} .bns-reviews-note { margin: 18px 0 0; font-size: .76rem; line-height: 1.5; opacity: .62; }
   #BnsShopeeReviews-{{ section.id }} .bns-reviews-empty-filter, #BnsShopeeReviews-{{ section.id }} .bns-reviews-editor-empty { padding: 20px; border: 1px dashed rgba(40,50,60,.28); border-radius: 12px; }
   #BnsShopeeReviews-{{ section.id }} .bns-reviews-editor-empty p { margin-bottom: 0; }
-  @media (max-width: 900px) { #BnsShopeeReviews-{{ section.id }} .bns-review-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (min-width: 1200px) {
+    #BnsShopeeReviews-{{ section.id }} .bns-review-grid { gap: 20px; }
+    #BnsShopeeReviews-{{ section.id }} .bns-review-card { padding: 24px; }
+  }
+  @media (max-width: 990px) {
+    #BnsShopeeReviews-{{ section.id }} .bns-review-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+    #BnsShopeeReviews-{{ section.id }} .bns-review-card { padding: 18px; }
+  }
   @media (max-width: 600px) {
     #BnsShopeeReviews-{{ section.id }} { padding-top: {{ section.settings.padding_top | divided_by: 2 }}px; padding-bottom: {{ section.settings.padding_bottom | divided_by: 2 }}px; }
-    #BnsShopeeReviews-{{ section.id }} .bns-reviews-heading { align-items: start; flex-direction: column; gap: 14px; }
-    #BnsShopeeReviews-{{ section.id }} .bns-review-grid { grid-template-columns: 1fr; }
-    #BnsShopeeReviews-{{ section.id }} .bns-review-card { padding: 17px; }
+    #BnsShopeeReviews-{{ section.id }} .bns-reviews-heading { align-items: flex-start; flex-direction: column; gap: 14px; margin-bottom: 20px; }
+    #BnsShopeeReviews-{{ section.id }} .bns-reviews-heading h2 { font-size: clamp(1.55rem, 7vw, 2rem); }
+    #BnsShopeeReviews-{{ section.id }} .bns-reviews-total { padding: 10px 13px; }
+    #BnsShopeeReviews-{{ section.id }} .bns-review-filters { flex-wrap: nowrap; overflow-x: auto; overflow-y: hidden; padding: 2px 2px 10px; margin-right: -4px; scrollbar-width: thin; -webkit-overflow-scrolling: touch; }
+    #BnsShopeeReviews-{{ section.id }} .bns-review-filters button { min-height: 38px; padding: 8px 12px; font-size: .82rem; }
+    #BnsShopeeReviews-{{ section.id }} .bns-review-grid { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+    #BnsShopeeReviews-{{ section.id }} .bns-review-card { padding: 17px; border-radius: 14px; }
+    #BnsShopeeReviews-{{ section.id }} .bns-review-text { font-size: .94rem; line-height: 1.65; }
+    #BnsShopeeReviews-{{ section.id }} .bns-review-images a { flex-basis: 82px; width: 82px; }
+    #BnsShopeeReviews-{{ section.id }} .bns-review-footer { align-items: flex-start; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #BnsShopeeReviews-{{ section.id }} .bns-review-filters button,
+    #BnsShopeeReviews-{{ section.id }} .bns-review-images img { transition: none; }
   }
 {% endstyle %}
 
