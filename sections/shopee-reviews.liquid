@@ -31,6 +31,7 @@
         <button type="button" data-review-filter="umpan" aria-pressed="false">Umpan</button>
         <button type="button" data-review-filter="senar" aria-pressed="false">Senar</button>
         <button type="button" data-review-filter="aksesori" aria-pressed="false">Aksesori</button>
+        <button type="button" data-review-filter="hook" aria-pressed="false">Kail / Hook</button>
         <button type="button" data-review-filter="lainnya" aria-pressed="false">Lainnya</button>
       </div>
     {% endif %}
@@ -50,10 +51,17 @@
                 {% when 'umpan' %}Umpan
                 {% when 'senar' %}Senar
                 {% when 'aksesori' %}Aksesori
+                {% when 'hook' %}Kail / Hook
                 {% else %}Lainnya
               {% endcase %}
             </p>
             <blockquote class="bns-review-text">{{ block.settings.review_text | escape | newline_to_br }}</blockquote>
+            {% if block.settings.image_url_1 != blank or block.settings.image_url_2 != blank %}
+              <div class="bns-review-images">
+                {% if block.settings.image_url_1 != blank %}<a href="{{ block.settings.image_url_1 }}" target="_blank" rel="noopener noreferrer"><img src="{{ block.settings.image_url_1 }}" alt="Foto ulasan dari {{ block.settings.reviewer | escape }}" loading="lazy" width="240" height="240"></a>{% endif %}
+                {% if block.settings.image_url_2 != blank %}<a href="{{ block.settings.image_url_2 }}" target="_blank" rel="noopener noreferrer"><img src="{{ block.settings.image_url_2 }}" alt="Foto ulasan dari {{ block.settings.reviewer | escape }}" loading="lazy" width="240" height="240"></a>{% endif %}
+              </div>
+            {% endif %}
             {% if block.settings.product_name != blank %}<p class="bns-review-product">{{ block.settings.product_name | escape }}</p>{% endif %}
             <div class="bns-review-footer">
               <div>
@@ -115,6 +123,8 @@
   #BnsShopeeReviews-{{ section.id }} .bns-shopee-source { display: inline-flex; align-items: center; gap: 5px; font-size: .72rem; font-weight: 700; opacity: .72; }
   #BnsShopeeReviews-{{ section.id }} .bns-shopee-source span { color: #ee4d2d; font-size: .7rem; }
   #BnsShopeeReviews-{{ section.id }} .bns-review-category { align-self: flex-start; margin: 16px 0 8px; padding: 4px 9px; border-radius: 6px; background: color-mix(in srgb, var(--bns-review-blue) 10%, transparent); color: var(--bns-review-blue); font-size: .72rem; font-weight: 800; }
+  #BnsShopeeReviews-{{ section.id }} .bns-review-images { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 14px; }
+  #BnsShopeeReviews-{{ section.id }} .bns-review-images img { display: block; width: 92px; height: 92px; object-fit: cover; border-radius: 8px; border: 1px solid rgba(40,50,60,.12); }
   #BnsShopeeReviews-{{ section.id }} .bns-review-text { margin: 0 0 14px; padding: 0; font-size: .98rem; line-height: 1.65; overflow-wrap: anywhere; }
   #BnsShopeeReviews-{{ section.id }} .bns-review-product { margin: auto 0 14px; padding-top: 12px; font-size: .8rem; font-weight: 700; opacity: .72; }
   #BnsShopeeReviews-{{ section.id }} .bns-review-footer { display: flex; align-items: end; justify-content: space-between; gap: 12px; margin-top: auto; padding-top: 14px; border-top: 1px solid rgba(40,50,60,.1); }
@@ -204,12 +214,15 @@
           { "value": "umpan", "label": "Umpan" },
           { "value": "senar", "label": "Senar" },
           { "value": "aksesori", "label": "Aksesori" },
+          { "value": "hook", "label": "Kail / Hook" },
           { "value": "lainnya", "label": "Lainnya" }
         ], "default": "joran" },
-        { "type": "text", "id": "reviewer", "label": "Nama reviewer", "default": "" },
-        { "type": "text", "id": "product_name", "label": "Nama produk", "default": "" },
-        { "type": "text", "id": "review_date", "label": "Tanggal review", "default": "" },
-        { "type": "textarea", "id": "review_text", "label": "Isi review asli", "default": "" },
+        { "type": "text", "id": "reviewer", "label": "Nama reviewer", "default": "Pelanggan Shopee" },
+        { "type": "text", "id": "product_name", "label": "Nama produk", "default": "Produk pancing" },
+        { "type": "text", "id": "review_date", "label": "Tanggal review", "default": "Tanggal tidak dicantumkan" },
+        { "type": "textarea", "id": "review_text", "label": "Isi review asli", "default": "Ulasan pelanggan" },
+        { "type": "url", "id": "image_url_1", "label": "URL foto review 1 (opsional)" },
+        { "type": "url", "id": "image_url_2", "label": "URL foto review 2 (opsional)" },
         { "type": "url", "id": "source_url", "label": "Link review Shopee (opsional)" }
       ]
     }
