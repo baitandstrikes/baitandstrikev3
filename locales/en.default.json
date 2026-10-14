@@ -168,7 +168,14 @@
     "brands_title": "Belanja berdasarkan merek",
     "brands_text": "Temukan perlengkapan dari merek pilihanmu.",
     "length": "Panjang",
-    "weight": "Berat (g)"
+    "weight": "Berat (g)",
+    "filter": "Filter",
+    "close": "Tutup",
+    "show_results": "Lihat produk",
+    "remove_filter": "Hapus filter",
+    "active_filters": "Filter terpilih",
+    "specifications": "Spesifikasi",
+    "other_options": "Model dan pilihan lainnya"
   },
   "tools": {
     "wishlist": "Wishlist",

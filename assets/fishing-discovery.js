@@ -40,17 +40,44 @@
       const pageSize = Number(grid.dataset.pageSize) || 24;
       const selections = new Map();
       const controller = new AbortController();
+      const mobile = window.matchMedia?.('(max-width: 749px)') || {matches:false,addEventListener(){}};
+      const sidebar = panel.closest('.catalog-filters');
+      const filterToggle = catalog.querySelector('[data-filter-toggle]');
+      const nativeForm = sidebar?.querySelector('.filter-form');
+      const facetFields = new Map();
+      let mobileDialog, mobileApply, chips, matchingCount = null, nativeDirty = false;
+      const updateMobile = () => {
+        controls.querySelectorAll('.fishing-facet-group').forEach(group => {
+          const active = [...group.querySelectorAll('select')].filter(select=>select.value).length;
+          group.querySelector('summary small').textContent = active ? String(active) : '';
+        });
+        if(!chips)return;
+        chips.replaceChildren();
+        for(const [key,value] of selections) {
+          if(!value)continue;
+          const field=facetFields.get(key);if(!field)continue;
+          const chip=element('button',field.label+': '+value+' ×','fishing-filter-chip');chip.type='button';
+          chip.setAttribute('aria-label',labels.remove_filter+': '+field.label+' '+value);
+          chip.addEventListener('click',()=>{field.select.value='';field.select.dispatchEvent(new Event('change',{bubbles:true}));});
+          chips.append(chip);
+        }
+        chips.hidden=!chips.children.length;
+        filterToggle.dataset.activeCount=chips.children.length?String(chips.children.length):'';
+        mobileApply.textContent=labels.show_results+(matchingCount===null?'':' ('+matchingCount+')');
+      };
       const render = () => {
         const selected = [...selections].filter(([, value]) => value !== '');
         const url = new URL(location.href);
         [...url.searchParams.keys()].filter(key => key.startsWith(paramPrefix)).forEach(key => url.searchParams.delete(key));
         selected.forEach(([key, value]) => url.searchParams.set(paramPrefix + key, value));
         if (!selected.length) {
+          matchingCount=null;
           grid.replaceChildren(...originalCards.map(card => card.cloneNode(true)));
           nativePagination.hidden = false;
           pagination.hidden = true;
           count.hidden = true;
           history.replaceState({}, '', url.pathname + url.search);
+          updateMobile();
           return;
         }
         const filtered = records.filter(record => {
@@ -69,6 +96,7 @@
         page = Math.min(page, pages);
         url.searchParams.set('bns.page', String(page));
         history.replaceState({}, '', url.pathname + url.search);
+        matchingCount=filtered.length;
         count.textContent = labels.results.replace('COUNT', String(filtered.length));
         count.hidden = false;
         nativePagination.hidden = true;
@@ -85,6 +113,7 @@
           pagination.append(previous, element('span', `${page} / ${pages}`), next);
         }
         pagination.hidden = pages <= 1;
+        updateMobile();
       };
       const buildControls = () => {
         const groups = new Map([['brand', {label: labels.brand, values: new Set()}]]);
@@ -102,7 +131,21 @@
         const aliases = {panjang:'length',length:'length',action:'action','line weight':'line_weight','line rating':'line_weight',pe:'pe','gear ratio':'ratio','gear rasio':'ratio',drag:'drag',diameter:'diameter',berat:'weight',weight:'weight'};
         for (const [key, target] of Object.entries(aliases)) if (groups.get('spec_'+target)?.values.size) groups.delete(key);
         const url = new URL(location.href);
-        controls.replaceChildren(element('p', labels.hint));
+        controls.replaceChildren(element('p', labels.hint, 'fishing-facet-hint'));
+        facetFields.clear();
+        const sections = new Map();
+        const collectionPath=grid.dataset.firstUrl||location.pathname;
+        const primary=/fishing-rods-joran/.test(collectionPath)?['length','action','line_weight','pe']:/\/reel(?:\?|$|\/)/.test(collectionPath)?['size','ratio','drag','weight']:/fishing-line/.test(collectionPath)?['pe','line_weight','length','diameter']:['length','action','line_weight','pe','size','ratio','drag','diameter','weight'];
+        const destination = key => {
+          if(key==='brand')return controls;
+          const kind=key.startsWith('spec_')&&primary.includes(key.slice(5))?'specifications':'other_options';
+          if(!sections.has(kind)) {
+            const details=element('details','','fishing-facet-group');details.open=!mobile.matches;
+            const summary=element('summary',labels[kind]);summary.append(element('small'));
+            const body=element('div','','fishing-facet-fields');details.append(summary,body);controls.append(details);sections.set(kind,body);
+          }
+          return sections.get(kind);
+        };
         let number = 0;
         for (const [key, group] of groups) {
           if (!group.values.size) continue;
@@ -116,7 +159,8 @@
           if (group.values.has(selected)) select.value = selected;
           selections.set(key, select.value);
           select.addEventListener('change', () => { selections.set(key, select.value); page = 1; render(); });
-          controls.append(label, select);
+          const field=element('div','','fishing-facet-field');field.append(label,select);
+          destination(key).append(field);facetFields.set(key,{select,label:group.label});
         }
         const reset = element('button', labels.reset, 'text-link');
         reset.type = 'button';
@@ -160,16 +204,52 @@
           }
           records = [...cards.values()].map(card => {let specs=[];try{const data=JSON.parse(card.querySelector('[data-tool-product]').textContent);specs=window.BnsSpecs.read(data).variants.map(v=>v.specs);}catch{}return ({card, specs, brand: (card.dataset.fishingBrand || '').trim().toLocaleUpperCase(), options: JSON.parse(card.dataset.fishingOptions || '[]'), variants: JSON.parse(card.dataset.fishingVariants || '[]')});});
           ready = true; status.textContent = ''; controls.hidden = false;
-          trigger.setAttribute('aria-expanded', 'true'); buildControls();
+          trigger.setAttribute('aria-expanded', 'true');trigger.hidden=mobile.matches;buildControls();
         } catch (error) {
           if (error.name !== 'AbortError') status.textContent = labels.error;
         } finally { loading = false; trigger.disabled = false; }
       };
       trigger.addEventListener('click', load);
-      document.addEventListener('shopify:section:unload', event => {if(event.target.contains(catalog)) controller.abort();}, {signal: controller.signal});
+      if(sidebar&&filterToggle) {
+        const anchor=element('span');anchor.hidden=true;sidebar.before(anchor);
+        mobileDialog=element('dialog','','mobile-filter-dialog');mobileDialog.id='MobileFilters-'+grid.dataset.sectionId;
+        const heading=element('div','','mobile-filter-heading'),title=element('h2',labels.filter);
+        title.id=mobileDialog.id+'-title';mobileDialog.setAttribute('aria-labelledby',title.id);
+        const close=element('button','×','icon-button');close.type='button';close.setAttribute('aria-label',labels.close);close.addEventListener('click',()=>mobileDialog.close());heading.append(title,close);
+        const scroll=element('div','','mobile-filter-scroll'),footer=element('div','','mobile-filter-footer');
+        const resetAll=element('button',labels.reset,'text-link');resetAll.type='button';
+        resetAll.addEventListener('click',()=>{
+          controls.querySelectorAll('select').forEach(select=>select.value='');selections.forEach((_,key)=>selections.set(key,''));page=1;render();
+          if(nativeForm){nativeForm.querySelectorAll('input[type=checkbox]').forEach(input=>input.checked=false);nativeForm.querySelectorAll('input[type=number]').forEach(input=>input.value='');nativeDirty=true;}
+        });
+        mobileApply=element('button',labels.show_results,'button');mobileApply.type='button';
+        mobileApply.addEventListener('click',()=>{if(nativeDirty&&nativeForm){nativeForm.requestSubmit();return;}mobileDialog.close();});
+        footer.append(resetAll,mobileApply);mobileDialog.append(heading,scroll,footer);document.body.append(mobileDialog);
+        chips=element('div','','fishing-active-filters');chips.hidden=true;chips.setAttribute('aria-label',labels.active_filters);count.before(chips);
+        const nativeGroups=[...sidebar.querySelectorAll('.filter-group')].map(details=>({details,open:details.open}));
+        const adapt = () => {
+          if(!mobile.matches&&mobileDialog.open)mobileDialog.close();
+          if(mobile.matches)sidebar.classList.remove('is-open');
+          nativeGroups.forEach(({details,open})=>details.open=mobile.matches?false:open);
+          controls.querySelectorAll('.fishing-facet-group').forEach(details=>details.open=!mobile.matches);
+          filterToggle.setAttribute('aria-controls',mobile.matches?mobileDialog.id:sidebar.id);
+          if(mobile.matches){filterToggle.setAttribute('aria-haspopup','dialog');filterToggle.setAttribute('aria-expanded',String(mobileDialog.open));}else filterToggle.removeAttribute('aria-haspopup');
+          trigger.hidden=ready&&mobile.matches;
+        };
+        filterToggle.addEventListener('click',event=>{
+          if(!mobile.matches)return;event.preventDefault();event.stopImmediatePropagation();
+          document.querySelectorAll('dialog[open]').forEach(dialog=>{if(dialog!==mobileDialog)dialog.close();});
+          scroll.append(sidebar);sidebar.classList.remove('is-open');mobileDialog.showModal();document.body.classList.add('dialog-open');filterToggle.setAttribute('aria-expanded','true');
+          if(!ready&&!loading)load();
+        },{capture:true,signal:controller.signal});
+        nativeForm?.addEventListener('change',()=>nativeDirty=true,{signal:controller.signal});
+        mobileDialog.addEventListener('close',()=>{anchor.after(sidebar);sidebar.classList.remove('is-open');filterToggle.setAttribute('aria-expanded','false');document.body.classList.toggle('dialog-open',Boolean(document.querySelector('dialog[open]')));});
+        mobileDialog.addEventListener('click',event=>{if(event.target!==mobileDialog)return;const rect=mobileDialog.getBoundingClientRect();if(event.clientX<rect.left||event.clientX>rect.right||event.clientY<rect.top||event.clientY>rect.bottom)mobileDialog.close();});
+        mobile.addEventListener('change',adapt,{signal:controller.signal});adapt();
+      }
+      document.addEventListener('shopify:section:unload', event => {if(event.target.contains(catalog)){mobileDialog?.close();mobileDialog?.remove();controller.abort();}}, {signal: controller.signal});
       if ([...new URL(location.href).searchParams.keys()].some(key => key.startsWith(paramPrefix))) {
-        catalog.querySelector('.catalog-filters')?.classList.add('is-open');
-        catalog.querySelector('[data-filter-toggle]')?.setAttribute('aria-expanded', 'true');
+        if(!mobile.matches){sidebar?.classList.add('is-open');filterToggle?.setAttribute('aria-expanded','true');}
         load();
       }
     });
