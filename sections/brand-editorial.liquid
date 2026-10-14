@@ -1,61 +1,109 @@
 {% liquid
-  assign section_link = section.settings.link
-  if section_link == blank
-    assign section_link = routes.all_products_collection_url
+  assign editorial_image = section.settings.image
+  assign image_url = section.settings.image_url
+  assign button_count = 0
+  if section.settings.button_1_label != blank and section.settings.button_1_link != blank
+    assign button_count = button_count | plus: 1
+  endif
+  if section.settings.button_2_label != blank and section.settings.button_2_link != blank
+    assign button_count = button_count | plus: 1
+  endif
+  if section.settings.button_3_label != blank and section.settings.button_3_link != blank
+    assign button_count = button_count | plus: 1
   endif
 %}
-<section class="bns-editorial section wrap" aria-labelledby="bns-editorial-title">
-  <div class="bns-editorial__inner">
-    <div class="bns-editorial__copy">
-      {% if section.settings.eyebrow != blank %}<p class="bns-editorial__eyebrow">{{ section.settings.eyebrow | escape }}</p>{% endif %}
-      <h2 id="bns-editorial-title">{{ section.settings.title | escape }}</h2>
-      <div class="bns-editorial__text rte">{{ section.settings.text }}</div>
-      {% if section.settings.button_label != blank %}
-        <a class="bns-editorial__button" href="{{ section_link }}">{{ section.settings.button_label | escape }} <span aria-hidden="true">↗</span></a>
+<section class="bns-chantilly" aria-labelledby="bns-chantilly-title">
+  <div class="bns-chantilly__inner">
+    <div class="bns-chantilly__copy">
+      {% if section.settings.eyebrow != blank %}<p class="bns-chantilly__eyebrow">{{ section.settings.eyebrow | escape }}</p>{% endif %}
+      <h2 id="bns-chantilly-title">{{ section.settings.title | escape }}</h2>
+      {% if section.settings.subtitle != blank %}<p class="bns-chantilly__subtitle">{{ section.settings.subtitle | escape }}</p>{% endif %}
+      {% if section.settings.text != blank %}<div class="bns-chantilly__text rte">{{ section.settings.text }}</div>{% endif %}
+      {% if button_count > 0 %}
+        <div class="bns-chantilly__actions">
+          {% for i in (1..3) %}
+            {% capture label_key %}button_{{ i }}_label{% endcapture %}
+            {% capture link_key %}button_{{ i }}_link{% endcapture %}
+            {% assign button_label = section.settings[label_key] %}
+            {% assign button_link = section.settings[link_key] %}
+            {% if button_label != blank and button_link != blank %}
+              <a class="bns-chantilly__button{% if forloop.first %} bns-chantilly__button--primary{% endif %}" href="{{ button_link }}">
+                <span>{{ button_label | escape }}</span><span class="bns-chantilly__arrow" aria-hidden="true">↗</span>
+              </a>
+            {% endif %}
+          {% endfor %}
+        </div>
       {% endif %}
     </div>
-    {% if section.settings.image != blank %}
-      <div class="bns-editorial__image">
-        {{ section.settings.image | image_url: width: 1400 | image_tag: widths: '480, 720, 1000, 1400', sizes: '(min-width: 900px) 42vw, 100vw', loading: 'lazy', alt: section.settings.image.alt }}
-      </div>
-    {% endif %}
+    <div class="bns-chantilly__visual">
+      {% if editorial_image != blank %}
+        {{ editorial_image | image_url: width: 1800 | image_tag: widths: '480, 720, 1000, 1400, 1800', sizes: '(min-width: 900px) 50vw, 100vw', loading: 'lazy', alt: editorial_image.alt }}
+      {% elsif image_url != blank %}
+        <img src="{{ image_url | escape }}" alt="{{ section.settings.image_alt | escape }}" loading="lazy" width="1600" height="1400">
+      {% else %}
+        <div class="bns-chantilly__placeholder" aria-hidden="true"><span>BAIT&amp;STRIKE</span></div>
+      {% endif %}
+      {% if section.settings.image_caption != blank %}<p class="bns-chantilly__caption">{{ section.settings.image_caption | escape }}</p>{% endif %}
+    </div>
   </div>
 </section>
 {% stylesheet %}
-  .bns-editorial{padding-block:clamp(56px,8vw,112px);background:#f5f7f8;color:#17252e}
-  .bns-editorial__inner{max-width:1240px;margin-inline:auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.8fr);align-items:center;gap:clamp(32px,7vw,100px)}
-  .bns-editorial__copy{max-width:680px;padding:clamp(0px,2vw,24px)}
-  .bns-editorial__eyebrow{margin:0 0 18px;color:#3282c0;font-size:.78rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
-  .bns-editorial h2{margin:0 0 22px;font-size:clamp(2.3rem,5vw,5rem);line-height:1.02;letter-spacing:-.045em;font-weight:800}
-  .bns-editorial__text{max-width:570px;font-size:clamp(1rem,1.4vw,1.15rem);line-height:1.8;color:#52616a}
-  .bns-editorial__button{display:inline-flex;align-items:center;gap:22px;margin-top:28px;padding:15px 22px;background:#fcdd16;color:#17252e;text-decoration:none;font-weight:800;border-radius:3px;transition:transform .2s ease,background .2s ease}
-  .bns-editorial__button:hover{transform:translateY(-2px);background:#f3d000}
-  .bns-editorial__button:focus-visible{outline:3px solid #3282c0;outline-offset:4px}
-  .bns-editorial__image{overflow:hidden;border-radius:4px;min-height:300px;aspect-ratio:4/3;background:#dfe7eb}
-  .bns-editorial__image img{display:block;width:100%;height:100%;min-height:300px;object-fit:cover}
-  @media(max-width:749px){.bns-editorial{padding:48px 20px}.bns-editorial__inner{grid-template-columns:1fr;gap:30px}.bns-editorial__copy{padding:0}.bns-editorial h2{font-size:clamp(2.25rem,10vw,3.5rem);margin-bottom:16px}.bns-editorial__text{font-size:1rem;line-height:1.7}.bns-editorial__button{margin-top:22px}.bns-editorial__image,.bns-editorial__image img{min-height:0}.bns-editorial__image{aspect-ratio:5/4}}
-  @media(prefers-reduced-motion:reduce){.bns-editorial__button{transition:none}}
+  .bns-chantilly{--bns-blue:#3282c0;--bns-yellow:#fcdd16;--bns-ink:#15242d;--bns-paper:#f6f4ef;background:var(--bns-paper);color:var(--bns-ink);padding:clamp(48px,7vw,104px) clamp(20px,5vw,76px);overflow:hidden}
+  .bns-chantilly__inner{width:min(100%,1440px);margin-inline:auto;display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);align-items:center;gap:clamp(32px,6vw,100px)}
+  .bns-chantilly__copy{max-width:620px;padding-block:clamp(0px,2vw,28px)}
+  .bns-chantilly__eyebrow{margin:0 0 24px;font-size:.76rem;line-height:1.3;letter-spacing:.2em;font-weight:750;text-transform:uppercase;color:var(--bns-blue)}
+  .bns-chantilly h2{margin:0;font-size:clamp(2.7rem,5.6vw,6rem);line-height:.98;letter-spacing:-.065em;font-weight:650;text-wrap:balance}
+  .bns-chantilly__subtitle{margin:20px 0 0;font-size:clamp(1.15rem,1.8vw,1.55rem);line-height:1.35;font-weight:550;letter-spacing:-.025em}
+  .bns-chantilly__text{margin-top:20px;max-width:540px;font-size:clamp(.98rem,1.15vw,1.1rem);line-height:1.85;color:#515b60}
+  .bns-chantilly__text p{margin:0 0 1em}.bns-chantilly__text p:last-child{margin-bottom:0}
+  .bns-chantilly__actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+  .bns-chantilly__button{display:inline-flex;min-height:48px;align-items:center;justify-content:space-between;gap:24px;padding:13px 16px;border:1px solid rgba(21,36,45,.3);color:var(--bns-ink);background:transparent;text-decoration:none;font-size:.88rem;font-weight:700;line-height:1.2;transition:background .2s ease,color .2s ease,border-color .2s ease,transform .2s ease}
+  .bns-chantilly__button--primary{background:var(--bns-yellow);border-color:var(--bns-yellow)}
+  .bns-chantilly__button:hover{background:var(--bns-ink);border-color:var(--bns-ink);color:#fff;transform:translateY(-2px)}
+  .bns-chantilly__arrow{font-size:1rem;line-height:1}
+  .bns-chantilly__button:focus-visible{outline:3px solid var(--bns-blue);outline-offset:4px}
+  .bns-chantilly__visual{position:relative;min-width:0;aspect-ratio:4/4.7;background:#e4e5df;overflow:hidden}
+  .bns-chantilly__visual img{display:block;width:100%;height:100%;position:absolute;inset:0;object-fit:cover}
+  .bns-chantilly__caption{position:absolute;z-index:1;bottom:16px;left:16px;margin:0;padding:8px 12px;background:rgba(255,255,255,.88);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}
+  .bns-chantilly__placeholder{position:absolute;inset:0;display:grid;place-items:center;background:linear-gradient(145deg,#d9e4e9,#9fb8c3);color:#15242d;font-size:clamp(1.6rem,4vw,3.8rem);font-weight:850;letter-spacing:-.06em}
+  @media(max-width:850px){.bns-chantilly__inner{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:26px}.bns-chantilly__actions{gap:8px}.bns-chantilly__button{gap:14px;padding:12px}}
+  @media(max-width:640px){.bns-chantilly{padding:44px 20px 50px}.bns-chantilly__inner{grid-template-columns:1fr;gap:28px}.bns-chantilly__copy{padding:0}.bns-chantilly__eyebrow{margin-bottom:18px}.bns-chantilly h2{font-size:clamp(2.8rem,13vw,4.4rem)}.bns-chantilly__subtitle{margin-top:16px;font-size:1.2rem}.bns-chantilly__text{margin-top:16px;line-height:1.75}.bns-chantilly__actions{display:grid;grid-template-columns:1fr;margin-top:24px}.bns-chantilly__button{width:100%;min-height:48px;padding-inline:16px}.bns-chantilly__visual{aspect-ratio:4/3}}
+  @media(prefers-reduced-motion:reduce){.bns-chantilly__button{transition:none}}
 {% endstylesheet %}
 {% schema %}
 {
-  "name": "BNS brand editorial",
+  "name": "BNS Chantilly editorial",
   "settings": [
-    {"type":"text","id":"eyebrow","label":"Teks kecil","default":"WE ARE BAIT&STRIKE"},
-    {"type":"text","id":"title","label":"Judul","default":"Perlengkapan terbaik untuk petualanganmu."},
-    {"type":"richtext","id":"text","label":"Deskripsi","default":"<p>Kami memilih perlengkapan mancing yang menemani setiap lemparan, setiap spot baru, dan setiap cerita yang dibawa pulang.</p>"},
-    {"type":"text","id":"button_label","label":"Teks tombol","default":"Jelajahi Koleksi"},
-    {"type":"url","id":"link","label":"Tautan tombol"},
-    {"type":"image_picker","id":"image","label":"Gambar editorial"}
+    {"type":"text","id":"eyebrow","label":"Eyebrow","default":"WE ARE BAIT&STRIKE"},
+    {"type":"text","id":"title","label":"Judul utama","default":"Built for the next strike."},
+    {"type":"text","id":"subtitle","label":"Subjudul","default":"Perlengkapan pilihan untuk setiap petualangan."},
+    {"type":"richtext","id":"text","label":"Deskripsi","default":"<p>Kami memilih perlengkapan mancing yang bisa diandalkan—mulai dari sesi santai sampai perjalanan mencari strike berikutnya. Jelajahi gear pilihan, warna yang berani, dan perlengkapan untuk gaya mancingmu.</p>"},
+    {"type":"text","id":"button_1_label","label":"Tombol 1 — label","default":"Jelajahi Koleksi"},
+    {"type":"url","id":"button_1_link","label":"Tombol 1 — tautan"},
+    {"type":"text","id":"button_2_label","label":"Tombol 2 — label","default":"Produk Terbaru"},
+    {"type":"url","id":"button_2_link","label":"Tombol 2 — tautan"},
+    {"type":"text","id":"button_3_label","label":"Tombol 3 — label","default":"Tentang BNS"},
+    {"type":"url","id":"button_3_link","label":"Tombol 3 — tautan"},
+    {"type":"image_picker","id":"image","label":"Gambar section"},
+    {"type":"url","id":"image_url","label":"URL gambar alternatif","default":"https://cdn.shopify.com/s/files/1/0837/1195/1076/files/back.png?v=1788340231"},
+    {"type":"text","id":"image_alt","label":"Alt text gambar","default":"Perlengkapan dan suasana memancing BAIT&STRIKE"},
+    {"type":"text","id":"image_caption","label":"Caption gambar"}
   ],
   "presets": [
     {
-      "name": "BNS brand editorial",
+      "name": "BNS Chantilly editorial",
       "settings": {
         "eyebrow": "WE ARE BAIT&STRIKE",
-        "title": "Perlengkapan terbaik untuk petualanganmu.",
-        "text": "<p>Kami memilih perlengkapan mancing yang menemani setiap lemparan, setiap spot baru, dan setiap cerita yang dibawa pulang.</p>",
-        "button_label": "Jelajahi Koleksi",
-        "link": "/collections"
+        "title": "Built for the next strike.",
+        "subtitle": "Perlengkapan pilihan untuk setiap petualangan.",
+        "text": "<p>Kami memilih perlengkapan mancing yang bisa diandalkan—mulai dari sesi santai sampai perjalanan mencari strike berikutnya. Jelajahi gear pilihan, warna yang berani, dan perlengkapan untuk gaya mancingmu.</p>",
+        "button_1_label": "Jelajahi Koleksi",
+        "button_1_link": "/collections",
+        "button_2_label": "Produk Terbaru",
+        "button_2_link": "/collections/new-arrival",
+        "button_3_label": "Tentang BNS",
+        "button_3_link": "/pages/about-us",
+        "image_url": "https://cdn.shopify.com/s/files/1/0837/1195/1076/files/back.png?v=1788340231"
       }
     }
   ]
