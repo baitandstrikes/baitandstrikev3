@@ -20,6 +20,22 @@
       if (grid.dataset.facetsReady) return;
       grid.dataset.facetsReady = 'true';
       const catalog = grid.closest('.catalog');
+      const viewSwitch = element('div', '', 'catalog-view-switch');
+      viewSwitch.setAttribute('role','group');viewSwitch.setAttribute('aria-label',labels.grid_view);
+      const setColumns = value => {
+        grid.dataset.mobileColumns=String(value);
+        viewSwitch.querySelectorAll('button').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.columns===String(value))));
+      };
+      [2,1].forEach(columns=>{
+        const button=element('button','','catalog-view-button');button.type='button';button.dataset.columns=String(columns);
+        button.setAttribute('aria-label',columns===1?labels.one_column:labels.two_columns);button.title=button.getAttribute('aria-label');
+        const icon=element('span','','catalog-view-icon');icon.setAttribute('aria-hidden','true');
+        for(let i=0;i<(columns===2?4:1);i++)icon.append(element('i'));
+        button.append(icon);button.addEventListener('click',()=>{setColumns(columns);try{localStorage.setItem('bns.mobileColumns',String(columns));}catch{}});viewSwitch.append(button);
+      });
+      catalog.querySelector('.catalog-bar')?.append(viewSwitch);
+      let savedColumns='2';try{savedColumns=localStorage.getItem('bns.mobileColumns')||'2';}catch{}
+      setColumns(savedColumns==='1'?1:2);
       const panel = catalog.querySelector('[data-fishing-facets]');
       if (!panel) return;
       const trigger = panel.querySelector('[data-load-facets]');
