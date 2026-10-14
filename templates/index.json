@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "hero": {
@@ -80,53 +71,49 @@
     },
     "brands": {
       "type": "brand-discovery",
+      "settings": {
+        "title": "Belanja berdasarkan merek",
+        "text": "Temukan perlengkapan dari merek pilihanmu."
+      },
       "blocks": {
         "b0": {
           "type": "brand",
           "settings": {
-            "vendor": "JEMMY"
+            "vendor": "JEMMY",
+            "image": "shopify://shop_images/bns-brand-jemmy.png",
+            "fit": "contain"
           }
         },
         "b1": {
           "type": "brand",
           "settings": {
-            "vendor": "Ecooda"
+            "vendor": "Ecooda",
+            "image": "shopify://shop_images/bns-brand-ecooda.png",
+            "fit": "contain"
           }
         },
         "b2": {
           "type": "brand",
           "settings": {
-            "vendor": "Proberos"
+            "vendor": "Proberos",
+            "image": "shopify://shop_images/bns-brand-proberos.png",
+            "fit": "contain"
           }
         },
         "b3": {
           "type": "brand",
           "settings": {
-            "vendor": "Lurekiller"
+            "vendor": "Lurekiller",
+            "image": "shopify://shop_images/bns-brand-lurekiller.jpg",
+            "fit": "cover"
           }
         },
         "b4": {
           "type": "brand",
           "settings": {
-            "vendor": "GT-Fisher"
-          }
-        },
-        "b5": {
-          "type": "brand",
-          "settings": {
-            "vendor": "Guangwei"
-          }
-        },
-        "b6": {
-          "type": "brand",
-          "settings": {
-            "vendor": "Haut Ton"
-          }
-        },
-        "b7": {
-          "type": "brand",
-          "settings": {
-            "vendor": "Lemoren"
+            "vendor": "Lemoren",
+            "image": "shopify://shop_images/bns-brand-lemoren.png",
+            "fit": "cover"
           }
         }
       },
@@ -135,15 +122,8 @@
         "b1",
         "b2",
         "b3",
-        "b4",
-        "b5",
-        "b6",
-        "b7"
-      ],
-      "settings": {
-        "title": "Belanja berdasarkan merek",
-        "text": "Temukan perlengkapan dari merek pilihanmu."
-      }
+        "b4"
+      ]
     },
     "products": {
       "type": "featured-collection",
