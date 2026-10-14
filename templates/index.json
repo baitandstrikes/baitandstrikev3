@@ -3,8 +3,8 @@
  * IMPORTANT: The contents of this file are auto-generated.
  *
  * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as changes
- * made here may be overwritten.
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
 {
@@ -50,20 +50,6 @@
         "delay": 7
       }
     },
-    "intro": {
-      "type": "rich-text",
-      "settings": {
-        "background_video": "shopify://files/videos/videoplayback.webm",
-        "video_overlay": 60,
-        "pause_label": "Jeda video",
-        "play_label": "Putar video",
-        "eyebrow": "BAITANDSTRIKE",
-        "title": "“Kami percaya pada kualitas perlengkapan, petualangan di alam terbuka, dan cerita yang dibawa pulang dari setiap trip.”",
-        "text": "<p>Temukan perlengkapan pilihan untuk strike berikutnya.</p>",
-        "button_label": "Kenali BNS",
-        "link": ""
-      }
-    },
     "countdown": {
       "type": "countdown-promo",
       "settings": {
@@ -77,9 +63,9 @@
       "type": "featured-collection",
       "settings": {
         "collection": "new-arrival",
-        "eyebrow": "BARU DI BNS",
+        "eyebrow": "",
         "title": "New Arrival",
-        "limit": 8
+        "limit": 5
       }
     },
     "brands": {
@@ -136,6 +122,20 @@
       "settings": {
         "title": "Belanja berdasarkan merek",
         "text": "Temukan perlengkapan dari merek pilihanmu."
+      }
+    },
+    "intro": {
+      "type": "rich-text",
+      "settings": {
+        "background_video": "shopify://files/videos/videoplayback.webm",
+        "video_overlay": 60,
+        "pause_label": "Jeda video",
+        "play_label": "Putar video",
+        "eyebrow": "BAITANDSTRIKE",
+        "title": "“Kami percaya pada kualitas perlengkapan, petualangan di alam terbuka, dan cerita yang dibawa pulang dari setiap trip.”",
+        "text": "<p>Temukan perlengkapan pilihan untuk strike berikutnya.</p>",
+        "button_label": "Kenali BNS",
+        "link": ""
       }
     },
     "products": {
@@ -360,32 +360,14 @@
         "title": "Jurnal BNS",
         "blog": ""
       }
-    },
-    "bns_editorial": {
-      "type": "brand-editorial",
-      "settings": {
-        "eyebrow": "WE ARE BAIT&STRIKE",
-        "title": "Built for the next strike.",
-        "subtitle": "Perlengkapan pilihan untuk setiap petualangan.",
-        "text": "<p>Kami memilih perlengkapan mancing yang bisa diandalkan—mulai dari sesi santai sampai perjalanan mencari strike berikutnya. Jelajahi gear pilihan, warna yang berani, dan perlengkapan untuk gaya mancingmu.</p>",
-        "button_1_label": "Jelajahi Koleksi",
-        "button_1_link": "/collections",
-        "button_2_label": "Produk Terbaru",
-        "button_2_link": "/collections/new-arrival",
-        "button_3_label": "Tentang BNS",
-        "button_3_link": "/pages/about-us",
-        "image_url": "https://cdn.shopify.com/s/files/1/0837/1195/1076/files/back.png?v=1788340231",
-        "image_alt": "Perlengkapan dan suasana memancing BAIT&STRIKE"
-      }
     }
   },
   "order": [
     "hero",
-    "intro",
-    "bns_editorial",
     "countdown",
     "new_arrivals",
     "brands",
+    "intro",
     "products",
     "shopee_reviews",
     "story",
