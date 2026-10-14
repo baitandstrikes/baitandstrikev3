@@ -8,7 +8,7 @@
   <div class="intro-video-copy"><p class="eyebrow">{{ section.settings.eyebrow | escape }}</p><h2>{{ section.settings.title | escape }}</h2><div class="rte">{{ section.settings.text }}</div>{% if section.settings.link != blank %}<a class="text-link" href="{{ section.settings.link }}">{{ section.settings.button_label | escape }} →</a>{% endif %}</div>
 </section>
 {% stylesheet %}
-  .rich-text--video{position:relative;isolation:isolate;overflow:hidden;background:#182b36;color:#fff;width:100vw!important;max-width:none!important;left:50%;transform:translateX(-50%);margin:0!important;min-height:clamp(560px,82vh,1000px);display:flex;align-items:center;justify-content:center;padding:clamp(56px,8vh,110px) max(24px,calc((100vw - 1200px)/2))}
+  .rich-text--video{position:relative;isolation:isolate;overflow:hidden;background:#182b36;color:#fff;box-sizing:border-box;width:100vw!important;max-width:none!important;left:auto;transform:none;margin-inline:calc(50% - 50vw)!important;min-height:clamp(560px,82vh,1000px);display:flex;align-items:center;justify-content:center;padding:clamp(56px,8vh,110px) max(24px,calc((100vw - 1200px)/2))}
   .rich-text--video .intro-video-copy{position:relative;z-index:1;width:min(100% - 48px,900px);margin-inline:auto;padding:20px 24px 28px}
   .rich-text--video .rte,.rich-text--video .text-link{color:inherit}
   .intro-video-media{position:absolute;inset:0;z-index:-1;pointer-events:none}
