@@ -367,11 +367,23 @@
       "settings": {
         "title": "Cerita pelanggan"
       }
+    },
+    "bns_editorial": {
+      "type": "brand-editorial",
+      "settings": {
+        "eyebrow": "WE ARE BAIT&STRIKE",
+        "title": "Perlengkapan terbaik untuk petualanganmu.",
+        "text": "<p>Kami memilih perlengkapan mancing yang menemani setiap lemparan, setiap spot baru, dan setiap cerita yang dibawa pulang.</p>",
+        "button_label": "Jelajahi Koleksi",
+        "link": "/collections",
+        "image": "shopify://shop_images/Gemini_Generated_Image_5uf86i5uf86i5uf8.jpg"
+      }
     }
   },
   "order": [
     "hero",
     "intro",
+    "bns_editorial",
     "countdown",
     "new_arrivals",
     "brands",
