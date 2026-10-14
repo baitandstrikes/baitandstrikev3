@@ -68,9 +68,6 @@
                 <p class="bns-review-author">{{ block.settings.reviewer | default: 'Pelanggan Shopee' | escape }}</p>
                 {% if block.settings.review_date != blank %}<p class="bns-review-date">{{ block.settings.review_date | escape }}</p>{% endif %}
               </div>
-              {% if block.settings.source_url != blank %}
-                <a class="bns-review-link" href="{{ block.settings.source_url }}" target="_blank" rel="noopener noreferrer">Lihat di Shopee ↗</a>
-              {% endif %}
             </div>
           </article>
         {% endif %}
