@@ -231,6 +231,8 @@
     "menu": "Perlengkapan tersimpan dan grosir",
     "view_gear": "Lihat perlengkapan",
     "quantity_label": "Jumlah",
-    "view_price": "Lihat harga varian"
+    "view_price": "Lihat harga varian",
+    "open_guide": "Buka panduan: {{ title }}",
+    "close_guide": "Tutup panduan"
   }
 }
