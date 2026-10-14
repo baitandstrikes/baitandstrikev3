@@ -99,6 +99,8 @@
             record.variants.forEach(variant => { if (variant[index]) groups.get(key).values.add(String(variant[index])); });
           });
         }
+        const aliases = {panjang:'length',length:'length',action:'action','line weight':'line_weight','line rating':'line_weight',pe:'pe','gear ratio':'ratio','gear rasio':'ratio',drag:'drag',diameter:'diameter',berat:'weight',weight:'weight'};
+        for (const [key, target] of Object.entries(aliases)) if (groups.get('spec_'+target)?.values.size) groups.delete(key);
         const url = new URL(location.href);
         controls.replaceChildren(element('p', labels.hint));
         let number = 0;
