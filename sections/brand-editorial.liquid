@@ -1,0 +1,63 @@
+{% liquid
+  assign section_link = section.settings.link
+  if section_link == blank
+    assign section_link = routes.all_products_collection_url
+  endif
+%}
+<section class="bns-editorial section wrap" aria-labelledby="bns-editorial-title">
+  <div class="bns-editorial__inner">
+    <div class="bns-editorial__copy">
+      {% if section.settings.eyebrow != blank %}<p class="bns-editorial__eyebrow">{{ section.settings.eyebrow | escape }}</p>{% endif %}
+      <h2 id="bns-editorial-title">{{ section.settings.title | escape }}</h2>
+      <div class="bns-editorial__text rte">{{ section.settings.text }}</div>
+      {% if section.settings.button_label != blank %}
+        <a class="bns-editorial__button" href="{{ section_link }}">{{ section.settings.button_label | escape }} <span aria-hidden="true">↗</span></a>
+      {% endif %}
+    </div>
+    {% if section.settings.image != blank %}
+      <div class="bns-editorial__image">
+        {{ section.settings.image | image_url: width: 1400 | image_tag: widths: '480, 720, 1000, 1400', sizes: '(min-width: 900px) 42vw, 100vw', loading: 'lazy', alt: section.settings.image.alt }}
+      </div>
+    {% endif %}
+  </div>
+</section>
+{% stylesheet %}
+  .bns-editorial{padding-block:clamp(56px,8vw,112px);background:#f5f7f8;color:#17252e}
+  .bns-editorial__inner{max-width:1240px;margin-inline:auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.8fr);align-items:center;gap:clamp(32px,7vw,100px)}
+  .bns-editorial__copy{max-width:680px;padding:clamp(0px,2vw,24px)}
+  .bns-editorial__eyebrow{margin:0 0 18px;color:#3282c0;font-size:.78rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
+  .bns-editorial h2{margin:0 0 22px;font-size:clamp(2.3rem,5vw,5rem);line-height:1.02;letter-spacing:-.045em;font-weight:800}
+  .bns-editorial__text{max-width:570px;font-size:clamp(1rem,1.4vw,1.15rem);line-height:1.8;color:#52616a}
+  .bns-editorial__button{display:inline-flex;align-items:center;gap:22px;margin-top:28px;padding:15px 22px;background:#fcdd16;color:#17252e;text-decoration:none;font-weight:800;border-radius:3px;transition:transform .2s ease,background .2s ease}
+  .bns-editorial__button:hover{transform:translateY(-2px);background:#f3d000}
+  .bns-editorial__button:focus-visible{outline:3px solid #3282c0;outline-offset:4px}
+  .bns-editorial__image{overflow:hidden;border-radius:4px;min-height:300px;aspect-ratio:4/3;background:#dfe7eb}
+  .bns-editorial__image img{display:block;width:100%;height:100%;min-height:300px;object-fit:cover}
+  @media(max-width:749px){.bns-editorial{padding:48px 20px}.bns-editorial__inner{grid-template-columns:1fr;gap:30px}.bns-editorial__copy{padding:0}.bns-editorial h2{font-size:clamp(2.25rem,10vw,3.5rem);margin-bottom:16px}.bns-editorial__text{font-size:1rem;line-height:1.7}.bns-editorial__button{margin-top:22px}.bns-editorial__image,.bns-editorial__image img{min-height:0}.bns-editorial__image{aspect-ratio:5/4}}
+  @media(prefers-reduced-motion:reduce){.bns-editorial__button{transition:none}}
+{% endstylesheet %}
+{% schema %}
+{
+  "name": "BNS brand editorial",
+  "settings": [
+    {"type":"text","id":"eyebrow","label":"Teks kecil","default":"WE ARE BAIT&STRIKE"},
+    {"type":"text","id":"title","label":"Judul","default":"Perlengkapan terbaik untuk petualanganmu."},
+    {"type":"richtext","id":"text","label":"Deskripsi","default":"<p>Kami memilih perlengkapan mancing yang menemani setiap lemparan, setiap spot baru, dan setiap cerita yang dibawa pulang.</p>"},
+    {"type":"text","id":"button_label","label":"Teks tombol","default":"Jelajahi Koleksi"},
+    {"type":"url","id":"link","label":"Tautan tombol"},
+    {"type":"image_picker","id":"image","label":"Gambar editorial"}
+  ],
+  "presets": [
+    {
+      "name": "BNS brand editorial",
+      "settings": {
+        "eyebrow": "WE ARE BAIT&STRIKE",
+        "title": "Perlengkapan terbaik untuk petualanganmu.",
+        "text": "<p>Kami memilih perlengkapan mancing yang menemani setiap lemparan, setiap spot baru, dan setiap cerita yang dibawa pulang.</p>",
+        "button_label": "Jelajahi Koleksi",
+        "link": "/collections"
+      }
+    }
+  ]
+}
+{% endschema %}
