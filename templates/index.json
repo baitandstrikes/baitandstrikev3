@@ -60,46 +60,6 @@
         "link": ""
       }
     },
-    "products": {
-      "type": "featured-collection",
-      "settings": {
-        "collection": "fishing-rods-joran",
-        "eyebrow": "",
-        "title": "Pilihan favorit",
-        "limit": 8
-      }
-    },
-    "story": {
-      "type": "image-with-text",
-      "settings": {
-        "eyebrow": "BUILT FOR THE WATER",
-        "title": "Perlengkapan tepat. Petualangan lebih jauh.",
-        "text": "<p>Lengkapi tackle box kamu dengan pilihan perlengkapan BAITANDSTRIKE.</p>",
-        "button_label": "Tonton video",
-        "link": "https://www.youtube.com/watch?v=QPwc3fP30kE",
-        "reverse": false,
-        "image_url": "https://cdn.shopify.com/s/files/1/0837/1195/1076/files/back.png?v=1788340231"
-      }
-    },
-    "partners": {
-      "type": "promo-banner",
-      "settings": {
-        "eyebrow": "BNS PARTNERS",
-        "title": "Tumbuh bersama BAITANDSTRIKE.",
-        "text": "<p>Untuk toko, reseller, dan dealer. Temukan perlengkapan mancing untuk kebutuhan bisnis kamu.</p>",
-        "button_label": "Hubungi kami",
-        "link": "/pages/wholesale-registration-form",
-        "background": "#eeeae5",
-        "foreground": "#333333"
-      }
-    },
-    "journal": {
-      "type": "journal",
-      "settings": {
-        "title": "Jurnal BNS",
-        "blog": ""
-      }
-    },
     "new_arrivals": {
       "type": "featured-collection",
       "settings": {
@@ -165,11 +125,41 @@
         "b4"
       ]
     },
+    "products": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "fishing-rods-joran",
+        "eyebrow": "",
+        "title": "Pilihan favorit",
+        "limit": 8
+      }
+    },
+    "story": {
+      "type": "image-with-text",
+      "settings": {
+        "eyebrow": "BUILT FOR THE WATER",
+        "title": "Perlengkapan tepat. Petualangan lebih jauh.",
+        "text": "<p>Lengkapi tackle box kamu dengan pilihan perlengkapan BAITANDSTRIKE.</p>",
+        "button_label": "Tonton video",
+        "link": "https://www.youtube.com/watch?v=QPwc3fP30kE",
+        "reverse": false,
+        "image_url": "https://cdn.shopify.com/s/files/1/0837/1195/1076/files/back.png?v=1788340231"
+      }
+    },
+    "partners": {
+      "type": "promo-banner",
+      "settings": {
+        "eyebrow": "BNS PARTNERS",
+        "title": "Tumbuh bersama BAITANDSTRIKE.",
+        "text": "<p>Untuk toko, reseller, dan dealer. Temukan perlengkapan mancing untuk kebutuhan bisnis kamu.</p>",
+        "button_label": "Hubungi kami",
+        "link": "/pages/wholesale-registration-form",
+        "background": "#eeeae5",
+        "foreground": "#333333"
+      }
+    },
     "guides": {
       "type": "gear-guide",
-      "settings": {
-        "title": "Panduan memilih perlengkapan"
-      },
       "blocks": {
         "pe": {
           "type": "guide",
@@ -200,6 +190,158 @@
         "pe",
         "ul",
         "rod"
+      ],
+      "settings": {
+        "title": "Panduan memilih perlengkapan"
+      }
+    },
+    "journal": {
+      "type": "journal",
+      "settings": {
+        "title": "Jurnal BNS",
+        "blog": ""
+      }
+    },
+    "testimonials_qjhbCw": {
+      "type": "testimonials",
+      "name": "Testimonials",
+      "settings": {
+        "title": "Cerita pelanggan"
+      }
+    },
+    "shopee_reviews": {
+      "type": "shopee-reviews",
+      "settings": {
+        "eyebrow": "CERITA DARI PEMANCING",
+        "heading": "Ulasan 5 Bintang dari Shopee",
+        "intro": "Lihat pengalaman pelanggan dengan perlengkapan mancing pilihan.",
+        "show_filters": true,
+        "footer_note": "Ulasan ditampilkan sesuai data yang dimasukkan oleh pengelola toko.",
+        "accent_color": "#3282C0",
+        "star_color": "#FCDD16",
+        "padding_top": 40,
+        "padding_bottom": 40
+      },
+      "blocks": {
+        "review_1": {
+          "type": "review",
+          "settings": {
+            "rating": "5",
+            "category": "aksesori",
+            "reviewer": "lkmnsyh92",
+            "product_name": "Variasi Perak, 1# (100 pcs/pack)",
+            "review_date": "13 Februari 2025",
+            "review_text": "Kegunaan: mancing\nKualitas: bagus\nPengalaman: kuat dan pipih\n\nBarang sesuai yang diharapkan, malah isinya lebih dr 100pcs, pengirimannya juga cepet dan respon sellernya juga baik dan tanggap. Thans seller.",
+            "source_url": "",
+            "show_review": false
+          }
+        },
+        "review_2": {
+          "type": "review",
+          "settings": {
+            "rating": "5",
+            "category": "aksesori",
+            "reviewer": "sofyan_darwis92",
+            "product_name": "Variasi E",
+            "review_date": "4 Januari 2025",
+            "review_text": "Desain: Keren\nKegunaan: Mantap\nPengalaman: Good\n\nSangat bersyukur belanja di toko ini, sangat memuaskan dan amanah. Barangnya tiba dengan selamat, sesuai pesanan, dan tidak mengecewakan. Sukses selalu untuk penjual dan terima kasih, Kak.",
+            "source_url": "",
+            "show_review": false
+          }
+        },
+        "review_3": {
+          "type": "review",
+          "settings": {
+            "rating": "5",
+            "category": "umpan",
+            "reviewer": "adentama10",
+            "product_name": "Variasi 2g, 1g",
+            "review_date": "30 Januari 2026",
+            "review_text": "Kegunaan: ideal mancing tiap hari\nKualitas: bagus sesuai diskripsi\nDesain: memuaskan\n\nSemoga amis mancingnya terimakasih",
+            "source_url": "",
+            "show_review": false
+          }
+        },
+        "review_4": {
+          "type": "review",
+          "settings": {
+            "rating": "5",
+            "category": "senar",
+            "reviewer": "stationarybuleshop",
+            "product_name": "Variasi 10lbs, 7lbs",
+            "review_date": "29 Juni 2026",
+            "review_text": "Transparansi: senar terasa bening tidak terlihat didalam air\nDaya Daya: senar sangat kuat, cocok sekali untuk mancing dasaran\n\nTerimakasih saler sesuai orderan pass",
+            "source_url": "",
+            "show_review": false
+          }
+        },
+        "review_5": {
+          "type": "review",
+          "settings": {
+            "rating": "5",
+            "category": "umpan",
+            "reviewer": "masediy139",
+            "product_name": "Umpan Pancing Lure Minnow Floating MN024 — MerahKepala, 12G/12CM",
+            "review_date": "14 Oktober 2026",
+            "review_text": "Performa: barang bagus kuat mengkilat disen keren\nCocok Untuk: untuk cesting semogah awet\nKualitas: baik rapih kuat tebal\n\nBarang sudah sampe  Toko amanah  Pengiriman cepat Kulir ramah",
+            "source_url": "https://shopee.co.id/Umpan-Pancing-Lure-Minnow-floating-12g-12cm-lure-minnow-topmouth-culter-MN024-i.898941158.12798233866",
+            "show_review": true
+          }
+        },
+        "review_6": {
+          "type": "review",
+          "settings": {
+            "rating": "5",
+            "category": "joran",
+            "reviewer": "dedisetiawan307",
+            "product_name": "Joran Lemoren (varian belum disebutkan)",
+            "review_date": "5 Mei 2025",
+            "review_text": "Kegunaan: cocok lentur nya medium ga goyang parah ujungnya klo ngelempar umpan\nBerat: ringan poll buat micro fishing cocok parahh\n\nUdah punya dua produk lemoren emng gacor  Emng kaya ragu buat narik ikan babon tapi aman tergantung skil owner nya",
+            "source_url": "https://shopee.co.id/shop/buyer/741935670",
+            "show_review": true,
+            "image_url_1": "https://down-id.img.susercontent.com/file/id-11134103-7rbk4-m9ef56nog8bhb9",
+            "image_url_2": "https://down-id.img.susercontent.com/file/id-11134103-7rbk5-m9ef56n4juohba"
+          }
+        },
+        "review_7": {
+          "type": "review",
+          "settings": {
+            "rating": "5",
+            "category": "reel",
+            "reviewer": "minggrat",
+            "product_name": "Reel — Variasi 800S",
+            "review_date": "20 Februari 2026",
+            "review_text": "Barang sudah mendarat dengan aman, dan baru saja diterima, terimakasih bos, barangya sangat bagus banget, sederhana namun elegan, dan ringan,  Cocok banget dengan joran saya, mudah²an cepat amis, dan awet,,, 👍👍👍",
+            "source_url": "https://shopee.co.id/shop/buyer/1691315096",
+            "show_review": true,
+            "image_url_1": "https://down-id.img.susercontent.com/file/id-11134103-8224y-mkxb75ay1m2u91",
+            "image_url_2": "https://down-id.img.susercontent.com/file/id-11134103-8224t-mkxb75b22akiac"
+          }
+        },
+        "review_8": {
+          "type": "review",
+          "settings": {
+            "rating": "5",
+            "category": "hook",
+            "reviewer": "anggha_08",
+            "product_name": "Kail / Hook — Variasi 3/0_3g",
+            "review_date": "6 Januari 2026",
+            "review_text": "Pengemasan Seller Terbilang Cepat..📦 Pengantaran Kurir Bagai Kilat..⚡ Dengan Harga Yang Bersahabat..💰 Kini Pesanan Sudah Mendarat..🚁 Packaging Aman Terjaga Rapat..🛡️ Barang Sesuai & Akurat..🎯 Kualitasnya Bagus Tanpa Syarat..👍 Yuk Yang Lain Segera Merapat..😊",
+            "source_url": "https://shopee.co.id/shop/buyer/21137092",
+            "show_review": false,
+            "image_url_1": "https://down-id.img.susercontent.com/file/id-11134103-8224p-mj5i682ldczmcd"
+          }
+        }
+      },
+      "block_order": [
+        "review_1",
+        "review_2",
+        "review_3",
+        "review_4",
+        "review_5",
+        "review_6",
+        "review_7",
+        "review_8"
       ]
     }
   },
@@ -210,9 +352,11 @@
     "new_arrivals",
     "brands",
     "products",
+    "shopee_reviews",
     "story",
     "partners",
     "guides",
-    "journal"
+    "journal",
+    "testimonials_qjhbCw"
   ]
 }
