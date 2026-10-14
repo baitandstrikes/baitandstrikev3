@@ -175,6 +175,43 @@
         "b6",
         "b7"
       ]
+    },
+    "guides": {
+      "type": "gear-guide",
+      "settings": {
+        "title": "Panduan memilih perlengkapan"
+      },
+      "blocks": {
+        "pe": {
+          "type": "guide",
+          "settings": {
+            "title": "Pilih PE sesuai joran",
+            "text": "<p>Periksa rentang PE atau line weight yang tertulis pada joran. Pilih senar di dalam rentang rekomendasi tersebut, lalu sesuaikan dengan target ikan dan kondisi spot. PE menyatakan ukuran kelas senar; kekuatan lb dapat berbeda antar produk.</p><p>Periksa juga kapasitas spool dan gunakan leader yang sesuai. Buka detail varian untuk memastikan diameter, panjang, dan kekuatan sebelum membeli.</p>",
+            "collection": "fishing-line"
+          }
+        },
+        "ul": {
+          "type": "guide",
+          "settings": {
+            "title": "Memilih reel untuk ultralight",
+            "text": "<p>Mulai dari joran, bobot umpan, dan kapasitas senar yang dibutuhkan. Bandingkan bobot reel, ukuran spool, gear ratio, dan drag. Nomor ukuran antar merek tidak selalu setara.</p><p>Utamakan keseimbangan satu set dan pengaturan drag yang sesuai senar. Gunakan fitur Bandingkan untuk melihat spesifikasi varian berdampingan.</p>",
+            "collection": "reel"
+          }
+        },
+        "rod": {
+          "type": "guide",
+          "settings": {
+            "title": "Panjang dan action joran",
+            "text": "<p>Panjang joran memengaruhi jangkauan lempar dan ruang gerak. Sesuaikan dengan posisi memancing dan area di sekitar spot.</p><p>Action menjelaskan bagian joran yang melentur, sedangkan power menjelaskan kelas kekuatannya. Keduanya berbeda. Periksa rentang umpan serta line weight pada varian yang dipilih sebelum menyusun set.</p>",
+            "collection": "fishing-rods-joran"
+          }
+        }
+      },
+      "block_order": [
+        "pe",
+        "ul",
+        "rod"
+      ]
     }
   },
   "order": [
@@ -186,6 +223,7 @@
     "products",
     "story",
     "partners",
+    "guides",
     "journal"
   ]
 }

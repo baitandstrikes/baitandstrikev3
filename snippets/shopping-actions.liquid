@@ -1,0 +1,10 @@
+{% doc %}
+Wishlist, comparison and wholesale quote actions.
+@param {product} product - Product
+@param {boolean} [compact] - Compact card controls
+{% enddoc %}
+<div class="shopping-actions{% if compact %} shopping-actions--card{% endif %}" data-tool-handle="{{ product.handle }}">
+<button type="button" class="text-link" data-wishlist-toggle aria-pressed="false" aria-label="{{ 'tools.save' | t }}: {{ product.title | escape }}">{% render 'icon', name: 'heart' %}<span>{{ 'tools.save' | t }}</span></button>
+<button type="button" class="text-link" data-compare-toggle aria-pressed="false" aria-label="{{ 'tools.compare' | t }}: {{ product.title | escape }}">{% render 'icon', name: 'compare' %}<span>{{ 'tools.compare' | t }}</span></button>
+{% unless compact %}<button type="button" class="text-link" data-quote-add>{{ 'tools.quote_add' | t }}</button>{% endunless %}
+</div>

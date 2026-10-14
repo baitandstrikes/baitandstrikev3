@@ -3,4 +3,4 @@ Renders Shopify price and comparison price.
 @param {product} product - Product
 @param {variant} [variant] - Selected variant
 {% enddoc %}
-{% assign price = variant.price | default: product.price %}{% assign compare = variant.compare_at_price | default: product.compare_at_price %}<div class="price">{% if variant == blank and product.price_varies %}<span>{{ 'product.from' | t }} </span>{% endif %}<span class="price-current">{{ price | money }}</span>{% if compare > price %}<s>{{ compare | money }}</s>{% endif %}</div>
+{% assign price_variant = variant %}{% if price_variant == blank %}{% assign sorted_variants = product.variants | sort: 'price' %}{% assign price_variant = sorted_variants | first %}{% endif %}{% assign price = price_variant.price | default: product.price %}{% assign compare = price_variant.compare_at_price %}<div class="price">{% if variant == blank and product.price_varies %}<span>{{ 'product.from' | t }} </span>{% endif %}<span class="price-current">{{ price | money }}</span>{% if compare > price %}<s>{{ compare | money }}</s>{% endif %}</div>

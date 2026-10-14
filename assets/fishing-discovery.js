@@ -58,7 +58,8 @@
           if (brand && record.brand !== brand) return false;
           const options = selected.filter(([key]) => key !== 'brand');
           return !options.length || record.variants.some(variant => options.every(([key, value]) => {
-            if (key === '_length') return units(variant, 'm').includes(value);
+            if (key.startsWith('spec_')) return (record.specs[record.variants.indexOf(variant)]?.[key.slice(5)] || []).includes(value);
+            if (key === '_length') return (record.specs[record.variants.indexOf(variant)]?.length || units(variant, 'm')).includes(value);
             if (key === '_weight') return units(variant, 'g').includes(value);
             const index = record.options.findIndex(name => normalize(name) === key);
             return index >= 0 && String(variant[index]) === value;
@@ -86,10 +87,11 @@
         pagination.hidden = pages <= 1;
       };
       const buildControls = () => {
-        const groups = new Map([['brand', {label: labels.brand, values: new Set()}], ['_length', {label: labels.length, values: new Set()}], ['_weight', {label: labels.weight, values: new Set()}]]);
+        const groups = new Map([['brand', {label: labels.brand, values: new Set()}]]);
+        for (const key of ['length','action','line_weight','pe','size','ratio','drag','diameter','weight']) groups.set('spec_'+key, {label: labels[key], values: new Set()});
         for (const record of records) {
           if (record.brand) groups.get('brand').values.add(record.brand);
-          record.variants.forEach(variant => {units(variant, 'm').forEach(value => groups.get('_length').values.add(value)); units(variant, 'g').forEach(value => groups.get('_weight').values.add(value));});
+          record.specs.forEach(spec => {for (const [key, values] of Object.entries(spec)) {const group=groups.get('spec_'+key);if(group) values.forEach(value=>group.values.add(value));}});
           record.options.forEach((name, index) => {
             const key = normalize(name);
             if (key === 'title' || key === 'brand') return;
@@ -108,7 +110,7 @@
           label.htmlFor = select.id;
           select.append(new Option(labels.all, ''));
           [...group.values].sort((a, b) => key.startsWith('_') ? parseFloat(a) - parseFloat(b) : a.localeCompare(b, undefined, {numeric: true})).forEach(value => select.append(new Option(value, value)));
-          const selected = url.searchParams.get(paramPrefix + key) || '';
+          const selected = url.searchParams.get(paramPrefix + key) || (key === 'spec_length' ? url.searchParams.get('bns._length') : key === 'spec_weight' ? url.searchParams.get('bns._weight') : '') || '';
           if (group.values.has(selected)) select.value = selected;
           selections.set(key, select.value);
           select.addEventListener('change', () => { selections.set(key, select.value); page = 1; render(); });
@@ -154,7 +156,7 @@
             });
             url = incoming.dataset.nextUrl ? new URL(incoming.dataset.nextUrl, location.origin) : null;
           }
-          records = [...cards.values()].map(card => ({card, brand: (card.dataset.fishingBrand || '').trim().toLocaleUpperCase(), options: JSON.parse(card.dataset.fishingOptions || '[]'), variants: JSON.parse(card.dataset.fishingVariants || '[]')}));
+          records = [...cards.values()].map(card => {let specs=[];try{const data=JSON.parse(card.querySelector('[data-tool-product]').textContent);specs=window.BnsSpecs.read(data).variants.map(v=>v.specs);}catch{}return ({card, specs, brand: (card.dataset.fishingBrand || '').trim().toLocaleUpperCase(), options: JSON.parse(card.dataset.fishingOptions || '[]'), variants: JSON.parse(card.dataset.fishingVariants || '[]')});});
           ready = true; status.textContent = ''; controls.hidden = false;
           trigger.setAttribute('aria-expanded', 'true'); buildControls();
         } catch (error) {
@@ -162,7 +164,7 @@
         } finally { loading = false; trigger.disabled = false; }
       };
       trigger.addEventListener('click', load);
-      catalog.addEventListener('shopify:section:unload', () => controller.abort(), {once: true});
+      document.addEventListener('shopify:section:unload', event => {if(event.target.contains(catalog)) controller.abort();}, {signal: controller.signal});
       if ([...new URL(location.href).searchParams.keys()].some(key => key.startsWith(paramPrefix))) {
         catalog.querySelector('.catalog-filters')?.classList.add('is-open');
         catalog.querySelector('[data-filter-toggle]')?.setAttribute('aria-expanded', 'true');
