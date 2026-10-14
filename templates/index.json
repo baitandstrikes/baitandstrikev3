@@ -54,7 +54,7 @@
       "type": "countdown-promo",
       "settings": {
         "title": "Pilihan untuk trip berikutnya",
-        "end": "",
+        "end": "2026-10-31T23:59:00+07:00",
         "label": "Jelajahi koleksi",
         "link": ""
       }
