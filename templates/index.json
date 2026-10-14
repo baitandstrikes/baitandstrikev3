@@ -320,6 +320,19 @@
             "source_url": "https://shopee.co.id/shop/buyer/741935670",
             "show_review": true
           }
+        },
+        "review_7": {
+          "type": "review",
+          "settings": {
+            "rating": "5",
+            "category": "joran",
+            "reviewer": "minggrat",
+            "product_name": "Variasi 800S",
+            "review_date": "20 Februari 2026",
+            "review_text": "Barang sudah mendarat dengan aman, dan baru saja diterima, terimakasih bos, barangya sangat bagus banget, sederhana namun elegan, dan ringan,  Cocok banget dengan joran saya, mudah²an cepat amis, dan awet,,, 👍👍👍",
+            "source_url": "https://shopee.co.id/shop/buyer/1691315096",
+            "show_review": true
+          }
         }
       },
       "block_order": [
@@ -328,7 +341,8 @@
         "review_3",
         "review_4",
         "review_5",
-        "review_6"
+        "review_6",
+        "review_7"
       ]
     }
   },
