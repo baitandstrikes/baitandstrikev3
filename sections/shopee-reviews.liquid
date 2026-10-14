@@ -1,7 +1,7 @@
 {% liquid
   assign review_count = 0
   for block in section.blocks
-    if block.settings.rating == '5' and block.settings.review_text != blank
+    if block.settings.show_review and block.settings.rating == '5' and block.settings.review_text != blank
       assign review_count = review_count | plus: 1
     endif
   endfor
@@ -37,7 +37,7 @@
 
     <div class="bns-review-grid" data-review-grid>
       {% for block in section.blocks %}
-        {% if block.settings.rating == '5' and block.settings.review_text != blank %}
+        {% if block.settings.show_review and block.settings.rating == '5' and block.settings.review_text != blank %}
           <article class="bns-review-card" data-review-card data-category="{{ block.settings.category | escape }}" {{ block.shopify_attributes }}>
             <div class="bns-review-card-top">
               <span class="bns-review-stars" aria-label="5 dari 5 bintang">★★★★★</span>
@@ -190,6 +190,7 @@
       "type": "review",
       "name": "Ulasan pelanggan",
       "settings": [
+        { "type": "checkbox", "id": "show_review", "label": "Tampilkan ulasan ini di toko", "default": false },
         { "type": "select", "id": "rating", "label": "Rating", "options": [
           { "value": "5", "label": "5 bintang" },
           { "value": "4", "label": "4 bintang" },
