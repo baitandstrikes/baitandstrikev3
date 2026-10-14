@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
@@ -60,46 +69,6 @@
         "link": ""
       }
     },
-    "products": {
-      "type": "featured-collection",
-      "settings": {
-        "collection": "fishing-rods-joran",
-        "eyebrow": "",
-        "title": "Pilihan favorit",
-        "limit": 8
-      }
-    },
-    "story": {
-      "type": "image-with-text",
-      "settings": {
-        "eyebrow": "BUILT FOR THE WATER",
-        "title": "Perlengkapan tepat. Petualangan lebih jauh.",
-        "text": "<p>Lengkapi tackle box kamu dengan pilihan perlengkapan BAITANDSTRIKE.</p>",
-        "button_label": "Tonton video",
-        "link": "https://www.youtube.com/watch?v=QPwc3fP30kE",
-        "reverse": false,
-        "image_url": "https://cdn.shopify.com/s/files/1/0837/1195/1076/files/back.png?v=1788340231"
-      }
-    },
-    "partners": {
-      "type": "promo-banner",
-      "settings": {
-        "eyebrow": "BNS PARTNERS",
-        "title": "Tumbuh bersama BAITANDSTRIKE.",
-        "text": "<p>Untuk toko, reseller, dan dealer. Temukan perlengkapan mancing untuk kebutuhan bisnis kamu.</p>",
-        "button_label": "Hubungi kami",
-        "link": "/pages/wholesale-registration-form",
-        "background": "#eeeae5",
-        "foreground": "#333333"
-      }
-    },
-    "journal": {
-      "type": "journal",
-      "settings": {
-        "title": "Jurnal BNS",
-        "blog": ""
-      }
-    },
     "new_arrivals": {
       "type": "featured-collection",
       "settings": {
@@ -111,10 +80,6 @@
     },
     "brands": {
       "type": "brand-discovery",
-      "settings": {
-        "title": "Belanja berdasarkan merek",
-        "text": "Temukan perlengkapan dari merek pilihanmu."
-      },
       "blocks": {
         "b0": {
           "type": "brand",
@@ -174,13 +139,47 @@
         "b5",
         "b6",
         "b7"
-      ]
+      ],
+      "settings": {
+        "title": "Belanja berdasarkan merek",
+        "text": "Temukan perlengkapan dari merek pilihanmu."
+      }
+    },
+    "products": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "fishing-rods-joran",
+        "eyebrow": "",
+        "title": "Pilihan favorit",
+        "limit": 8
+      }
+    },
+    "story": {
+      "type": "image-with-text",
+      "settings": {
+        "eyebrow": "BUILT FOR THE WATER",
+        "title": "Perlengkapan tepat. Petualangan lebih jauh.",
+        "text": "<p>Lengkapi tackle box kamu dengan pilihan perlengkapan BAITANDSTRIKE.</p>",
+        "button_label": "Tonton video",
+        "link": "https://www.youtube.com/watch?v=QPwc3fP30kE",
+        "reverse": false,
+        "image_url": "https://cdn.shopify.com/s/files/1/0837/1195/1076/files/back.png?v=1788340231"
+      }
+    },
+    "partners": {
+      "type": "promo-banner",
+      "settings": {
+        "eyebrow": "BNS PARTNERS",
+        "title": "Tumbuh bersama BAITANDSTRIKE.",
+        "text": "<p>Untuk toko, reseller, dan dealer. Temukan perlengkapan mancing untuk kebutuhan bisnis kamu.</p>",
+        "button_label": "Hubungi kami",
+        "link": "/pages/wholesale-registration-form",
+        "background": "#eeeae5",
+        "foreground": "#333333"
+      }
     },
     "guides": {
       "type": "gear-guide",
-      "settings": {
-        "title": "Panduan memilih perlengkapan"
-      },
       "blocks": {
         "pe": {
           "type": "guide",
@@ -211,90 +210,24 @@
         "pe",
         "ul",
         "rod"
-      ]
-    },
-    "shopee_reviews": {
-      "type": "shopee-reviews",
+      ],
       "settings": {
-        "eyebrow": "CERITA DARI PEMANCING",
-        "heading": "Ulasan 5 Bintang dari Shopee",
-        "intro": "Lihat pengalaman pelanggan dengan perlengkapan mancing pilihan.",
-        "show_filters": true,
-        "footer_note": "Ulasan ditampilkan sesuai data yang dimasukkan oleh pengelola toko.",
-        "accent_color": "#3282C0",
-        "star_color": "#FCDD16",
-        "padding_top": 40,
-        "padding_bottom": 40
-      },
-      "blocks": {
-        "review_1": {
-          "type": "review",
-          "settings": {
-            "rating": "5",
-            "category": "joran",
-            "reviewer": "",
-            "product_name": "",
-            "review_date": "",
-            "review_text": "",
-            "source_url": ""
-          }
-        },
-        "review_2": {
-          "type": "review",
-          "settings": {
-            "rating": "5",
-            "category": "reel",
-            "reviewer": "",
-            "product_name": "",
-            "review_date": "",
-            "review_text": "",
-            "source_url": ""
-          }
-        },
-        "review_3": {
-          "type": "review",
-          "settings": {
-            "rating": "5",
-            "category": "umpan",
-            "reviewer": "",
-            "product_name": "",
-            "review_date": "",
-            "review_text": "",
-            "source_url": ""
-          }
-        },
-        "review_4": {
-          "type": "review",
-          "settings": {
-            "rating": "5",
-            "category": "senar",
-            "reviewer": "",
-            "product_name": "",
-            "review_date": "",
-            "review_text": "",
-            "source_url": ""
-          }
-        },
-        "review_5": {
-          "type": "review",
-          "settings": {
-            "rating": "5",
-            "category": "aksesori",
-            "reviewer": "",
-            "product_name": "",
-            "review_date": "",
-            "review_text": "",
-            "source_url": ""
-          }
-        }
-      },
-      "block_order": [
-        "review_1",
-        "review_2",
-        "review_3",
-        "review_4",
-        "review_5"
-      ]
+        "title": "Panduan memilih perlengkapan"
+      }
+    },
+    "journal": {
+      "type": "journal",
+      "settings": {
+        "title": "Jurnal BNS",
+        "blog": ""
+      }
+    },
+    "testimonials_qjhbCw": {
+      "type": "testimonials",
+      "name": "Testimonials",
+      "settings": {
+        "title": "Cerita pelanggan"
+      }
     }
   },
   "order": [
@@ -304,10 +237,10 @@
     "new_arrivals",
     "brands",
     "products",
-    "shopee_reviews",
     "story",
     "partners",
     "guides",
-    "journal"
+    "journal",
+    "testimonials_qjhbCw"
   ]
 }
