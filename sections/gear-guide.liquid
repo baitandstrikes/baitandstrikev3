@@ -1,2 +1,120 @@
-<section class="section gear-guide"><div class="wrap"><div class="section-heading"><h2>{{ section.settings.title | escape }}</h2></div><div class="gear-guide-grid">{% for block in section.blocks %}<article {{ block.shopify_attributes }}><details><summary>{{ block.settings.title | escape }}</summary><div class="rte">{{ block.settings.text }}</div><a class="text-link" href="{{ block.settings.collection.url | default: routes.all_products_collection_url }}">{{ 'tools.view_gear' | t }} →</a></details></article>{% endfor %}</div></div></section>
-{% schema %}{"name":"Panduan perlengkapan","settings":[{"type":"text","id":"title","label":"Judul","default":"Panduan memilih perlengkapan"}],"max_blocks":6,"blocks":[{"type":"guide","name":"Panduan","settings":[{"type":"text","id":"title","label":"Judul"},{"type":"richtext","id":"text","label":"Isi"},{"type":"collection","id":"collection","label":"Koleksi terkait"}]}],"presets":[{"name":"Panduan perlengkapan"}]}{% endschema %}
+<section class="gear-guide-hotspot" style="--guide-overlay: {{ section.settings.overlay | divided_by: 100.0 }}; --guide-height: {{ section.settings.height }}px; --guide-text: {{ section.settings.text_color }};" aria-labelledby="GearGuideTitle-{{ section.id }}">
+  <div class="gear-guide-hotspot__media">
+    {% if section.settings.mobile_image != blank %}
+      <picture>
+        <source media="(max-width: 749px)" srcset="{{ section.settings.mobile_image | image_url: width: 1000 }}">
+        {% if section.settings.image != blank %}
+          {{ section.settings.image | image_url: width: 2400 | image_tag: class: 'gear-guide-hotspot__image', loading: 'lazy', widths: '750, 1100, 1500, 2000, 2400', sizes: '100vw' }}
+        {% endif %}
+      </picture>
+    {% elsif section.settings.image != blank %}
+      {{ section.settings.image | image_url: width: 2400 | image_tag: class: 'gear-guide-hotspot__image', loading: 'lazy', widths: '750, 1100, 1500, 2000, 2400', sizes: '100vw' }}
+    {% else %}
+      {{ 'lifestyle-2' | placeholder_svg_tag: 'gear-guide-hotspot__image gear-guide-hotspot__placeholder' }}
+    {% endif %}
+  </div>
+  <div class="gear-guide-hotspot__shade"></div>
+  <div class="gear-guide-hotspot__copy">
+    {% if section.settings.eyebrow != blank %}<p class="eyebrow">{{ section.settings.eyebrow | escape }}</p>{% endif %}
+    <h2 id="GearGuideTitle-{{ section.id }}">{{ section.settings.title | escape }}</h2>
+    {% if section.settings.text != blank %}<div class="rte">{{ section.settings.text }}</div>{% endif %}
+    {% if section.settings.button_label != blank %}<a class="button button-white" href="{{ section.settings.link | default: routes.all_products_collection_url }}">{{ section.settings.button_label | escape }}</a>{% endif %}
+  </div>
+  <div class="gear-guide-hotspot__points">
+    {% for block in section.blocks %}
+      <details class="gear-guide-point gear-guide-point--{{ block.settings.panel_side }}" style="--point-x: {{ block.settings.x }}%; --point-y: {{ block.settings.y }}%;" {{ block.shopify_attributes }}>
+        <summary aria-label="{{ 'tools.open_guide' | t: title: block.settings.title }}"><span aria-hidden="true">+</span></summary>
+        <div class="gear-guide-point__card">
+          <button type="button" class="gear-guide-point__close" data-guide-close aria-label="{{ 'tools.close_guide' | t }}">×</button>
+          <p class="eyebrow">{{ section.settings.card_eyebrow | escape }}</p>
+          <h3>{{ block.settings.title | escape }}</h3>
+          <div class="rte">{{ block.settings.text }}</div>
+          <a class="text-link" href="{{ block.settings.collection.url | default: routes.all_products_collection_url }}">{{ 'tools.view_gear' | t }} →</a>
+        </div>
+      </details>
+    {% endfor %}
+  </div>
+</section>
+
+{% stylesheet %}
+  .gear-guide-hotspot{position:relative;min-height:var(--guide-height);overflow:hidden;background:#17374a;color:var(--guide-text);isolation:isolate}
+  .gear-guide-hotspot__media,.gear-guide-hotspot__shade,.gear-guide-hotspot__points{position:absolute;inset:0}
+  .gear-guide-hotspot__image{width:100%;height:100%;object-fit:cover}
+  .gear-guide-hotspot__placeholder{background:#dce6e9;color:#8aa1ab}
+  .gear-guide-hotspot__shade{z-index:1;background:linear-gradient(90deg,rgba(0,20,32,var(--guide-overlay)),rgba(0,20,32,.06) 70%)}
+  .gear-guide-hotspot__copy{position:relative;z-index:2;width:min(46%,680px);padding:clamp(55px,7vw,110px) 5.5%}
+  .gear-guide-hotspot__copy h2{font-size:clamp(38px,4.5vw,68px);line-height:1.12;margin-bottom:24px}
+  .gear-guide-hotspot__copy .rte{font-size:clamp(15px,1.2vw,19px);max-width:620px;margin-bottom:30px}
+  .gear-guide-hotspot__points{z-index:3;pointer-events:none}
+  .gear-guide-point{position:absolute;left:var(--point-x);top:var(--point-y);pointer-events:auto}
+  .gear-guide-point>summary{list-style:none;width:72px;height:72px;border-radius:50%;display:grid;place-items:center;background:#fff;color:#222;cursor:pointer;box-shadow:0 6px 24px #0003;transition:transform .2s,background .2s,color .2s}
+  .gear-guide-point>summary::-webkit-details-marker{display:none}
+  .gear-guide-point>summary span{font-size:38px;font-weight:200;line-height:1;transition:transform .2s}
+  .gear-guide-point[open]>summary{background:#222;color:#fff;transform:scale(1.04)}
+  .gear-guide-point[open]>summary span{transform:rotate(45deg)}
+  .gear-guide-point__card{position:absolute;top:50%;left:92px;transform:translateY(-50%);width:min(470px,38vw);padding:34px 38px;background:#fffffff2;color:#222;box-shadow:0 18px 60px #0003}
+  .gear-guide-point--left .gear-guide-point__card{left:auto;right:92px}
+  .gear-guide-point__card h3{font-size:24px;font-weight:600;margin-bottom:16px}
+  .gear-guide-point__card .rte{font-size:15px;line-height:1.7;margin-bottom:18px}
+  .gear-guide-point__card .eyebrow{margin-bottom:12px}
+  .gear-guide-point__close{position:absolute;right:14px;top:10px;width:44px;height:44px;border:0;background:transparent;font-size:28px;line-height:1}
+  @media(max-width:749px){
+    .gear-guide-hotspot{min-height:680px}
+    .gear-guide-hotspot__shade{background:linear-gradient(180deg,#061c2baa,transparent 55%,#061c2b55)}
+    .gear-guide-hotspot__copy{width:100%;padding:48px 24px;text-align:center}
+    .gear-guide-hotspot__copy h2{font-size:36px}
+    .gear-guide-hotspot__copy .rte{font-size:14px;margin-inline:auto}
+    .gear-guide-point>summary{width:58px;height:58px}
+    .gear-guide-point>summary span{font-size:31px}
+    .gear-guide-point__card,.gear-guide-point--left .gear-guide-point__card{position:fixed;z-index:100;left:18px;right:18px;top:auto;bottom:max(18px,env(safe-area-inset-bottom));transform:none;width:auto;max-height:70dvh;overflow:auto;padding:30px 28px}
+    .gear-guide-point__card h3{font-size:21px;padding-right:28px}
+  }
+  @media(prefers-reduced-motion:reduce){.gear-guide-point>summary,.gear-guide-point>summary span{transition:none}}
+{% endstylesheet %}
+
+{% javascript %}
+  document.addEventListener('toggle',event=>{
+    const active=event.target;
+    if(!active.matches('.gear-guide-point[open]'))return;
+    active.closest('.gear-guide-hotspot').querySelectorAll('.gear-guide-point[open]').forEach(point=>{if(point!==active)point.removeAttribute('open')});
+  },true);
+  document.addEventListener('click',event=>{
+    const close=event.target.closest('[data-guide-close]');
+    if(close)close.closest('.gear-guide-point').removeAttribute('open');
+  });
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "Panduan hotspot",
+  "settings": [
+    {"type":"image_picker","id":"image","label":"Gambar desktop"},
+    {"type":"image_picker","id":"mobile_image","label":"Gambar mobile"},
+    {"type":"range","id":"height","label":"Tinggi desktop","min":500,"max":1000,"step":50,"unit":"px","default":750},
+    {"type":"range","id":"overlay","label":"Overlay gambar","min":0,"max":80,"step":5,"unit":"%","default":35},
+    {"type":"color","id":"text_color","label":"Warna teks","default":"#ffffff"},
+    {"type":"text","id":"eyebrow","label":"Teks kecil","default":"PANDUAN BAITANDSTRIKE"},
+    {"type":"text","id":"title","label":"Judul","default":"Pilih perlengkapan yang tepat."},
+    {"type":"richtext","id":"text","label":"Deskripsi","default":"<p>Panduan singkat untuk menyusun set pancing sesuai target ikan, teknik, dan lokasi memancing.</p>"},
+    {"type":"text","id":"button_label","label":"Teks tombol","default":"JELAJAHI PRODUK"},
+    {"type":"url","id":"link","label":"Tautan tombol"},
+    {"type":"text","id":"card_eyebrow","label":"Teks kecil pada kartu","default":"TIPS PERLENGKAPAN"}
+  ],
+  "max_blocks": 6,
+  "blocks": [
+    {
+      "type": "guide",
+      "name": "Titik panduan",
+      "settings": [
+        {"type":"text","id":"title","label":"Judul"},
+        {"type":"richtext","id":"text","label":"Isi"},
+        {"type":"collection","id":"collection","label":"Koleksi terkait"},
+        {"type":"range","id":"x","label":"Posisi horizontal","min":5,"max":95,"step":1,"unit":"%","default":65},
+        {"type":"range","id":"y","label":"Posisi vertikal","min":10,"max":90,"step":1,"unit":"%","default":55},
+        {"type":"select","id":"panel_side","label":"Arah kartu","options":[{"value":"right","label":"Kanan"},{"value":"left","label":"Kiri"}],"default":"left"}
+      ]
+    }
+  ],
+  "presets": [{"name":"Panduan hotspot"}]
+}
+{% endschema %}
