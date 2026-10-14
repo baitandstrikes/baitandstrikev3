@@ -323,9 +323,9 @@
         "pe": {
           "type": "guide",
           "settings": {
-            "title": "Pilih PE sesuai joran",
-            "text": "<p>Periksa rentang PE atau line weight yang tertulis pada joran. Pilih senar di dalam rentang rekomendasi tersebut, lalu sesuaikan dengan target ikan dan kondisi spot. PE menyatakan ukuran kelas senar; kekuatan lb dapat berbeda antar produk.</p><p>Periksa juga kapasitas spool dan gunakan leader yang sesuai. Buka detail varian untuk memastikan diameter, panjang, dan kekuatan sebelum membeli.</p>",
-            "collection": "fishing-line",
+            "title": "Pilih umpan sesuai spot",
+            "text": "<p>Sesuaikan jenis umpan dengan kedalaman air, arus, dan target ikan. Popper bekerja di permukaan dan cocok saat ikan aktif mengejar mangsa di lapisan atas.</p><p>Periksa berat umpan terhadap lure weight joran agar lemparan tetap aman dan seimbang. Pilih warna natural untuk air jernih atau warna kontras saat cahaya rendah.</p>",
+            "collection": "fishing-bait-umpan",
             "x": 55,
             "y": 68,
             "panel_side": "right"
@@ -360,7 +360,8 @@
         "rod"
       ],
       "settings": {
-        "image": "shopify://shop_images/Gemini_Generated_Image_5uf86i5uf86i5uf8.jpg",
+        "image_url": "https://cdn.shopify.com/s/files/1/0838/8824/2905/files/bns-gear-guide-shopee-desktop.png?v=1791986990",
+        "mobile_image_url": "https://cdn.shopify.com/s/files/1/0838/8824/2905/files/bns-gear-guide-shopee-mobile.png?v=1791987005",
         "height": 750,
         "overlay": 35,
         "text_color": "#ffffff",
@@ -394,4 +395,5 @@
     "journal"
   ]
 }
+
 

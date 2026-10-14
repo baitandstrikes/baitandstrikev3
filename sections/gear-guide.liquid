@@ -1,6 +1,13 @@
 <section class="gear-guide-hotspot" style="--guide-overlay: {{ section.settings.overlay | divided_by: 100.0 }}; --guide-height: {{ section.settings.height }}px; --guide-text: {{ section.settings.text_color }};" aria-labelledby="GearGuideTitle-{{ section.id }}">
   <div class="gear-guide-hotspot__media">
-    {% if section.settings.mobile_image != blank %}
+    {% if section.settings.mobile_image_url != blank %}
+      <picture>
+        <source media="(max-width: 749px)" srcset="{{ section.settings.mobile_image_url | escape }}">
+        <img class="gear-guide-hotspot__image" src="{{ section.settings.image_url | escape }}" width="1920" height="1080" loading="lazy" alt="{{ section.settings.title | escape }}">
+      </picture>
+    {% elsif section.settings.image_url != blank %}
+      <img class="gear-guide-hotspot__image" src="{{ section.settings.image_url | escape }}" width="1920" height="1080" loading="lazy" alt="{{ section.settings.title | escape }}">
+    {% elsif section.settings.mobile_image != blank %}
       <picture>
         <source media="(max-width: 749px)" srcset="{{ section.settings.mobile_image | image_url: width: 1000 }}">
         {% if section.settings.image != blank %}
@@ -90,6 +97,8 @@
   "settings": [
     {"type":"image_picker","id":"image","label":"Gambar desktop"},
     {"type":"image_picker","id":"mobile_image","label":"Gambar mobile"},
+    {"type":"url","id":"image_url","label":"URL gambar desktop dari Shopify Files"},
+    {"type":"url","id":"mobile_image_url","label":"URL gambar mobile dari Shopify Files"},
     {"type":"range","id":"height","label":"Tinggi desktop","min":500,"max":1000,"step":50,"unit":"px","default":750},
     {"type":"range","id":"overlay","label":"Overlay gambar","min":0,"max":80,"step":5,"unit":"%","default":35},
     {"type":"color","id":"text_color","label":"Warna teks","default":"#ffffff"},
@@ -118,3 +127,4 @@
   "presets": [{"name":"Panduan hotspot"}]
 }
 {% endschema %}
+
