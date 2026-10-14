@@ -212,6 +212,89 @@
         "ul",
         "rod"
       ]
+    },
+    "shopee_reviews": {
+      "type": "shopee-reviews",
+      "settings": {
+        "eyebrow": "CERITA DARI PEMANCING",
+        "heading": "Ulasan 5 Bintang dari Shopee",
+        "intro": "Lihat pengalaman pelanggan dengan perlengkapan mancing pilihan.",
+        "show_filters": true,
+        "footer_note": "Ulasan ditampilkan sesuai data yang dimasukkan oleh pengelola toko.",
+        "accent_color": "#3282C0",
+        "star_color": "#FCDD16",
+        "padding_top": 40,
+        "padding_bottom": 40
+      },
+      "blocks": {
+        "review_1": {
+          "type": "review",
+          "settings": {
+            "rating": "5",
+            "category": "joran",
+            "reviewer": "",
+            "product_name": "",
+            "review_date": "",
+            "review_text": "",
+            "source_url": ""
+          }
+        },
+        "review_2": {
+          "type": "review",
+          "settings": {
+            "rating": "5",
+            "category": "reel",
+            "reviewer": "",
+            "product_name": "",
+            "review_date": "",
+            "review_text": "",
+            "source_url": ""
+          }
+        },
+        "review_3": {
+          "type": "review",
+          "settings": {
+            "rating": "5",
+            "category": "umpan",
+            "reviewer": "",
+            "product_name": "",
+            "review_date": "",
+            "review_text": "",
+            "source_url": ""
+          }
+        },
+        "review_4": {
+          "type": "review",
+          "settings": {
+            "rating": "5",
+            "category": "senar",
+            "reviewer": "",
+            "product_name": "",
+            "review_date": "",
+            "review_text": "",
+            "source_url": ""
+          }
+        },
+        "review_5": {
+          "type": "review",
+          "settings": {
+            "rating": "5",
+            "category": "aksesori",
+            "reviewer": "",
+            "product_name": "",
+            "review_date": "",
+            "review_text": "",
+            "source_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "review_1",
+        "review_2",
+        "review_3",
+        "review_4",
+        "review_5"
+      ]
     }
   },
   "order": [
@@ -221,6 +304,7 @@
     "new_arrivals",
     "brands",
     "products",
+    "shopee_reviews",
     "story",
     "partners",
     "guides",

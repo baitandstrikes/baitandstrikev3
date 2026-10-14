@@ -1,0 +1,224 @@
+{% liquid
+  assign review_count = 0
+  for block in section.blocks
+    if block.settings.rating == '5' and block.settings.review_text != blank
+      assign review_count = review_count | plus: 1
+    endif
+  endfor
+%}
+{% if review_count > 0 or request.design_mode %}
+<section class="bns-shopee-reviews section wrap" data-bns-reviews id="BnsShopeeReviews-{{ section.id }}">
+  <div class="bns-reviews-heading">
+    <div>
+      {% if section.settings.eyebrow != blank %}<p class="bns-reviews-eyebrow">{{ section.settings.eyebrow | escape }}</p>{% endif %}
+      <h2>{{ section.settings.heading | escape }}</h2>
+      {% if section.settings.intro != blank %}<p class="bns-reviews-intro">{{ section.settings.intro | escape }}</p>{% endif %}
+    </div>
+    {% if review_count > 0 %}
+      <div class="bns-reviews-total" aria-label="{{ review_count }} ulasan lima bintang">
+        <strong>{{ review_count }}</strong>
+        <span>ulasan 5 bintang</span>
+      </div>
+    {% endif %}
+  </div>
+
+  {% if review_count > 0 %}
+    {% if section.settings.show_filters %}
+      <div class="bns-review-filters" role="group" aria-label="Filter kategori ulasan">
+        <button type="button" class="is-active" data-review-filter="all" aria-pressed="true">Semua</button>
+        <button type="button" data-review-filter="joran" aria-pressed="false">Joran</button>
+        <button type="button" data-review-filter="reel" aria-pressed="false">Reel</button>
+        <button type="button" data-review-filter="umpan" aria-pressed="false">Umpan</button>
+        <button type="button" data-review-filter="senar" aria-pressed="false">Senar</button>
+        <button type="button" data-review-filter="aksesori" aria-pressed="false">Aksesori</button>
+        <button type="button" data-review-filter="lainnya" aria-pressed="false">Lainnya</button>
+      </div>
+    {% endif %}
+
+    <div class="bns-review-grid" data-review-grid>
+      {% for block in section.blocks %}
+        {% if block.settings.rating == '5' and block.settings.review_text != blank %}
+          <article class="bns-review-card" data-review-card data-category="{{ block.settings.category | escape }}" {{ block.shopify_attributes }}>
+            <div class="bns-review-card-top">
+              <span class="bns-review-stars" aria-label="5 dari 5 bintang">★★★★★</span>
+              <span class="bns-shopee-source"><span aria-hidden="true">●</span> Shopee</span>
+            </div>
+            <p class="bns-review-category">
+              {% case block.settings.category %}
+                {% when 'joran' %}Joran
+                {% when 'reel' %}Reel
+                {% when 'umpan' %}Umpan
+                {% when 'senar' %}Senar
+                {% when 'aksesori' %}Aksesori
+                {% else %}Lainnya
+              {% endcase %}
+            </p>
+            <blockquote class="bns-review-text">{{ block.settings.review_text | escape | newline_to_br }}</blockquote>
+            {% if block.settings.product_name != blank %}<p class="bns-review-product">{{ block.settings.product_name | escape }}</p>{% endif %}
+            <div class="bns-review-footer">
+              <div>
+                <p class="bns-review-author">{{ block.settings.reviewer | default: 'Pelanggan Shopee' | escape }}</p>
+                {% if block.settings.review_date != blank %}<p class="bns-review-date">{{ block.settings.review_date | escape }}</p>{% endif %}
+              </div>
+              {% if block.settings.source_url != blank %}
+                <a class="bns-review-link" href="{{ block.settings.source_url }}" target="_blank" rel="noopener noreferrer">Lihat di Shopee ↗</a>
+              {% endif %}
+            </div>
+          </article>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <p class="bns-reviews-empty-filter" data-review-empty hidden>Tidak ada ulasan pada kategori ini.</p>
+    {% if section.settings.footer_note != blank %}<p class="bns-reviews-note">{{ section.settings.footer_note | escape }}</p>{% endif %}
+  {% elsif request.design_mode %}
+    <div class="bns-reviews-editor-empty">
+      <strong>Section ulasan siap diisi.</strong>
+      <p>Tambahkan blok “Ulasan pelanggan” di panel kiri, lalu masukkan teks review asli dari Shopee. Hanya review bintang 5 dengan teks yang terisi akan tampil di website.</p>
+    </div>
+  {% endif %}
+</section>
+
+{% style %}
+  #BnsShopeeReviews-{{ section.id }} {
+    --bns-review-blue: {{ section.settings.accent_color }};
+    --bns-review-yellow: {{ section.settings.star_color }};
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+  #BnsShopeeReviews-{{ section.id }} .bns-reviews-heading {
+    display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 24px;
+  }
+  #BnsShopeeReviews-{{ section.id }} .bns-reviews-eyebrow {
+    margin: 0 0 8px; color: var(--bns-review-blue); font-size: .75rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase;
+  }
+  #BnsShopeeReviews-{{ section.id }} .bns-reviews-heading h2 {
+    margin: 0; font-size: clamp(1.6rem, 3vw, 2.5rem); line-height: 1.1;
+  }
+  #BnsShopeeReviews-{{ section.id }} .bns-reviews-intro { margin: 10px 0 0; max-width: 650px; opacity: .76; }
+  #BnsShopeeReviews-{{ section.id }} .bns-reviews-total {
+    flex: 0 0 auto; display: flex; align-items: center; gap: 10px; padding: 12px 16px; border-radius: 12px; background: color-mix(in srgb, var(--bns-review-blue) 10%, transparent);
+  }
+  #BnsShopeeReviews-{{ section.id }} .bns-reviews-total strong { font-size: 1.6rem; line-height: 1; }
+  #BnsShopeeReviews-{{ section.id }} .bns-reviews-total span { max-width: 90px; font-size: .78rem; line-height: 1.25; }
+  #BnsShopeeReviews-{{ section.id }} .bns-review-filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
+  #BnsShopeeReviews-{{ section.id }} .bns-review-filters button {
+    border: 1px solid rgba(50,130,192,.28); border-radius: 999px; padding: 8px 14px; background: transparent; color: inherit; font: inherit; font-size: .86rem; cursor: pointer;
+  }
+  #BnsShopeeReviews-{{ section.id }} .bns-review-filters button.is-active { border-color: var(--bns-review-blue); background: var(--bns-review-blue); color: #fff; }
+  #BnsShopeeReviews-{{ section.id }} .bns-review-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  #BnsShopeeReviews-{{ section.id }} .bns-review-card {
+    min-width: 0; display: flex; flex-direction: column; padding: 20px; border: 1px solid rgba(40,50,60,.12); border-radius: 16px; background: var(--color-background, #fff); box-shadow: 0 5px 20px rgba(20,35,45,.045);
+  }
+  #BnsShopeeReviews-{{ section.id }} .bns-review-card-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+  #BnsShopeeReviews-{{ section.id }} .bns-review-stars { color: var(--bns-review-yellow); letter-spacing: 2px; white-space: nowrap; }
+  #BnsShopeeReviews-{{ section.id }} .bns-shopee-source { display: inline-flex; align-items: center; gap: 5px; font-size: .72rem; font-weight: 700; opacity: .72; }
+  #BnsShopeeReviews-{{ section.id }} .bns-shopee-source span { color: #ee4d2d; font-size: .7rem; }
+  #BnsShopeeReviews-{{ section.id }} .bns-review-category { align-self: flex-start; margin: 16px 0 8px; padding: 4px 9px; border-radius: 6px; background: color-mix(in srgb, var(--bns-review-blue) 10%, transparent); color: var(--bns-review-blue); font-size: .72rem; font-weight: 800; }
+  #BnsShopeeReviews-{{ section.id }} .bns-review-text { margin: 0 0 14px; padding: 0; font-size: .98rem; line-height: 1.65; overflow-wrap: anywhere; }
+  #BnsShopeeReviews-{{ section.id }} .bns-review-product { margin: auto 0 14px; padding-top: 12px; font-size: .8rem; font-weight: 700; opacity: .72; }
+  #BnsShopeeReviews-{{ section.id }} .bns-review-footer { display: flex; align-items: end; justify-content: space-between; gap: 12px; margin-top: auto; padding-top: 14px; border-top: 1px solid rgba(40,50,60,.1); }
+  #BnsShopeeReviews-{{ section.id }} .bns-review-author { margin: 0; font-size: .86rem; font-weight: 800; }
+  #BnsShopeeReviews-{{ section.id }} .bns-review-date { margin: 3px 0 0; font-size: .74rem; opacity: .62; }
+  #BnsShopeeReviews-{{ section.id }} .bns-review-link { flex: 0 0 auto; color: var(--bns-review-blue); font-size: .78rem; font-weight: 800; text-decoration: none; }
+  #BnsShopeeReviews-{{ section.id }} .bns-review-link:hover { text-decoration: underline; }
+  #BnsShopeeReviews-{{ section.id }} .bns-reviews-note { margin: 18px 0 0; font-size: .76rem; opacity: .62; }
+  #BnsShopeeReviews-{{ section.id }} .bns-reviews-empty-filter, #BnsShopeeReviews-{{ section.id }} .bns-reviews-editor-empty { padding: 20px; border: 1px dashed rgba(40,50,60,.28); border-radius: 12px; }
+  #BnsShopeeReviews-{{ section.id }} .bns-reviews-editor-empty p { margin-bottom: 0; }
+  @media (max-width: 900px) { #BnsShopeeReviews-{{ section.id }} .bns-review-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 600px) {
+    #BnsShopeeReviews-{{ section.id }} { padding-top: {{ section.settings.padding_top | divided_by: 2 }}px; padding-bottom: {{ section.settings.padding_bottom | divided_by: 2 }}px; }
+    #BnsShopeeReviews-{{ section.id }} .bns-reviews-heading { align-items: start; flex-direction: column; gap: 14px; }
+    #BnsShopeeReviews-{{ section.id }} .bns-review-grid { grid-template-columns: 1fr; }
+    #BnsShopeeReviews-{{ section.id }} .bns-review-card { padding: 17px; }
+  }
+{% endstyle %}
+
+{% javascript %}
+  (() => {
+    const initReviews = (root) => {
+      if (!root || root.dataset.reviewsReady === 'true') return;
+      root.dataset.reviewsReady = 'true';
+      const cards = Array.from(root.querySelectorAll('[data-review-card]'));
+      const filters = Array.from(root.querySelectorAll('[data-review-filter]'));
+      const empty = root.querySelector('[data-review-empty]');
+      filters.forEach((button) => {
+        const category = button.dataset.reviewFilter;
+        if (category !== 'all' && !cards.some((card) => card.dataset.category === category)) button.hidden = true;
+        button.addEventListener('click', () => {
+          filters.forEach((item) => {
+            const active = item === button;
+            item.classList.toggle('is-active', active);
+            item.setAttribute('aria-pressed', String(active));
+          });
+          let visible = 0;
+          cards.forEach((card) => {
+            const show = category === 'all' || card.dataset.category === category;
+            card.hidden = !show;
+            if (show) visible += 1;
+          });
+          if (empty) empty.hidden = visible !== 0;
+        });
+      });
+    };
+    const start = () => document.querySelectorAll('[data-bns-reviews]').forEach(initReviews);
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
+    else start();
+    document.addEventListener('shopify:section:load', (event) => {
+      const root = event.target.querySelector('[data-bns-reviews]');
+      if (root) initReviews(root);
+    });
+  })();
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "Ulasan Shopee BNS",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Teks kecil", "default": "CERITA DARI PEMANCING" },
+    { "type": "text", "id": "heading", "label": "Judul", "default": "Ulasan 5 Bintang dari Shopee" },
+    { "type": "textarea", "id": "intro", "label": "Deskripsi", "default": "Lihat pengalaman pelanggan dengan perlengkapan mancing pilihan." },
+    { "type": "checkbox", "id": "show_filters", "label": "Tampilkan filter kategori", "default": true },
+    { "type": "text", "id": "footer_note", "label": "Catatan di bawah ulasan", "default": "Ulasan ditampilkan sesuai data yang dimasukkan oleh pengelola toko." },
+    { "type": "color", "id": "accent_color", "label": "Warna aksen", "default": "#3282C0" },
+    { "type": "color", "id": "star_color", "label": "Warna bintang", "default": "#FCDD16" },
+    { "type": "range", "id": "padding_top", "label": "Jarak atas", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 40 },
+    { "type": "range", "id": "padding_bottom", "label": "Jarak bawah", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 40 }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Ulasan pelanggan",
+      "settings": [
+        { "type": "select", "id": "rating", "label": "Rating", "options": [
+          { "value": "5", "label": "5 bintang" },
+          { "value": "4", "label": "4 bintang" },
+          { "value": "3", "label": "3 bintang" },
+          { "value": "2", "label": "2 bintang" },
+          { "value": "1", "label": "1 bintang" }
+        ], "default": "5" },
+        { "type": "select", "id": "category", "label": "Kategori produk", "options": [
+          { "value": "joran", "label": "Joran" },
+          { "value": "reel", "label": "Reel" },
+          { "value": "umpan", "label": "Umpan" },
+          { "value": "senar", "label": "Senar" },
+          { "value": "aksesori", "label": "Aksesori" },
+          { "value": "lainnya", "label": "Lainnya" }
+        ], "default": "joran" },
+        { "type": "text", "id": "reviewer", "label": "Nama reviewer", "default": "" },
+        { "type": "text", "id": "product_name", "label": "Nama produk", "default": "" },
+        { "type": "text", "id": "review_date", "label": "Tanggal review", "default": "" },
+        { "type": "textarea", "id": "review_text", "label": "Isi review asli", "default": "" },
+        { "type": "url", "id": "source_url", "label": "Link review Shopee (opsional)" }
+      ]
+    }
+  ],
+  "max_blocks": 30,
+  "presets": [
+    { "name": "Ulasan Shopee BNS", "blocks": [
+      { "type": "review" },
+      { "type": "review" },
+      { "type": "review" }
+    ] }
+  ]
+}
+{% endschema %}
