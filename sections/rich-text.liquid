@@ -40,7 +40,7 @@
 {% endjavascript %}
 {% schema %}
 {
-  "name": "Rich Text",
+  "name": "Brand Story",
   "settings": [
     {"type":"video","id":"background_video","label":"Video background","info":"Pilih atau upload video. Video diputar berulang tanpa suara."},
     {"type":"range","id":"video_overlay","label":"Tingkat gelap background","min":30,"max":80,"step":5,"unit":"%","default":55},
@@ -78,7 +78,14 @@
   ],
   "presets": [
     {
-      "name": "Rich Text"
+      "name": "Brand Story",
+      "settings": {
+        "eyebrow": "CERITA BAIT&STRIKE",
+        "title": "Dibuat untuk setiap petualangan.",
+        "text": "<p>Dari lemparan pertama sampai strike berikutnya, temukan perlengkapan mancing pilihan yang siap menemani setiap perjalananmu.</p>",
+        "button_label": "Jelajahi Koleksi",
+        "link": "/collections"
+      }
     }
   ]
 }
