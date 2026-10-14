@@ -25,6 +25,7 @@
         url.searchParams.set('section_id', 'predictive-search');
         url.searchParams.set('resources[type]', 'product,collection,page');
         url.searchParams.set('resources[limit]', '6');
+        url.searchParams.set('resources[options][fields]', 'title,vendor,variants.title,variants.sku');
         const response = await fetch(url, {signal: controller.signal, credentials: 'same-origin'});
         if (!response.ok) throw new Error('Search unavailable');
         const doc = new DOMParser().parseFromString(await response.text(), 'text/html');

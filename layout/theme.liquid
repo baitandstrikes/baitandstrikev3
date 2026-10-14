@@ -20,6 +20,8 @@
 <script type="application/json" id="bns-config">{"bulkEmpty":{{ 'b2b.empty' | t | json }},"bulkInvalid":{{ 'b2b.invalid' | t | json }},"predictive":{{ routes.predictive_search_url | json }},"root":{{ routes.root_url | json }},"cart":{{ routes.cart_url | json }},"add":{{ routes.cart_add_url | append: '.js' | json }},"change":{{ routes.cart_change_url | append: '.js' | json }},"error":{{ 'general.error' | t | json }},"loading":{{ 'general.loading' | t | json }},"added":{{ 'cart.added' | t | json }},"copied":{{ 'general.copied' | t | json }},"deleteConfirm":{{ 'customer.delete_confirm' | t | json }}}</script>
 <script src="{{ 'discovery.js' | asset_url }}" defer></script>
 <script src="{{ 'bulk-order.js' | asset_url }}" defer></script>
+<script type="application/json" id="fishing-discovery-labels">{"length":{{ 'discovery.length' | t | json }},"weight":{{ 'discovery.weight' | t | json }},"brand":{{ 'discovery.brand' | t | json }},"hint":{{ 'discovery.filter_hint' | t | json }},"loading":{{ 'discovery.loading' | t | json }},"error":{{ 'discovery.load_error' | t | json }},"all":{{ 'discovery.all' | t | json }},"reset":{{ 'discovery.reset' | t | json }},"results":{{ 'discovery.results' | t: count: 'COUNT' | json }},"empty":{{ 'discovery.empty' | t | json }},"previous":{{ 'discovery.previous' | t | json }},"next":{{ 'discovery.next' | t | json }}}</script>
+<script src="{{ 'fishing-discovery.js' | asset_url }}" defer></script>
 </head>
 <body class="page-{{ request.page_type }}{% if settings.animations %} motion-enabled{% endif %}">
 <a href="#MainContent" class="skip-link">{{ 'general.skip' | t }}</a>
@@ -31,4 +33,3 @@
 <dialog id="ImageZoom" class="zoom-dialog" aria-label="{{ 'general.zoom' | t }}"><button class="icon-button dialog-close" data-close-dialog aria-label="{{ 'general.close' | t }}">{% render 'icon', name: 'close' %}</button><img width="1800" height="1800" alt="" data-zoom-image></dialog>
 <div id="BnsStatus" class="toast" role="status" aria-live="polite"></div>
 </body></html>
-

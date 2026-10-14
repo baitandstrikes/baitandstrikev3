@@ -108,6 +108,73 @@
         "title": "New Arrival",
         "limit": 8
       }
+    },
+    "brands": {
+      "type": "brand-discovery",
+      "settings": {
+        "title": "Belanja berdasarkan merek",
+        "text": "Temukan perlengkapan dari merek pilihanmu."
+      },
+      "blocks": {
+        "b0": {
+          "type": "brand",
+          "settings": {
+            "vendor": "JEMMY"
+          }
+        },
+        "b1": {
+          "type": "brand",
+          "settings": {
+            "vendor": "Ecooda"
+          }
+        },
+        "b2": {
+          "type": "brand",
+          "settings": {
+            "vendor": "Proberos"
+          }
+        },
+        "b3": {
+          "type": "brand",
+          "settings": {
+            "vendor": "Lurekiller"
+          }
+        },
+        "b4": {
+          "type": "brand",
+          "settings": {
+            "vendor": "GT-Fisher"
+          }
+        },
+        "b5": {
+          "type": "brand",
+          "settings": {
+            "vendor": "Guangwei"
+          }
+        },
+        "b6": {
+          "type": "brand",
+          "settings": {
+            "vendor": "Haut Ton"
+          }
+        },
+        "b7": {
+          "type": "brand",
+          "settings": {
+            "vendor": "Lemoren"
+          }
+        }
+      },
+      "block_order": [
+        "b0",
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6",
+        "b7"
+      ]
     }
   },
   "order": [
@@ -115,6 +182,7 @@
     "intro",
     "countdown",
     "new_arrivals",
+    "brands",
     "products",
     "story",
     "partners",
