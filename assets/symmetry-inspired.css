@@ -121,3 +121,19 @@ dialog[open]::backdrop{
     animation:none!important;
   }
 }
+
+/* Compact mobile commerce header: controls, full-width search, then content */
+@media(max-width:749px){
+  .header-main{height:62px;padding-inline:2px}
+  .header-left .search-launch{display:none!important}
+  .search-mobile-launch{display:flex!important;align-items:center;gap:11px;width:calc(100% - 28px);height:44px;margin:0 14px 12px;padding:0 14px;border:1px solid #d5dce0;background:#fff;color:#39464e;font-size:12px;text-align:left;box-shadow:0 4px 15px #071a2b12}
+  .search-mobile-launch span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .search-mobile-launch .icon{width:19px;height:19px}
+  .site-header{padding-bottom:1px}
+  .page-index .site-header.is-transparent,.page-index .site-header.is-transparent:not(.scrolled){margin-bottom:-119px;background:var(--announcement-bg,#123f5f);color:#fff}
+  .page-index .search-mobile-launch{border-color:#ffffff80}
+  .hero{padding-top:119px}
+  .menu-open .main-nav{height:100dvh}
+  .header-right{gap:1px}.header-right .icon-button{width:29px}.header-left .icon-button{width:31px}
+  .header-main .brand img{max-width:min(30vw,118px);max-height:38px}
+}
