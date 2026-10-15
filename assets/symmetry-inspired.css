@@ -56,3 +56,5 @@
 @media(prefers-reduced-motion:reduce){.icon-button,.icon-button .icon,.button,.text-link,.nav-inner>a,.mega-item>summary,.mega-item>summary .icon,.product-card,.card-media,.card-primary,.card-secondary,.quick-view-button,.collection-tile,.collection-tile>img,.brand-link,.card-swatch,.slide-dot,.quantity-picker button,.product-accordion summary,.product-accordion summary .icon,.filter-group summary,.filter-group summary .icon,.shopping-actions .text-link,.shopping-actions .icon,.cart-count{transition:none!important;animation:none!important}}
 /* Mobile search: show only the dedicated full-width search launcher, not the header icon too. */
 @media(max-width:749px){.header-left .search-launch{display:none!important}}
+/* Mobile header search: keep the compact icon only; remove the duplicate full-width search button. */
+@media(max-width:749px){.header-left .search-launch{display:inline-flex!important}.search-mobile-launch{display:none!important}}
