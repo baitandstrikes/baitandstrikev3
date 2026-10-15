@@ -1,4 +1,19 @@
-<section class="section wrap"><div class="section-heading"><h2>{{ section.settings.title | escape }}</h2></div><div class="journal-grid">{% for article in section.settings.blog.articles limit: 3 %}<article>{% if article.image %}<a href="{{ article.url }}">{{ article.image | image_url: width: 900 | image_tag: loading: 'lazy' }}</a>{% endif %}<h3><a href="{{ article.url }}">{{ article.title | escape }}</a></h3><p>{{ article.published_at | date: '%d %B %Y' }}</p><div class="rte">{{ article.excerpt_or_content | strip_html | truncate: 180 }}</div><a class="text-link" href="{{ article.url }}">{{ 'general.read_more' | t }}</a></article>{% endfor %}</div></section>
+{% if section.settings.blog != blank and section.settings.blog.articles_count > 0 %}
+  <section class="section wrap">
+    <div class="section-heading"><h2>{{ section.settings.title | escape }}</h2></div>
+    <div class="journal-grid">
+      {% for article in section.settings.blog.articles limit: 3 %}
+        <article>
+          {% if article.image %}<a href="{{ article.url }}">{{ article.image | image_url: width: 900 | image_tag: loading: 'lazy' }}</a>{% endif %}
+          <h3><a href="{{ article.url }}">{{ article.title | escape }}</a></h3>
+          <p>{{ article.published_at | date: '%d %B %Y' }}</p>
+          <div class="rte">{{ article.excerpt_or_content | strip_html | truncate: 180 }}</div>
+          <a class="text-link" href="{{ article.url }}">{{ 'general.read_more' | t }}</a>
+        </article>
+      {% endfor %}
+    </div>
+  </section>
+{% endif %}
 {% schema %}
 {
   "name": "Journal",
