@@ -54,4 +54,5 @@
 @keyframes bns-heart-pop{0%{transform:scale(.82)}55%{transform:scale(1.28)}100%{transform:scale(1.12)}}
 @media(hover:none){.header-right .icon-button:hover,.header-left .icon-button:hover,.product-card:hover,.brand-link:hover,.button:hover{transform:none}.product-card:hover .card-media,.brand-link:hover,.button:hover{box-shadow:none}}
 @media(prefers-reduced-motion:reduce){.icon-button,.icon-button .icon,.button,.text-link,.nav-inner>a,.mega-item>summary,.mega-item>summary .icon,.product-card,.card-media,.card-primary,.card-secondary,.quick-view-button,.collection-tile,.collection-tile>img,.brand-link,.card-swatch,.slide-dot,.quantity-picker button,.product-accordion summary,.product-accordion summary .icon,.filter-group summary,.filter-group summary .icon,.shopping-actions .text-link,.shopping-actions .icon,.cart-count{transition:none!important;animation:none!important}}
-
+/* Mobile search: show only the dedicated full-width search launcher, not the header icon too. */
+@media(max-width:749px){.header-left .search-launch{display:none!important}}
