@@ -29,7 +29,7 @@
   </div>
   <div class="gear-guide-hotspot__points">
     {% for block in section.blocks %}
-      <details class="gear-guide-point gear-guide-point--{{ block.settings.panel_side }}" style="--point-x: {{ block.settings.x }}%; --point-y: {{ block.settings.y }}%;" {{ block.shopify_attributes }}>
+      <details class="gear-guide-point gear-guide-point--{{ block.settings.panel_side }}" style="--point-x: {{ block.settings.x }}%; --point-y: {{ block.settings.y }}%; --point-mobile-x: {{ block.settings.mobile_x }}%; --point-mobile-y: {{ block.settings.mobile_y }}%;" {{ block.shopify_attributes }}>
         <summary aria-label="{{ 'tools.open_guide' | t: title: block.settings.title }}"><span aria-hidden="true">+</span></summary>
         <div class="gear-guide-point__card">
           <button type="button" class="gear-guide-point__close" data-guide-close aria-label="{{ 'tools.close_guide' | t }}">×</button>
@@ -65,15 +65,21 @@
   .gear-guide-point__card .rte{font-size:15px;line-height:1.7;margin-bottom:18px}
   .gear-guide-point__card .eyebrow{margin-bottom:12px}
   .gear-guide-point__close{position:absolute;right:14px;top:10px;width:44px;height:44px;border:0;background:transparent;font-size:28px;line-height:1}
+  @media(max-width:989px){
+    .gear-guide-point[open]::before{content:"";position:fixed;inset:0;z-index:98;background:#061c2b99;backdrop-filter:blur(2px)}
+    .gear-guide-point[open]>summary{position:relative;z-index:99}
+    .gear-guide-point__card,.gear-guide-point--left .gear-guide-point__card{position:fixed;z-index:100;left:50%;right:auto;top:50%;bottom:auto;transform:translate(-50%,-50%);width:min(460px,calc(100vw - 36px));max-height:80dvh;overflow:auto;padding:32px 32px}
+  }
   @media(max-width:749px){
     .gear-guide-hotspot{min-height:680px}
     .gear-guide-hotspot__shade{background:linear-gradient(180deg,#061c2baa,transparent 55%,#061c2b55)}
     .gear-guide-hotspot__copy{width:100%;padding:48px 24px;text-align:center}
     .gear-guide-hotspot__copy h2{font-size:36px}
     .gear-guide-hotspot__copy .rte{font-size:14px;margin-inline:auto}
+    .gear-guide-point{left:var(--point-mobile-x);top:var(--point-mobile-y)}
     .gear-guide-point>summary{width:58px;height:58px}
     .gear-guide-point>summary span{font-size:31px}
-    .gear-guide-point__card,.gear-guide-point--left .gear-guide-point__card{position:fixed;z-index:100;left:18px;right:18px;top:auto;bottom:max(18px,env(safe-area-inset-bottom));transform:none;width:auto;max-height:70dvh;overflow:auto;padding:30px 28px}
+    .gear-guide-point__card,.gear-guide-point--left .gear-guide-point__card{left:18px;right:18px;top:auto;bottom:max(18px,env(safe-area-inset-bottom));transform:none;width:auto;max-height:70dvh;padding:30px 28px}
     .gear-guide-point__card h3{font-size:21px;padding-right:28px}
   }
   @media(prefers-reduced-motion:reduce){.gear-guide-point>summary,.gear-guide-point>summary span{transition:none}}
@@ -120,6 +126,8 @@
         {"type":"collection","id":"collection","label":"Koleksi terkait"},
         {"type":"range","id":"x","label":"Posisi horizontal","min":5,"max":95,"step":1,"unit":"%","default":65},
         {"type":"range","id":"y","label":"Posisi vertikal","min":10,"max":90,"step":1,"unit":"%","default":55},
+        {"type":"range","id":"mobile_x","label":"Posisi horizontal mobile","min":5,"max":95,"step":1,"unit":"%","default":65},
+        {"type":"range","id":"mobile_y","label":"Posisi vertikal mobile","min":10,"max":90,"step":1,"unit":"%","default":55},
         {"type":"select","id":"panel_side","label":"Arah kartu","options":[{"value":"right","label":"Kanan"},{"value":"left","label":"Kiri"}],"default":"left"}
       ]
     }
@@ -127,4 +135,3 @@
   "presets": [{"name":"Panduan hotspot"}]
 }
 {% endschema %}
-
