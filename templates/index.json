@@ -1,16 +1,155 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
+    "commerce": {
+      "type": "commerce-home",
+      "blocks": {
+        "promo_1": {
+          "type": "promo",
+          "settings": {
+            "eyebrow": "PROMO BAITANDSTRIKE",
+            "title": "Perlengkapan mancing pilihan untuk trip berikutnya",
+            "button_label": "BELANJA SEKARANG",
+            "link": "/collections/all",
+            "image_url": "https://cdn.shopify.com/s/files/1/0837/1195/1076/files/DESAIN_STIKER_KACA-OFFLINE_STORE_BNS.png?v=1789183669"
+          }
+        },
+        "promo_2": {
+          "type": "promo",
+          "settings": {
+            "eyebrow": "READY FOR YOUR NEXT TRIP",
+            "title": "Joran, reel, umpan dan aksesori dalam satu tempat",
+            "button_label": "LIHAT PRODUK BARU",
+            "link": "/collections/new-arrival",
+            "image_url": "https://cdn.shopify.com/s/files/1/0837/1195/1076/files/back.png?v=1788340231"
+          }
+        }
+      },
+      "block_order": [
+        "promo_1",
+        "promo_2"
+      ],
+      "settings": {
+        "collection": "new-arrival",
+        "heading": "Product Highlight",
+        "limit": 8
+      }
+    },
+    "recently_viewed": {
+      "type": "recently-viewed",
+      "settings": {
+        "title": "Terakhir dilihat",
+        "clear_label": "Hapus riwayat"
+      }
+    },
+    "catalog_body": {
+      "type": "catalog-body",
+      "blocks": {
+        "cat_rods": {
+          "type": "category",
+          "settings": {
+            "title": "Joran",
+            "collection": "fishing-rods-joran",
+            "asset": "category-rods.png"
+          }
+        },
+        "cat_reel": {
+          "type": "category",
+          "settings": {
+            "title": "Reel",
+            "collection": "reel",
+            "asset": "category-reel.png"
+          }
+        },
+        "cat_bait": {
+          "type": "category",
+          "settings": {
+            "title": "Umpan",
+            "collection": "fishing-bait",
+            "asset": "category-bait.png"
+          }
+        },
+        "cat_accessories": {
+          "type": "category",
+          "settings": {
+            "title": "Aksesori",
+            "collection": "fishing-accesories",
+            "asset": "category-accessories.png"
+          }
+        },
+        "cat_line": {
+          "type": "category",
+          "settings": {
+            "title": "Fishing Line",
+            "collection": "fishing-line",
+            "asset": "category-line.png"
+          }
+        },
+        "cat_hook": {
+          "type": "category",
+          "settings": {
+            "title": "Hook",
+            "collection": "hook",
+            "asset": "category-hook.png"
+          }
+        },
+        "brand_jemmy": {
+          "type": "brand",
+          "settings": {
+            "vendor": "JEMMY",
+            "image": "shopify://shop_images/bns-brand-jemmy.png"
+          }
+        },
+        "brand_ecooda": {
+          "type": "brand",
+          "settings": {
+            "vendor": "Ecooda",
+            "image": "shopify://shop_images/bns-brand-ecooda.png"
+          }
+        },
+        "brand_proberos": {
+          "type": "brand",
+          "settings": {
+            "vendor": "Proberos",
+            "image": "shopify://shop_images/bns-brand-proberos.png"
+          }
+        },
+        "brand_lurekiller": {
+          "type": "brand",
+          "settings": {
+            "vendor": "Lurekiller",
+            "image": "shopify://shop_images/bns-brand-lurekiller.jpg"
+          }
+        },
+        "brand_lemoren": {
+          "type": "brand",
+          "settings": {
+            "vendor": "Lemoren",
+            "image": "shopify://shop_images/bns-brand-lemoren.png"
+          }
+        }
+      },
+      "block_order": [
+        "cat_rods",
+        "cat_reel",
+        "cat_bait",
+        "cat_accessories",
+        "cat_line",
+        "cat_hook",
+        "brand_jemmy",
+        "brand_ecooda",
+        "brand_proberos",
+        "brand_lurekiller",
+        "brand_lemoren"
+      ],
+      "settings": {
+        "heading": "Kategori unggulan BAITANDSTRIKE",
+        "text": "Temukan produk berdasarkan kategori dan kebutuhan memancing.",
+        "brand_heading": "Brand Populer"
+      }
+    },
     "hero": {
       "type": "hero-slideshow",
+      "disabled": true,
       "blocks": {
         "s1": {
           "type": "slide",
@@ -48,18 +187,17 @@
         "overlay": 15,
         "autoplay": true,
         "delay": 7
-      },
-      "disabled": true
+      }
     },
     "countdown": {
       "type": "countdown-promo",
+      "disabled": true,
       "settings": {
         "title": "Pilihan untuk trip berikutnya",
         "end": "2026-10-31T23:59:00+07:00",
         "label": "Jelajahi koleksi",
         "link": ""
-      },
-      "disabled": true
+      }
     },
     "new_arrivals": {
       "type": "featured-collection",
@@ -68,7 +206,8 @@
         "eyebrow": "",
         "title": "New Arrival",
         "limit": 5
-      }
+      },
+      "disabled": true
     },
     "brands": {
       "type": "brand-discovery",
@@ -124,7 +263,23 @@
       "settings": {
         "title": "Belanja berdasarkan merek",
         "text": "Temukan perlengkapan dari merek pilihanmu."
-      }
+      },
+      "disabled": true
+    },
+    "intro": {
+      "type": "rich-text",
+      "settings": {
+        "background_video": "shopify://files/videos/videoplayback.webm",
+        "video_overlay": 60,
+        "pause_label": "Jeda video",
+        "play_label": "Putar video",
+        "eyebrow": "BAITANDSTRIKE",
+        "title": "“Kami percaya pada kualitas perlengkapan, petualangan di alam terbuka, dan cerita yang dibawa pulang dari setiap trip.”",
+        "text": "<p>Temukan perlengkapan pilihan untuk strike berikutnya.</p>",
+        "button_label": "Kenali BNS",
+        "link": ""
+      },
+      "disabled": true
     },
     "products": {
       "type": "featured-collection",
@@ -133,7 +288,8 @@
         "eyebrow": "",
         "title": "Pilihan favorit",
         "limit": 8
-      }
+      },
+      "disabled": true
     },
     "shopee_reviews": {
       "type": "shopee-reviews",
@@ -279,143 +435,34 @@
         "star_color": "#fcdd16",
         "padding_top": 40,
         "padding_bottom": 40
-      }
-    },
-    "how_to_buy_sell": {
-      "type": "how-to-buy-sell",
-      "blocks": {
-        "buy1": {
-          "type": "buy_step",
-          "settings": {
-            "title": "Pilih produk",
-            "text": "Jelajahi katalog dan pilih perlengkapan sesuai kebutuhan."
-          }
-        },
-        "buy2": {
-          "type": "buy_step",
-          "settings": {
-            "title": "Cek varian & detail",
-            "text": "Periksa spesifikasi, pilihan varian, dan ketersediaan produk."
-          }
-        },
-        "buy3": {
-          "type": "buy_step",
-          "settings": {
-            "title": "Checkout",
-            "text": "Masukkan produk ke keranjang dan lanjutkan proses pemesanan."
-          }
-        },
-        "sell1": {
-          "type": "sell_step",
-          "settings": {
-            "title": "Daftar sebagai mitra",
-            "text": "Isi formulir pendaftaran dengan data usaha dan kontak."
-          }
-        },
-        "sell2": {
-          "type": "sell_step",
-          "settings": {
-            "title": "Tim kami meninjau",
-            "text": "Tim BAIT&STRIKE akan meninjau informasi yang kamu kirim."
-          }
-        },
-        "sell3": {
-          "type": "sell_step",
-          "settings": {
-            "title": "Mulai berkolaborasi",
-            "text": "Setelah dihubungi tim kami, diskusikan kebutuhan dan peluang kerja sama."
-          }
-        }
       },
-      "block_order": [
-        "buy1",
-        "buy2",
-        "buy3",
-        "sell1",
-        "sell2",
-        "sell3"
-      ],
-      "settings": {
-        "eyebrow": "MULAI DI BAIT&STRIKE",
-        "title": "Mau belanja atau jadi mitra?",
-        "intro": "<p>Pilih jalur yang sesuai kebutuhanmu. Belanja untuk trip berikutnya atau kembangkan bisnis perlengkapan pancing bersama kami.</p>",
-        "buy_eyebrow": "UNTUK PEMANCING",
-        "buy_title": "Cara Membeli",
-        "buy_text": "<p>Temukan perlengkapan yang cocok untuk target ikan, teknik, dan budget kamu.</p>",
-        "buy_button_label": "Jelajahi Produk",
-        "buy_link": "/collections/all",
-        "sell_eyebrow": "UNTUK RESELLER & TOKO",
-        "sell_title": "Cara Menjual",
-        "sell_text": "<p>Punya toko atau ingin menjual perlengkapan BAIT&STRIKE? Mulai dengan mendaftarkan minat sebagai mitra bisnis.</p>",
-        "sell_button_label": "Daftar Jadi Mitra",
-        "sell_link": "/pages/wholesale-registration-form"
-      }
+      "disabled": true
     },
-    "why_choose_us": {
-      "type": "why-choose-us",
-      "blocks": {
-        "benefit1": {
-          "type": "benefit",
-          "settings": {
-            "icon": "🎣",
-            "title": "Pilihan untuk Berbagai Teknik",
-            "text": "Jelajahi perlengkapan untuk berbagai gaya, target ikan, dan kondisi spot."
-          }
-        },
-        "benefit2": {
-          "type": "benefit",
-          "settings": {
-            "icon": "🔎",
-            "title": "Informasi Produk Jelas",
-            "text": "Detail dan varian membantu kamu menentukan pilihan sebelum membeli."
-          }
-        },
-        "benefit3": {
-          "type": "benefit",
-          "settings": {
-            "icon": "🤝",
-            "title": "Dukungan untuk Mitra",
-            "text": "Ada jalur pendaftaran untuk toko, reseller, dan kebutuhan bisnis."
-          }
-        },
-        "benefit4": {
-          "type": "benefit",
-          "settings": {
-            "icon": "📦",
-            "title": "Proses Pesanan Praktis",
-            "text": "Katalog dan keranjang membantu proses belanja tetap teratur."
-          }
-        },
-        "benefit5": {
-          "type": "benefit",
-          "settings": {
-            "icon": "💙",
-            "title": "Komunitas Angler",
-            "text": "Kami hadir untuk mendukung semangat dan pengalaman memancing."
-          }
-        },
-        "benefit6": {
-          "type": "benefit",
-          "settings": {
-            "icon": "⭐",
-            "title": "Fokus pada Kebutuhan Angler",
-            "text": "Kami terus membangun pengalaman belanja yang relevan untuk pemancing."
-          }
-        }
-      },
-      "block_order": [
-        "benefit1",
-        "benefit2",
-        "benefit3",
-        "benefit4",
-        "benefit5",
-        "benefit6"
-      ],
+    "story": {
+      "type": "image-with-text",
       "settings": {
-        "eyebrow": "KENAPA BAIT&STRIKE",
-        "title": "Why Choose Us",
-        "intro": "<p>Kami membantu pemancing menemukan perlengkapan yang tepat, dengan informasi produk yang jelas dan pilihan untuk kebutuhan personal maupun bisnis.</p>"
-      }
+        "eyebrow": "BUILT FOR THE WATER",
+        "title": "Perlengkapan tepat. Petualangan lebih jauh.",
+        "text": "<p>Lengkapi tackle box kamu dengan pilihan perlengkapan BAITANDSTRIKE.</p>",
+        "button_label": "Tonton video",
+        "link": "https://www.youtube.com/watch?v=QPwc3fP30kE",
+        "reverse": false,
+        "image_url": "https://cdn.shopify.com/s/files/1/0837/1195/1076/files/back.png?v=1788340231"
+      },
+      "disabled": true
+    },
+    "partners": {
+      "type": "promo-banner",
+      "settings": {
+        "eyebrow": "BNS PARTNERS",
+        "title": "Tumbuh bersama BAITANDSTRIKE.",
+        "text": "<p>Untuk toko, reseller, dan dealer. Temukan perlengkapan mancing untuk kebutuhan bisnis kamu.</p>",
+        "button_label": "Hubungi kami",
+        "link": "/pages/wholesale-registration-form",
+        "background": "#eeeae5",
+        "foreground": "#333333"
+      },
+      "disabled": true
     },
     "guides": {
       "type": "gear-guide",
@@ -477,61 +524,33 @@
         "button_label": "JELAJAHI PRODUK",
         "link": "/collections/all",
         "card_eyebrow": "TIPS PERLENGKAPAN"
-      }
+      },
+      "disabled": true
     },
     "journal": {
       "type": "journal",
       "settings": {
         "title": "Jurnal BNS",
         "blog": ""
-      }
-    },
-    "commerce": {
-      "type": "commerce-home",
-      "blocks": {
-        "promo_1": {
-          "type": "promo",
-          "settings": {
-            "eyebrow": "PROMO BAITANDSTRIKE",
-            "title": "Perlengkapan mancing pilihan untuk trip berikutnya",
-            "button_label": "BELANJA SEKARANG",
-            "link": "/collections/all",
-            "image_url": "https://cdn.shopify.com/s/files/1/0837/1195/1076/files/DESAIN_STIKER_KACA-OFFLINE_STORE_BNS.png?v=1789183669"
-          }
-        },
-        "promo_2": {
-          "type": "promo",
-          "settings": {
-            "eyebrow": "READY FOR YOUR NEXT TRIP",
-            "title": "Joran, reel, umpan dan aksesori dalam satu tempat",
-            "button_label": "LIHAT PRODUK BARU",
-            "link": "/collections/new-arrival",
-            "image_url": "https://cdn.shopify.com/s/files/1/0837/1195/1076/files/back.png?v=1788340231"
-          }
-        }
       },
-      "block_order": [
-        "promo_1",
-        "promo_2"
-      ],
-      "settings": {
-        "collection": "new-arrival",
-        "heading": "Product Highlight",
-        "limit": 8
-      }
+      "disabled": true
     }
   },
   "order": [
     "commerce",
-    "new_arrivals",
-    "brands",
-    "products",
+    "recently_viewed",
+    "catalog_body",
+    "intro",
     "shopee_reviews",
-    "how_to_buy_sell",
-    "why_choose_us",
+    "story",
+    "partners",
     "guides",
     "journal",
     "hero",
-    "countdown"
+    "countdown",
+    "brands",
+    "products",
+    "new_arrivals"
   ]
 }
+
