@@ -124,20 +124,6 @@
         "text": "Temukan perlengkapan dari merek pilihanmu."
       }
     },
-    "intro": {
-      "type": "rich-text",
-      "settings": {
-        "background_video": "shopify://files/videos/videoplayback.webm",
-        "video_overlay": 60,
-        "pause_label": "Jeda video",
-        "play_label": "Putar video",
-        "eyebrow": "BAITANDSTRIKE",
-        "title": "“Kami percaya pada kualitas perlengkapan, petualangan di alam terbuka, dan cerita yang dibawa pulang dari setiap trip.”",
-        "text": "<p>Temukan perlengkapan pilihan untuk strike berikutnya.</p>",
-        "button_label": "Kenali BNS",
-        "link": ""
-      }
-    },
     "products": {
       "type": "featured-collection",
       "settings": {
@@ -293,75 +279,6 @@
         "padding_bottom": 40
       }
     },
-    "guides": {
-      "type": "gear-guide",
-      "blocks": {
-        "pe": {
-          "type": "guide",
-          "settings": {
-            "title": "Pilih umpan sesuai spot",
-            "text": "<p>Sesuaikan jenis umpan dengan kedalaman air, arus, dan target ikan. Popper bekerja di permukaan dan cocok saat ikan aktif mengejar mangsa di lapisan atas.</p><p>Periksa berat umpan terhadap lure weight joran agar lemparan tetap aman dan seimbang. Pilih warna natural untuk air jernih atau warna kontras saat cahaya rendah.</p>",
-            "collection": "fishing-bait-umpan",
-            "x": 55,
-            "y": 68,
-            "mobile_x": 54,
-            "mobile_y": 73,
-            "panel_side": "right"
-          }
-        },
-        "ul": {
-          "type": "guide",
-          "settings": {
-            "title": "Memilih reel untuk ultralight",
-            "text": "<p>Mulai dari joran, bobot umpan, dan kapasitas senar yang dibutuhkan. Bandingkan bobot reel, ukuran spool, gear ratio, dan drag. Nomor ukuran antar merek tidak selalu setara.</p><p>Utamakan keseimbangan satu set dan pengaturan drag yang sesuai senar. Gunakan fitur Bandingkan untuk melihat spesifikasi varian berdampingan.</p>",
-            "collection": "reel",
-            "x": 72,
-            "y": 38,
-            "mobile_x": 72,
-            "mobile_y": 54,
-            "panel_side": "left"
-          }
-        },
-        "rod": {
-          "type": "guide",
-          "settings": {
-            "title": "Panjang dan action joran",
-            "text": "<p>Panjang joran memengaruhi jangkauan lempar dan ruang gerak. Sesuaikan dengan posisi memancing dan area di sekitar spot.</p><p>Action menjelaskan bagian joran yang melentur, sedangkan power menjelaskan kelas kekuatannya. Keduanya berbeda. Periksa rentang umpan serta line weight pada varian yang dipilih sebelum menyusun set.</p>",
-            "collection": "fishing-rods-joran",
-            "x": 84,
-            "y": 72,
-            "mobile_x": 84,
-            "mobile_y": 76,
-            "panel_side": "left"
-          }
-        }
-      },
-      "block_order": [
-        "pe",
-        "ul",
-        "rod"
-      ],
-      "settings": {
-        "image_url": "https://cdn.shopify.com/s/files/1/0838/8824/2905/files/bns-gear-guide-shopee-desktop.png?v=1791986990",
-        "mobile_image_url": "https://cdn.shopify.com/s/files/1/0838/8824/2905/files/bns-gear-guide-shopee-mobile.png?v=1791987005",
-        "height": 750,
-        "overlay": 35,
-        "text_color": "#ffffff",
-        "eyebrow": "PANDUAN BAITANDSTRIKE",
-        "title": "Pilih perlengkapan yang tepat.",
-        "text": "<p>Panduan ringkas untuk menyusun set pancing sesuai target ikan, teknik, dan lokasi memancing.</p>",
-        "button_label": "JELAJAHI PRODUK",
-        "link": "/collections/all",
-        "card_eyebrow": "TIPS PERLENGKAPAN"
-      }
-    },
-    "journal": {
-      "type": "journal",
-      "settings": {
-        "title": "Jurnal BNS",
-        "blog": ""
-      }
-    },
     "how_to_buy_sell": {
       "type": "how-to-buy-sell",
       "blocks": {
@@ -497,6 +414,75 @@
         "title": "Why Choose Us",
         "intro": "<p>Kami membantu pemancing menemukan perlengkapan yang tepat, dengan informasi produk yang jelas dan pilihan untuk kebutuhan personal maupun bisnis.</p>"
       }
+    },
+    "guides": {
+      "type": "gear-guide",
+      "blocks": {
+        "pe": {
+          "type": "guide",
+          "settings": {
+            "title": "Pilih umpan sesuai spot",
+            "text": "<p>Sesuaikan jenis umpan dengan kedalaman air, arus, dan target ikan. Popper bekerja di permukaan dan cocok saat ikan aktif mengejar mangsa di lapisan atas.</p><p>Periksa berat umpan terhadap lure weight joran agar lemparan tetap aman dan seimbang. Pilih warna natural untuk air jernih atau warna kontras saat cahaya rendah.</p>",
+            "collection": "fishing-bait-umpan",
+            "x": 55,
+            "y": 68,
+            "mobile_x": 54,
+            "mobile_y": 73,
+            "panel_side": "right"
+          }
+        },
+        "ul": {
+          "type": "guide",
+          "settings": {
+            "title": "Memilih reel untuk ultralight",
+            "text": "<p>Mulai dari joran, bobot umpan, dan kapasitas senar yang dibutuhkan. Bandingkan bobot reel, ukuran spool, gear ratio, dan drag. Nomor ukuran antar merek tidak selalu setara.</p><p>Utamakan keseimbangan satu set dan pengaturan drag yang sesuai senar. Gunakan fitur Bandingkan untuk melihat spesifikasi varian berdampingan.</p>",
+            "collection": "reel",
+            "x": 72,
+            "y": 38,
+            "mobile_x": 72,
+            "mobile_y": 54,
+            "panel_side": "left"
+          }
+        },
+        "rod": {
+          "type": "guide",
+          "settings": {
+            "title": "Panjang dan action joran",
+            "text": "<p>Panjang joran memengaruhi jangkauan lempar dan ruang gerak. Sesuaikan dengan posisi memancing dan area di sekitar spot.</p><p>Action menjelaskan bagian joran yang melentur, sedangkan power menjelaskan kelas kekuatannya. Keduanya berbeda. Periksa rentang umpan serta line weight pada varian yang dipilih sebelum menyusun set.</p>",
+            "collection": "fishing-rods-joran",
+            "x": 84,
+            "y": 72,
+            "mobile_x": 84,
+            "mobile_y": 76,
+            "panel_side": "left"
+          }
+        }
+      },
+      "block_order": [
+        "pe",
+        "ul",
+        "rod"
+      ],
+      "settings": {
+        "image_url": "https://cdn.shopify.com/s/files/1/0838/8824/2905/files/bns-gear-guide-shopee-desktop.png?v=1791986990",
+        "mobile_image_url": "https://cdn.shopify.com/s/files/1/0838/8824/2905/files/bns-gear-guide-shopee-mobile.png?v=1791987005",
+        "height": 750,
+        "overlay": 35,
+        "text_color": "#ffffff",
+        "eyebrow": "PANDUAN BAITANDSTRIKE",
+        "title": "Pilih perlengkapan yang tepat.",
+        "text": "<p>Panduan ringkas untuk menyusun set pancing sesuai target ikan, teknik, dan lokasi memancing.</p>",
+        "button_label": "JELAJAHI PRODUK",
+        "link": "/collections/all",
+        "card_eyebrow": "TIPS PERLENGKAPAN"
+      }
+    },
+    "journal": {
+      "type": "journal",
+      "settings": {
+        "title": "Jurnal BNS",
+        "blog": ""
+      }
     }
   },
   "order": [
@@ -504,7 +490,6 @@
     "countdown",
     "new_arrivals",
     "brands",
-    "intro",
     "products",
     "shopee_reviews",
     "how_to_buy_sell",
