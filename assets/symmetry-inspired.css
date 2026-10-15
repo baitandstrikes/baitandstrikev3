@@ -34,3 +34,24 @@
 @media(max-width:749px){.brand-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.brand-link{min-height:75px;font-size:13px}.card-specs{font-size:10px}.card-availability{font-size:9px}.search-mobile-launch{display:flex;align-items:center;gap:10px;width:calc(100% - 36px);margin:0 18px 12px;height:36px;border:1px solid #ccc;background:transparent;color:inherit;padding:0 12px;font-size:11px;text-align:left}.search-mobile-launch .icon{width:17px;height:17px}.page-index .site-header.is-transparent,.page-index .site-header.is-transparent:not(.scrolled){margin-bottom:-114px}.hero{padding-top:114px}.menu-open .main-nav{height:calc(100dvh - 114px)}.menu-open:after{inset:114px 0 0}.header-search input{font-size:13px}.fishing-facets select{font-size:16px}}
 @media(max-width:749px){.catalog-products .product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
+/* Calm, consistent motion for interactive storefront controls */
+:root{--bns-motion:.38s;--bns-ease:cubic-bezier(.22,.61,.36,1)}
+.icon-button,.icon-button .icon,.button,.text-link,.nav-inner>a,.mega-item>summary,.mega-item>summary .icon,.product-card,.card-media,.card-primary,.card-secondary,.quick-view-button,.collection-tile,.collection-tile>img,.brand-link,.card-swatch,.slide-dot,.quantity-picker button,.product-accordion summary,.product-accordion summary .icon,.filter-group summary,.filter-group summary .icon,.shopping-actions .text-link,.shopping-actions .icon{transition:color var(--bns-motion) var(--bns-ease),background-color var(--bns-motion) var(--bns-ease),border-color var(--bns-motion) var(--bns-ease),opacity var(--bns-motion) var(--bns-ease),box-shadow var(--bns-motion) var(--bns-ease),transform var(--bns-motion) var(--bns-ease)}
+.header-right .icon-button:hover,.header-left .icon-button:hover{opacity:1;transform:translateY(-2px)}
+.header-right .icon-button:hover .icon,.header-left .icon-button:hover .icon{transform:scale(1.1)}
+.header-right [data-tools-open=wishlist]:hover .icon{transform:scale(1.14);fill:currentColor}
+.header-right [data-open-account]:hover .icon{transform:translateY(-1px) scale(1.08)}
+.header-right .cart-trigger:hover .icon{transform:rotate(-4deg) translateY(-1px) scale(1.08)}
+.cart-count{transition:color var(--bns-motion) var(--bns-ease),background-color var(--bns-motion) var(--bns-ease),transform var(--bns-motion) var(--bns-ease),box-shadow var(--bns-motion) var(--bns-ease)}
+.cart-trigger:hover .cart-count{transform:translate(2px,-2px) scale(1.08);box-shadow:0 3px 10px #0002}
+.button:hover{transform:translateY(-2px);box-shadow:0 8px 20px #123f5f1f}.button:active,.icon-button:active,.shopping-actions .text-link:active{transform:scale(.96);transition-duration:.12s}
+.nav-inner>a:hover,.mega-item>summary:hover{color:var(--accent);transform:translateY(-1px)}
+.product-card:hover{transform:translateY(-4px)}.product-card:hover .card-media{box-shadow:0 14px 32px #123f5f18}
+.brand-link:hover{transform:translateY(-3px);box-shadow:0 10px 24px #123f5f14}
+.shopping-actions [aria-pressed=true] .icon{transform:scale(1.12)}
+.shopping-actions [data-wishlist-toggle][aria-pressed=true] .icon{animation:bns-heart-pop .55s var(--bns-ease)}
+.product-accordion[open] summary .icon,.filter-group[open] summary .icon{transform:rotate(45deg)}
+@keyframes bns-heart-pop{0%{transform:scale(.82)}55%{transform:scale(1.28)}100%{transform:scale(1.12)}}
+@media(hover:none){.header-right .icon-button:hover,.header-left .icon-button:hover,.product-card:hover,.brand-link:hover,.button:hover{transform:none}.product-card:hover .card-media,.brand-link:hover,.button:hover{box-shadow:none}}
+@media(prefers-reduced-motion:reduce){.icon-button,.icon-button .icon,.button,.text-link,.nav-inner>a,.mega-item>summary,.mega-item>summary .icon,.product-card,.card-media,.card-primary,.card-secondary,.quick-view-button,.collection-tile,.collection-tile>img,.brand-link,.card-swatch,.slide-dot,.quantity-picker button,.product-accordion summary,.product-accordion summary .icon,.filter-group summary,.filter-group summary .icon,.shopping-actions .text-link,.shopping-actions .icon,.cart-count{transition:none!important;animation:none!important}}
+
