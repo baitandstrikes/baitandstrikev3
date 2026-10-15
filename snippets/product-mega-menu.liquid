@@ -1,0 +1,35 @@
+{% doc %}
+  Renders the BAITANDSTRIKE product mega menu.
+  @param {link} menu_link - Product navigation link with category children.
+{% enddoc %}
+
+<div class="mega-panel product-mega-panel">
+  <div class="product-mega-tabs">
+    <a class="is-active" href="{{ menu_link.url }}">
+      {% render 'icon', name: 'menu' %}
+      <span>Semua Kategori</span>
+    </a>
+    <a href="/collections/new-arrival">Produk Baru</a>
+    <a href="{{ routes.root_url }}#shop-by-brand">Brand BAITANDSTRIKE</a>
+  </div>
+  <ul class="product-mega-categories" role="list">
+    {% for child in menu_link.links %}
+      <li><a href="{{ child.url }}">
+        <span class="product-category-icon" aria-hidden="true">
+          {% case forloop.index %}
+            {% when 1 %}<svg viewBox="0 0 32 32"><path d="M5 27 25 7m-2-2 4 4M8 23l3 3M13 18l3 3M18 13l3 3"/></svg>
+            {% when 2 %}<svg viewBox="0 0 32 32"><circle cx="15" cy="17" r="8"/><circle cx="15" cy="17" r="3"/><path d="M15 9V5h9v6m-2 2 5 5m0 0-3 3"/></svg>
+            {% when 3 %}<svg viewBox="0 0 32 32"><path d="M5 16c5-7 13-8 21-3-5 8-13 10-21 3Zm2 0-3-4v8l3-4Zm12-2 2 2-2 2m6-2c2 3 1 7-2 9"/></svg>
+            {% when 4 %}<svg viewBox="0 0 32 32"><path d="M4 11h24v16H4Zm7 0V7h10v4M4 17h24M14 15h4v4h-4z"/></svg>
+            {% when 5 %}<svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="11"/><circle cx="16" cy="16" r="4"/><path d="M16 5v7m0 8v7M5 16h7m8 0h7"/></svg>
+            {% else %}<svg viewBox="0 0 32 32"><path d="M21 5v14a7 7 0 1 1-7-7m7-7 4 4"/></svg>
+          {% endcase %}
+        </span>
+        <span>{{ child.title | escape }}</span>
+        {% render 'icon', name: 'chevron' %}
+      </a></li>
+    {% endfor %}
+  </ul>
+  <a class="product-mega-all" href="{{ menu_link.url }}">Lihat semua produk {% render 'icon', name: 'arrow' %}</a>
+</div>
+
