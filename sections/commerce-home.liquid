@@ -1,6 +1,6 @@
-{% doc %}
+{% comment %}
   Product-first homepage showcase inspired by large catalogue storefronts.
-{% enddoc %}
+{% endcomment %}
 {% assign highlight_collection = section.settings.collection | default: collections.all %}
 <section class="commerce-home" aria-label="{{ section.settings.heading | escape }}">
   <div class="commerce-home__inner wrap">
@@ -30,9 +30,9 @@
       </div>
     </div>
     <div class="commerce-services" aria-label="Layanan BAITANDSTRIKE">
-      <a href="/pages/wholesale-registration-form">{% render 'icon', name: 'compare' %}<strong>Minta Penawaran</strong><span>Harga grosir untuk reseller</span></a>
+      <a href="/pages/online-quotation">{% render 'icon', name: 'compare' %}<strong>Minta Penawaran</strong><span>Harga grosir untuk reseller</span></a>
       <a href="/pages/wholesale-registration-form">{% render 'icon', name: 'check' %}<strong>BMT B2B</strong><span>Pemesanan bisnis lebih mudah</span></a>
-      <a href="/collections/all">{% render 'icon', name: 'bag' %}<strong>Produk Pilihan</strong><span>Perlengkapan untuk setiap trip</span></a>
+      <a href="{{ routes.all_products_collection_url }}">{% render 'icon', name: 'bag' %}<strong>Produk Pilihan</strong><span>Perlengkapan untuk setiap trip</span></a>
       <a href="/pages/contact">{% render 'icon', name: 'account' %}<strong>Bantuan Produk</strong><span>Konsultasi sebelum membeli</span></a>
       <a href="/pages/contact">{% render 'icon', name: 'truck' %}<strong>Pengiriman</strong><span>Informasi kirim seluruh Indonesia</span></a>
       <a href="/pages/faq">{% render 'icon', name: 'shield' %}<strong>Belanja Aman</strong><span>Informasi produk lebih jelas</span></a>
@@ -48,4 +48,3 @@ body.page-index .site-header.is-transparent,body.page-index .site-header.is-tran
 {% schema %}
 {"name":"Commerce Homepage","settings":[{"type":"collection","id":"collection","label":"Koleksi product highlight"},{"type":"text","id":"heading","label":"Judul produk","default":"Product Highlight"},{"type":"range","id":"limit","label":"Jumlah produk","min":5,"max":12,"step":1,"default":8}],"max_blocks":5,"blocks":[{"type":"promo","name":"Banner promo","settings":[{"type":"image_picker","id":"image","label":"Gambar"},{"type":"url","id":"image_url","label":"URL gambar"},{"type":"text","id":"eyebrow","label":"Teks kecil","default":"PROMO BAITANDSTRIKE"},{"type":"text","id":"title","label":"Judul","default":"Lengkapi trip berikutnya"},{"type":"text","id":"button_label","label":"Tombol","default":"BELANJA SEKARANG"},{"type":"url","id":"link","label":"Tautan"}]}],"presets":[{"name":"Commerce Homepage","blocks":[{"type":"promo"},{"type":"promo"}]}]}
 {% endschema %}
-

@@ -79,6 +79,19 @@
     if(row) row.quantity=desired; else if(state.quote.length<100) state.quote.push({handle:product.handle,id:variant.id,quantity:desired}); else {announce(L.limit);return;}
     save();announce(L.added);show('quote');
   };
+  const cartToQuote = () => {
+    const data=document.getElementById('cart-quote-data');
+    if(!data)return;
+    let rows=[];try{rows=JSON.parse(data.textContent);}catch{return;}
+    rows.forEach(item=>{
+      if(!handleOK(item?.handle)||!/^\d+$/.test(String(item?.id)))return;
+      const quantity=Math.min(100000,Math.max(1,Number(item.quantity)||1));
+      const existing=state.quote.find(row=>String(row.id)===String(item.id));
+      if(existing)existing.quantity=quantity;
+      else if(state.quote.length<100)state.quote.push({handle:item.handle,id:String(item.id),quantity});
+    });
+    save();announce(L.added);show('quote');
+  };
   const summary = () => {
     const lines=[];let valid=state.quote.length>0&&[...content.querySelectorAll('.quote-row input')].every(input=>input.checkValidity());
     state.quote.forEach(row=>{
@@ -135,6 +148,7 @@
   };
   retry.addEventListener('click',()=>show(mode));
   document.addEventListener('click',event=>{
+    if(event.target.closest('[data-cart-to-quote]')){cartToQuote();return;}
     const open=event.target.closest('[data-tools-open]');if(open){show(open.dataset.toolsOpen);return;}
     const action=event.target.closest('[data-wishlist-toggle],[data-compare-toggle],[data-quote-add]');if(!action)return;
     const handle=action.closest('[data-tool-handle]')?.dataset.toolHandle;if(!handleOK(handle))return;

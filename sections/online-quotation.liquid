@@ -1,0 +1,73 @@
+<section class="quotation-page">
+  <div class="quotation-hero">
+    <div class="wrap quotation-hero-grid">
+      <div>
+        <p class="eyebrow">LAYANAN B2B BAITANDSTRIKE</p>
+        <h1>{{ section.settings.heading | escape }}</h1>
+        <div class="rte">{{ section.settings.intro }}</div>
+        <div class="quotation-actions">
+          <button type="button" class="button" data-tools-open="quote">Buat Penawaran</button>
+          <a class="button button-white" href="{{ routes.all_products_collection_url }}">Pilih Produk</a>
+        </div>
+        <p class="quotation-disclaimer">Pengajuan penawaran tidak membuat pesanan dan tidak memproses pembayaran.</p>
+      </div>
+      <div class="quotation-preview" aria-label="Ringkasan layanan penawaran">
+        <span class="quotation-document-icon" aria-hidden="true">{% render 'icon', name: 'document' %}</span>
+        <p>Surat Penawaran BNS</p>
+        <strong>Harga, jumlah, dan produk tersusun rapi</strong>
+        <ul role="list">
+          <li>✓ Cocok untuk reseller, toko, komunitas, dan pembelian jumlah besar</li>
+          <li>✓ Dapat diajukan dari produk atau keranjang</li>
+          <li>✓ Ditinjau langsung oleh tim BAITANDSTRIKE</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap quotation-benefits">
+    <div class="section-heading"><div><p class="eyebrow">KEUNTUNGAN</p><h2>Lebih mudah menyiapkan kebutuhan grosir</h2></div></div>
+    <div class="quotation-benefit-grid">
+      <article><span>01</span><h3>Daftar produk tersusun</h3><p>Varian, SKU, dan jumlah barang masuk otomatis ke ringkasan permintaan.</p></article>
+      <article><span>02</span><h3>Tanpa checkout</h3><p>Ajukan kebutuhan terlebih dahulu tanpa membuat pesanan atau pembayaran.</p></article>
+      <article><span>03</span><h3>Ditinjau tim BNS</h3><p>Tim kami memeriksa stok, harga grosir, dan kebutuhan pengiriman sebelum menghubungi kamu.</p></article>
+    </div>
+  </div>
+
+  <div class="quotation-steps">
+    <div class="wrap">
+      <div class="section-heading"><div><p class="eyebrow">CARA MENGGUNAKAN</p><h2>5 langkah mengajukan penawaran</h2></div></div>
+      <ol class="quotation-step-list">
+        <li><span>1</span><div><h3>Pilih produk</h3><p>Cari perlengkapan yang dibutuhkan dari katalog BAITANDSTRIKE.</p></div></li>
+        <li><span>2</span><div><h3>Tambahkan ke penawaran</h3><p>Tekan “Minta Penawaran” pada detail produk, atau masukkan produk ke keranjang terlebih dahulu.</p></div></li>
+        <li><span>3</span><div><h3>Atur jumlah</h3><p>Buka daftar penawaran dan sesuaikan jumlah setiap varian.</p></div></li>
+        <li><span>4</span><div><h3>Lengkapi data usaha</h3><p>Isi nama, email, perusahaan, nomor telepon, dan catatan kebutuhan.</p></div></li>
+        <li><span>5</span><div><h3>Kirim permintaan</h3><p>Tim BNS akan meninjau permintaan dan menghubungi kamu untuk melanjutkan.</p></div></li>
+      </ol>
+      <div class="quotation-final-cta">
+        <div><p class="eyebrow">SIAP MULAI?</p><h2>Susun kebutuhan produk kamu sekarang.</h2></div>
+        <button type="button" class="button" data-tools-open="quote">Buka Daftar Penawaran</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Online Quotation",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Judul",
+      "default": "Online Quotation"
+    },
+    {
+      "type": "richtext",
+      "id": "intro",
+      "label": "Pengantar",
+      "default": "<p>Susun daftar perlengkapan pancing dan ajukan penawaran untuk kebutuhan grosir, toko, komunitas, atau pembelian dalam jumlah besar.</p>"
+    }
+  ],
+  "presets": [{"name": "Online Quotation"}]
+}
+{% endschema %}

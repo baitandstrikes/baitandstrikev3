@@ -158,28 +158,39 @@ const initSlideshow = (el) => {
  if (reduced) { const pause = el.querySelector('[data-slide-pause]'); if (pause) { pause.setAttribute('aria-label', pause.dataset.play); pause.textContent = '▶'; } }
  change(0); start();
 };
-const initMegaMenu = (scope = document) => {
- scope.querySelectorAll('.mega-item').forEach(item => {
-   if (item.dataset.hoverReady === 'true') return;
-   item.dataset.hoverReady = 'true';
-   const summary = item.querySelector('summary');
-   if (!summary) return;
-   const openOnDesktop = () => { if (window.innerWidth >= 990) item.setAttribute('open', 'open'); };
-   const closeOnDesktop = () => { if (window.innerWidth >= 990 && !item.matches(':focus-within')) item.removeAttribute('open'); };
-   item.addEventListener('mouseenter', openOnDesktop);
-   item.addEventListener('mouseleave', closeOnDesktop);
-   item.addEventListener('focusin', openOnDesktop);
-   item.addEventListener('focusout', closeOnDesktop);
-   summary.addEventListener('click', event => {
-     if (window.innerWidth < 990) return;
-     event.preventDefault();
-     if (item.hasAttribute('open')) item.removeAttribute('open'); else item.setAttribute('open', 'open');
+const initCategoryMenu = (menu) => {
+ if (menu.dataset.categoryReady) return;
+ menu.dataset.categoryReady = 'true';
+ const shell = menu.querySelector('.product-category-shell');
+ const triggers = [...menu.querySelectorAll('[data-category-trigger]')];
+ const panels = [...menu.querySelectorAll('[data-category-panel]')];
+ const activate = (index, openMobile = false) => {
+   triggers.forEach(trigger => trigger.classList.toggle('is-active', trigger.dataset.categoryTrigger === index));
+   panels.forEach(panel => panel.classList.toggle('is-active', panel.dataset.categoryPanel === index));
+   if (openMobile && window.matchMedia('(max-width: 749px)').matches) {
+     shell.classList.add('is-detail-open');
+     menu.querySelector(`[data-category-panel="${index}"] [data-category-back]`)?.focus();
+   }
+ };
+ triggers.forEach(trigger => {
+   trigger.addEventListener('mouseenter', () => { if (window.matchMedia('(min-width: 750px)').matches) activate(trigger.dataset.categoryTrigger); });
+   trigger.addEventListener('focusin', () => { if (window.matchMedia('(min-width: 750px)').matches) activate(trigger.dataset.categoryTrigger); });
+   trigger.querySelector('a')?.addEventListener('click', event => {
+     if (!window.matchMedia('(max-width: 749px)').matches) return;
+     event.preventDefault(); activate(trigger.dataset.categoryTrigger, true);
    });
+ });
+ menu.querySelectorAll('[data-category-back]').forEach(button => button.addEventListener('click', () => {
+   shell.classList.remove('is-detail-open');
+   menu.querySelector('[data-category-trigger].is-active a')?.focus();
+ }));
+ menu.closest('details')?.addEventListener('toggle', event => {
+   if (!event.currentTarget.open) shell.classList.remove('is-detail-open');
  });
 };
 const init = (scope = document) => {
- initMegaMenu(scope);
  scope.querySelectorAll('[data-slideshow]').forEach(initSlideshow); initCountries(scope);
+ scope.querySelectorAll('[data-category-menu]').forEach(initCategoryMenu);
  scope.querySelectorAll('.reveal:not([data-revealed])').forEach(el => {
  el.dataset.revealed = 'true';
  if (reduced || !('IntersectionObserver' in window)) return;
@@ -200,7 +211,7 @@ document.addEventListener('click', async event => {
  if (trigger.matches('[data-close-dialog]')) { trigger.closest('dialog').close(); lockBody(); }
  if (trigger.matches('[data-quick-view]')) { event.preventDefault(); await quickView(trigger); }
  if (trigger.matches('[data-menu-toggle]')) { const header = trigger.closest('[data-header]'); const opened = header.classList.toggle('menu-open'); trigger.setAttribute('aria-expanded', String(opened)); }
- if (trigger.matches('[data-search-toggle]')) { const panel = document.getElementById('HeaderSearch'); panel.hidden = !panel.hidden; document.querySelectorAll('[data-search-toggle]').forEach(el => el.setAttribute('aria-expanded', String(!panel.hidden))); if (!panel.hidden) panel.querySelector('input[type=search]').focus(); else { const launchers = [...document.querySelectorAll('[data-search-toggle]')]; const visibleLauncher = launchers.find(el => el.getClientRects().length && getComputedStyle(el).visibility !== 'hidden'); visibleLauncher?.focus(); } }
+ if (trigger.matches('[data-search-toggle]')) { const panel = document.getElementById('HeaderSearch'); panel.hidden = !panel.hidden; document.querySelectorAll('[data-search-toggle]').forEach(el => el.setAttribute('aria-expanded', String(!panel.hidden))); if (!panel.hidden) panel.querySelector('input[type=search]').focus(); else document.querySelector('.header-left [data-search-toggle]').focus(); }
  if (trigger.matches('[data-quantity]')) { const input = trigger.parentElement.querySelector('input'); const min = Number(input.min || 1), max = Number(input.max || Infinity), step = Number(input.step || 1); const current = Number(input.value); input.value = Math.min(max, Math.max(min, (Number.isFinite(current) ? current : min) + Number(trigger.dataset.quantity) * step)); input.dispatchEvent(new Event('change', { bubbles: true })); }
  if (trigger.matches('[data-cart-delta]')) { const line = trigger.closest('[data-cart-line]'), input = line.querySelector('[data-cart-quantity]'), delta = Number(trigger.dataset.cartDelta) * Number(input.step || 1), quantity = Math.max(0, Number(input.value) + delta); if (line.closest('#CartDrawer')) await mutateCart(line, quantity); else input.value = quantity; }
  if (trigger.matches('[data-cart-remove]') && trigger.closest('#CartDrawer')) { event.preventDefault(); await mutateCart(trigger.closest('[data-cart-line]'), 0); }
@@ -223,6 +234,7 @@ document.addEventListener('change', event => {
 document.addEventListener('keydown', event => {
  if (event.key !== 'Escape') return;
  const header = document.querySelector('[data-header]'); header?.classList.remove('menu-open'); header?.querySelector('[data-menu-toggle]')?.setAttribute('aria-expanded', 'false');
+ document.querySelectorAll('.mega-item[open]').forEach(item => { item.open = false; });
  const search = document.getElementById('HeaderSearch'); if (search && !search.hidden) { search.hidden = true; header?.querySelector('[data-search-toggle]')?.setAttribute('aria-expanded', 'false'); }
 });
 document.querySelectorAll('dialog').forEach(dialog => {
@@ -238,4 +250,3 @@ document.addEventListener('shopify:block:select', event => { const slide = event
 document.addEventListener('bns:cart-refresh', async () => { try { await refreshCart(); openDialog(document.getElementById('CartDrawer')); toast(config.added); } catch { window.location.assign(config.cart); } });
 updateHeader(); init();
 })();
-

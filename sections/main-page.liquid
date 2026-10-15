@@ -1,8 +1,4 @@
-{% if page.handle == 'request-quotation' %}
-  {% render 'request-quotation-steps' %}
-{% else %}
-  <section class="section wrap narrow"><h1>{{ page.title | escape }}</h1><div class="rte">{{ page.content }}</div></section>
-{% endif %}
+<section class="section wrap narrow"><h1>{{ page.title | escape }}</h1><div class="rte">{{ page.content }}</div></section>
 {% schema %}
 {
   "name": "Main Page",
