@@ -293,30 +293,6 @@
         "padding_bottom": 40
       }
     },
-    "story": {
-      "type": "image-with-text",
-      "settings": {
-        "eyebrow": "BUILT FOR THE WATER",
-        "title": "Perlengkapan tepat. Petualangan lebih jauh.",
-        "text": "<p>Lengkapi tackle box kamu dengan pilihan perlengkapan BAITANDSTRIKE.</p>",
-        "button_label": "Tonton video",
-        "link": "https://www.youtube.com/watch?v=QPwc3fP30kE",
-        "reverse": false,
-        "image_url": "https://cdn.shopify.com/s/files/1/0837/1195/1076/files/back.png?v=1788340231"
-      }
-    },
-    "partners": {
-      "type": "promo-banner",
-      "settings": {
-        "eyebrow": "BNS PARTNERS",
-        "title": "Tumbuh bersama BAITANDSTRIKE.",
-        "text": "<p>Untuk toko, reseller, dan dealer. Temukan perlengkapan mancing untuk kebutuhan bisnis kamu.</p>",
-        "button_label": "Hubungi kami",
-        "link": "/pages/wholesale-registration-form",
-        "background": "#eeeae5",
-        "foreground": "#333333"
-      }
-    },
     "guides": {
       "type": "gear-guide",
       "blocks": {
@@ -385,6 +361,142 @@
         "title": "Jurnal BNS",
         "blog": ""
       }
+    },
+    "how_to_buy_sell": {
+      "type": "how-to-buy-sell",
+      "blocks": {
+        "buy1": {
+          "type": "buy_step",
+          "settings": {
+            "title": "Pilih produk",
+            "text": "Jelajahi katalog dan pilih perlengkapan sesuai kebutuhan."
+          }
+        },
+        "buy2": {
+          "type": "buy_step",
+          "settings": {
+            "title": "Cek varian & detail",
+            "text": "Periksa spesifikasi, pilihan varian, dan ketersediaan produk."
+          }
+        },
+        "buy3": {
+          "type": "buy_step",
+          "settings": {
+            "title": "Checkout",
+            "text": "Masukkan produk ke keranjang dan lanjutkan proses pemesanan."
+          }
+        },
+        "sell1": {
+          "type": "sell_step",
+          "settings": {
+            "title": "Daftar sebagai mitra",
+            "text": "Isi formulir pendaftaran dengan data usaha dan kontak."
+          }
+        },
+        "sell2": {
+          "type": "sell_step",
+          "settings": {
+            "title": "Tim kami meninjau",
+            "text": "Tim BAIT&STRIKE akan meninjau informasi yang kamu kirim."
+          }
+        },
+        "sell3": {
+          "type": "sell_step",
+          "settings": {
+            "title": "Mulai berkolaborasi",
+            "text": "Setelah dihubungi tim kami, diskusikan kebutuhan dan peluang kerja sama."
+          }
+        }
+      },
+      "block_order": [
+        "buy1",
+        "buy2",
+        "buy3",
+        "sell1",
+        "sell2",
+        "sell3"
+      ],
+      "settings": {
+        "eyebrow": "MULAI DI BAIT&STRIKE",
+        "title": "Mau belanja atau jadi mitra?",
+        "intro": "<p>Pilih jalur yang sesuai kebutuhanmu. Belanja untuk trip berikutnya atau kembangkan bisnis perlengkapan pancing bersama kami.</p>",
+        "buy_eyebrow": "UNTUK PEMANCING",
+        "buy_title": "Cara Membeli",
+        "buy_text": "<p>Temukan perlengkapan yang cocok untuk target ikan, teknik, dan budget kamu.</p>",
+        "buy_button_label": "Jelajahi Produk",
+        "buy_link": "/collections/all",
+        "sell_eyebrow": "UNTUK RESELLER & TOKO",
+        "sell_title": "Cara Menjual",
+        "sell_text": "<p>Punya toko atau ingin menjual perlengkapan BAIT&STRIKE? Mulai dengan mendaftarkan minat sebagai mitra bisnis.</p>",
+        "sell_button_label": "Daftar Jadi Mitra",
+        "sell_link": "/pages/wholesale-registration-form"
+      }
+    },
+    "why_choose_us": {
+      "type": "why-choose-us",
+      "blocks": {
+        "benefit1": {
+          "type": "benefit",
+          "settings": {
+            "icon": "🎣",
+            "title": "Pilihan untuk Berbagai Teknik",
+            "text": "Jelajahi perlengkapan untuk berbagai gaya, target ikan, dan kondisi spot."
+          }
+        },
+        "benefit2": {
+          "type": "benefit",
+          "settings": {
+            "icon": "🔎",
+            "title": "Informasi Produk Jelas",
+            "text": "Detail dan varian membantu kamu menentukan pilihan sebelum membeli."
+          }
+        },
+        "benefit3": {
+          "type": "benefit",
+          "settings": {
+            "icon": "🤝",
+            "title": "Dukungan untuk Mitra",
+            "text": "Ada jalur pendaftaran untuk toko, reseller, dan kebutuhan bisnis."
+          }
+        },
+        "benefit4": {
+          "type": "benefit",
+          "settings": {
+            "icon": "📦",
+            "title": "Proses Pesanan Praktis",
+            "text": "Katalog dan keranjang membantu proses belanja tetap teratur."
+          }
+        },
+        "benefit5": {
+          "type": "benefit",
+          "settings": {
+            "icon": "💙",
+            "title": "Komunitas Angler",
+            "text": "Kami hadir untuk mendukung semangat dan pengalaman memancing."
+          }
+        },
+        "benefit6": {
+          "type": "benefit",
+          "settings": {
+            "icon": "⭐",
+            "title": "Fokus pada Kebutuhan Angler",
+            "text": "Kami terus membangun pengalaman belanja yang relevan untuk pemancing."
+          }
+        }
+      },
+      "block_order": [
+        "benefit1",
+        "benefit2",
+        "benefit3",
+        "benefit4",
+        "benefit5",
+        "benefit6"
+      ],
+      "settings": {
+        "eyebrow": "KENAPA BAIT&STRIKE",
+        "title": "Why Choose Us",
+        "intro": "<p>Kami membantu pemancing menemukan perlengkapan yang tepat, dengan informasi produk yang jelas dan pilihan untuk kebutuhan personal maupun bisnis.</p>"
+      }
     }
   },
   "order": [
@@ -395,10 +507,9 @@
     "intro",
     "products",
     "shopee_reviews",
-    "story",
-    "partners",
+    "how_to_buy_sell",
+    "why_choose_us",
     "guides",
     "journal"
   ]
 }
-
