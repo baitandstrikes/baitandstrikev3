@@ -84,3 +84,40 @@
   :root{--bns-motion:0s}
   .header-search,.predictive-results,.cart-drawer,.drawer-heading,.drawer-bottom,.quick-dialog,.account-dialog{transition:none!important;animation:none!important}
 }
+
+
+/* Slow, polished opening motion for account/login, wishlist and cart overlays. */
+@keyframes bns-overlay-backdrop-in{
+  from{opacity:0}
+  to{opacity:1}
+}
+@keyframes bns-popup-in{
+  from{opacity:0;transform:translateY(14px) scale(.985)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+@keyframes bns-drawer-in{
+  from{opacity:.65;transform:translateX(36px)}
+  to{opacity:1;transform:translateX(0)}
+}
+dialog[open]{
+  animation:bns-popup-in .58s var(--bns-ease) both;
+}
+dialog[open]::backdrop{
+  animation:bns-overlay-backdrop-in .58s var(--bns-ease) both;
+}
+#AccountDialog[open],#QuickView[open],#ImageZoom[open]{
+  animation:bns-popup-in .58s var(--bns-ease) both;
+}
+#CartDrawer[open],#ShoppingTools[open]{
+  animation:bns-drawer-in .62s var(--bns-ease) both;
+}
+@media(max-width:749px){
+  #CartDrawer[open],#ShoppingTools[open]{
+    animation:bns-drawer-in .62s var(--bns-ease) both;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  dialog[open],dialog[open]::backdrop,#CartDrawer[open],#ShoppingTools[open]{
+    animation:none!important;
+  }
+}
