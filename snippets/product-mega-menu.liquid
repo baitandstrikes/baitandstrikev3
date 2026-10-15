@@ -1,0 +1,36 @@
+{% doc %}
+  Renders the BAITANDSTRIKE product mega menu.
+  @param {link} menu_link - Product navigation link with category children.
+{% enddoc %}
+
+<div class="mega-panel product-mega-panel">
+  <div class="product-mega-tabs">
+    <a class="is-active" href="{{ menu_link.url }}">
+      {% render 'icon', name: 'menu' %}
+      <span>Semua Kategori</span>
+    </a>
+    <a href="/collections/new-arrival">Produk Baru</a>
+    <a href="{{ routes.root_url }}#shop-by-brand">Brand BAITANDSTRIKE</a>
+  </div>
+  <ul class="product-mega-categories" role="list">
+    {% for child in menu_link.links %}
+      <li><a href="{{ child.url }}">
+        <span class="product-category-icon" aria-hidden="true">
+          {% case forloop.index %}
+            {% when 1 %}{% assign category_image = 'category-1.svg' %}
+            {% when 2 %}{% assign category_image = 'category-2.svg' %}
+            {% when 3 %}{% assign category_image = 'category-1.svg' %}
+            {% when 4 %}{% assign category_image = 'category-3.svg' %}
+            {% when 5 %}{% assign category_image = 'category-3.svg' %}
+            {% else %}{% assign category_image = 'category-4.svg' %}
+          {% endcase %}
+          <img src="{{ category_image | asset_url }}" width="44" height="44" loading="lazy" alt="">
+        </span>
+        <span>{{ child.title | escape }}</span>
+        {% render 'icon', name: 'chevron' %}
+      </a></li>
+    {% endfor %}
+  </ul>
+  <a class="product-mega-all" href="{{ menu_link.url }}">Lihat semua produk {% render 'icon', name: 'arrow' %}</a>
+</div>
+
