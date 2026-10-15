@@ -158,7 +158,27 @@ const initSlideshow = (el) => {
  if (reduced) { const pause = el.querySelector('[data-slide-pause]'); if (pause) { pause.setAttribute('aria-label', pause.dataset.play); pause.textContent = '▶'; } }
  change(0); start();
 };
+const initMegaMenu = (scope = document) => {
+ scope.querySelectorAll('.mega-item').forEach(item => {
+   if (item.dataset.hoverReady === 'true') return;
+   item.dataset.hoverReady = 'true';
+   const summary = item.querySelector('summary');
+   if (!summary) return;
+   const openOnDesktop = () => { if (window.innerWidth >= 990) item.setAttribute('open', 'open'); };
+   const closeOnDesktop = () => { if (window.innerWidth >= 990 && !item.matches(':focus-within')) item.removeAttribute('open'); };
+   item.addEventListener('mouseenter', openOnDesktop);
+   item.addEventListener('mouseleave', closeOnDesktop);
+   item.addEventListener('focusin', openOnDesktop);
+   item.addEventListener('focusout', closeOnDesktop);
+   summary.addEventListener('click', event => {
+     if (window.innerWidth < 990) return;
+     event.preventDefault();
+     if (item.hasAttribute('open')) item.removeAttribute('open'); else item.setAttribute('open', 'open');
+   });
+ });
+};
 const init = (scope = document) => {
+ initMegaMenu(scope);
  scope.querySelectorAll('[data-slideshow]').forEach(initSlideshow); initCountries(scope);
  scope.querySelectorAll('.reveal:not([data-revealed])').forEach(el => {
  el.dataset.revealed = 'true';
