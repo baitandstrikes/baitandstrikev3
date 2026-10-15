@@ -48,7 +48,8 @@
         "overlay": 15,
         "autoplay": true,
         "delay": 7
-      }
+      },
+      "disabled": true
     },
     "countdown": {
       "type": "countdown-promo",
@@ -57,7 +58,8 @@
         "end": "2026-10-31T23:59:00+07:00",
         "label": "Jelajahi koleksi",
         "link": ""
-      }
+      },
+      "disabled": true
     },
     "new_arrivals": {
       "type": "featured-collection",
@@ -483,11 +485,44 @@
         "title": "Jurnal BNS",
         "blog": ""
       }
+    },
+    "commerce": {
+      "type": "commerce-home",
+      "blocks": {
+        "promo_1": {
+          "type": "promo",
+          "settings": {
+            "eyebrow": "PROMO BAITANDSTRIKE",
+            "title": "Perlengkapan mancing pilihan untuk trip berikutnya",
+            "button_label": "BELANJA SEKARANG",
+            "link": "/collections/all",
+            "image_url": "https://cdn.shopify.com/s/files/1/0837/1195/1076/files/DESAIN_STIKER_KACA-OFFLINE_STORE_BNS.png?v=1789183669"
+          }
+        },
+        "promo_2": {
+          "type": "promo",
+          "settings": {
+            "eyebrow": "READY FOR YOUR NEXT TRIP",
+            "title": "Joran, reel, umpan dan aksesori dalam satu tempat",
+            "button_label": "LIHAT PRODUK BARU",
+            "link": "/collections/new-arrival",
+            "image_url": "https://cdn.shopify.com/s/files/1/0837/1195/1076/files/back.png?v=1788340231"
+          }
+        }
+      },
+      "block_order": [
+        "promo_1",
+        "promo_2"
+      ],
+      "settings": {
+        "collection": "new-arrival",
+        "heading": "Product Highlight",
+        "limit": 8
+      }
     }
   },
   "order": [
-    "hero",
-    "countdown",
+    "commerce",
     "new_arrivals",
     "brands",
     "products",
@@ -495,6 +530,8 @@
     "how_to_buy_sell",
     "why_choose_us",
     "guides",
-    "journal"
+    "journal",
+    "hero",
+    "countdown"
   ]
 }
