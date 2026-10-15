@@ -119,7 +119,7 @@ const quickView = async (link) => {
 const gallery = (button) => {
  const root = button.closest('[data-product-root]');
  root.querySelectorAll('[data-media-id]').forEach(el => {
- const active = el.dataset.mediaId === button.dataset.gallerySelect; el.hidden = !active; el.classList.toggle('is-active', active);
+ const active = el.dataset.mediaId === button.dataset.gallerySelect; el.classList.toggle('is-active', active);
  if (!active) { el.querySelectorAll('video').forEach(video => video.pause()); el.querySelectorAll('iframe').forEach(frame => { const src = frame.getAttribute('src'); frame.setAttribute('src', src); }); }
  });
  root.querySelectorAll('[data-gallery-select]').forEach(el => el.setAttribute('aria-pressed', String(el === button)));
@@ -218,3 +218,4 @@ document.addEventListener('shopify:block:select', event => { const slide = event
 document.addEventListener('bns:cart-refresh', async () => { try { await refreshCart(); openDialog(document.getElementById('CartDrawer')); toast(config.added); } catch { window.location.assign(config.cart); } });
 updateHeader(); init();
 })();
+
