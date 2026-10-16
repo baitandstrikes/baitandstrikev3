@@ -43,7 +43,8 @@
     const jemmy =
       group === 'jemmy' ||
       tags.includes('listing:jemmy') ||
-      String(item.vendor || '').toLowerCase().includes('jemmy');
+      String(item.vendor || '').toLowerCase().includes('jemmy') ||
+      String(item.title || '').toLowerCase().includes('jemmy');
 
     let type = '';
     const hasProductOverride = item.listingColor || item.listingBorderColor;

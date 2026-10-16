@@ -18,12 +18,13 @@
   {% endif %}
 {% endfor %}
 {% assign normalized_vendor = product.vendor | downcase %}
+{% assign normalized_title = product.title | downcase %}
 {% if listing_group == 'hot' or listing_group == 'hot_selling' or listing_group == 'best_seller' or listing_group == 'hot_deal' or listing_group == 'promotional' or listing_group == 'promotion' or listing_group == 'promo' %}
   {% assign is_hot = true %}
 {% elsif listing_group == 'jemmy' %}
   {% assign is_jemmy = true %}
 {% endif %}
-{% if normalized_vendor contains 'jemmy' %}
+{% if normalized_vendor contains 'jemmy' or normalized_title contains 'jemmy' %}
   {% assign is_jemmy = true %}
 {% endif %}
 {% assign listing_type = '' %}
