@@ -1,0 +1,27 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "bns-quotation",
+  "main": "src/index.js",
+  "compatibility_date": "2026-10-16",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1
+  },
+  "vars": {
+    "SHOPIFY_SHOP": "baitandstrike.myshopify.com",
+    "SHOPIFY_API_VERSION": "2026-10",
+    "QUOTATION_FROM": "",
+    "MERCHANT_EMAIL": "",
+    "ALLOWED_ORIGIN": "https://baitandstrike.myshopify.com"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "bns-quotations",
+      "database_id": "0df03a3e-0bc8-4a87-864b-b58ec894ae76",
+      "migrations_dir": "migrations"
+    }
+  ]
+}
+

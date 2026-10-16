@@ -6,7 +6,7 @@
         <h1>{{ section.settings.heading | escape }}</h1>
         <div class="rte">{{ section.settings.intro }}</div>
         <div class="quotation-actions">
-          <button type="button" class="button" data-tools-open="quote">Buat Penawaran</button>
+          <a class="button" href="#QuotationBuilder">Buat dari keranjang</a>
           <a class="button button-white" href="{{ routes.all_products_collection_url }}">Pilih Produk</a>
         </div>
         <p class="quotation-disclaimer">Pengajuan penawaran tidak membuat pesanan dan tidak memproses pembayaran.</p>
@@ -49,6 +49,7 @@
       </div>
     </div>
   </div>
+{% render 'quotation-builder' %}
 </section>
 
 {% schema %}
@@ -71,3 +72,4 @@
   "presets": [{"name": "Online Quotation"}]
 }
 {% endschema %}
+
