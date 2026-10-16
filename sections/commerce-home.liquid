@@ -21,7 +21,8 @@
         <div class="commerce-heading"><div><span>PRODUK PILIHAN BNS</span><h2>{{ section.settings.heading | escape }}</h2></div><div><button data-carousel-prev aria-label="Produk sebelumnya">‹</button><button data-carousel-next aria-label="Produk berikutnya">›</button></div></div>
         <div class="commerce-products" data-carousel-track>
           {% for product in highlight_collection.products limit: section.settings.limit %}
-            <article class="commerce-product">
+            {% capture listing_card_attributes %}{% render 'listing-card-attributes', product: product, base_class: 'commerce-product' %}{% endcapture %}
+            <article {{ listing_card_attributes }}>
               <a href="{{ product.url }}" class="commerce-product__image">{% if product.featured_image %}{{ product.featured_image | image_url: width: 360 | image_tag: loading: 'lazy', widths: '120, 240, 360', sizes: '150px', alt: product.title }}{% else %}<img src="{{ 'category-2.svg' | asset_url }}" width="160" height="160" alt="">{% endif %}</a>
               <div><p class="commerce-product__vendor">{{ product.vendor | escape }}</p><h3><a href="{{ product.url }}">{{ product.title | escape }}</a></h3><p class="commerce-product__price">{{ product.price | money }}</p><p class="commerce-stock{% unless product.available %} is-out{% endunless %}">{% if product.available %}Ready Stock{% else %}Stok Habis{% endif %}</p></div>
             </article>

@@ -1,0 +1,197 @@
+.product-card.product-card--jemmy,
+.predictive-link.product-card--jemmy,
+.commerce-product.product-card--jemmy,
+.recently-viewed__card.product-card--jemmy {
+  --listing-bg: #e1f0ff;
+  --listing-border: #c6ddf5;
+  background-color: var(--listing-bg);
+  border: 1px solid var(--listing-border);
+  border-radius: 8px;
+}
+
+.product-card.product-card--hot,
+.predictive-link.product-card--hot,
+.commerce-product.product-card--hot,
+.recently-viewed__card.product-card--hot {
+  --listing-bg: #ffeae6;
+  --listing-border: #ff4938;
+  background-color: var(--listing-bg);
+  border: 1px solid var(--listing-border);
+  border-radius: 8px;
+}
+
+.product-card.product-card--premium,
+.predictive-link.product-card--premium,
+.commerce-product.product-card--premium,
+.recently-viewed__card.product-card--premium {
+  --listing-bg: #eaf0ff;
+  --listing-border: #ccd7f5;
+}
+
+.product-card.product-card--new,
+.product-card.product-card--new_arrival,
+.predictive-link.product-card--new,
+.predictive-link.product-card--new_arrival,
+.commerce-product.product-card--new,
+.commerce-product.product-card--new_arrival,
+.recently-viewed__card.product-card--new,
+.recently-viewed__card.product-card--new_arrival {
+  --listing-bg: #eaf7ec;
+  --listing-border: #c8e8ce;
+}
+
+.product-card.product-card--clearance,
+.predictive-link.product-card--clearance,
+.commerce-product.product-card--clearance,
+.recently-viewed__card.product-card--clearance {
+  --listing-bg: #fff5d6;
+  --listing-border: #f1df9e;
+}
+
+.product-card.product-card--limited_stock,
+.predictive-link.product-card--limited_stock,
+.commerce-product.product-card--limited_stock,
+.recently-viewed__card.product-card--limited_stock {
+  --listing-bg: #fff0dc;
+  --listing-border: #f3d0a2;
+}
+
+.product-card.product-card--featured,
+.predictive-link.product-card--featured,
+.commerce-product.product-card--featured,
+.recently-viewed__card.product-card--featured {
+  --listing-bg: #f1eaff;
+  --listing-border: #d7c9f5;
+}
+
+.product-card.product-card--premium,
+.product-card.product-card--new,
+.product-card.product-card--new_arrival,
+.product-card.product-card--clearance,
+.product-card.product-card--limited_stock,
+.product-card.product-card--featured,
+.predictive-link.product-card--premium,
+.predictive-link.product-card--new,
+.predictive-link.product-card--new_arrival,
+.predictive-link.product-card--clearance,
+.predictive-link.product-card--limited_stock,
+.predictive-link.product-card--featured,
+.commerce-product.product-card--premium,
+.commerce-product.product-card--new,
+.commerce-product.product-card--new_arrival,
+.commerce-product.product-card--clearance,
+.commerce-product.product-card--limited_stock,
+.commerce-product.product-card--featured,
+.recently-viewed__card.product-card--premium,
+.recently-viewed__card.product-card--new,
+.recently-viewed__card.product-card--new_arrival,
+.recently-viewed__card.product-card--clearance,
+.recently-viewed__card.product-card--limited_stock,
+.recently-viewed__card.product-card--featured {
+  background-color: var(--listing-bg);
+  border: 1px solid var(--listing-border);
+  border-radius: 8px;
+}
+
+.product-card.product-card--custom {
+  background-color: var(--listing-bg, transparent);
+  border: 1px solid var(--listing-border, #dfe4e6);
+  border-radius: 8px;
+}
+
+.predictive-link.product-card--custom,
+.commerce-product.product-card--custom {
+  background-color: var(--listing-bg, transparent);
+  border: 1px solid var(--listing-border, #dfe4e6);
+  border-radius: 8px;
+}
+
+.product-card--hot[data-listing-badge]:not([data-listing-badge=''])::after,
+.product-card--jemmy[data-listing-badge]:not([data-listing-badge=''])::after,
+.product-card--custom[data-listing-badge]:not([data-listing-badge=''])::after,
+.product-card--premium[data-listing-badge]:not([data-listing-badge=''])::after,
+.product-card--new[data-listing-badge]:not([data-listing-badge=''])::after,
+.product-card--new_arrival[data-listing-badge]:not([data-listing-badge=''])::after,
+.product-card--clearance[data-listing-badge]:not([data-listing-badge=''])::after,
+.product-card--limited_stock[data-listing-badge]:not([data-listing-badge=''])::after,
+.product-card--featured[data-listing-badge]:not([data-listing-badge=''])::after {
+  position: absolute;
+  z-index: 5;
+  top: 8px;
+  right: 8px;
+  max-width: calc(100% - 70px);
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: #123f5f;
+  color: #fff;
+  content: attr(data-listing-badge);
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+  pointer-events: none;
+}
+
+.product-card--hot[data-listing-badge]:not([data-listing-badge=''])::after,
+.predictive-link.product-card--hot[data-listing-badge]:not([data-listing-badge=''])::after,
+.commerce-product.product-card--hot[data-listing-badge]:not([data-listing-badge=''])::after,
+.recently-viewed__card.product-card--hot[data-listing-badge]:not([data-listing-badge=''])::after {
+  background: #d7271c;
+}
+
+.product-card--hot .card-media > .badge {
+  top: 42px;
+}
+
+.predictive-link[data-listing-type],
+.commerce-product[data-listing-type] {
+  position: relative;
+}
+
+.predictive-link.product-card--hot[data-listing-badge]:not([data-listing-badge=''])::after,
+.commerce-product.product-card--hot[data-listing-badge]:not([data-listing-badge=''])::after {
+  top: 6px;
+  right: 6px;
+}
+
+.recently-viewed__card.product-card--jemmy,
+.recently-viewed__card.product-card--hot,
+.recently-viewed__card.product-card--custom {
+  background-color: var(--listing-bg, transparent);
+  border: 1px solid var(--listing-border, #dfe4e6);
+  border-radius: 8px;
+}
+
+.recently-viewed__card.product-card--jemmy {
+  --listing-bg: #e1f0ff;
+  --listing-border: #c6ddf5;
+}
+
+.recently-viewed__card.product-card--hot {
+  --listing-bg: #ffeae6;
+  --listing-border: #ff4938;
+}
+
+.recently-viewed__card {
+  position: relative;
+}
+
+.recently-viewed__badge {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  z-index: 1;
+  max-width: calc(100% - 12px);
+  padding: 3px 6px;
+  border-radius: 4px;
+  background: #123f5f;
+  color: #fff;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+.recently-viewed__card.product-card--hot .recently-viewed__badge {
+  background: #d7271c;
+}

@@ -1,0 +1,68 @@
+{% assign listing_enabled = product.metafields.custom.listing_color_enabled.value %}
+{% assign listing_group = product.metafields.custom.listing_group.value | downcase | replace: '-', '_' | replace: ' ', '_' %}
+{% assign listing_color = product.metafields.custom.listing_color.value %}
+{% assign listing_border_color = product.metafields.custom.listing_border_color.value %}
+{% assign listing_badge = product.metafields.custom.listing_badge.value %}
+{% assign listing_variant = product.selected_or_first_available_variant %}
+{% assign listing_variant_color = listing_variant.metafields.custom.listing_color.value %}
+{% assign listing_variant_border_color = listing_variant.metafields.custom.listing_border_color.value %}
+{% assign listing_variant_badge = listing_variant.metafields.custom.listing_badge.value %}
+{% assign is_hot = false %}
+{% assign is_jemmy = false %}
+{% for tag in product.tags %}
+  {% assign normalized_tag = tag | downcase | replace: '-', '_' | replace: ' ', '_' %}
+  {% if normalized_tag == 'listing:hot' or normalized_tag == 'listing:hot_selling' or normalized_tag == 'listing:best_seller' or normalized_tag == 'listing:hot_deal' or normalized_tag == 'listing:promo' %}
+    {% assign is_hot = true %}
+  {% elsif normalized_tag == 'listing:jemmy' %}
+    {% assign is_jemmy = true %}
+  {% endif %}
+{% endfor %}
+{% assign normalized_vendor = product.vendor | downcase %}
+{% if listing_group == 'hot' or listing_group == 'hot_selling' or listing_group == 'best_seller' or listing_group == 'hot_deal' or listing_group == 'promotional' or listing_group == 'promotion' or listing_group == 'promo' %}
+  {% assign is_hot = true %}
+{% elsif listing_group == 'jemmy' %}
+  {% assign is_jemmy = true %}
+{% endif %}
+{% if normalized_vendor contains 'jemmy' %}
+  {% assign is_jemmy = true %}
+{% endif %}
+{% assign listing_type = '' %}
+{% if listing_enabled != false %}
+  {% if listing_color != blank or listing_border_color != blank %}
+    {% assign listing_type = 'custom' %}
+  {% elsif listing_variant_color != blank or listing_variant_border_color != blank %}
+    {% assign listing_type = 'custom' %}
+    {% assign listing_color = listing_variant_color %}
+    {% assign listing_border_color = listing_variant_border_color %}
+    {% if listing_badge == blank %}
+      {% assign listing_badge = listing_variant_badge %}
+    {% endif %}
+  {% elsif is_hot %}
+    {% assign listing_type = 'hot' %}
+  {% elsif is_jemmy %}
+    {% assign listing_type = 'jemmy' %}
+  {% elsif listing_group == 'premium' or listing_group == 'new' or listing_group == 'new_arrival' or listing_group == 'clearance' or listing_group == 'limited_stock' or listing_group == 'featured' %}
+    {% assign listing_type = listing_group %}
+  {% endif %}
+{% endif %}
+{% if listing_badge == blank and is_hot and listing_enabled != false %}
+  {% assign listing_badge = 'HOT DEAL' %}
+{% elsif listing_badge == blank %}
+  {% case listing_type %}
+    {% when 'hot' %}{% assign listing_badge = 'HOT DEAL' %}
+    {% when 'premium' %}{% assign listing_badge = 'PREMIUM' %}
+    {% when 'new', 'new_arrival' %}{% assign listing_badge = 'NEW' %}
+    {% when 'clearance' %}{% assign listing_badge = 'CLEARANCE' %}
+    {% when 'limited_stock' %}{% assign listing_badge = 'LIMITED STOCK' %}
+    {% when 'featured' %}{% assign listing_badge = 'FEATURED' %}
+  {% endcase %}
+{% endif %}
+{% assign base_class = base_class | default: 'product-card' %}
+{% assign listing_class = base_class %}
+{% if listing_type != blank %}
+  {% assign listing_class = listing_class | append: ' product-card--' | append: listing_type %}
+{% endif %}
+class="{{ listing_class | escape }}"
+data-listing-type="{{ listing_type | escape }}"
+data-listing-badge="{{ listing_badge | escape }}"
+{% if listing_color != blank or listing_border_color != blank %}style="{% if listing_color != blank %}--listing-bg:{{ listing_color | color_to_hex | escape }};{% endif %}{% if listing_border_color != blank %}--listing-border:{{ listing_border_color | color_to_hex | escape }};{% endif %}"{% endif %}
