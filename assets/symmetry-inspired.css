@@ -139,7 +139,7 @@ dialog[open]::backdrop{
 }
 
 
-/* Product category mega menu: Monotaro-style master/detail navigation */
+/* Product category mega menu: master/detail navigation */
 .product-mega-item>summary{gap:8px}
 .product-mega-item>summary>.icon:first-child{width:19px;height:19px;transform:none}
 .product-mega-tabs{display:grid;grid-template-columns:1.15fr .95fr 1.25fr;align-items:stretch;border-top:4px solid var(--yellow,#fcdd16);border-bottom:1px solid #dce2e5;background:#fff}
@@ -204,3 +204,4 @@ dialog[open]::backdrop{
  .product-mega-all{min-height:44px}
 }
 @media(prefers-reduced-motion:reduce){.product-mega-tabs a,.product-category-row>a,.product-category-panel,.product-category-main,.product-category-details,.product-category-quicklinks>a,.product-category-subheading{transition:none!important;animation:none!important}}
+

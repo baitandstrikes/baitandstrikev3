@@ -211,7 +211,7 @@ document.addEventListener('click', async event => {
  if (trigger.matches('[data-close-dialog]')) { trigger.closest('dialog').close(); lockBody(); }
  if (trigger.matches('[data-quick-view]')) { event.preventDefault(); await quickView(trigger); }
  if (trigger.matches('[data-menu-toggle]')) { const header = trigger.closest('[data-header]'); const opened = header.classList.toggle('menu-open'); trigger.setAttribute('aria-expanded', String(opened)); }
- if (trigger.matches('[data-search-toggle]')) { const panel = document.getElementById('HeaderSearch'); panel.hidden = !panel.hidden; document.querySelectorAll('[data-search-toggle]').forEach(el => el.setAttribute('aria-expanded', String(!panel.hidden))); if (!panel.hidden) panel.querySelector('input[type=search]').focus(); else document.querySelector('.header-left [data-search-toggle]').focus(); }
+ if (trigger.matches('[data-search-toggle]')) { const panel = document.getElementById('HeaderSearch'); panel.hidden = !panel.hidden; document.querySelectorAll('[data-search-toggle]').forEach(el => el.setAttribute('aria-expanded', String(!panel.hidden))); if (!panel.hidden) panel.querySelector('input[type=search]').focus(); else { const launchers = [...document.querySelectorAll('[data-search-toggle]')]; const visibleLauncher = launchers.find(el => el.getClientRects().length && getComputedStyle(el).visibility !== 'hidden'); visibleLauncher?.focus(); } }
  if (trigger.matches('[data-quantity]')) { const input = trigger.parentElement.querySelector('input'); const min = Number(input.min || 1), max = Number(input.max || Infinity), step = Number(input.step || 1); const current = Number(input.value); input.value = Math.min(max, Math.max(min, (Number.isFinite(current) ? current : min) + Number(trigger.dataset.quantity) * step)); input.dispatchEvent(new Event('change', { bubbles: true })); }
  if (trigger.matches('[data-cart-delta]')) { const line = trigger.closest('[data-cart-line]'), input = line.querySelector('[data-cart-quantity]'), delta = Number(trigger.dataset.cartDelta) * Number(input.step || 1), quantity = Math.max(0, Number(input.value) + delta); if (line.closest('#CartDrawer')) await mutateCart(line, quantity); else input.value = quantity; }
  if (trigger.matches('[data-cart-remove]') && trigger.closest('#CartDrawer')) { event.preventDefault(); await mutateCart(trigger.closest('[data-cart-line]'), 0); }
@@ -234,7 +234,6 @@ document.addEventListener('change', event => {
 document.addEventListener('keydown', event => {
  if (event.key !== 'Escape') return;
  const header = document.querySelector('[data-header]'); header?.classList.remove('menu-open'); header?.querySelector('[data-menu-toggle]')?.setAttribute('aria-expanded', 'false');
- document.querySelectorAll('.mega-item[open]').forEach(item => { item.open = false; });
  const search = document.getElementById('HeaderSearch'); if (search && !search.hidden) { search.hidden = true; header?.querySelector('[data-search-toggle]')?.setAttribute('aria-expanded', 'false'); }
 });
 document.querySelectorAll('dialog').forEach(dialog => {
