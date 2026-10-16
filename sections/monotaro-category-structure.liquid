@@ -1,0 +1,32 @@
+<section class="bns-catalog" aria-labelledby="bns-catalog-title">
+  <div class="bns-catalog__inner">
+    <header class="bns-catalog__intro">
+      <p class="bns-catalog__eyebrow">KATALOG BAIT&amp;STRIKE</p>
+      <h2 id="bns-catalog-title">Belanja Berdasarkan Kategori</h2>
+      <p>Pilih perlengkapan berdasarkan jenis produk dan teknik memancing.</p>
+    </header>
+    {% assign category_data = 'Fishing Rod|fishing-rods-joran|🎣|casting/baitcasting~fishing-rod-casting-baitcasting,offshore jigging~fishing-rod-offshore-jigging,shore jigging~fishing-rod-shore-jigging,spinning/light lure~fishing-rod-spinning-light-lure,surfcasting~fishing-rod-surfcasting,Ultralight~fishing-rod-ultralight;Reel|reel|⚙|baitcasting low-profile~reel-baitcasting-low-profile,jigging~reel-jigging,saltwater spinning~reel-saltwater-spinning,spinning freshwater~reel-spinning-freshwater,trolling/conventional~reel-trolling-conventional;Bait & Lure|fishing-bait|🐟|frog~bait-lure-frog,metal jig~bait-lure-metal-jig,minnow~bait-lure-minnow,soft bait~bait-lure-soft-bait,topwater~bait-lure-topwater,umpan hidup atau tiruan~bait-lure-umpan-hidup-atau-tiruan;Hook|hook|◉|assist hook~hook-assist-hook,circle hook~hook-circle-hook,jig head~hook-jig-head,sabiki~hook-sabiki,single hook~hook-single-hook,treble hook~hook-treble-hook,worm hook~hook-worm-hook;Line|fishing-line|≋|braided/PE~line-braided-pe,leader~line-leader,Monofilament/nylon~line-monofilament-nylon' | split: ';' %}
+    <div class="bns-catalog__groups">
+      {% for category_entry in category_data %}
+        {% assign category_parts = category_entry | split: '|' %}
+        {% assign category_title = category_parts[0] %}{% assign category_handle = category_parts[1] %}{% assign category_icon = category_parts[2] %}
+        {% assign subcategory_data = category_parts[3] | split: ',' %}{% assign category_collection = collections[category_handle] %}
+        <article class="bns-catalog__group">
+          <a class="bns-catalog__main" href="{{ category_collection.url | default: routes.all_products_collection_url }}"><span class="bns-catalog__icon" aria-hidden="true">{{ category_icon }}</span><span class="bns-catalog__main-copy"><strong>{{ category_title }}</strong><small>{{ category_collection.products_count }} produk</small></span><span class="bns-catalog__all">Lihat semua →</span></a>
+          <div class="bns-catalog__subs">
+            {% for subcategory_entry in subcategory_data %}
+              {% assign subcategory_parts = subcategory_entry | split: '~' %}{% assign subcategory_title = subcategory_parts[0] %}{% assign subcategory_handle = subcategory_parts[1] %}{% assign subcategory_collection = collections[subcategory_handle] %}
+              <a class="bns-catalog__sub" href="{{ subcategory_collection.url | default: routes.all_products_collection_url }}"><span>{{ subcategory_title }}</span><small>{{ subcategory_collection.products_count }} produk</small></a>
+            {% endfor %}
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% stylesheet %}
+.bns-catalog{background:#f3f5f7;padding:32px 16px}.bns-catalog__inner{max-width:1240px;margin:0 auto}.bns-catalog__intro{margin-bottom:18px}.bns-catalog__intro h2{margin:2px 0 6px;color:#162f44;font-size:clamp(24px,3vw,34px)}.bns-catalog__intro p{margin:0;color:#607080}.bns-catalog__eyebrow{color:#0b69a3!important;font-size:12px;font-weight:800;letter-spacing:.12em}.bns-catalog__groups{display:grid;gap:14px}.bns-catalog__group{display:grid;grid-template-columns:230px minmax(0,1fr);overflow:hidden;border:1px solid #dfe5ea;border-radius:8px;background:#fff;box-shadow:0 2px 8px rgba(22,47,68,.05)}.bns-catalog__main{display:flex;min-height:138px;padding:20px;flex-direction:column;justify-content:center;background:#123f5e;color:#fff;text-decoration:none}.bns-catalog__icon{margin-bottom:8px;font-size:26px}.bns-catalog__main-copy{display:grid;gap:3px}.bns-catalog__main-copy strong{font-size:20px;line-height:1.2}.bns-catalog__main-copy small{color:#c8dae6}.bns-catalog__all{margin-top:16px;color:#ffd740;font-size:13px;font-weight:800}.bns-catalog__subs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-content:stretch}.bns-catalog__sub{display:flex;min-height:68px;padding:14px 16px;flex-direction:column;justify-content:center;border-bottom:1px solid #e8edf1;border-left:1px solid #e8edf1;color:#263b4b;text-decoration:none;transition:background-color .18s ease,color .18s ease}.bns-catalog__sub span{font-size:14px;font-weight:700;text-transform:capitalize}.bns-catalog__sub small{margin-top:4px;color:#7a8995;font-size:12px}.bns-catalog__sub:hover{background:#edf7fc;color:#075f93}@media(max-width:760px){.bns-catalog{padding:24px 12px}.bns-catalog__group{grid-template-columns:1fr}.bns-catalog__main{min-height:auto;padding:16px;display:grid;grid-template-columns:auto 1fr auto;align-items:center}.bns-catalog__icon{margin:0 10px 0 0}.bns-catalog__all{margin:0}.bns-catalog__subs{grid-template-columns:repeat(2,minmax(0,1fr))}.bns-catalog__sub{min-height:62px;padding:12px}}@media(max-width:420px){.bns-catalog__subs{grid-template-columns:1fr}}
+{% endstylesheet %}
+{% schema %}
+{"name":"Katalog kategori BNS","settings":[],"presets":[{"name":"Katalog kategori BNS"}]}
+{% endschema %}
