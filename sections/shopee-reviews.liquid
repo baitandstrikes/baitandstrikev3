@@ -41,7 +41,7 @@
         {% if block.settings.show_review and block.settings.rating == '5' and block.settings.review_text != blank %}
           <article class="bns-review-card" data-review-card data-category="{{ block.settings.category | escape }}" {{ block.shopify_attributes }}>
             <div class="bns-review-card-top">
-              <span class="bns-review-stars" aria-label="5 dari 5 bintang">★★★★★</span>
+              <span class="bns-review-stars" aria-label="5 dari 5 bintang">{% for star in (1..5) %}{% render 'icon', name: 'star' %}{% endfor %}</span>
               <span class="bns-shopee-source"><span aria-hidden="true">●</span> Shopee</span>
             </div>
             <p class="bns-review-category">
@@ -126,7 +126,8 @@
     min-width: 0; display: flex; flex-direction: column; padding: 22px; border: 1px solid rgba(40,50,60,.12); border-radius: 16px; background: var(--color-background, #fff); box-shadow: 0 5px 20px rgba(20,35,45,.045); overflow-wrap: anywhere;
   }
   #BnsShopeeReviews-{{ section.id }} .bns-review-card-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px 12px; }
-  #BnsShopeeReviews-{{ section.id }} .bns-review-stars { color: var(--bns-review-yellow); letter-spacing: 2px; white-space: nowrap; }
+  #BnsShopeeReviews-{{ section.id }} .bns-review-stars { display:inline-flex;gap:2px;color:var(--bns-review-yellow);white-space:nowrap; }
+  #BnsShopeeReviews-{{ section.id }} .bns-review-stars .icon{width:14px;height:14px;fill:currentColor}
   #BnsShopeeReviews-{{ section.id }} .bns-shopee-source { display: inline-flex; align-items: center; gap: 5px; font-size: .72rem; font-weight: 700; opacity: .72; }
   #BnsShopeeReviews-{{ section.id }} .bns-shopee-source span { color: #ee4d2d; font-size: .7rem; }
   #BnsShopeeReviews-{{ section.id }} .bns-review-category { align-self: flex-start; margin: 15px 0 9px; padding: 5px 10px; border-radius: 6px; background: color-mix(in srgb, var(--bns-review-blue) 10%, transparent); color: var(--bns-review-blue); font-size: .72rem; font-weight: 800; line-height: 1.3; }

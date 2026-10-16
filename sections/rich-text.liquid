@@ -2,7 +2,7 @@
   {% if section.settings.background_video != blank %}
     <bns-intro-video>
       <div class="intro-video-media" aria-hidden="true">{{ section.settings.background_video | video_tag: autoplay: true, loop: true, muted: true, controls: false, playsinline: true, preload: 'metadata', image_size: '1600x', tabindex: '-1' }}</div>
-      <button type="button" class="intro-video-toggle" data-pause-label="{{ section.settings.pause_label | escape }}" data-play-label="{{ section.settings.play_label | escape }}" aria-label="{{ section.settings.pause_label | escape }}" hidden><span aria-hidden="true">Ⅱ</span></button>
+      <button type="button" class="intro-video-toggle" data-pause-label="{{ section.settings.pause_label | escape }}" data-play-label="{{ section.settings.play_label | escape }}" aria-label="{{ section.settings.pause_label | escape }}" hidden><span data-pause-icon>{% render 'icon', name: 'pause' %}</span><span data-play-icon hidden>{% render 'icon', name: 'play' %}</span></button>
     </bns-intro-video>
   {% endif %}
   <div class="intro-video-copy"><p class="eyebrow">{{ section.settings.eyebrow | escape }}</p><h2>{{ section.settings.title | escape }}</h2><div class="rte">{{ section.settings.text }}</div>{% if section.settings.link != blank %}<a class="text-link" href="{{ section.settings.link }}">{{ section.settings.button_label | escape }} →</a>{% endif %}</div>
@@ -27,7 +27,7 @@
         if (!video || !button) return;
         this.events = new AbortController();
         const options = {signal:this.events.signal};
-        const sync = () => {button.setAttribute('aria-label',video.paused ? button.dataset.playLabel : button.dataset.pauseLabel);button.querySelector('span').textContent=video.paused ? '▶' : 'Ⅱ';};
+        const sync = () => {button.setAttribute('aria-label',video.paused ? button.dataset.playLabel : button.dataset.pauseLabel);button.querySelector('[data-pause-icon]').hidden=video.paused;button.querySelector('[data-play-icon]').hidden=!video.paused;};
         video.muted = true;
         if (matchMedia('(prefers-reduced-motion: reduce)').matches) {video.autoplay=false;video.pause();}
         button.hidden = false;

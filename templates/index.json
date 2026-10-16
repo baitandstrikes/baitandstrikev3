@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "commerce": {
@@ -49,7 +58,7 @@
           "settings": {
             "title": "Joran",
             "collection": "fishing-rods-joran",
-            "asset": "category-rods.png"
+            "asset": "category-rods-photo-v2.png"
           }
         },
         "cat_reel": {
@@ -57,7 +66,7 @@
           "settings": {
             "title": "Reel",
             "collection": "reel",
-            "asset": "category-reel.png"
+            "asset": "category-reel-photo-v2.png"
           }
         },
         "cat_bait": {
@@ -65,7 +74,7 @@
           "settings": {
             "title": "Umpan",
             "collection": "fishing-bait",
-            "asset": "category-bait.png"
+            "asset": "category-bait-photo-v2.png"
           }
         },
         "cat_accessories": {
@@ -73,7 +82,7 @@
           "settings": {
             "title": "Aksesori",
             "collection": "fishing-accesories",
-            "asset": "category-accessories.png"
+            "asset": "category-accessories-photo-v2.png"
           }
         },
         "cat_line": {
@@ -81,7 +90,7 @@
           "settings": {
             "title": "Fishing Line",
             "collection": "fishing-line",
-            "asset": "category-line.png"
+            "asset": "category-line-photo-v2.png"
           }
         },
         "cat_hook": {
@@ -89,7 +98,7 @@
           "settings": {
             "title": "Hook",
             "collection": "hook",
-            "asset": "category-hook.png"
+            "asset": "category-hook-photo-v2.png"
           }
         },
         "brand_jemmy": {
@@ -393,7 +402,7 @@
             "reviewer": "minggrat",
             "product_name": "Reel — Variasi 800S",
             "review_date": "20 Februari 2026",
-            "review_text": "Barang sudah mendarat dengan aman, dan baru saja diterima, terimakasih bos, barangya sangat bagus banget, sederhana namun elegan, dan ringan,  Cocok banget dengan joran saya, mudah²an cepat amis, dan awet,,, 👍👍👍",
+            "review_text": "Barang sudah mendarat dengan aman, dan baru saja diterima, terimakasih bos, barangya sangat bagus banget, sederhana namun elegan, dan ringan,  Cocok banget dengan joran saya, mudah²an cepat amis, dan awet,,,",
             "image_url_1": "https://down-id.img.susercontent.com/file/id-11134103-8224y-mkxb75ay1m2u91",
             "image_url_2": "https://down-id.img.susercontent.com/file/id-11134103-8224t-mkxb75b22akiac",
             "source_url": "https://shopee.co.id/shop/buyer/1691315096"
@@ -408,7 +417,7 @@
             "reviewer": "anggha_08",
             "product_name": "Kail / Hook — Variasi 3/0_3g",
             "review_date": "6 Januari 2026",
-            "review_text": "Pengemasan Seller Terbilang Cepat..📦 Pengantaran Kurir Bagai Kilat..⚡ Dengan Harga Yang Bersahabat..💰 Kini Pesanan Sudah Mendarat..🚁 Packaging Aman Terjaga Rapat..🛡️ Barang Sesuai & Akurat..🎯 Kualitasnya Bagus Tanpa Syarat..👍 Yuk Yang Lain Segera Merapat..😊",
+            "review_text": "Pengemasan Seller Terbilang Cepat.. Pengantaran Kurir Bagai Kilat.. Dengan Harga Yang Bersahabat.. Kini Pesanan Sudah Mendarat.. Packaging Aman Terjaga Rapat.. Barang Sesuai & Akurat.. Kualitasnya Bagus Tanpa Syarat.. Yuk Yang Lain Segera Merapat..",
             "image_url_1": "https://down-id.img.susercontent.com/file/id-11134103-8224p-mj5i682ldczmcd",
             "image_url_2": "",
             "source_url": "https://shopee.co.id/shop/buyer/21137092"
@@ -610,7 +619,7 @@
         "benefit1": {
           "type": "benefit",
           "settings": {
-            "icon": "🎣",
+            "icon": "fishing",
             "title": "Pilihan untuk Berbagai Teknik",
             "text": "Jelajahi perlengkapan untuk berbagai gaya, target ikan, dan kondisi spot."
           }
@@ -618,7 +627,7 @@
         "benefit2": {
           "type": "benefit",
           "settings": {
-            "icon": "🔎",
+            "icon": "search",
             "title": "Informasi Produk Jelas",
             "text": "Detail dan varian membantu kamu menentukan pilihan sebelum membeli."
           }
@@ -626,7 +635,7 @@
         "benefit3": {
           "type": "benefit",
           "settings": {
-            "icon": "🤝",
+            "icon": "handshake",
             "title": "Dukungan untuk Mitra",
             "text": "Ada jalur pendaftaran untuk toko, reseller, dan kebutuhan bisnis."
           }
@@ -634,7 +643,7 @@
         "benefit4": {
           "type": "benefit",
           "settings": {
-            "icon": "📦",
+            "icon": "package",
             "title": "Proses Pesanan Praktis",
             "text": "Katalog dan keranjang membantu proses belanja tetap teratur."
           }
@@ -642,7 +651,7 @@
         "benefit5": {
           "type": "benefit",
           "settings": {
-            "icon": "💙",
+            "icon": "heart",
             "title": "Komunitas Angler",
             "text": "Kami hadir untuk mendukung semangat dan pengalaman memancing."
           }
@@ -650,7 +659,7 @@
         "benefit6": {
           "type": "benefit",
           "settings": {
-            "icon": "⭐",
+            "icon": "star",
             "title": "Fokus pada Kebutuhan Angler",
             "text": "Kami terus membangun pengalaman belanja yang relevan untuk pemancing."
           }
@@ -690,4 +699,3 @@
     "new_arrivals"
   ]
 }
-
