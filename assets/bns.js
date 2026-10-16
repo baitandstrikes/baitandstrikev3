@@ -187,6 +187,12 @@ const initCategoryMenu = (menu) => {
  menu.closest('details')?.addEventListener('toggle', event => {
    if (!event.currentTarget.open) shell.classList.remove('is-detail-open');
  });
+ menu.querySelector('.product-mega-tabs a[href*="#shop-by-brand"]')?.addEventListener('click', () => {
+   menu.closest('details')?.removeAttribute('open');
+   const header = menu.closest('[data-header]');
+   header?.classList.remove('menu-open');
+   header?.querySelectorAll('[data-menu-toggle]').forEach(button => button.setAttribute('aria-expanded', 'false'));
+ });
 };
 const init = (scope = document) => {
  scope.querySelectorAll('[data-slideshow]').forEach(initSlideshow); initCountries(scope);
