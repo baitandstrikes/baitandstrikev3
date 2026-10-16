@@ -19,7 +19,7 @@
       {% endif %}{% endfor %}
     </div>
 
-    <div class="catalog-brands">
+    <div id="shop-by-brand" class="catalog-brands">
       <div class="catalog-brands__label"><strong>{{ section.settings.brand_heading | escape }}</strong><a href="#shop-by-brand">Lihat semua</a></div>
       <div class="catalog-brands__list">
         {% for block in section.blocks %}{% if block.type == 'brand' %}
