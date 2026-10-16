@@ -1,0 +1,46 @@
+{% doc %}
+Cart-based printable quotation draft. Final pricing requires merchant confirmation.
+{% enddoc %}
+<section id="QuotationBuilder" class="section wrap" data-quotation-builder data-quotation-endpoint="/apps/bns-quotation/api/quotations">
+  <h2>Buat dokumen dari keranjang</h2>
+  {% unless customer %}
+    <p>Login atau daftar akun untuk melengkapi identitas penawaran. Produk tetap berada di keranjang.</p>
+    <a class="button" href="{{ routes.storefront_login_url }}">Login / daftar akun</a>
+  {% else %}
+    {% if cart.empty? %}
+      <p>Keranjang masih kosong. Pilih produk dan jumlah terlebih dahulu.</p>
+      <a class="button" href="{{ routes.all_products_collection_url }}">Pilih produk</a>
+    {% else %}
+      <form data-quotation-details>
+        <p>Lengkapi alamat, lalu buat pratinjau dokumen. Dokumen ini merupakan estimasi berdasarkan keranjang; harga akhir, stok, pajak, dan ongkir dikonfirmasi tim BNS.</p>
+        <label for="QuotationName">Nama penerima</label><input id="QuotationName" name="recipient" value="{{ customer.name | escape }}" required maxlength="120">
+        <label for="QuotationCompany">Perusahaan / toko</label><input id="QuotationCompany" name="company" value="{{ customer.default_address.company | escape }}" maxlength="160">
+        <label for="QuotationEmail">Email</label><input id="QuotationEmail" name="email" type="email" value="{{ customer.email | escape }}" required maxlength="254">
+        <label for="QuotationPhone">Nomor telepon / WhatsApp</label><input id="QuotationPhone" name="phone" type="tel" value="{{ customer.default_address.phone | escape }}" maxlength="40">
+        <label for="QuotationShipping">Alamat pengiriman</label><textarea id="QuotationShipping" name="shipping" required maxlength="1000">{{ customer.default_address.address1 | escape }} {{ customer.default_address.address2 | escape }} {{ customer.default_address.city | escape }} {{ customer.default_address.province | escape }} {{ customer.default_address.zip | escape }}</textarea>
+        <label for="QuotationBilling">Alamat penagihan</label><textarea id="QuotationBilling" name="billing" required maxlength="1000"></textarea>
+        <label><input type="checkbox" data-quotation-same-address> Alamat penagihan sama dengan pengiriman</label>
+        <label for="QuotationNotes">Catatan kebutuhan</label><textarea id="QuotationNotes" name="notes" maxlength="2000" placeholder="Contoh: kebutuhan reseller, target pengiriman, atau permintaan khusus"></textarea>
+        <button type="submit" class="button">Buat pratinjau dokumen</button>
+        <a class="text-link" href="{{ routes.cart_url }}">Ubah produk / jumlah</a>
+      </form>
+      <article data-quotation-output hidden aria-live="polite">
+        <h2>BAITANDSTRIKE</h2><h3>Draf Penawaran</h3>
+        <p data-quotation-reference></p><p data-quotation-date></p>
+        <dl data-quotation-customer></dl>
+        <div class="table-scroll"><table><thead><tr><th>Produk / varian / SKU</th><th>Jumlah</th><th>Harga satuan</th><th>Subtotal</th></tr></thead><tbody>
+          {% for item in cart.items %}<tr><td>{{ item.product.title | escape }}<br>{{ item.variant.title | escape }}<br>SKU: {{ item.sku | default: '—' | escape }}{% unless item.variant.available %}<br>Stok perlu dikonfirmasi{% endunless %}</td><td>{{ item.quantity }}</td><td>{{ item.final_price | money_with_currency }}</td><td>{{ item.final_line_price | money_with_currency }}</td></tr>{% endfor %}
+        </tbody></table></div>
+        <p>Total keranjang: <strong>{{ cart.total_price | money_with_currency }}</strong></p>
+        <p>Ongkir dan pajak akhir mengikuti konfirmasi tim BNS. Draf ini belum menjamin harga, belum dikirim melalui email, dan tidak membuat pesanan.</p>
+        <p>Referensi ini dibuat pada perangkat Anda dan belum merupakan nomor quotation resmi.</p>
+      </article>
+      <div data-quotation-output-actions hidden><button type="button" class="button" data-quotation-print>Cetak / simpan PDF</button><button type="button" class="button" data-cart-to-quote>Ajukan ke tim BNS</button></div>
+      <p data-quotation-submit-status role="status" aria-live="polite" hidden></p>
+    {% endif %}
+  {% endunless %}
+</section>
+{{ 'quotation-builder.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'quotation-builder.js' | asset_url }}" defer></script>
+<script type="application/json" id="cart-quote-data">[{% for item in cart.items %}{% assign quote_id = item.variant_id | append: '' %}{% unless forloop.first %},{% endunless %}{"handle":{{ item.product.handle | json }},"id":{{ quote_id | json }},"quantity":{{ item.quantity | json }}}{% endfor %}]</script>
+
