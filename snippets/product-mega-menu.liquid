@@ -1,70 +1,35 @@
 {% doc %}
-  Renders the BAITANDSTRIKE category mega menu.
+  Renders the BAITANDSTRIKE product mega menu.
   @param {link} menu_link - Product navigation link with category children.
 {% enddoc %}
 
-<div class="mega-panel product-mega-panel" data-category-menu>
+<div class="mega-panel product-mega-panel">
   <div class="product-mega-tabs">
-    <a class="is-active" href="{{ menu_link.url }}">{% render 'icon', name: 'menu' %}<span>Semua Kategori</span></a>
-    <a href="{{ routes.collections_url }}/new-arrival">Produk Baru</a>
+    <a class="is-active" href="{{ menu_link.url }}">
+      {% render 'icon', name: 'menu' %}
+      <span>Product</span>
+    </a>
+    <a href="/collections/new-arrival">Produk Baru</a>
     <a href="{{ routes.root_url }}#shop-by-brand">Brand BAITANDSTRIKE</a>
   </div>
-  <div class="product-category-shell">
-    <div class="product-category-main" data-category-main>
-      <p class="product-category-label">Kategori produk</p>
-      <ul class="product-category-list" role="list">
-        {% for child in menu_link.links %}
+  <ul class="product-mega-categories" role="list">
+    {% for child in menu_link.links %}
+      <li><a href="{{ child.url }}">
+        <span class="product-category-icon" aria-hidden="true">
           {% case forloop.index %}
-            {% when 1 %}{% assign category_image = 'category-rods-photo-v2.png' %}
-            {% when 2 %}{% assign category_image = 'category-reel-photo-v2.png' %}
-            {% when 3 %}{% assign category_image = 'category-line-photo-v2.png' %}
-            {% when 4 %}{% assign category_image = 'category-bait-photo-v2.png' %}
-            {% when 5 %}{% assign category_image = 'category-hook-photo-v2.png' %}
-            {% else %}{% assign category_image = 'category-accessories-photo-v2.png' %}
+            {% when 1 %}{% assign category_image = 'category-1.svg' %}
+            {% when 2 %}{% assign category_image = 'category-2.svg' %}
+            {% when 3 %}{% assign category_image = 'category-1.svg' %}
+            {% when 4 %}{% assign category_image = 'category-3.svg' %}
+            {% when 5 %}{% assign category_image = 'category-3.svg' %}
+            {% else %}{% assign category_image = 'category-4.svg' %}
           {% endcase %}
-          <li class="product-category-row{% if forloop.first %} is-active{% endif %}" data-category-trigger="{{ forloop.index0 }}">
-            <a href="{{ child.url }}">
-              <span class="product-category-icon" aria-hidden="true"><img src="{{ category_image | asset_url }}" width="48" height="48" loading="lazy" alt=""></span>
-              <span>{{ child.title | escape }}</span>{% render 'icon', name: 'chevron' %}
-            </a>
-          </li>
-        {% endfor %}
-      </ul>
-    </div>
-    <div class="product-category-details" data-category-details>
-      {% for child in menu_link.links %}
-        {% case forloop.index %}
-          {% when 1 %}{% assign category_image = 'category-rods-photo-v2.png' %}
-          {% when 2 %}{% assign category_image = 'category-reel-photo-v2.png' %}
-          {% when 3 %}{% assign category_image = 'category-line-photo-v2.png' %}
-          {% when 4 %}{% assign category_image = 'category-bait-photo-v2.png' %}
-          {% when 5 %}{% assign category_image = 'category-hook-photo-v2.png' %}
-          {% else %}{% assign category_image = 'category-accessories-photo-v2.png' %}
-        {% endcase %}
-        <section class="product-category-panel{% if forloop.first %} is-active{% endif %}" data-category-panel="{{ forloop.index0 }}" aria-label="{{ child.title | escape }}">
-          <button type="button" class="product-category-back" data-category-back>{% render 'icon', name: 'arrow' %}<span>Semua kategori</span></button>
-          <div class="product-category-heading">
-            <img src="{{ category_image | asset_url }}" width="72" height="72" loading="lazy" alt="">
-            <div><p>Jelajahi kategori</p><h3>{{ child.title | escape }}</h3></div>
-            <a href="{{ child.url }}">Lihat semua →</a>
-          </div>
-          {% if child.links != blank %}
-            <div class="product-category-sublinks">
-              {% for grand in child.links %}
-                <div><a class="product-category-subheading" href="{{ grand.url }}">{{ grand.title | escape }}</a>{% if grand.links != blank %}<ul role="list">{% for great_grand in grand.links %}<li><a href="{{ great_grand.url }}">{{ great_grand.title | escape }}</a></li>{% endfor %}</ul>{% endif %}</div>
-              {% endfor %}
-            </div>
-          {% else %}
-            <div class="product-category-quicklinks">
-              <a href="{{ child.url }}">Semua {{ child.title | escape }}<span>Seluruh produk dalam kategori</span></a>
-              <a href="{{ child.url }}?filter.v.availability=1">Ready stock<span>Produk yang siap dipesan</span></a>
-              <a href="{{ child.url }}?sort_by=created-descending">Produk terbaru<span>Lihat koleksi paling baru</span></a>
-              <a href="{{ child.url }}?sort_by=price-ascending">Harga terendah<span>Urutkan berdasarkan harga</span></a>
-            </div>
-          {% endif %}
-        </section>
-      {% endfor %}
-    </div>
-  </div>
+          <img src="{{ category_image | asset_url }}" width="44" height="44" loading="lazy" alt="">
+        </span>
+        <span>{{ child.title | escape }}</span>
+        {% render 'icon', name: 'chevron' %}
+      </a></li>
+    {% endfor %}
+  </ul>
   <a class="product-mega-all" href="{{ menu_link.url }}">Lihat semua produk {% render 'icon', name: 'arrow' %}</a>
 </div>
