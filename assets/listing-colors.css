@@ -5,7 +5,7 @@
   --listing-bg: #e1f0ff;
   --listing-border: #c6ddf5;
   background-color: var(--listing-bg);
-  border: 1px solid var(--listing-border);
+  border: 2px solid var(--listing-border);
   border-radius: 8px;
 }
 
@@ -165,6 +165,7 @@
 .recently-viewed__card.product-card--jemmy {
   --listing-bg: #e1f0ff;
   --listing-border: #c6ddf5;
+  border-width: 2px;
 }
 
 .recently-viewed__card.product-card--hot {
