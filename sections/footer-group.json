@@ -13,7 +13,11 @@
   "sections": {
     "footer": {
       "type": "footer",
-      "settings": {},
+      "settings": {
+        "instagram": "https://www.instagram.com/baitandstrike/",
+        "youtube": "https://www.youtube.com/@baitandstrike",
+        "facebook": "https://www.facebook.com/baitandstrike/"
+      },
       "blocks": {
         "help": {
           "type": "menu",
