@@ -2,7 +2,7 @@
   <div class="wrap">
     <div class="bns-howto__grid">
       <article class="bns-howto__card bns-howto__card--seller">
-        <div class="bns-howto__icon" aria-hidden="true">🤝</div>
+        <div class="bns-howto__icon" aria-hidden="true">{% render 'icon', name: 'handshake' %}</div>
         <p class="eyebrow">{{ section.settings.sell_eyebrow | escape }}</p>
         <h3 id="BNSHowToTitle-{{ section.id }}">{{ section.settings.sell_title | escape }}</h3>
         <div class="rte">{{ section.settings.sell_text }}</div>
