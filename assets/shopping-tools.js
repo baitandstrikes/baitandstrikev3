@@ -116,8 +116,30 @@
       const body=node('tbody');
       const categories=uniqueCategories(handles.map(handle=>products.get(handle)?.category));
       const rows=['brand','price','stock','sku',...(categories.includes('rod')?['length','action','line_weight','pe']:[]),...(categories.includes('reel')?['size','ratio','drag']:[]),...(categories.includes('line')?['pe','line_weight','length','diameter']:[]),'weight'];
+      const cards=node('div','','compare-cards');
+      handles.forEach(handle=>{
+        const product=products.get(handle),variant=product&&choice(product),card=node('article','','compare-card');
+        if(product){card.append(productHead(product),picker(product,render));}
+        else card.append(node('p',L.unavailable));
+        const specs=node('dl','','compare-card-specs');
+        [...new Set(rows)].forEach(key=>{
+          const detail=node('div','','compare-card-spec'),value=node('dd');
+          detail.append(node('dt',L[key]));
+          if(key==='price'&&product)value.append(priceLink(product));
+          else {
+            let text='—';
+            if(product&&variant)text=key==='brand'?product.vendor:key==='stock'?(variant.available?L.ready:L.sold_out):key==='sku'?(variant.sku||'—'):(variant.specs[key]?.join(' / ')||L.not_available);
+            value.textContent=text;
+          }
+          detail.append(value);specs.append(detail);
+        });
+        card.append(specs);
+        const actions=node('div','','compare-card-actions');
+        if(product)actions.append(button(L.quote_add,()=>addQuote(product,choice(product))));
+        actions.append(button(L.remove,()=>toggle('compare',handle)));card.append(actions);cards.append(card);
+      });
       [...new Set(rows)].forEach(key=>{const row=node('tr'),th=node('th',L[key]);th.scope='row';row.append(th);handles.forEach(handle=>{const p=products.get(handle),v=p&&choice(p);const cell=node('td');if(key==='price'&&p)cell.append(priceLink(p));else{let value='—';if(p&&v)value=key==='brand'?p.vendor:key==='stock'?(v.available?L.ready:L.sold_out):key==='sku'?(v.sku||'—'):(v.specs[key]?.join(' / ')||L.not_available);cell.textContent=value;}row.append(cell);});body.append(row);});
-      const actions=node('tr');actions.append(node('th',L.quote));handles.forEach(handle=>{const p=products.get(handle),cell=node('td');if(p)cell.append(button(L.quote_add,()=>addQuote(p,choice(p))));actions.append(cell);});body.append(actions);table.append(body);scroll.append(table);content.append(scroll);
+      const actions=node('tr');actions.append(node('th',L.quote));handles.forEach(handle=>{const p=products.get(handle),cell=node('td');if(p)cell.append(button(L.quote_add,()=>addQuote(p,choice(p))));actions.append(cell);});body.append(actions);table.append(body);scroll.append(table);content.append(cards,scroll);
     } else if(mode==='wishlist') {
       const list=node('div','','tools-list');handles.forEach(handle=>{const p=products.get(handle);if(!p){const missing=node('article',L.unavailable,'tools-item');missing.append(button(L.remove,()=>toggle('wishlist',handle)));list.append(missing);return;}
         const article=productHead(p),v=choice(p);article.append(picker(p,render),priceLink(p),node('p',v?.available?L.ready:L.sold_out));const actions=node('div','','shopping-actions');actions.append(button(L.compare,()=>{toggle('compare',handle);}),button(L.quote_add,()=>addQuote(p,choice(p))),button(L.remove,()=>toggle('wishlist',handle)));article.append(actions);list.append(article);});content.append(list);
