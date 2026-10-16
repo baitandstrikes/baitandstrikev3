@@ -689,6 +689,19 @@
         "title": "New Arrival",
         "limit": 5
       }
+    },
+    "1792163588261cbf6d": {
+      "type": "apps",
+      "blocks": {
+        "sp_wholesale_pricing_sp_wholesale_block_WBhhJy": {
+          "type": "shopify://apps/sp-wholesale-pricing/blocks/sp-wholesale-block/019f2606-c33b-70a0-be01-aa83daf3ee37",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "sp_wholesale_pricing_sp_wholesale_block_WBhhJy"
+      ],
+      "settings": {}
     }
   },
   "order": [
@@ -708,6 +721,7 @@
     "countdown",
     "brands",
     "products",
-    "new_arrivals"
+    "new_arrivals",
+    "1792163588261cbf6d"
   ]
 }
