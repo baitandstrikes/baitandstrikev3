@@ -27,7 +27,7 @@
 {% if normalized_vendor contains 'jemmy' or normalized_title contains 'jemmy' %}
   {% assign is_jemmy = true %}
 {% endif %}
-{% assign jemmy_photo_product_codes = 'KUP024,KUP021,KUP023,KUP020' | split: ',' %}
+{% assign jemmy_photo_product_codes = 'KUP024,KUP021,KUP023,KUP020,KUP022,KUP025' | split: ',' %}
 {% for photo_product_code in jemmy_photo_product_codes %}
   {% assign normalized_photo_product_code = photo_product_code | downcase %}
   {% if normalized_title contains normalized_photo_product_code %}
