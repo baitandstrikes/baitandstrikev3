@@ -27,6 +27,16 @@
 {% if normalized_vendor contains 'jemmy' or normalized_title contains 'jemmy' %}
   {% assign is_jemmy = true %}
 {% endif %}
+{% unless is_jemmy %}
+  {% for product_image in product.images %}
+    {% assign normalized_image_alt = product_image.alt | downcase %}
+    {% assign normalized_image_src = product_image.src | downcase %}
+    {% if normalized_image_alt contains 'jemmy' or normalized_image_src contains 'jemmy' %}
+      {% assign is_jemmy = true %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+{% endunless %}
 {% assign listing_type = '' %}
 {% if listing_enabled != false %}
   {% if listing_color != blank or listing_border_color != blank %}
