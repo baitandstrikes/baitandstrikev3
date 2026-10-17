@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "general": {
     "skip": "Lewati ke konten",
@@ -33,7 +42,7 @@
     "share": "Bagikan",
     "copied": "Tautan disalin",
     "not_found": "Halaman tidak ditemukan",
-    "continue": "Lanjut belanja",
+    "continue": "Lanjutkan belanja",
     "filter": "Filter",
     "sort": "Urutkan",
     "results": "{{ count }} hasil",
