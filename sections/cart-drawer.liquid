@@ -4,7 +4,9 @@
 #CartDrawer .drawer-heading h2{flex:1;min-width:0}
 #CartDrawer .cart-drawer__continue{display:inline-flex;flex:0 0 auto;align-items:center;justify-content:center;min-height:44px;padding:8px 12px;border:1px solid var(--accent,#3282c0);border-radius:4px;color:var(--accent,#3282c0);font-size:13px;font-weight:600;line-height:1.25;text-align:center;white-space:nowrap;transition:background .2s,color .2s}
 #CartDrawer .cart-drawer__continue:hover{background:var(--accent,#3282c0);color:#fff}
-@media(max-width:749px){#CartDrawer .drawer-heading{gap:8px;padding:16px 14px}#CartDrawer .drawer-heading h2{font-size:20px}#CartDrawer .cart-drawer__continue{min-height:42px;padding:7px 9px;font-size:12px}}
+#CartDrawer .cart-line-image{width:100px;height:auto;aspect-ratio:1;align-self:flex-start;overflow:hidden}
+#CartDrawer .cart-line-image img{width:100%;height:100%;aspect-ratio:1;object-fit:contain;object-position:center}
+@media(max-width:749px){#CartDrawer .drawer-heading{gap:8px;padding:16px 14px}#CartDrawer .drawer-heading h2{font-size:20px}#CartDrawer .cart-drawer__continue{min-height:42px;padding:7px 9px;font-size:12px}#CartDrawer .cart-line-image{width:clamp(76px,25vw,96px)}}
 {% endstylesheet %}
 {% schema %}
 {
