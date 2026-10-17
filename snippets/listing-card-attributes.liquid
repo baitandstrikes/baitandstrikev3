@@ -27,6 +27,24 @@
 {% if normalized_vendor contains 'jemmy' or normalized_title contains 'jemmy' %}
   {% assign is_jemmy = true %}
 {% endif %}
+{% assign jemmy_photo_product_codes = 'KUP024,KUP021,KUP023,KUP020' | split: ',' %}
+{% for photo_product_code in jemmy_photo_product_codes %}
+  {% assign normalized_photo_product_code = photo_product_code | downcase %}
+  {% if normalized_title contains normalized_photo_product_code %}
+    {% assign is_jemmy = true %}
+    {% break %}
+  {% endif %}
+  {% for product_variant in product.variants %}
+    {% assign normalized_variant_sku = product_variant.sku | downcase %}
+    {% if normalized_variant_sku contains normalized_photo_product_code %}
+      {% assign is_jemmy = true %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+  {% if is_jemmy %}
+    {% break %}
+  {% endif %}
+{% endfor %}
 {% unless is_jemmy %}
   {% for product_image in product.images %}
     {% assign normalized_image_alt = product_image.alt | downcase %}
