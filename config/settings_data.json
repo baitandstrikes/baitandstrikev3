@@ -42,6 +42,11 @@
         "settings": {
           "enable_modification": true
         }
+      },
+      "17370552890237093914": {
+        "type": "shopify://apps/b2b-signup-company/blocks/app-embed/019d4d47-ad3a-7055-b7c4-6b27d99ef86a",
+        "disabled": false,
+        "settings": {}
       }
     }
   }
