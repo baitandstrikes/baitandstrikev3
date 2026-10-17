@@ -6,6 +6,12 @@ const config = JSON.parse(node.textContent);
 const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const productRequests = new WeakMap();
 let toastTimer, quickRequest, cartBusy = false;
+const setPlaybackIcon = (button, paused) => {
+ const pauseIcon = button.querySelector('[data-pause-icon]');
+ const playIcon = button.querySelector('[data-play-icon]');
+ if (pauseIcon) pauseIcon.hidden = paused;
+ if (playIcon) playIcon.hidden = !paused;
+};
 const toast = (message) => {
  const el = document.getElementById('BnsStatus');
  el.textContent = message; el.classList.add('is-visible');
@@ -149,13 +155,17 @@ const initSlideshow = (el) => {
  dots.forEach((dot, i) => { dot.classList.toggle('is-active', i === index); if (i === index) dot.setAttribute('aria-current', 'true'); else dot.removeAttribute('aria-current'); });
  };
  const start = () => { clearInterval(timer); if (el.dataset.autoplay === 'true' && !paused && !hovering && !focused && !document.hidden && slides.length > 1 && el.isConnected) timer = setInterval(() => change(index + 1), Number(el.dataset.delay) || 7000); };
- el.addEventListener('click', event => { const dot = event.target.closest('[data-slide-to]'); if (dot) change(Number(dot.dataset.slideTo)); if (event.target.closest('[data-slide-next]')) change(index + 1); if (event.target.closest('[data-slide-prev]')) change(index - 1); const pause = event.target.closest('[data-slide-pause]'); if (pause) { paused = !paused; pause.setAttribute('aria-label', paused ? pause.dataset.play : pause.dataset.pause); pause.textContent = paused ? '▶' : 'Ⅱ'; } start(); });
+ el.addEventListener('click', event => { const dot = event.target.closest('[data-slide-to]'); if (dot) change(Number(dot.dataset.slideTo)); if (event.target.closest('[data-slide-next]')) change(index + 1); if (event.target.closest('[data-slide-prev]')) change(index - 1); const pause = event.target.closest('[data-slide-pause]'); if (pause) { paused = !paused; pause.setAttribute('aria-label', paused ? pause.dataset.play : pause.dataset.pause); setPlaybackIcon(pause, paused); } start(); });
  el.addEventListener('mouseenter', () => { hovering = true; start(); }); el.addEventListener('mouseleave', () => { hovering = false; start(); });
  el.addEventListener('focusin', () => { focused = true; start(); }); el.addEventListener('focusout', () => { focused = el.contains(document.activeElement); setTimeout(() => { focused = el.contains(document.activeElement); start(); }, 0); });
  document.addEventListener('visibilitychange', start);
  el.addEventListener('bns:slide', event => { change(Number(event.detail)); paused = true; start(); });
  el.addEventListener('bns:unload', () => clearInterval(timer), { once: true });
- if (reduced) { const pause = el.querySelector('[data-slide-pause]'); if (pause) { pause.setAttribute('aria-label', pause.dataset.play); pause.textContent = '▶'; } }
+ const pause = el.querySelector('[data-slide-pause]');
+ if (pause) {
+   setPlaybackIcon(pause, paused);
+   if (reduced) pause.setAttribute('aria-label', pause.dataset.play);
+ }
  change(0); start();
 };
 const initCategoryMenu = (menu) => {
@@ -209,12 +219,17 @@ const init = (scope = document) => {
  });
 };
 document.addEventListener('click', async event => {
- const trigger = event.target.closest('[data-open-cart], [data-open-account], [data-close-dialog], [data-quick-view], [data-menu-toggle], [data-search-toggle], [data-quantity], [data-cart-delta], [data-cart-remove], [data-gallery-select], [data-zoom], [data-carousel-prev], [data-carousel-next], [data-share]');
+ const trigger = event.target.closest('[data-open-cart], [data-open-account], [data-close-dialog], [data-quick-view], [data-card-image], [data-menu-toggle], [data-search-toggle], [data-quantity], [data-cart-delta], [data-cart-remove], [data-gallery-select], [data-zoom], [data-carousel-prev], [data-carousel-next], [data-share]');
  if (!trigger) return;
  if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
  if (trigger.matches('[data-open-cart]')) { event.preventDefault(); const drawer = document.getElementById('CartDrawer'); openDialog(drawer); try { await refreshCart(); } catch { displayError(drawer, config.error, '[data-cart-error]'); } }
  if (trigger.matches('[data-open-account]')) { event.preventDefault(); openDialog(document.getElementById('AccountDialog')); }
  if (trigger.matches('[data-close-dialog]')) { trigger.closest('dialog').close(); lockBody(); }
+ if (trigger.matches('[data-card-image]') && window.matchMedia('(max-width: 749px)').matches) {
+   event.preventDefault();
+   trigger.closest('.product-card')?.classList.add('is-quick-view-revealed');
+   return;
+ }
  if (trigger.matches('[data-quick-view]')) { event.preventDefault(); await quickView(trigger); }
  if (trigger.matches('[data-menu-toggle]')) { const header = trigger.closest('[data-header]'); const opened = header.classList.toggle('menu-open'); trigger.setAttribute('aria-expanded', String(opened)); }
  if (trigger.matches('[data-search-toggle]')) { const panel = document.getElementById('HeaderSearch'); panel.hidden = !panel.hidden; document.querySelectorAll('[data-search-toggle]').forEach(el => el.setAttribute('aria-expanded', String(!panel.hidden))); if (!panel.hidden) panel.querySelector('input[type=search]').focus(); else { const launchers = [...document.querySelectorAll('[data-search-toggle]')]; const visibleLauncher = launchers.find(el => el.getClientRects().length && getComputedStyle(el).visibility !== 'hidden'); visibleLauncher?.focus(); } }
