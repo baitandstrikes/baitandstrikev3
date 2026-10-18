@@ -92,6 +92,15 @@
       "name": "Katalog kategori BNS",
       "settings": {}
     },
+    "countdown": {
+      "type": "countdown-promo",
+      "settings": {
+        "title": "Flash Sale !",
+        "end": "2026-10-31T23:59:00+07:00",
+        "label": "Jelajahi koleksi",
+        "link": ""
+      }
+    },
     "catalog_body": {
       "type": "catalog-body",
       "blocks": {
@@ -202,6 +211,15 @@
         "heading": "Belanja berdasarkan kategori",
         "text": "Pilih perlengkapan untuk kebutuhan memancingmu.",
         "brand_heading": "Brand Populer"
+      }
+    },
+    "new_arrivals": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "new-arrival",
+        "eyebrow": "",
+        "title": "New Arrival",
+        "limit": 5
       }
     },
     "how_to_buy_sell": {
@@ -640,16 +658,6 @@
         "delay": 7
       }
     },
-    "countdown": {
-      "type": "countdown-promo",
-      "disabled": true,
-      "settings": {
-        "title": "Pilihan untuk trip berikutnya",
-        "end": "2026-10-31T23:59:00+07:00",
-        "label": "Jelajahi koleksi",
-        "link": ""
-      }
-    },
     "brands": {
       "type": "brand-discovery",
       "blocks": {
@@ -717,15 +725,6 @@
         "limit": 8
       }
     },
-    "new_arrivals": {
-      "type": "featured-collection",
-      "settings": {
-        "collection": "new-arrival",
-        "eyebrow": "",
-        "title": "New Arrival",
-        "limit": 5
-      }
-    },
     "1792163588261cbf6d": {
       "type": "apps",
       "settings": {}
@@ -735,6 +734,7 @@
     "commerce",
     "recently_viewed",
     "monotaro_category_structure_Qz6DcU",
+    "countdown",
     "catalog_body",
     "new_arrivals",
     "how_to_buy_sell",
@@ -746,7 +746,6 @@
     "partners",
     "journal",
     "hero",
-    "countdown",
     "brands",
     "products",
     "1792163588261cbf6d"
