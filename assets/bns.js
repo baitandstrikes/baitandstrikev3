@@ -280,7 +280,6 @@ document.addEventListener('submit', event => {
 });
 document.addEventListener('change', event => {
  const target = event.target;
- if (target.matches('[data-variant-link-select]') && target.value) window.location.assign(target.value);
  if (target.matches('[data-option-select]')) changeVariant(target);
  if (target.matches('[data-cart-quantity]') && target.closest('#CartDrawer')) mutateCart(target.closest('[data-cart-line]'), Number(target.value));
  if (target.matches('[data-country]')) updateProvince(target);

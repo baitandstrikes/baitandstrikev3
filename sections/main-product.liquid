@@ -47,17 +47,6 @@
         <div class="product-detail-row"><span>SKU</span><strong class="product-sku">{% if v.sku != blank %}{{ v.sku | escape }}{% else %}-{% endif %}</strong></div>
       </div>
 
-      {% unless product.has_only_default_variant %}
-        <div class="product-variant-picker">
-          <label for="MobileVariant-{{ section.id }}">Pilih jenis produk yang diinginkan</label>
-          <select id="MobileVariant-{{ section.id }}" data-variant-link-select>
-            {% for variant in product.variants %}
-              <option value="{{ product.url }}?variant={{ variant.id }}"{% if variant.id == v.id %} selected{% endif %}>{{ variant.title | escape }} · {{ variant.sku | default: 'Tanpa SKU' | escape }} · {{ variant.price | money }}{% unless variant.available %} · Stok Habis{% endunless %}</option>
-            {% endfor %}
-          </select>
-        </div>
-      {% endunless %}
-
       {% render 'product-form', product: product, section_id: section.id %}
 
       <div class="product-detail-assurance">

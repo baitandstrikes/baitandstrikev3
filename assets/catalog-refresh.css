@@ -274,32 +274,14 @@
 .catalog-refresh .product-detail-assurance strong{margin-bottom:3px;font-size:11px;color:#21475f}
 .catalog-refresh .product-detail-assurance span{font-size:10px;line-height:1.5;color:#6b7b86}
 .catalog-refresh .product-detail-specs{margin-top:24px}
-.catalog-refresh .product-variant-picker{display:block;margin:0 0 18px;padding:13px;border:1px solid #dfe5e9;background:#f6f8fa}
-.catalog-refresh .product-variant-picker label{margin-bottom:8px;font-size:12px;font-weight:700;color:#173e59}
-.catalog-refresh .product-variant-picker select{min-height:46px;margin:0;background:#fff;font-size:12px;line-height:1.4}
-.catalog-refresh .product-detail-specs h2,.catalog-refresh .product-variant-catalog h2,.catalog-refresh .product-information-catalog h2{margin:0;padding:13px 16px;background:#173f5b;color:#fff;font-size:16px;font-weight:600}
+.catalog-refresh .product-detail-specs h2,.catalog-refresh .product-information-catalog h2{margin:0;padding:13px 16px;background:#173f5b;color:#fff;font-size:16px;font-weight:600}
 .catalog-refresh .product-detail-specs dl{margin:0;border:1px solid #dfe5e9;border-top:0}
 .catalog-refresh .product-detail-specs dl>div{display:grid;grid-template-columns:132px minmax(0,1fr);border-top:1px solid #e4e9ec;font-size:12px}
 .catalog-refresh .product-detail-specs dl>div:first-child{border-top:0}
 .catalog-refresh .product-detail-specs dt,.catalog-refresh .product-detail-specs dd{margin:0;padding:10px 12px}
 .catalog-refresh .product-detail-specs dt{background:#f1f4f6;color:#526875}
 .catalog-refresh .product-detail-specs dd{overflow-wrap:anywhere;color:#263f50}
-.catalog-refresh .product-variant-catalog,.catalog-refresh .product-information-catalog,.catalog-refresh .product-detail-extras,.catalog-refresh .bulk-order{margin-top:42px}
-.catalog-refresh .product-variant-catalog .table-scroll{margin:0;overflow:visible;border:0}
-.catalog-refresh .product-variant-catalog table,.catalog-refresh .product-variant-catalog tbody,.catalog-refresh .product-variant-catalog tr,.catalog-refresh .product-variant-catalog td{display:block;width:100%;min-width:0}
-.catalog-refresh .product-variant-catalog table{font-size:12px}
-.catalog-refresh .product-variant-catalog thead{display:none}
-.catalog-refresh .product-variant-catalog tbody{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;padding-top:12px}
-.catalog-refresh .product-variant-catalog tr{border:1px solid #dfe5e9;background:#fff}
-.catalog-refresh .product-variant-catalog td{display:grid;grid-template-columns:76px minmax(0,1fr);gap:10px;padding:9px 11px;border:0;border-bottom:1px solid #edf0f2;line-height:1.5;overflow-wrap:anywhere}
-.catalog-refresh .product-variant-catalog td:last-child{border-bottom:0}
-.catalog-refresh .product-variant-catalog td:before{color:#647784;font-weight:600}
-.catalog-refresh .product-variant-catalog td:nth-child(1):before{content:'SKU'}
-.catalog-refresh .product-variant-catalog td:nth-child(2):before{content:'Produk'}
-.catalog-refresh .product-variant-catalog td:nth-child(3):before{content:'Stok'}
-.catalog-refresh .product-variant-catalog td:nth-child(4):before{content:'Harga'}
-.catalog-refresh .product-variant-catalog td a{color:#146fae;text-decoration:underline;text-underline-offset:2px}
-.catalog-refresh .product-variant-catalog td s{display:block;font-size:10px;color:#7d898f}
+.catalog-refresh .product-information-catalog,.catalog-refresh .product-detail-extras,.catalog-refresh .bulk-order{margin-top:42px}
 .catalog-refresh .product-information-catalog .rte{min-height:110px;padding:22px;border:1px solid #dfe5e9;border-top:0;font-size:13px;line-height:1.75;color:#344e60}
 .catalog-refresh .product-detail-extras{max-width:760px}
 .catalog-refresh .product-detail-extras .product-accordion{border-color:#dfe5e9}
@@ -312,7 +294,7 @@
 }
 @media(max-width:749px){
  .catalog-refresh .product-detail-catalog{width:100%;padding-top:16px;padding-bottom:38px}
- .catalog-refresh .product-detail-catalog .breadcrumbs,.catalog-refresh .product-detail-heading,.catalog-refresh .product-detail-info,.catalog-refresh .product-variant-catalog,.catalog-refresh .product-information-catalog,.catalog-refresh .product-detail-extras,.catalog-refresh .bulk-order{width:calc(100% - 32px);margin-left:auto;margin-right:auto}
+ .catalog-refresh .product-detail-catalog .breadcrumbs,.catalog-refresh .product-detail-heading,.catalog-refresh .product-detail-info,.catalog-refresh .product-information-catalog,.catalog-refresh .product-detail-extras,.catalog-refresh .bulk-order{width:calc(100% - 32px);margin-left:auto;margin-right:auto}
  .catalog-refresh .product-detail-heading{align-items:flex-end;margin-bottom:18px;padding-bottom:14px}
  .catalog-refresh .product-detail-heading h1{font-size:23px}
  .catalog-refresh .product-detail-heading .text-link{font-size:11px}
@@ -327,8 +309,8 @@
  .catalog-refresh .product-detail-assurance{grid-template-columns:1fr}
  .catalog-refresh .product-detail-assurance>div+div{border-left:0;border-top:1px solid #dfe5e9}
  .catalog-refresh .product-detail-specs dl>div{grid-template-columns:104px minmax(0,1fr);font-size:11px}
- .catalog-refresh .product-variant-catalog,.catalog-refresh .product-information-catalog,.catalog-refresh .product-detail-extras,.catalog-refresh .bulk-order{margin-top:30px}
- .catalog-refresh .product-detail-specs h2,.catalog-refresh .product-variant-catalog h2,.catalog-refresh .product-information-catalog h2{font-size:14px;padding:12px 13px}
+ .catalog-refresh .product-information-catalog,.catalog-refresh .product-detail-extras,.catalog-refresh .bulk-order{margin-top:30px}
+ .catalog-refresh .product-detail-specs h2,.catalog-refresh .product-information-catalog h2{font-size:14px;padding:12px 13px}
  .catalog-refresh .product-information-catalog .rte{padding:16px;font-size:12px}
  .catalog-refresh.page-product #mp-rfq-widget-root .mprfq-show-mobile{display:none!important}
 }
