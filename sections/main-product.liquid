@@ -1,73 +1,138 @@
-<section class="section wrap product-root" data-product-root data-section-id="{{ section.id }}" data-product-url="{{ product.url }}"><nav class="breadcrumbs" aria-label="{{ 'general.menu' | t }}"><a href="{{ routes.root_url }}">{{ 'general.home' | t }}</a><span>/</span><a href="{{ routes.all_products_collection_url }}">{{ 'general.collections' | t }}</a><span>/</span><span>{{ product.title | escape }}</span></nav><div class="product-layout"><div class="product-gallery"><div class="gallery-main" data-gallery-main>{% assign selected_media = product.selected_or_first_available_variant.featured_media | default: product.featured_media %}{% for media in product.media %}<div class="gallery-item{% if media.id == selected_media.id %} is-active{% endif %}" data-media-id="{{ media.id }}">{% case media.media_type %}{% when 'image' %}<button type="button" class="zoom-trigger" data-zoom="{{ media | image_url: width: 2000 }}" aria-label="{{ 'general.zoom' | t }}">{{ media | image_url: width: 1400 | image_tag: loading: 'eager', widths: '400, 700, 1000, 1400', sizes: '(min-width:990px) 55vw, 100vw' }}</button>{% when 'video' %}{{ media | video_tag: controls: true, image_size: '1000x', preload: 'metadata' }}{% when 'external_video' %}{{ media | external_video_tag }}{% when 'model' %}{{ media | model_viewer_tag: reveal: 'interaction', toggleable: true }}{% endcase %}</div>{% else %}{{ 'product-1' | placeholder_svg_tag: 'placeholder' }}{% endfor %}</div>{% if product.media.size > 1 %}<p class="gallery-count" aria-hidden="true">{{ product.media.size }} foto / video</p><div class="gallery-thumbs">{% for media in product.media %}<button type="button" data-gallery-select="{{ media.id }}" aria-label="{{ 'product.media' | t }} {{ forloop.index }}"{% if media.id == selected_media.id %} aria-pressed="true"{% else %} aria-pressed="false"{% endif %}>{{ media.preview_image | image_url: width: 180 | image_tag: loading: 'lazy', widths: '90, 180', sizes: '80px' }}</button>{% endfor %}</div>{% endif %}</div>
-<div class="product-info">{% if section.settings.show_vendor %}<p class="eyebrow">{{ product.vendor | escape }}</p>{% endif %}<h1>{{ product.title | escape }}</h1>{% assign v = product.selected_or_first_available_variant %}{% if v != blank %}{% render 'price', product: product, variant: v %}{% else %}<p class="price">{{ 'product.unavailable' | t }}</p>{% endif %}{% if v.sku != blank %}<p class="product-sku">{{ 'product.sku' | t }}: {{ v.sku | escape }}</p>{% endif %}
-{% if v.available and v.inventory_management != blank and v.inventory_policy == 'deny' %}<p class="stock-status">{{ 'product.stock' | t: count: v.inventory_quantity }}</p>{% endif %}{% render 'product-form', product: product, section_id: section.id %}
-<div class="product-benefits" aria-label="Keunggulan belanja">
-  <div><strong>Pengiriman nasional</strong><span>Dikirim ke seluruh Indonesia</span></div>
-  <div><strong>Dukungan BNS</strong><span>Bantuan sebelum dan sesudah belanja</span></div>
-  <div><strong>Produk terpilih</strong><span>Spesifikasi jelas untuk perlengkapanmu</span></div>
-</div>
-{% render 'shopping-actions', product: product %}
-{% render 'tool-product-data', product: product %}
-{% render 'b2b-context' %}
-{% if section.settings.bulk_order %}{% render 'bulk-order', product: product, section_id: section.id %}{% endif %}
-{% for block in section.blocks %}{% case block.type %}{% when '@app' %}{% render block %}{% when 'text' %}<div class="rte product-extra" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>{% when 'accordion' %}<details class="product-accordion" {{ block.shopify_attributes }}><summary>{{ block.settings.heading | escape }}{% render 'icon', name: 'plus' %}</summary><div class="rte">{{ block.settings.text }}{{ block.settings.page.content }}</div></details>{% endcase %}{% endfor %}
-<details class="product-accordion" open><summary>{{ 'product.description' | t }}{% render 'icon', name: 'plus' %}</summary><div class="rte">{{ product.description }}</div></details><div class="product-links"><button class="text-link" data-share="{{ shop.url }}{{ product.url }}">{{ 'general.share' | t }} ↗</button><a class="text-link quick-details-link" href="{{ product.url }}">{{ 'product.details' | t }} →</a></div></div></div></section>
+{% assign v = product.selected_or_first_available_variant %}
+<section class="section wrap product-root product-detail-catalog" data-product-root data-section-id="{{ section.id }}" data-product-url="{{ product.url }}">
+  <nav class="breadcrumbs" aria-label="{{ 'general.menu' | t }}">
+    <a href="{{ routes.root_url }}">{{ 'general.home' | t }}</a><span>/</span>
+    <a href="{{ routes.all_products_collection_url }}">Produk</a><span>/</span>
+    <span>{{ product.title | escape }}</span>
+  </nav>
+
+  <header class="product-detail-heading">
+    <div>
+      <h1>{{ product.title | escape }}</h1>
+      <p>#Grup produk {{ product.id }}</p>
+    </div>
+    <button class="text-link" type="button" data-share="{{ shop.url }}{{ product.url }}">Bagikan ↗</button>
+  </header>
+
+  <div class="product-layout product-detail-layout">
+    <div class="product-gallery">
+      <div class="gallery-main" data-gallery-main>
+        {% assign selected_media = v.featured_media | default: product.featured_media %}
+        {% for media in product.media %}
+          <div class="gallery-item{% if media.id == selected_media.id %} is-active{% endif %}" data-media-id="{{ media.id }}">
+            {% case media.media_type %}
+              {% when 'image' %}<button type="button" class="zoom-trigger" data-zoom="{{ media | image_url: width: 2000 }}" aria-label="{{ 'general.zoom' | t }}">{{ media | image_url: width: 1400 | image_tag: loading: 'eager', widths: '400, 700, 1000, 1400', sizes: '(min-width:990px) 44vw, 100vw' }}</button>
+              {% when 'video' %}{{ media | video_tag: controls: true, image_size: '1000x', preload: 'metadata' }}
+              {% when 'external_video' %}{{ media | external_video_tag }}
+              {% when 'model' %}{{ media | model_viewer_tag: reveal: 'interaction', toggleable: true }}
+            {% endcase %}
+          </div>
+        {% else %}
+          {{ 'product-1' | placeholder_svg_tag: 'placeholder' }}
+        {% endfor %}
+      </div>
+      {% if product.media.size > 1 %}
+        <p class="gallery-count" aria-hidden="true">{{ product.media.size }} foto / video</p>
+        <div class="gallery-thumbs">
+          {% for media in product.media %}<button type="button" data-gallery-select="{{ media.id }}" aria-label="{{ 'product.media' | t }} {{ forloop.index }}" aria-pressed="{% if media.id == selected_media.id %}true{% else %}false{% endif %}">{{ media.preview_image | image_url: width: 180 | image_tag: loading: 'lazy', widths: '90, 180', sizes: '72px' }}</button>{% endfor %}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="product-info product-detail-info">
+      <div class="product-detail-summary">
+        {% if section.settings.show_vendor and product.vendor != blank %}<div class="product-detail-row"><span>Merek</span><strong><a href="{{ routes.search_url }}?q={{ product.vendor | url_encode }}">{{ product.vendor | escape }}</a></strong></div>{% endif %}
+        <div class="product-detail-row product-detail-price"><span>Harga</span>{% if v != blank %}{% render 'price', product: product, variant: v %}{% else %}<p class="price">{{ 'product.unavailable' | t }}</p>{% endif %}</div>
+        <div class="product-detail-row"><span>Ketersediaan</span><strong class="product-detail-stock{% unless v.available %} is-sold-out{% endunless %}">{% if v.available %}Ready Stock{% else %}Stok Habis{% endif %}</strong></div>
+        <div class="product-detail-row"><span>SKU</span><strong class="product-sku">{% if v.sku != blank %}{{ v.sku | escape }}{% else %}-{% endif %}</strong></div>
+      </div>
+
+      {% unless product.has_only_default_variant %}
+        <div class="product-variant-mobile">
+          <label for="MobileVariant-{{ section.id }}">Pilih jenis produk yang diinginkan</label>
+          <select id="MobileVariant-{{ section.id }}" data-variant-link-select>
+            {% for variant in product.variants %}
+              <option value="{{ product.url }}?variant={{ variant.id }}"{% if variant.id == v.id %} selected{% endif %}>{{ variant.title | escape }} · {{ variant.sku | default: 'Tanpa SKU' | escape }} · {{ variant.price | money }}{% unless variant.available %} · Stok Habis{% endunless %}</option>
+            {% endfor %}
+          </select>
+        </div>
+      {% endunless %}
+
+      {% render 'product-form', product: product, section_id: section.id %}
+
+      <div class="product-detail-assurance">
+        <div><strong>Produk resmi BAIT&amp;STRIKE</strong><span>Produk terpilih dengan informasi yang jelas.</span></div>
+        <div><strong>Pengiriman seluruh Indonesia</strong><span>Estimasi pengiriman tampil saat checkout.</span></div>
+      </div>
+
+      <div class="product-detail-specs">
+        <h2>Spesifikasi</h2>
+        <dl>
+          {% if product.vendor != blank %}<div><dt>Merek</dt><dd>{{ product.vendor | escape }}</dd></div>{% endif %}
+          {% for option in product.options_with_values %}<div><dt>{{ option.name | escape }}</dt><dd>{{ option.values | map: 'name' | join: ', ' | default: option.values | join: ', ' }}</dd></div>{% endfor %}
+          <div><dt>Pilihan produk</dt><dd>{{ product.variants.size }} varian</dd></div>
+        </dl>
+      </div>
+
+      {% render 'tool-product-data', product: product %}
+      {% render 'b2b-context' %}
+    </div>
+  </div>
+
+  {% unless product.has_only_default_variant %}
+    <section class="product-variant-catalog" aria-labelledby="variant-heading-{{ section.id }}">
+      <h2 id="variant-heading-{{ section.id }}">Pilih jenis produk yang diinginkan</h2>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>SKU</th><th>Nama produk</th><th>Ketersediaan</th><th>Harga</th></tr></thead>
+          <tbody>
+            {% for variant in product.variants %}
+              <tr>
+                <td>{{ variant.sku | default: '-' | escape }}</td>
+                <td><a href="{{ product.url }}?variant={{ variant.id }}">{{ variant.title | escape }}</a></td>
+                <td><span class="product-detail-stock{% unless variant.available %} is-sold-out{% endunless %}">{% if variant.available %}Ready Stock{% else %}Stok Habis{% endif %}</span></td>
+                <td>{% if variant.compare_at_price > variant.price %}<s>{{ variant.compare_at_price | money }}</s> {% endif %}<strong>{{ variant.price | money }}</strong></td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  {% endunless %}
+
+  {% if section.settings.bulk_order %}{% render 'bulk-order', product: product, section_id: section.id %}{% endif %}
+
+  <section class="product-information-catalog" aria-labelledby="information-heading-{{ section.id }}">
+    <h2 id="information-heading-{{ section.id }}">Informasi Produk</h2>
+    <div class="rte">{{ product.description }}</div>
+  </section>
+
+  <div class="product-detail-extras">
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when '@app' %}{% render block %}
+        {% when 'text' %}<div class="rte product-extra" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
+        {% when 'accordion' %}<details class="product-accordion" {{ block.shopify_attributes }}><summary>{{ block.settings.heading | escape }}{% render 'icon', name: 'plus' %}</summary><div class="rte">{{ block.settings.text }}{{ block.settings.page.content }}</div></details>
+      {% endcase %}
+    {% endfor %}
+  </div>
+</section>
 <script type="application/ld+json">{{ product | structured_data }}</script>
 {% schema %}
 {
   "name": "Main Product",
   "settings": [
-    {
-      "type": "checkbox",
-      "id": "show_vendor",
-      "label": "Tampilkan merek",
-      "default": true
-    },
-    {
-      "type": "checkbox",
-      "id": "bulk_order",
-      "label": "Pemesanan banyak varian",
-      "default": true
-    }
+    { "type": "checkbox", "id": "show_vendor", "label": "Tampilkan merek", "default": true },
+    { "type": "checkbox", "id": "bulk_order", "label": "Pemesanan banyak varian", "default": true }
   ],
   "blocks": [
-    {
-      "type": "@app"
-    },
-    {
-      "type": "text",
-      "name": "Teks",
-      "settings": [
-        {
-          "type": "richtext",
-          "id": "text",
-          "label": "Isi",
-          "default": "<p>Pastikan ukuran dan varian yang dipilih sudah sesuai.</p>"
-        }
-      ]
-    },
-    {
-      "type": "accordion",
-      "name": "Accordion",
-      "settings": [
-        {
-          "type": "text",
-          "id": "heading",
-          "label": "Judul",
-          "default": "Informasi pengiriman"
-        },
-        {
-          "type": "richtext",
-          "id": "text",
-          "label": "Isi"
-        },
-        {
-          "type": "page",
-          "id": "page",
-          "label": "Halaman"
-        }
-      ]
-    }
+    { "type": "@app" },
+    { "type": "text", "name": "Teks", "settings": [{ "type": "richtext", "id": "text", "label": "Isi", "default": "<p>Pastikan ukuran dan varian yang dipilih sudah sesuai.</p>" }] },
+    { "type": "accordion", "name": "Accordion", "settings": [
+      { "type": "text", "id": "heading", "label": "Judul", "default": "Informasi pengiriman" },
+      { "type": "richtext", "id": "text", "label": "Isi" },
+      { "type": "page", "id": "page", "label": "Halaman" }
+    ] }
   ]
 }
 {% endschema %}

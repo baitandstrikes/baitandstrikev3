@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "commerce": {
@@ -31,15 +22,51 @@
             "button_label": "LIHAT PRODUK BARU",
             "link": "/collections/new-arrival"
           }
+        },
+        "business_benefit_1": {
+          "type": "benefit",
+          "settings": {
+            "icon": "shield",
+            "title": "Jaminan Stok Terjual dalam 60 Hari",
+            "text": "Kurangi risiko stok menumpuk dengan program jaminan penjualan selama 60 hari sesuai syarat dan ketentuan yang berlaku."
+          }
+        },
+        "business_benefit_2": {
+          "type": "benefit",
+          "settings": {
+            "icon": "tag",
+            "title": "Harga terbaik dan Kompetitif",
+            "text": "Dapatkan penawaran harga terbaik untuk bisnis Anda dengan margin yang lebih optimal dan mampu bersaing di pasar."
+          }
+        },
+        "business_benefit_3": {
+          "type": "benefit",
+          "settings": {
+            "icon": "package",
+            "title": "100% Produk dari Tangan Pertama",
+            "text": "Dapatkan akses langsung tanpa rantai distribusi yang panjang untuk harga kompetitif dan pasokan barang yang lebih terencana."
+          }
+        },
+        "business_benefit_4": {
+          "type": "benefit",
+          "settings": {
+            "icon": "handshake",
+            "title": "Dedicated Bisnis Advisor",
+            "text": "Dapatkan pendampingan bisnis, rekomendasi produk, dan dukungan penjualan untuk membantu toko pancing Anda tumbuh bersama kami."
+          }
         }
       },
       "block_order": [
         "promo_1",
-        "promo_2"
+        "promo_2",
+        "business_benefit_1",
+        "business_benefit_2",
+        "business_benefit_3",
+        "business_benefit_4"
       ],
       "settings": {
         "collection": "new-arrival",
-        "heading": "Product Highlight",
+        "heading": "Produk pilihan",
         "limit": 8
       }
     },
@@ -53,7 +80,8 @@
     "monotaro_category_structure_Qz6DcU": {
       "type": "monotaro-category-structure",
       "name": "Katalog kategori BNS",
-      "settings": {}
+      "settings": {},
+      "disabled": true
     },
     "catalog_body": {
       "type": "catalog-body",
@@ -162,8 +190,8 @@
         "brand_lemoren"
       ],
       "settings": {
-        "heading": "Kategori unggulan BAITANDSTRIKE",
-        "text": "Temukan produk berdasarkan kategori dan kebutuhan memancing.",
+        "heading": "Belanja berdasarkan kategori",
+        "text": "Pilih perlengkapan untuk kebutuhan memancingmu.",
         "brand_heading": "Brand Populer"
       }
     },

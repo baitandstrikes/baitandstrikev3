@@ -22,7 +22,7 @@
             {% when 5 %}{% assign category_image = 'category-hook-photo-v2.png' %}
             {% else %}{% assign category_image = 'category-accessories-photo-v2.png' %}
           {% endcase %}
-          <li class="product-category-row{% if forloop.first %} is-active{% endif %}" data-category-trigger="{{ forloop.index0 }}">
+          <li class="product-category-row" data-category-trigger="{{ forloop.index0 }}">
             <a href="{{ child.url }}">
               <span class="product-category-icon" aria-hidden="true"><img src="{{ category_image | asset_url }}" width="48" height="48" loading="lazy" alt=""></span>
               <span>{{ child.title | escape }}</span>{% render 'icon', name: 'chevron' %}
@@ -41,7 +41,7 @@
           {% when 5 %}{% assign category_image = 'category-hook-photo-v2.png' %}
           {% else %}{% assign category_image = 'category-accessories-photo-v2.png' %}
         {% endcase %}
-        <section class="product-category-panel{% if forloop.first %} is-active{% endif %}" data-category-panel="{{ forloop.index0 }}" aria-label="{{ child.title | escape }}">
+        <section class="product-category-panel" data-category-panel="{{ forloop.index0 }}" aria-label="{{ child.title | escape }}">
           <button type="button" class="product-category-back" data-category-back>{% render 'icon', name: 'arrow' %}<span>Semua kategori</span></button>
           <div class="product-category-heading">
             <img src="{{ category_image | asset_url }}" width="72" height="72" loading="lazy" alt="">

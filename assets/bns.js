@@ -171,9 +171,38 @@ const initSlideshow = (el) => {
 const initCategoryMenu = (menu) => {
  if (menu.dataset.categoryReady) return;
  menu.dataset.categoryReady = 'true';
+ const details = menu.closest('details');
+ let closeTimer;
+ const desktop = () => window.matchMedia('(min-width: 750px)').matches;
+ const openMenu = () => {
+   if (!desktop() || !details) return;
+   clearTimeout(closeTimer);
+   details.parentElement?.querySelectorAll(':scope > details[open]').forEach(item => { if (item !== details) item.removeAttribute('open'); });
+   details.setAttribute('open', '');
+ };
+ const queueClose = () => {
+   if (!desktop() || !details) return;
+   clearTimeout(closeTimer);
+   closeTimer = setTimeout(() => { if (!details.matches(':hover') && !details.contains(document.activeElement)) details.removeAttribute('open'); }, 160);
+ };
+ details?.addEventListener('pointerenter', openMenu);
+ details?.addEventListener('pointerleave', queueClose);
+ details?.addEventListener('focusin', openMenu);
+ details?.addEventListener('focusout', queueClose);
+ details?.addEventListener('keydown', event => {
+   if (event.key === 'Escape') {
+     clearTimeout(closeTimer);
+     details.removeAttribute('open');
+     details.querySelector('summary')?.focus();
+   }
+ });
  const shell = menu.querySelector('.product-category-shell');
  const triggers = [...menu.querySelectorAll('[data-category-trigger]')];
  const panels = [...menu.querySelectorAll('[data-category-panel]')];
+ const reset = () => {
+   triggers.forEach(trigger => trigger.classList.remove('is-active'));
+   panels.forEach(panel => panel.classList.remove('is-active'));
+ };
  const activate = (index, openMobile = false) => {
    triggers.forEach(trigger => trigger.classList.toggle('is-active', trigger.dataset.categoryTrigger === index));
    panels.forEach(panel => panel.classList.toggle('is-active', panel.dataset.categoryPanel === index));
@@ -194,8 +223,11 @@ const initCategoryMenu = (menu) => {
    shell.classList.remove('is-detail-open');
    menu.querySelector('[data-category-trigger].is-active a')?.focus();
  }));
- menu.closest('details')?.addEventListener('toggle', event => {
-   if (!event.currentTarget.open) shell.classList.remove('is-detail-open');
+ details?.addEventListener('toggle', event => {
+   if (!event.currentTarget.open) {
+     shell.classList.remove('is-detail-open');
+     reset();
+   }
  });
  menu.querySelector('.product-mega-tabs a[href*="#shop-by-brand"]')?.addEventListener('click', () => {
    menu.closest('details')?.removeAttribute('open');
@@ -248,6 +280,7 @@ document.addEventListener('submit', event => {
 });
 document.addEventListener('change', event => {
  const target = event.target;
+ if (target.matches('[data-variant-link-select]') && target.value) window.location.assign(target.value);
  if (target.matches('[data-option-select]')) changeVariant(target);
  if (target.matches('[data-cart-quantity]') && target.closest('#CartDrawer')) mutateCart(target.closest('[data-cart-line]'), Number(target.value));
  if (target.matches('[data-country]')) updateProvince(target);
