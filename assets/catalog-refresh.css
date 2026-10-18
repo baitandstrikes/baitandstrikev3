@@ -315,3 +315,10 @@
  .catalog-refresh.page-product #mp-rfq-widget-root .mprfq-show-mobile{display:none!important}
 }
 
+
+/* Persistent WhatsApp contact shortcut */
+.whatsapp-float{position:fixed;right:20px;bottom:84px;z-index:1000;display:grid;place-items:center;width:54px;height:54px;border:0;border-radius:50%;background:#25d366;color:#fff;box-shadow:0 3px 12px #0003;transition:transform .18s ease,background-color .18s ease}
+.whatsapp-float:hover{background:#1fbd5b;color:#fff;transform:translateY(-2px)}
+.whatsapp-float:focus-visible{outline:3px solid #123f5f;outline-offset:3px}
+.whatsapp-float .icon{width:29px;height:29px;stroke-width:1.8}
+@media(max-width:749px){.whatsapp-float{right:14px;bottom:82px;width:50px;height:50px}.whatsapp-float .icon{width:27px;height:27px}}
