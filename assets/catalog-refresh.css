@@ -353,3 +353,6 @@
 @media(min-width:750px){.catalog-refresh .countdown-promo h2{color:#123f5f!important;opacity:1!important;visibility:visible!important}}
 
 @media(min-width:750px){.catalog-refresh .countdown-promo{opacity:1!important;filter:none!important}.catalog-refresh .countdown-promo h2{font-weight:700!important;-webkit-text-fill-color:#123f5f!important;text-shadow:0 0 1px #123f5f}}
+
+/* Match the Flash Sale card to the shared desktop content gutters. */
+@media(min-width:750px){.catalog-refresh .countdown-promo{width:min(1200px,calc(100vw - 48px));max-width:1200px;margin-right:auto;margin-left:auto}}
