@@ -359,3 +359,6 @@
 
 /* Desktop Flash Sale: same content width, with a white full-width section behind it. */
 @media(min-width:750px){.catalog-refresh .shopify-section:has(.countdown-promo){background:#fff!important}.catalog-refresh .countdown-promo{box-sizing:border-box;width:min(1200px,calc(100vw - 48px));max-width:1200px;margin:24px auto;padding:18px 20px;background:#fff}}
+
+/* Fine-align desktop Flash Sale edges with the inset catalog sections. */
+@media(min-width:750px){.catalog-refresh .countdown-promo{width:min(1200px,calc(100vw - 72px));max-width:1200px;margin-right:auto;margin-left:auto}}
