@@ -348,3 +348,6 @@
  .catalog-refresh .countdown-clock small{margin-top:4px;font-size:9px;letter-spacing:.04em}
  .catalog-refresh .countdown-promo>.button{display:flex;justify-content:center;align-items:center;box-sizing:border-box;min-width:170px;min-height:42px;margin:0;padding:10px 16px;border:1px solid #ffda1a;border-radius:4px;background:#ffda1a;color:#123f5f;font-size:11px;font-weight:700;line-height:1.3;text-align:center;text-decoration:none}
 }
+
+/* Keep the desktop Flash Sale heading clear and readable. */
+@media(min-width:750px){.catalog-refresh .countdown-promo h2{color:#123f5f!important;opacity:1!important;visibility:visible!important}}
