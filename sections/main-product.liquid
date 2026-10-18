@@ -48,7 +48,7 @@
       </div>
 
       {% unless product.has_only_default_variant %}
-        <div class="product-variant-mobile">
+        <div class="product-variant-picker">
           <label for="MobileVariant-{{ section.id }}">Pilih jenis produk yang diinginkan</label>
           <select id="MobileVariant-{{ section.id }}" data-variant-link-select>
             {% for variant in product.variants %}
@@ -78,27 +78,6 @@
       {% render 'b2b-context' %}
     </div>
   </div>
-
-  {% unless product.has_only_default_variant %}
-    <section class="product-variant-catalog" aria-labelledby="variant-heading-{{ section.id }}">
-      <h2 id="variant-heading-{{ section.id }}">Pilih jenis produk yang diinginkan</h2>
-      <div class="table-scroll">
-        <table>
-          <thead><tr><th>SKU</th><th>Nama produk</th><th>Ketersediaan</th><th>Harga</th></tr></thead>
-          <tbody>
-            {% for variant in product.variants %}
-              <tr>
-                <td>{{ variant.sku | default: '-' | escape }}</td>
-                <td><a href="{{ product.url }}?variant={{ variant.id }}">{{ variant.title | escape }}</a></td>
-                <td><span class="product-detail-stock{% unless variant.available %} is-sold-out{% endunless %}">{% if variant.available %}Ready Stock{% else %}Stok Habis{% endif %}</span></td>
-                <td>{% if variant.compare_at_price > variant.price %}<s>{{ variant.compare_at_price | money }}</s> {% endif %}<strong>{{ variant.price | money }}</strong></td>
-              </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-      </div>
-    </section>
-  {% endunless %}
 
   {% if section.settings.bulk_order %}{% render 'bulk-order', product: product, section_id: section.id %}{% endif %}
 

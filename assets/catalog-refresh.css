@@ -274,7 +274,9 @@
 .catalog-refresh .product-detail-assurance strong{margin-bottom:3px;font-size:11px;color:#21475f}
 .catalog-refresh .product-detail-assurance span{font-size:10px;line-height:1.5;color:#6b7b86}
 .catalog-refresh .product-detail-specs{margin-top:24px}
-.catalog-refresh .product-variant-mobile{display:none}
+.catalog-refresh .product-variant-picker{display:block;margin:0 0 18px;padding:13px;border:1px solid #dfe5e9;background:#f6f8fa}
+.catalog-refresh .product-variant-picker label{margin-bottom:8px;font-size:12px;font-weight:700;color:#173e59}
+.catalog-refresh .product-variant-picker select{min-height:46px;margin:0;background:#fff;font-size:12px;line-height:1.4}
 .catalog-refresh .product-detail-specs h2,.catalog-refresh .product-variant-catalog h2,.catalog-refresh .product-information-catalog h2{margin:0;padding:13px 16px;background:#173f5b;color:#fff;font-size:16px;font-weight:600}
 .catalog-refresh .product-detail-specs dl{margin:0;border:1px solid #dfe5e9;border-top:0}
 .catalog-refresh .product-detail-specs dl>div{display:grid;grid-template-columns:132px minmax(0,1fr);border-top:1px solid #e4e9ec;font-size:12px}
@@ -329,11 +331,4 @@
  .catalog-refresh .product-detail-specs h2,.catalog-refresh .product-variant-catalog h2,.catalog-refresh .product-information-catalog h2{font-size:14px;padding:12px 13px}
  .catalog-refresh .product-information-catalog .rte{padding:16px;font-size:12px}
  .catalog-refresh.page-product #mp-rfq-widget-root .mprfq-show-mobile{display:none!important}
- .catalog-refresh .product-variant-mobile{display:block;margin:0 0 18px;padding:13px;border:1px solid #dfe5e9;background:#f6f8fa}
- .catalog-refresh .product-variant-mobile label{margin-bottom:8px;font-size:12px;font-weight:700;color:#173e59}
- .catalog-refresh .product-variant-mobile select{min-height:46px;margin:0;background:#fff;font-size:12px;line-height:1.4}
- .catalog-refresh .product-variant-catalog{display:none}
- .catalog-refresh .product-variant-catalog tbody{grid-template-columns:1fr;gap:10px;padding-top:10px}
- .catalog-refresh .product-variant-catalog td{grid-template-columns:82px minmax(0,1fr);font-size:11px}
 }
-@media(min-width:750px) and (max-width:989px){.catalog-refresh .product-variant-catalog tbody{grid-template-columns:repeat(2,minmax(0,1fr))}}
