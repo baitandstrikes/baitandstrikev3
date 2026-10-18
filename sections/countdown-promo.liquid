@@ -1,4 +1,15 @@
 <section class="countdown-promo" data-countdown="{{ section.settings.end | escape }}"><h2>{{ section.settings.title | escape }}</h2><div class="countdown-clock" data-countdown-clock hidden>{% assign units = 'days,hours,minutes,seconds' | split: ',' %}{% for unit in units %}{% assign key = 'general.' | append: unit %}<span><b data-time="{{ unit }}">00</b><small>{{ key | t }}</small></span>{% endfor %}</div>{% if section.settings.label != blank %}<a class="button" href="{{ section.settings.link | default: routes.all_products_collection_url }}">{{ section.settings.label | escape }}</a>{% endif %}</section>
+<style>
+@media (min-width: 750px) {
+  body.catalog-refresh .shopify-section:has(.countdown-promo) { background: #fff !important; }
+  body.catalog-refresh .shopify-section:has(.countdown-promo) .countdown-promo {
+    box-sizing: border-box;
+    width: min(1280px, calc(100vw - 48px)) !important;
+    max-width: 1280px !important;
+    margin: 24px auto !important;
+  }
+}
+</style>
 {% schema %}
 {
   "name": "Countdown Promotion",
