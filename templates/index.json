@@ -719,7 +719,6 @@
     },
     "new_arrivals": {
       "type": "featured-collection",
-      "disabled": true,
       "settings": {
         "collection": "new-arrival",
         "eyebrow": "",
@@ -737,6 +736,7 @@
     "recently_viewed",
     "monotaro_category_structure_Qz6DcU",
     "catalog_body",
+    "new_arrivals",
     "how_to_buy_sell",
     "why_choose_us",
     "guides",
@@ -749,7 +749,6 @@
     "countdown",
     "brands",
     "products",
-    "new_arrivals",
     "1792163588261cbf6d"
   ]
 }
