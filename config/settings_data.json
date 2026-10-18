@@ -31,13 +31,6 @@
         "disabled": true,
         "settings": {}
       },
-      "13759667579245410970": {
-        "type": "shopify://apps/bmt-b2b-wholesale/blocks/app-embed/f476de00-6707-40af-8cee-f53b60634fe3",
-        "disabled": false,
-        "settings": {
-          "enable_modification": true
-        }
-      },
       "10145915593124433170": {
         "type": "shopify://apps/sp-request-a-quote-rfq/blocks/mp-request-for-quote-embed/019a3441-fea6-7e7b-ada9-3c4f6e8c5569",
         "disabled": true,
@@ -47,6 +40,13 @@
         "type": "shopify://apps/sp-wholesale-pricing/blocks/sp-wholesale/019f2606-c33b-70a0-be01-aa83daf3ee37",
         "disabled": true,
         "settings": {}
+      },
+      "13759667579245410970": {
+        "type": "shopify://apps/bmt-b2b-wholesale/blocks/app-embed/f476de00-6707-40af-8cee-f53b60634fe3",
+        "disabled": false,
+        "settings": {
+          "enable_modification": true
+        }
       }
     }
   }
