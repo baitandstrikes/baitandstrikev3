@@ -264,3 +264,7 @@
   object-fit: contain;
   object-position: center;
 }
+
+.price > .price-current[data-spw-hidden="1"]:only-child {
+  display: inline !important;
+}
