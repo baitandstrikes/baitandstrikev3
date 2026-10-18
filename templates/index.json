@@ -88,9 +88,9 @@
     },
     "monotaro_category_structure_Qz6DcU": {
       "type": "monotaro-category-structure",
+      "disabled": true,
       "name": "Katalog kategori BNS",
-      "settings": {},
-      "disabled": true
+      "settings": {}
     },
     "catalog_body": {
       "type": "catalog-body",
