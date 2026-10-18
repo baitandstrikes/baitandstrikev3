@@ -322,3 +322,6 @@
 .whatsapp-float:focus-visible{outline:3px solid #123f5f;outline-offset:3px}
 .whatsapp-float .icon{width:29px;height:29px;stroke-width:1.8}
 @media(max-width:749px){.whatsapp-float{right:14px;bottom:82px;width:50px;height:50px}.whatsapp-float .icon{width:27px;height:27px}}
+
+/* WhatsApp contact is available through the floating shortcut, not the footer. */
+.footer-about .rte a.text-link{display:none!important}
