@@ -265,6 +265,32 @@
   object-position: center;
 }
 
-.price > .price-current[data-spw-hidden="1"]:only-child {
+.price > .price-current[data-spw-hidden="1"]:only-child:not(:has(.sp-wholesale-cardrow)) {
   display: inline !important;
+}
+
+.price-current[data-spw-hidden="1"]:has(.sp-wholesale-cardrow),
+.commerce-product__price[data-spw-hidden="1"] {
+  display: block !important;
+}
+
+.price-current[data-spw-hidden="1"]:has(.sp-wholesale-cardrow),
+.commerce-product__price[data-spw-hidden="1"]:has(.sp-wholesale-cardrow) {
+  color: transparent !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+}
+
+.sp-wholesale-cardrow {
+  display: inline-flex !important;
+  align-items: baseline;
+  gap: 6px;
+  color: #d7271c;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.sp-wholesale-card-old {
+  font-size: 0.9em;
+  text-decoration: line-through;
 }
