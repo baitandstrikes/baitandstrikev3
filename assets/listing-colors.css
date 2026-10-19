@@ -297,3 +297,35 @@
 #MainContent > .shopify-section > .sp-wholesale-cardrow {
   display: none !important;
 }
+
+@media (max-width: 749px) {
+  .commerce-product__price,
+  .product-card .price-current[data-spw-hidden="1"]:has(.sp-wholesale-cardrow) {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    white-space: normal !important;
+    overflow-wrap: anywhere;
+  }
+
+  .commerce-product__price .sp-wholesale-cardrow,
+  .product-card .price-current[data-spw-hidden="1"]:has(.sp-wholesale-cardrow) .sp-wholesale-cardrow {
+    display: inline-flex !important;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 2px 6px;
+    max-width: 100%;
+    vertical-align: top;
+  }
+
+  .commerce-product__price .sp-wholesale-card-old,
+  .commerce-product__price .sp-wholesale-card-price,
+  .product-card .sp-wholesale-card-old,
+  .product-card .sp-wholesale-card-price {
+    display: inline !important;
+    margin: 0 !important;
+    white-space: nowrap;
+    font-size: 12px !important;
+    line-height: 1.35 !important;
+  }
+}
