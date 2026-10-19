@@ -282,10 +282,41 @@
 }
 
 .sp-wholesale-cardrow {
-  display: inline !important;
+  display: flex !important;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 6px;
+  width: fit-content;
+  max-width: 100%;
+  min-width: 0;
   color: #d7271c;
   font-size: 14px;
   line-height: 1.4;
+  white-space: normal !important;
+  overflow-wrap: anywhere;
+}
+
+.bmt-wholesale-price,
+.bmt-wholesale-price .price-container,
+.commerce-product__price,
+.product-card .price,
+.product-detail-price .price {
+  box-sizing: border-box;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.bmt-wholesale-price .price-container {
+  flex-wrap: wrap;
+  gap: 2px 6px !important;
+}
+
+.sp-wholesale-card-old,
+.sp-wholesale-card-price {
+  min-width: 0;
+  max-width: 100%;
+  white-space: normal !important;
+  overflow-wrap: anywhere;
 }
 
 .sp-wholesale-card-old {
@@ -310,7 +341,7 @@
 
   .commerce-product__price .sp-wholesale-cardrow,
   .product-card .price-current[data-spw-hidden="1"]:has(.sp-wholesale-cardrow) .sp-wholesale-cardrow {
-    display: inline-flex !important;
+    display: flex !important;
     flex-wrap: wrap;
     align-items: baseline;
     gap: 2px 6px;
