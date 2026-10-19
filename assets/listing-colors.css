@@ -361,6 +361,10 @@
   }
 }
 
+.product-card .price:has(> .sp-wholesale-cardrow) > .price-current[data-spw-hidden="1"] > .sp-wholesale-cardrow {
+  display: none !important;
+}
+
 .catalog-group__products .price {
   grid-column: 2;
   margin-top: 4px;
