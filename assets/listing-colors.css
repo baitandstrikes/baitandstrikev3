@@ -381,6 +381,13 @@
 }
 
 @media (max-width: 749px) {
+  body.catalog-refresh #shop-by-brand .catalog-brands__list a[aria-label="Lurekiller"] img,
+  body.catalog-refresh #shop-by-brand .catalog-brands__list a[aria-label="Lemoren"] img {
+    transform: scale(1.2);
+  }
+}
+
+@media (max-width: 749px) {
   .catalog-group__products .price {
     font-size: 9px;
   }
