@@ -282,9 +282,7 @@
 }
 
 .sp-wholesale-cardrow {
-  display: inline-flex !important;
-  align-items: baseline;
-  gap: 6px;
+  display: inline !important;
   color: #d7271c;
   font-size: 14px;
   line-height: 1.4;
@@ -293,4 +291,8 @@
 .sp-wholesale-card-old {
   font-size: 0.9em;
   text-decoration: line-through;
+}
+
+#MainContent > .sp-wholesale-cardrow {
+  display: none !important;
 }
