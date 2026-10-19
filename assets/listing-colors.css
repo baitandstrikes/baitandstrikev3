@@ -345,6 +345,10 @@
   transform: none;
 }
 
+#QuickView .bmt-wholesale-price .sale-price .sp-wholesale-old {
+  display: none !important;
+}
+
 @media (max-width: 749px) {
   .catalog-group__products .price {
     font-size: 9px;
