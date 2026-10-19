@@ -293,6 +293,7 @@
   text-decoration: line-through;
 }
 
-#MainContent > .sp-wholesale-cardrow {
+#MainContent > .sp-wholesale-cardrow,
+#MainContent > .shopify-section > .sp-wholesale-cardrow {
   display: none !important;
 }
