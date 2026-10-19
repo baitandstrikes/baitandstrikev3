@@ -119,6 +119,14 @@ const quickView = async (link) => {
  if (!response.ok) throw new Error(config.error);
  const product = parseHTML(await response.text()).querySelector('[data-product-root]');
  if (!product) throw new Error(config.error);
+ // Match BMT's product-card scanner so it prices the dynamically loaded quick view.
+ product.classList.add('product-card');
+ const productUrl = product.dataset.productUrl || link.dataset.quickView;
+ const productLink = document.createElement('a');
+ productLink.href = productUrl;
+ productLink.hidden = true;
+ productLink.tabIndex = -1;
+ product.prepend(productLink);
  content.replaceChildren(product);
  } catch (error) { if (error.name !== 'AbortError') { dialog.close(); lockBody(); window.location.assign(link.href); } }
 };

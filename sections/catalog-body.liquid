@@ -46,10 +46,10 @@
             </a>
             <div class="catalog-group__products">
               {% for product in category_collection.products limit: 8 %}
-                <a href="{{ product.url }}">
+                <a class="product-card" href="{{ product.url }}">
                   <span>{% if product.featured_image %}{{ product.featured_image | image_url: width: 160 | image_tag: loading: 'lazy', widths: '80, 120, 160', sizes: '72px', alt: product.title }}{% endif %}</span>
                   <strong>{{ product.title | escape }}</strong>
-                  <em>{{ product.price | money }}</em>
+                  {% render 'price', product: product %}
                 </a>
               {% else %}<a href="{{ routes.all_products_collection_url }}"><strong>Lihat seluruh produk</strong></a>{% endfor %}
             </div>
