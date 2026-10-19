@@ -94,6 +94,7 @@
     },
     "countdown": {
       "type": "countdown-promo",
+      "disabled": true,
       "settings": {
         "title": "Flash Sale !",
         "end": "2026-10-31T23:59:00+07:00",
