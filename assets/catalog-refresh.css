@@ -285,7 +285,7 @@
 .catalog-refresh .product-information-catalog .rte{min-height:110px;padding:22px;border:1px solid #dfe5e9;border-top:0;font-size:13px;line-height:1.75;color:#344e60}
 .catalog-refresh .product-detail-extras{max-width:760px}
 .catalog-refresh .product-detail-extras .product-accordion{border-color:#dfe5e9}
-.catalog-refresh.page-product .shopping-shortcuts,.catalog-refresh.page-product .mprfq-add-to-quote-button-pdp,.catalog-refresh.page-product [data-quote-add],.catalog-refresh.page-product #mp-rfq-widget-root{display:none!important}
+.catalog-refresh.page-product .shopping-shortcuts,.catalog-refresh.page-product [data-quote-add],.catalog-refresh.page-product #mp-rfq-widget-root{display:none!important}
 
 @media(max-width:989px){
  .catalog-refresh .product-detail-layout{gap:28px;grid-template-columns:minmax(0,46%) minmax(0,1fr)}
@@ -363,5 +363,5 @@
 /* Fine-align desktop Flash Sale edges with the inset catalog sections. */
 @media(min-width:750px){.catalog-refresh .countdown-promo{width:min(1200px,calc(100vw - 72px));max-width:1200px;margin-right:auto;margin-left:auto}}
 
-/* Match the desktop Flash Sale card to the Catalog Body's 1200px content width. */
-@media(min-width:750px){body.catalog-refresh .shopify-section:has(.countdown-promo){background:#fff!important}body.catalog-refresh .countdown-promo{box-sizing:border-box;width:min(1200px,calc(100vw - 48px))!important;max-width:1200px!important;margin:24px auto!important;padding:18px 20px;background:#fff!important}}
+/* Match the desktop Flash Sale card to the Catalog Body's 1280px content width. */
+@media(min-width:750px){body.catalog-refresh .shopify-section:has(.countdown-promo){background:#fff!important}body.catalog-refresh .countdown-promo{box-sizing:border-box;width:min(1280px,calc(100vw - 58px))!important;max-width:1280px!important;margin:24px auto!important;padding:18px 20px;background:#fff!important}}
