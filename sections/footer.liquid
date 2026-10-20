@@ -1,74 +1,64 @@
-<style>.footer-grid .footer-about a.text-link{display:none!important}</style><footer class="site-footer"><div class="wrap footer-grid"><div class="footer-about"><a class="brand" href="{{ routes.root_url }}">{% if section.settings.logo != blank %}{{ section.settings.logo | image_url: width: 600 | image_tag: widths: '200, 300, 400, 600', loading: 'lazy', alt: shop.name }}{% else %}BAIT<span>AND</span>STRIKE{% endif %}</a><div class="rte">{{ section.settings.text }}</div></div>
-{% for block in section.blocks %}<div {{ block.shopify_attributes }}><h3>{{ block.settings.title | escape }}</h3>{% if block.id == 'shop' or block.settings.title == 'Jelajahi' %}<div class="social-links footer-social-links">{% if section.settings.instagram != blank %}<a href="{{ section.settings.instagram }}" aria-label="Instagram" target="_blank" rel="noopener noreferrer">{% render 'icon', name: 'instagram' %}</a>{% endif %}{% if section.settings.tiktok != blank %}<a href="{{ section.settings.tiktok }}" aria-label="TikTok" target="_blank" rel="noopener noreferrer">{% render 'icon', name: 'tiktok' %}</a>{% endif %}{% if section.settings.youtube != blank %}<a href="{{ section.settings.youtube }}" aria-label="YouTube" target="_blank" rel="noopener noreferrer">{% render 'icon', name: 'youtube' %}</a>{% endif %}{% if section.settings.facebook != blank %}<a href="{{ section.settings.facebook }}" aria-label="Facebook" target="_blank" rel="noopener noreferrer">{% render 'icon', name: 'facebook' %}</a>{% endif %}</div>{% else %}<ul class="footer-menu">{% for link in block.settings.menu.links %}<li><a href="{{ link.url }}">{{ link.title | escape }}</a></li>{% endfor %}</ul>{% endif %}</div>{% endfor %}
-<div class="newsletter"><h3>{{ section.settings.newsletter_title | escape }}</h3><p>{{ section.settings.newsletter_text | escape }}</p>{% assign newsletter_id = 'Newsletter-' | append: section.id %}{% form 'customer', id: newsletter_id %}<input type="hidden" name="contact[tags]" value="newsletter">{% if form.posted_successfully? %}<p role="status">{{ 'general.newsletter_ok' | t }}</p>{% endif %}{{ form.errors | default_errors }}<label class="visually-hidden" for="NewsletterEmail-{{ section.id }}">{{ 'general.email' | t }}</label><div class="newsletter-input"><input type="email" id="NewsletterEmail-{{ section.id }}" name="contact[email]" autocomplete="email" placeholder="{{ 'general.email' | t }}" required><button class="icon-button" aria-label="{{ 'general.subscribe' | t }}">{% render 'icon', name: 'arrow' %}</button></div>{% endform %}</div></div>
-<div class="wrap footer-bottom"><p>© {{ 'now' | date: '%Y' }} {{ shop.name | escape }}</p><div class="policy-links">{% for policy in shop.policies %}{% if policy != blank %}<a href="{{ policy.url }}">{{ policy.title | escape }}</a>{% endif %}{% endfor %}</div><div class="payment-icons">{% for type in shop.enabled_payment_types %}{{ type | payment_type_svg_tag: class: 'payment-icon' }}{% endfor %}</div></div></footer>
+<footer class="site-footer site-footer--pdf">
+  <div class="wrap footer-grid footer-grid--pdf">
+    <div class="footer-about">
+      <a class="brand" href="{{ routes.root_url }}">
+        <img src="{{ 'bns-footer-logo.png' | asset_url }}" width="3537" height="448" loading="lazy" alt="BAIT &amp; STRIKE Fishing Gear">
+      </a>
+      <p class="footer-tagline">{{ section.settings.tagline | escape }}</p>
+    </div>
+
+    <div class="footer-showroom">
+      <h3>Showroom</h3>
+      <p>{{ section.settings.showroom_address | escape }}</p>
+      <p><strong>Email</strong><br><a href="mailto:{{ section.settings.email | escape }}">{{ section.settings.email | escape }}</a></p>
+    </div>
+
+    <div class="footer-information">
+      <h3>Informasi</h3>
+      <ul class="footer-menu">
+        <li><a href="/pages/contact">Kontak Kami</a></li>
+        <li><a href="/pages/about-us">Tentang Kami</a></li>
+        <li><a href="/policies/privacy-policy">Kebijakan Privasi</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-categories">
+      <h3>Kategori</h3>
+      <ul class="footer-menu">
+        <li><a href="{{ routes.collections_url }}/fishing-rods-joran">Joran</a></li>
+        <li><a href="{{ routes.collections_url }}/reel">Reel</a></li>
+        <li><a href="{{ routes.collections_url }}/fishing-bait">Umpan</a></li>
+        <li><a href="{{ routes.collections_url }}/fishing-line">Senar</a></li>
+        <li><a href="{{ routes.collections_url }}/fishing-accesories">Aksesori</a></li>
+        <li><a href="{{ routes.collections_url }}/hook">Hook</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+{% stylesheet %}
+.site-footer--pdf{padding:42px 0;background:#f3f4f5;color:#555}
+.footer-grid--pdf{display:grid;grid-template-columns:minmax(200px,1.3fr) minmax(260px,1.7fr) minmax(120px,.8fr) minmax(110px,.7fr);gap:34px;max-width:1240px}
+body.page-index.catalog-refresh .footer-grid--pdf{width:calc(100% - 48px);max-width:1160px;margin-inline:auto}
+.footer-grid--pdf h3{margin:0 0 12px;color:#222;font-size:15px;font-weight:700}
+.footer-grid--pdf p,.footer-grid--pdf a{font-size:13px;line-height:1.6}
+.footer-grid--pdf p{margin:0 0 14px}
+.footer-grid--pdf .brand{display:inline-block}
+.footer-grid--pdf .brand img{display:block;width:min(100%,300px);max-height:58px;object-fit:contain;object-position:left center}
+.footer-tagline{margin-top:12px!important;color:#69747d}
+.footer-showroom strong{color:#333}
+.footer-grid--pdf .footer-menu{display:grid;gap:6px;margin:0;padding:0;list-style:none}
+.footer-grid--pdf .footer-menu a{color:#60666b}
+.footer-grid--pdf .footer-menu a:hover,.footer-showroom a:hover{color:#1269a0}
+@media(max-width:900px){.footer-grid--pdf{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}}
+@media(max-width:550px){.site-footer--pdf{padding:30px 0}.footer-grid--pdf{grid-template-columns:1fr;gap:24px}.footer-grid--pdf .brand img{max-width:260px}}
+{% endstylesheet %}
 {% schema %}
 {
   "name": "Footer",
   "settings": [
-    {
-      "type": "image_picker",
-      "id": "logo",
-      "label": "Logo footer"
-    },
-    {
-      "type": "richtext",
-      "id": "text",
-      "label": "Tentang BNS",
-      "default": "<p>Peralatan mancing dan aksesori untuk trip berikutnya.<br>Jl. Makaliwe Raya No.36, Grogol, Jakarta Barat 11450.</p>"
-    },
-    {
-      "type": "text",
-      "id": "newsletter_title",
-      "label": "Judul newsletter",
-      "default": "Tetap dekat dengan BNS."
-    },
-    {
-      "type": "text",
-      "id": "newsletter_text",
-      "label": "Deskripsi newsletter",
-      "default": "Dapatkan kabar produk dan koleksi terbaru."
-    },
-    {
-      "type": "url",
-      "id": "instagram",
-      "label": "Instagram"
-    },
-    {
-      "type": "url",
-      "id": "tiktok",
-      "label": "Tiktok"
-    },
-    {
-      "type": "url",
-      "id": "youtube",
-      "label": "Youtube"
-    },
-    {
-      "type": "url",
-      "id": "facebook",
-      "label": "Facebook"
-    }
-  ],
-  "max_blocks": 2,
-  "blocks": [
-    {
-      "type": "menu",
-      "name": "Menu",
-      "settings": [
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Judul",
-          "default": "Bantuan"
-        },
-        {
-          "type": "link_list",
-          "id": "menu",
-          "label": "Menu"
-        }
-      ]
-    }
+    {"type":"text","id":"tagline","label":"Teks brand","default":"#TumbuhBersamaBNSStore"},
+    {"type":"textarea","id":"showroom_address","label":"Alamat showroom","default":"Jl. Makaliwe Raya No.36, RT.2/RW.5, Grogol, Kec. Grogol Petamburan, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11450"},
+    {"type":"text","id":"email","label":"Email","default":"baitandstrike@gmail.com"}
   ]
 }
 {% endschema %}

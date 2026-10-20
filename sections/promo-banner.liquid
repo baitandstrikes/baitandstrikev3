@@ -1,54 +1,41 @@
-<section class="promo-banner reveal" style="--promo-bg:{{ section.settings.background }};--promo-ink:{{ section.settings.foreground }}"><div class="wrap"><p class="eyebrow">{{ section.settings.eyebrow | escape }}</p><h2>{{ section.settings.title | escape }}</h2><div class="rte">{{ section.settings.text }}</div>{% if section.settings.link != blank %}<a class="button button-white" href="{{ section.settings.link }}">{{ section.settings.button_label | escape }}</a>{% endif %}</div></section>
+<section class="promo-banner reveal{% if section.settings.asset != blank %} promo-banner--image{% endif %}" style="--promo-bg:{{ section.settings.background }};--promo-ink:{{ section.settings.foreground }}{% if section.settings.asset != blank %};--promo-image:url('{{ section.settings.asset | asset_url }}'){% endif %}">
+  <div class="wrap">
+    {% if section.settings.eyebrow != blank %}<p class="eyebrow">{{ section.settings.eyebrow | escape }}</p>{% endif %}
+    <h2>{{ section.settings.title | escape }}</h2>
+    <div class="rte">{{ section.settings.text }}</div>
+    {% if section.settings.link != blank %}
+      <a class="button{% if section.settings.asset != blank %} promo-banner__cta{% else %} button-white{% endif %}" href="{{ section.settings.link | escape }}"{% if section.settings.asset != blank %} target="_blank" rel="noopener noreferrer"{% endif %}>
+        {% if section.settings.asset != blank %}{% render 'icon', name: 'whatsapp' %}{% endif %}
+        {{ section.settings.button_label | escape }}
+      </a>
+    {% endif %}
+  </div>
+</section>
+{% stylesheet %}
+.promo-banner--image{position:relative;display:flex;min-height:440px;align-items:center;margin-top:40px;padding:70px 20px;background-color:var(--promo-bg);background-image:linear-gradient(90deg,#062b43e8 0%,#062b43c2 44%,#062b4350 100%),var(--promo-image);background-size:cover;background-position:center;text-align:left;color:var(--promo-ink)}
+.promo-banner--image .wrap{position:relative;z-index:1;width:100%;max-width:1180px;margin:0 auto}
+.promo-banner--image .eyebrow{display:none}
+.promo-banner--image h2{max-width:520px;margin:0 0 18px;font-size:clamp(34px,4.5vw,58px);line-height:1.08;text-transform:uppercase}
+.promo-banner--image .rte{max-width:500px;margin:0 0 28px;font-size:16px;line-height:1.7}
+.promo-banner__cta{display:inline-flex;min-height:54px;align-items:center;justify-content:center;gap:12px;padding:13px 28px;border:0;border-radius:999px;background:#20bd5a;color:#fff;font-size:15px;font-weight:800;text-transform:uppercase}
+.promo-banner__cta .icon{width:23px;height:23px}
+.promo-banner--image .wrap{width:calc(100% - 48px);max-width:1160px}
+body.page-index .whatsapp-float{display:none!important}
+@media(max-width:749px){.promo-banner--image{min-height:390px;margin-top:24px;padding:52px 18px;background-position:60% center}.promo-banner--image h2{font-size:34px}.promo-banner--image .rte{max-width:100%;font-size:14px}.promo-banner__cta{min-height:48px;padding:11px 22px;font-size:13px}}
+{% endstylesheet %}
 {% schema %}
 {
   "name": "Promo Banner",
   "settings": [
-    {
-      "type": "text",
-      "id": "eyebrow",
-      "label": "Teks kecil",
-      "default": "BNS PARTNERS"
-    },
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Judul",
-      "default": "Tumbuh bersama BAITANDSTRIKE."
-    },
-    {
-      "type": "richtext",
-      "id": "text",
-      "label": "Isi",
-      "default": "<p>Untuk toko, reseller, dan dealer. Temukan perlengkapan mancing untuk kebutuhan bisnis kamu.</p>"
-    },
-    {
-      "type": "text",
-      "id": "button_label",
-      "label": "Teks tombol",
-      "default": "Hubungi kami"
-    },
-    {
-      "type": "url",
-      "id": "link",
-      "label": "Tautan"
-    },
-    {
-      "type": "color",
-      "id": "background",
-      "label": "Latar",
-      "default": "#EEEAE5"
-    },
-    {
-      "type": "color",
-      "id": "foreground",
-      "label": "Teks",
-      "default": "#333333"
-    }
+    {"type":"text","id":"eyebrow","label":"Teks kecil","default":"BNS PARTNERS"},
+    {"type":"text","id":"title","label":"Judul","default":"SIAP JADI MITRA?"},
+    {"type":"richtext","id":"text","label":"Isi","default":"<p>Dapatkan produk berkualitas dengan harga kompetitif dan pendampingan bisnis untuk membantu toko pancing Anda tumbuh bersama BNS Store.</p>"},
+    {"type":"text","id":"button_label","label":"Teks tombol","default":"KONSULTASI GRATIS"},
+    {"type":"url","id":"link","label":"Tautan"},
+    {"type":"text","id":"asset","label":"Nama asset gambar tema"},
+    {"type":"color","id":"background","label":"Latar","default":"#123F5F"},
+    {"type":"color","id":"foreground","label":"Teks","default":"#FFFFFF"}
   ],
-  "presets": [
-    {
-      "name": "Promo Banner"
-    }
-  ]
+  "presets": [{"name":"Promo Banner"}]
 }
 {% endschema %}

@@ -14,32 +14,10 @@
     "footer": {
       "type": "footer",
       "settings": {
-        "logo": "shopify://shop_images/IMG_05521.png",
-        "instagram": "https://www.instagram.com/baitandstrike/",
-        "tiktok": "https://www.tiktok.com/@baitandstrike",
-        "youtube": "https://www.youtube.com/@baitandstrike",
-        "facebook": "https://www.facebook.com/baitandstrike/"
-      },
-      "blocks": {
-        "help": {
-          "type": "menu",
-          "settings": {
-            "title": "Bantuan",
-            "menu": "footer"
-          }
-        },
-        "shop": {
-          "type": "menu",
-          "settings": {
-            "title": "Jelajahi",
-            "menu": "main-menu"
-          }
-        }
-      },
-      "block_order": [
-        "help",
-        "shop"
-      ]
+        "tagline": "#TumbuhBersamaBNSStore",
+        "showroom_address": "Jl. Makaliwe Raya No.36, RT.2/RW.5, Grogol, Kec. Grogol Petamburan, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11450",
+        "email": "baitandstrike@gmail.com"
+      }
     }
   },
   "order": [
