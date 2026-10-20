@@ -4,7 +4,7 @@
     <h2>{{ section.settings.title | escape }}</h2>
     <div class="rte">{{ section.settings.text }}</div>
     {% if section.settings.link != blank %}
-      <a class="button{% if section.settings.asset != blank %} promo-banner__cta{% else %} button-white{% endif %}" href="{{ section.settings.link | escape }}"{% if section.settings.asset != blank %} target="_blank" rel="noopener noreferrer"{% endif %}>
+      <a class="button{% if section.settings.asset != blank %} promo-banner__cta{% else %} button-white{% endif %}" href="{{ section.settings.link | escape }}"{% if section.settings.asset != blank %} target="_blank" rel="noopener noreferrer" style="font-weight:800!important;letter-spacing:0!important"{% endif %}>
         {% if section.settings.asset != blank %}<span class="promo-banner__icon">{% render 'icon', name: 'whatsapp' %}</span>{% endif %}
         {{ section.settings.button_label | escape }}
       </a>
@@ -25,7 +25,6 @@ body.page-index .promo-banner--image{position:relative;display:flex;min-height:5
 .promo-banner--image .wrap{width:calc(100% - 48px);max-width:1160px}
 body.page-index .promo-banner--image .wrap{padding-left:48px}
 body.page-index .promo-banner--image .promo-banner__cta{width:354px;max-width:100%;min-height:68px;flex-direction:row-reverse;justify-content:space-between;padding:13px 14px 13px 60px;border-radius:34px;background:#20bd2f;color:#fff;font-size:16px}
-#PartnerPromo .promo-banner__cta{font-weight:800!important;letter-spacing:0!important}
 body.page-index .whatsapp-float{display:none!important}
 @media(max-width:749px){#PartnerPromo{min-height:390px;margin-top:24px;padding:52px 18px;background-position:60% center}#PartnerPromo .wrap{width:100%;padding-left:0;transform:none}#PartnerPromo h2{margin-bottom:18px;font-size:34px}#PartnerPromo .rte{width:100%;max-width:100%;margin-bottom:28px!important;font-size:14px}#PartnerPromo .promo-banner__cta{width:100%;max-width:354px;min-height:54px;justify-content:space-between;padding:7px 12px 7px 34px;font-size:14px}#PartnerPromo .promo-banner__icon{width:40px;height:40px}}
 {% endstylesheet %}
