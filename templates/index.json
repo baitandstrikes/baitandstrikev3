@@ -15,11 +15,11 @@
         "promo_1": {
           "type": "promo",
           "settings": {
-            "image_url": "https://cdn.shopify.com/s/files/1/0837/1195/1076/files/DESAIN_STIKER_KACA-OFFLINE_STORE_BNS.png?v=1789183669",
-            "eyebrow": "PROMO BAITANDSTRIKE",
-            "title": "Perlengkapan mancing pilihan untuk trip berikutnya",
-            "button_label": "BELANJA SEKARANG",
-            "link": "/collections/all"
+            "eyebrow": "READY FOR YOUR NEXT TRIP",
+            "title": "Joran, reel, umpan dan aksesori dalam satu tempat",
+            "button_label": "LIHAT PRODUK BARU",
+            "link": "/collections/new-arrival",
+            "asset": "bns-store-hero.jpg"
           }
         },
         "promo_2": {
@@ -35,7 +35,7 @@
         "business_benefit_1": {
           "type": "benefit",
           "settings": {
-            "icon": "shield",
+            "icon": "package",
             "title": "Jaminan Stok Terjual dalam 60 Hari",
             "text": "Kurangi risiko stok menumpuk dengan program jaminan penjualan selama 60 hari sesuai syarat dan ketentuan yang berlaku."
           }
@@ -43,25 +43,25 @@
         "business_benefit_2": {
           "type": "benefit",
           "settings": {
-            "icon": "tag",
-            "title": "Harga terbaik dan Kompetitif",
-            "text": "Dapatkan penawaran harga terbaik untuk bisnis Anda dengan margin yang lebih optimal dan mampu bersaing di pasar."
+            "icon": "shield",
+            "title": "Transaksi Aman & Transparan",
+            "text": "Nikmati proses pemesanan yang aman dengan rincian biaya yang jelas dan transparan, tanpa biaya tersembunyi."
           }
         },
         "business_benefit_3": {
           "type": "benefit",
           "settings": {
-            "icon": "package",
-            "title": "100% Produk dari Tangan Pertama",
-            "text": "Dapatkan akses langsung tanpa rantai distribusi yang panjang untuk harga kompetitif dan pasokan barang yang lebih terencana."
+            "icon": "tag",
+            "title": "Harga Kompetitif dan Pasokan Terencana",
+            "text": "Dapatkan harga kompetitif dan pasokan barang yang lebih terencana untuk mendukung usaha toko pancing Anda."
           }
         },
         "business_benefit_4": {
           "type": "benefit",
           "settings": {
             "icon": "handshake",
-            "title": "Dedicated Bisnis Advisor",
-            "text": "Dapatkan pendampingan bisnis, rekomendasi produk, dan dukungan penjualan untuk membantu toko pancing Anda tumbuh bersama kami."
+            "title": "Pendampingan Bisnis Gratis",
+            "text": "Dapatkan pendampingan bisnis dan dukungan penjualan untuk membantu toko pancing Anda tumbuh bersama kami."
           }
         }
       },
@@ -74,7 +74,7 @@
         "business_benefit_4"
       ],
       "settings": {
-        "collection": "new-arrival",
+        "collection": "all",
         "heading": "Produk pilihan",
         "limit": 8
       }
@@ -291,7 +291,8 @@
         "sell_text": "<p>Punya toko atau ingin menjual perlengkapan BAIT&STRIKE? Mulai dengan mendaftarkan minat sebagai mitra bisnis.</p>",
         "sell_button_label": "Daftar Jadi Mitra",
         "sell_link": "/pages/wholesale-registration-form"
-      }
+      },
+      "disabled": true
     },
     "why_choose_us": {
       "type": "why-choose-us",
@@ -419,7 +420,8 @@
         "button_label": "JELAJAHI PRODUK",
         "link": "/collections/all",
         "card_eyebrow": "TIPS PERLENGKAPAN"
-      }
+      },
+      "disabled": true
     },
     "intro": {
       "type": "rich-text",
@@ -598,15 +600,14 @@
     },
     "partners": {
       "type": "promo-banner",
-      "disabled": true,
       "settings": {
         "eyebrow": "BNS PARTNERS",
-        "title": "Tumbuh bersama BAITANDSTRIKE.",
-        "text": "<p>Untuk toko, reseller, dan dealer. Temukan perlengkapan mancing untuk kebutuhan bisnis kamu.</p>",
-        "button_label": "Hubungi kami",
+        "title": "Siap jadi mitra?",
+        "text": "<p>Kembangkan toko pancing Anda bersama BAIT&STRIKE. Konsultasikan kebutuhan produk, harga, dan dukungan bisnis langsung dengan tim kami.</p>",
+        "button_label": "Konsultasi Gratis",
         "link": "/pages/wholesale-registration-form",
-        "background": "#eeeae5",
-        "foreground": "#333333"
+        "background": "#123f5f",
+        "foreground": "#ffffff"
       }
     },
     "journal": {
@@ -740,11 +741,11 @@
     "new_arrivals",
     "how_to_buy_sell",
     "why_choose_us",
+    "partners",
     "guides",
     "intro",
     "shopee_reviews",
     "story",
-    "partners",
     "journal",
     "hero",
     "brands",
