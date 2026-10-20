@@ -4,7 +4,7 @@ Saved products, comparison table and merchant contact quote request.
 <dialog id="ShoppingTools" class="shopping-dialog" aria-labelledby="ShoppingToolsTitle">
 <button type="button" class="icon-button dialog-close" data-close-dialog aria-label="{{ 'general.close' | t }}">{% render 'icon', name: 'close' %}</button>
 <h2 id="ShoppingToolsTitle">{{ 'tools.wishlist' | t }}</h2>
-<nav class="shopping-tabs" aria-label="{{ 'tools.menu' | t }}"><button type="button" class="text-link" data-tools-open="wishlist">{{ 'tools.wishlist' | t }} (<span data-tools-count="wishlist">0</span>)</button><button type="button" class="text-link" data-tools-open="compare">{{ 'tools.compare' | t }} (<span data-tools-count="compare">0</span>)</button><button type="button" class="text-link" data-tools-open="quote">{{ 'tools.quote' | t }} (<span data-tools-count="quote">0</span>)</button></nav>
+<nav class="shopping-tabs" aria-label="{{ 'tools.menu' | t }}"><button type="button" class="text-link" data-tools-open="wishlist">{{ 'tools.wishlist' | t }} (<span data-tools-count="wishlist">0</span>)</button><button type="button" class="text-link" data-tools-open="compare">{{ 'tools.compare' | t }} (<span data-tools-count="compare">0</span>)</button></nav>
 <p data-tools-status role="status" aria-live="polite"></p><p data-tools-error role="alert" hidden></p><button type="button" class="text-link" data-tools-retry hidden>{{ 'tools.retry' | t }}</button>
 <div data-tools-content></div>
 <div data-quote-form hidden>
@@ -22,6 +22,6 @@ Saved products, comparison table and merchant contact quote request.
 <button class="button" type="submit" data-quote-submit disabled>{{ 'tools.send' | t }}</button>
 {% endform %}
 </div></dialog>
-<div class="shopping-shortcuts wrap" aria-label="{{ 'tools.menu' | t }}"><button type="button" class="text-link" data-tools-open="wishlist">{% render 'icon', name: 'heart' %} {{ 'tools.wishlist' | t }} (<span data-tools-count="wishlist">0</span>)</button><button type="button" class="text-link" data-tools-open="compare">{{ 'tools.compare' | t }} (<span data-tools-count="compare">0</span>)</button></div>
+<div class="shopping-shortcuts wrap" aria-label="{{ 'tools.menu' | t }}"><button type="button" class="text-link" data-tools-open="wishlist">{% render 'icon', name: 'heart' %} {{ 'tools.wishlist' | t }} (<span data-tools-count="wishlist">0</span>)</button><button type="button" class="text-link" data-tools-open="compare">{{ 'tools.compare' | t }} (<span data-tools-count="compare">0</span>)</button><button type="button" class="text-link" data-tools-open="quote">{{ 'tools.quote' | t }} (<span data-tools-count="quote">0</span>)</button></div>
 <script type="application/json" id="shopping-tools-labels">{
 {% assign keys = 'view_price,quantity_label,wishlist,compare,quote,save,saved,remove,empty,loading,error,retry,limit,compare_hint,variant,brand,price,stock,ready,sold_out,unavailable,quantity,quote_add,quote_note,storage_note,not_available,summary,product,sku,loading_quote,length,action,line_weight,pe,ratio,drag,diameter,size,weight,category,rod,reel,line,other,added' | split: ',' %}{% for key in keys %}{% unless forloop.first %},{% endunless %}{{ key | json }}:{% assign translation = 'tools.' | append: key %}{{ translation | t | json }}{% endfor %}}</script>
