@@ -82,7 +82,7 @@
     "media": "Media produk",
     "available": "Tersedia",
     "vendor": "Merek",
-    "recommendations": "Produk yang mungkin kamu suka",
+    "recommendations": "Pembeli yang membeli produk ini juga membeli produk berikut",
     "stock": "Stok tersedia: {{ count }}"
   },
   "cart": {
