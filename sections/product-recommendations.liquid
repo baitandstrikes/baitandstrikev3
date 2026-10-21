@@ -9,7 +9,7 @@
         </div>
       {% endif %}
     </div>
-    <div class="product-grid" data-carousel-track role="region" aria-label="{{ 'product.recommendations' | t }}">
+    <div class="product-grid" data-carousel-track role="region" aria-label="{{ 'product.recommendations' | t }}" style="grid-template-columns:none!important">
       {% for product in recommendations.products %}
         {% render 'product-card', product: product %}
       {% endfor %}
