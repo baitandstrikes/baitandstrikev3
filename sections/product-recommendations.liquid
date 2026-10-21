@@ -1,4 +1,4 @@
-<section class="section wrap product-recommendations" data-recommendations data-carousel data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit=10&intent=related">
+<section class="section wrap product-recommendations" data-recommendations data-carousel data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit=4&intent=related">
   {% if recommendations.performed and recommendations.products_count > 0 %}
     <div class="section-heading product-recommendations__heading">
       <h2>{{ 'product.recommendations' | t }}</h2>
@@ -22,6 +22,9 @@
 .product-recommendations__controls button{width:40px;height:40px;border:1px solid var(--line,#ddd);border-radius:50%;background:#fff;color:var(--ink,#222);font-size:24px;line-height:1}
 .product-recommendations .product-grid{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,calc((100% - 48px)/4));grid-template-columns:none;gap:16px;overflow-x:auto;overscroll-behavior-inline:contain;scroll-snap-type:x mandatory;scrollbar-width:thin;padding:0 0 12px}
 .product-recommendations .product-card{min-width:0;scroll-snap-align:start}
+.product-recommendations .product-card .shopping-actions--card .text-link{top:8px;left:8px;width:36px;height:36px;min-height:36px;padding:8px}
+.product-recommendations .product-card .shopping-actions--card .text-link .icon{width:16px;height:16px}
+.product-recommendations .product-card .shopping-actions--card [data-compare-toggle]{top:50px}
 @media(max-width:749px){.product-recommendations .product-grid{grid-auto-columns:minmax(0,76%);gap:12px}}
 {% endstylesheet %}
 {% schema %}
