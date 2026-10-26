@@ -396,3 +396,5 @@
     font-size: 9px;
   }
 }
+
+.price:has(> s){display:grid!important;grid-template-columns:max-content max-content;justify-content:center;align-items:baseline;gap:0 4px}.price:has(> s)>s{grid-column:1/-1;grid-row:1;justify-self:center}.price:has(> s)>.price-current{grid-column:1/-1;grid-row:2}.price:has(> s)>span:not(.price-current){grid-column:1;grid-row:2}.price:has(> span:not(.price-current))>s{grid-column:1/-1}.price:has(> span:not(.price-current))>.price-current{grid-column:2}.sp-wholesale-cardrow{display:grid!important;grid-template-columns:max-content max-content;justify-content:center;align-items:baseline;gap:0 4px}.sp-wholesale-cardrow .sp-wholesale-card-old{grid-column:1/-1;grid-row:1;justify-self:center}.sp-wholesale-cardrow .sp-wholesale-card-from{grid-column:1;grid-row:2}.sp-wholesale-cardrow .sp-wholesale-card-price{grid-column:2;grid-row:2}.sp-wholesale-cardrow:not(:has(.sp-wholesale-card-from)) .sp-wholesale-card-price{grid-column:1/-1}
