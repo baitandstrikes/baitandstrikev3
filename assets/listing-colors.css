@@ -435,6 +435,44 @@
   grid-column: 1 / -1;
 }
 
+.product-card .price:has(.sp-wholesale-cardrow) {
+  display: block !important;
+  text-align: center;
+}
+
+.product-card .price:has(.sp-wholesale-cardrow) > s,
+.product-card .price:has(.sp-wholesale-cardrow) > span:not(.price-current) {
+  display: none !important;
+}
+
+.product-card .price:has(.sp-wholesale-cardrow) .sp-wholesale-cardrow {
+  display: grid !important;
+  grid-template-columns: max-content max-content;
+  justify-content: center;
+  align-items: baseline;
+  gap: 0 4px;
+}
+
+.product-card .price:has(.sp-wholesale-cardrow) .sp-wholesale-card-old {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  justify-self: center;
+}
+
+.product-card .price:has(.sp-wholesale-cardrow) .sp-wholesale-card-from {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.product-card .price:has(.sp-wholesale-cardrow) .sp-wholesale-card-price {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.product-card .price:has(.sp-wholesale-cardrow) .sp-wholesale-cardrow:not(:has(.sp-wholesale-card-from)) .sp-wholesale-card-price {
+  grid-column: 1 / -1;
+}
+
 .catalog-group__products a.product-card:hover,
 #QuickView .product-root.product-card:hover {
   transform: none;
