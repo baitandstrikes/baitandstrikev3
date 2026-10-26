@@ -64,12 +64,6 @@
         "clear_label": "Hapus riwayat"
       }
     },
-    "monotaro_category_structure_Qz6DcU": {
-      "type": "monotaro-category-structure",
-      "disabled": true,
-      "name": "Katalog kategori BNS",
-      "settings": {}
-    },
     "catalog_body": {
       "type": "catalog-body",
       "blocks": {
@@ -773,7 +767,6 @@
     "commerce",
     "new_arrivals",
     "recently_viewed",
-    "monotaro_category_structure_Qz6DcU",
     "catalog_body",
     "why_choose_us",
     "technique_collections",
