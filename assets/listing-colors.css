@@ -435,6 +435,48 @@
   grid-column: 1 / -1;
 }
 
+.product-card .price:has(> .sp-wholesale-cardrow > .sp-wholesale-card-from) {
+  display: block !important;
+  text-align: center;
+}
+
+.product-card .price:has(> .sp-wholesale-cardrow > .sp-wholesale-card-from) > span:not(.price-current):not(.sp-wholesale-cardrow),
+.product-card .price:has(> .sp-wholesale-cardrow > .sp-wholesale-card-from) > .price-current,
+.product-card .price:has(> .sp-wholesale-cardrow > .sp-wholesale-card-from) > s {
+  display: none !important;
+}
+
+.product-card .price:has(> .sp-wholesale-cardrow > .sp-wholesale-card-from) > .sp-wholesale-cardrow {
+  display: grid !important;
+  grid-template-columns: max-content max-content;
+  justify-content: center;
+  align-items: center;
+  gap: 2px 6px;
+  width: fit-content;
+  max-width: 100%;
+  margin-inline: auto;
+}
+
+.product-card .price:has(> .sp-wholesale-cardrow > .sp-wholesale-card-from) .sp-wholesale-card-old {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  justify-self: center;
+  line-height: 1.3;
+}
+
+.product-card .price:has(> .sp-wholesale-cardrow > .sp-wholesale-card-from) .sp-wholesale-card-from {
+  grid-column: 1;
+  grid-row: 2;
+  margin: 0 !important;
+  align-self: center;
+}
+
+.product-card .price:has(> .sp-wholesale-cardrow > .sp-wholesale-card-from) .sp-wholesale-card-price {
+  grid-column: 2;
+  grid-row: 2;
+  align-self: center;
+}
+
 .catalog-group__products a.product-card:hover,
 #QuickView .product-root.product-card:hover {
   transform: none;
