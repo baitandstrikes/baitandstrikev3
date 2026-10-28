@@ -111,7 +111,10 @@
           "settings": {
             "title": "Aksesori",
             "collection": "fishing-accesories",
-            "featured_products": [],
+            "featured_products": [
+              "sarung-tangan-memancing-pancing-jigging-casing-terbuka-jari-non-slip-st001",
+              "5pcs-quik-swivel-snap-connector-for-jigging-casting-popping-troling-swivel02"
+            ],
             "asset": "category-accessories.png"
           }
         },
