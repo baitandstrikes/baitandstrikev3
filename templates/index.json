@@ -90,7 +90,9 @@
           "settings": {
             "title": "Umpan",
             "collection": "fishing-bait",
-            "featured_products": [],
+            "featured_products": [
+              "lure-killer-kail-umpan-pancing-karet-pengait-topmouth-culter-sabiki-kotrekan-ku003"
+            ],
             "asset": "category-bait.png"
           }
         },
