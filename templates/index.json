@@ -119,7 +119,9 @@
           "settings": {
             "title": "Fishing Line",
             "collection": "fishing-line",
-            "featured_products": [],
+            "featured_products": [
+              "jemmy-shockleader-flurocarbon-50m-sp022"
+            ],
             "asset": "category-line.png"
           }
         },
