@@ -81,7 +81,9 @@
           "settings": {
             "title": "Reel",
             "collection": "reel",
-            "featured_products": [],
+            "featured_products": [
+              "reel-spinning-orca-s2-power-handle-rp038"
+            ],
             "asset": "category-reel.png"
           }
         },
