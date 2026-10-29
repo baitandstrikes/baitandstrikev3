@@ -8,13 +8,11 @@
   const status = dialog.querySelector('[data-tools-status]');
   const error = dialog.querySelector('[data-tools-error]');
   const retry = dialog.querySelector('[data-tools-retry]');
-  const quoteForm = dialog.querySelector('[data-quote-form]');
-  const form = document.getElementById('WholesaleQuoteForm');
   const config = JSON.parse(document.getElementById('bns-config').textContent);
   const root = config.root || '/';
   const storageKey = 'bns.shopping.v1';
   const handleOK = value => typeof value === 'string' && /^[a-z0-9][a-z0-9-]{0,200}$/.test(value);
-  const normalize = value => ({wishlist: [...new Set((Array.isArray(value?.wishlist) ? value.wishlist : []).filter(handleOK))].slice(0,100), compare: [...new Set((Array.isArray(value?.compare) ? value.compare : []).filter(handleOK))].slice(0,3), quote: (Array.isArray(value?.quote) ? value.quote : []).filter(row => handleOK(row?.handle) && /^\d+$/.test(String(row?.id)) && Number.isSafeInteger(row?.quantity) && row.quantity > 0 && row.quantity <= 100000).filter((row,index,rows)=>rows.findIndex(other=>String(other.id)===String(row.id))===index).slice(0,100)});
+  const normalize = value => ({wishlist: [...new Set((Array.isArray(value?.wishlist) ? value.wishlist : []).filter(handleOK))].slice(0,100), compare: [...new Set((Array.isArray(value?.compare) ? value.compare : []).filter(handleOK))].slice(0,3)});
   let state = normalize({}), persistent = true, mode = 'wishlist', version = 0;
   let products = new Map();
   let requests;
@@ -69,45 +67,11 @@
     else {if(state[key].length>=(key==='compare'?3:100)){announce(L.limit);return;}state[key].push(handle);}
     save(); if(dialog.open && mode===key) show(key);
   };
-  const addQuote = (product,variant,quantity) => {
-    if(!variant){announce(L.unavailable);return;}
-    const increment=variant.increment||1;
-    const desired=Number(quantity)||variant.min||1;
-    const valid=Number.isSafeInteger(desired)&&desired>0&&desired>=variant.min&&desired%increment===0&&(!variant.max||desired<=variant.max)&&desired<=100000;
-    if(!valid){announce(L.quantity);return;}
-    const row=state.quote.find(item=>item.id===variant.id);
-    if(row) row.quantity=desired; else if(state.quote.length<100) state.quote.push({handle:product.handle,id:variant.id,quantity:desired}); else {announce(L.limit);return;}
-    save();announce(L.added);show('quote');
-  };
-  const cartToQuote = () => {
-    const data=document.getElementById('cart-quote-data');
-    if(!data)return;
-    let rows=[];try{rows=JSON.parse(data.textContent);}catch{return;}
-    rows.forEach(item=>{
-      if(!handleOK(item?.handle)||!/^\d+$/.test(String(item?.id)))return;
-      const quantity=Math.min(100000,Math.max(1,Number(item.quantity)||1));
-      const existing=state.quote.find(row=>String(row.id)===String(item.id));
-      if(existing)existing.quantity=quantity;
-      else if(state.quote.length<100)state.quote.push({handle:item.handle,id:String(item.id),quantity});
-    });
-    save();announce(L.added);show('quote');
-  };
-  const summary = () => {
-    const lines=[];let valid=state.quote.length>0&&[...content.querySelectorAll('.quote-row input')].every(input=>input.checkValidity());
-    state.quote.forEach(row=>{
-      const product=products.get(row.handle),variant=product?.variants.find(v=>v.id===row.id);
-      if(!variant || !Number.isSafeInteger(row.quantity) || row.quantity<=0 || row.quantity>100000 || row.quantity<variant.min || row.quantity%(variant.increment||1)!==0 || (variant.max&&row.quantity>variant.max)) {valid=false;return;}
-      lines.push(`${product.title}\n${L.variant}: ${variant.title}\n${L.sku}: ${variant.sku||'—'} | ID: ${variant.id}\n${L.quantity_label}: ${row.quantity}\n${new URL(product.url,location.origin).href}?variant=${variant.id}`);
-    });
-    form.querySelector('[name="contact[body]"]').value=lines.join('\n\n');
-    form.querySelector('[data-quote-submit]').disabled=!valid;
-    return valid;
-  };
   const render = () => {
-    content.replaceChildren(); quoteForm.hidden=mode!=='quote';
+    content.replaceChildren();
     status.textContent=!persistent?L.storage_note:mode==='compare'?L.compare_hint:'';
-    const handles=mode==='quote'?[...new Set(state.quote.map(row=>row.handle))]:state[mode];
-    if(!handles.length){content.append(node('p',L.empty));summary();return;}
+    const handles=state[mode];
+    if(!handles.length){content.append(node('p',L.empty));return;}
     if(mode==='compare') {
       const scroll=node('div','','compare-scroll');scroll.tabIndex=0;scroll.setAttribute('role','region');scroll.setAttribute('aria-label',L.compare);
       const table=node('table','','compare-table'),caption=node('caption',L.compare_hint,'visually-hidden');table.append(caption);
@@ -135,21 +99,14 @@
         });
         card.append(specs);
         const actions=node('div','','compare-card-actions');
-        if(product)actions.append(button(L.quote_add,()=>addQuote(product,choice(product))));
         actions.append(button(L.remove,()=>toggle('compare',handle)));card.append(actions);cards.append(card);
       });
       [...new Set(rows)].forEach(key=>{const row=node('tr'),th=node('th',L[key]);th.scope='row';row.append(th);handles.forEach(handle=>{const p=products.get(handle),v=p&&choice(p);const cell=node('td');if(key==='price'&&p)cell.append(priceLink(p));else{let value='—';if(p&&v)value=key==='brand'?p.vendor:key==='stock'?(v.available?L.ready:L.sold_out):key==='sku'?(v.sku||'—'):(v.specs[key]?.join(' / ')||L.not_available);cell.textContent=value;}row.append(cell);});body.append(row);});
-      const actions=node('tr');actions.append(node('th',L.quote));handles.forEach(handle=>{const p=products.get(handle),cell=node('td');if(p)cell.append(button(L.quote_add,()=>addQuote(p,choice(p))));actions.append(cell);});body.append(actions);table.append(body);scroll.append(table);content.append(cards,scroll);
-    } else if(mode==='wishlist') {
-      const list=node('div','','tools-list');handles.forEach(handle=>{const p=products.get(handle);if(!p){const missing=node('article',L.unavailable,'tools-item');missing.append(button(L.remove,()=>toggle('wishlist',handle)));list.append(missing);return;}
-        const article=productHead(p),v=choice(p);article.append(picker(p,render),priceLink(p),node('p',v?.available?L.ready:L.sold_out));const actions=node('div','','shopping-actions');actions.append(button(L.compare,()=>{toggle('compare',handle);}),button(L.quote_add,()=>addQuote(p,choice(p))),button(L.remove,()=>toggle('wishlist',handle)));article.append(actions);list.append(article);});content.append(list);
+      table.append(body);scroll.append(table);content.append(cards,scroll);
     } else {
-      state.quote.forEach((row,index)=>{const p=products.get(row.handle),v=p?.variants.find(item=>item.id===row.id);const article=node('article','','quote-row'),info=node('div');info.append(node('h3',p?.title||L.unavailable),node('p',v?`${v.title} · ${L.sku}: ${v.sku||'—'}`:L.unavailable));
-        const wrapper=node('div'),input=node('input'),label=node('label',L.quantity_label);input.type='number';input.inputMode='numeric';input.id='QuoteQty-'+index;label.htmlFor=input.id;input.min=v?.min||1;input.step=v?.increment||1;input.max=Math.min(v?.max||100000,100000);input.value=row.quantity;input.disabled=!v;
-        input.required=true;input.addEventListener('input',()=>{const quantity=Number(input.value);if(input.checkValidity()&&Number.isSafeInteger(quantity)&&quantity>0){row.quantity=quantity;save();}summary();});input.addEventListener('change',()=>{if(!input.checkValidity()){form.querySelector('[data-quote-submit]').disabled=true;input.reportValidity();}});
-        wrapper.append(label,input);article.append(info,wrapper,button(L.remove,()=>{state.quote.splice(index,1);save();render();}));content.append(article);});
+      const list=node('div','','tools-list');handles.forEach(handle=>{const p=products.get(handle);if(!p){const missing=node('article',L.unavailable,'tools-item');missing.append(button(L.remove,()=>toggle('wishlist',handle)));list.append(missing);return;}
+        const article=productHead(p),v=choice(p);article.append(picker(p,render),priceLink(p),node('p',v?.available?L.ready:L.sold_out));const actions=node('div','','shopping-actions');actions.append(button(L.compare,()=>{toggle('compare',handle);}),button(L.remove,()=>toggle('wishlist',handle)));article.append(actions);list.append(article);});content.append(list);
     }
-    summary();
   };
   const uniqueCategories=values=>[...new Set(values)];
   const show = async key => {
@@ -158,8 +115,8 @@
     document.querySelectorAll('dialog[open]').forEach(other=>{if(other!==dialog)other.close();});
     if(!dialog.open) dialog.showModal();document.body.classList.add('dialog-open');
     const title=dialog.querySelector('h2');title.textContent=L[key];title.tabIndex=-1;title.focus();dialog.querySelectorAll('[data-tools-open]').forEach(button=>button.setAttribute('aria-current',String(button.dataset.toolsOpen===key)));
-    content.replaceChildren();quoteForm.hidden=true;status.textContent=L.loading;error.hidden=true;retry.hidden=true;
-    const handles=key==='quote'?[...new Set(state.quote.map(row=>row.handle))]:[...state[key]];
+    content.replaceChildren();status.textContent=L.loading;error.hidden=true;retry.hidden=true;
+    const handles=state[key];
     products=new Map();
     const results=[];let index=0;
     await Promise.all(Array.from({length:Math.min(4,handles.length)},async()=>{while(index<handles.length&&!signal.aborted){const handle=handles[index++];try{results.push({status:'fulfilled',value:[handle,await loadProduct(handle,signal)]});}catch(reason){results.push({status:'rejected',reason});}}}));
@@ -170,15 +127,12 @@
   };
   retry.addEventListener('click',()=>show(mode));
   document.addEventListener('click',event=>{
-    if(event.target.closest('[data-cart-to-quote]')){cartToQuote();return;}
     const open=event.target.closest('[data-tools-open]');if(open){show(open.dataset.toolsOpen);return;}
-    const action=event.target.closest('[data-wishlist-toggle],[data-compare-toggle],[data-quote-add]');if(!action)return;
+    const action=event.target.closest('[data-wishlist-toggle],[data-compare-toggle]');if(!action)return;
     const handle=action.closest('[data-tool-handle]')?.dataset.toolHandle;if(!handleOK(handle))return;
     if(action.matches('[data-wishlist-toggle]'))toggle('wishlist',handle);
     else if(action.matches('[data-compare-toggle]'))toggle('compare',handle);
-    else {try{const scope=action.closest('[data-product-root]');const p=readData(scope);const id=scope.querySelector('[name=id]')?.value;const v=p.variants.find(variant=>variant.id===id);addQuote(p,v,scope.querySelector('[name=quantity]')?.value);}catch{announce(L.error);}}
   });
-  form.addEventListener('submit',event=>{if(!summary()){event.preventDefault();error.textContent=L.quantity;error.hidden=false;}else {try{sessionStorage.setItem('bns.quote.pending','1');}catch{}}});
   dialog.addEventListener('close',()=>{version++;requests?.abort();});
   window.addEventListener('storage',event=>{if(event.key!==storageKey)return;try{state=normalize(JSON.parse(event.newValue||'{}'));sync();if(dialog.open)show(mode);}catch{}});
   const init = (scope=document) => {
@@ -193,10 +147,4 @@
   new MutationObserver(records=>{if(records.some(record=>[...record.addedNodes].some(node=>node.nodeType===1&&(node.matches('[data-fishing-card],[data-product-root]')||node.querySelector('[data-fishing-card],[data-product-root]')))))init();}).observe(document.getElementById('MainContent'),{childList:true,subtree:true});
   document.addEventListener('shopify:section:load',event=>init(event.target));
   init();
-  let pendingQuote=false;
-  try{pendingQuote=sessionStorage.getItem('bns.quote.pending')==='1';}catch{}
-  if(pendingQuote && location.hash==='#WholesaleQuoteForm') {
-    if(form.querySelector('[data-quote-success]')) {state.quote=[];save();try{sessionStorage.removeItem('bns.quote.pending');}catch{}show('quote');}
-    else if(form.querySelector('[data-quote-errors]'))show('quote');
-  } else form.querySelector('[data-quote-success]')?.remove();
 })();

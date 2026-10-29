@@ -285,7 +285,7 @@
 .catalog-refresh .product-information-catalog .rte{min-height:110px;padding:22px;border:1px solid #dfe5e9;border-top:0;font-size:13px;line-height:1.75;color:#344e60}
 .catalog-refresh .product-detail-extras{max-width:760px}
 .catalog-refresh .product-detail-extras .product-accordion{border-color:#dfe5e9}
-.catalog-refresh.page-product .shopping-shortcuts,.catalog-refresh.page-product [data-quote-add],.catalog-refresh.page-product #mp-rfq-widget-root{display:none!important}
+.catalog-refresh.page-product .shopping-shortcuts{display:none!important}
 
 @media(max-width:989px){
  .catalog-refresh .product-detail-layout{gap:28px;grid-template-columns:minmax(0,46%) minmax(0,1fr)}
