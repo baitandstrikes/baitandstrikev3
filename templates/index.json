@@ -15,6 +15,7 @@
         "promo_1": {
           "type": "promo",
           "settings": {
+            "asset": "",
             "image_url": "https://cdn.shopify.com/s/files/1/0837/1195/1076/files/back.png?v=1788340231",
             "eyebrow": "READY FOR YOUR NEXT TRIP",
             "title": "Joran, reel, umpan dan aksesori dalam satu tempat",
@@ -26,6 +27,7 @@
           "type": "promo",
           "settings": {
             "asset": "bns-store-hero.jpg",
+            "image_url": "",
             "eyebrow": "READY FOR YOUR NEXT TRIP",
             "title": "Joran, reel, umpan dan aksesori dalam satu tempat",
             "button_label": "LIHAT PRODUK BARU",
@@ -39,8 +41,20 @@
       ],
       "settings": {
         "collection": "new-arrival",
-        "product_handles": "lurekiller-black-rider-cq-reel-jigging-dan-trolling-rp007,lurekiller-flame-ks-reel-spinning-rp006,ecooda-emb1500-reel-overhead-slow-jigging-rp077,ecooda-hadera-reel-spinning-rp076",
-        "heading": "Produk pilihan",
+        "featured_products": [],
+        "product_handles": "",
+        "heading": "Clearance Sale",
+        "limit": 4
+      }
+    },
+    "new_arrivals": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "new-arrival",
+        "featured_products": [],
+        "product_handles": "",
+        "eyebrow": "PRODUK PILIHAN BNS",
+        "title": "New Arrival",
         "limit": 4
       }
     },
@@ -66,6 +80,7 @@
           "settings": {
             "title": "Joran",
             "collection": "fishing-rods-joran",
+            "featured_products": [],
             "asset": "category-rods.png"
           }
         },
@@ -74,6 +89,7 @@
           "settings": {
             "title": "Reel",
             "collection": "reel",
+            "featured_products": [],
             "asset": "category-reel.png"
           }
         },
@@ -82,6 +98,7 @@
           "settings": {
             "title": "Umpan",
             "collection": "fishing-bait",
+            "featured_products": [],
             "asset": "category-bait.png"
           }
         },
@@ -90,6 +107,7 @@
           "settings": {
             "title": "Aksesori",
             "collection": "fishing-accesories",
+            "featured_products": [],
             "asset": "category-accessories.png"
           }
         },
@@ -98,6 +116,7 @@
           "settings": {
             "title": "Fishing Line",
             "collection": "fishing-line",
+            "featured_products": [],
             "asset": "category-line.png"
           }
         },
@@ -106,6 +125,7 @@
           "settings": {
             "title": "Hook",
             "collection": "hook",
+            "featured_products": [],
             "asset": "category-hook.png"
           }
         },
@@ -164,123 +184,289 @@
         "brand_heading": "Brand Populer"
       }
     },
-    "hero": {
-      "type": "hero-slideshow",
+    "why_choose_us": {
+      "type": "why-choose-us",
       "blocks": {
-        "s1": {
-          "type": "slide",
+        "benefit1": {
+          "type": "benefit",
           "settings": {
-            "eyebrow": "BAITANDSTRIKE",
-            "title": "Temukan strike berikutnya.",
-            "text": "",
-            "button_label": "JELAJAHI PRODUCT",
-            "link": "",
-            "alignment": "left",
-            "image_url": "https://cdn.shopify.com/s/files/1/0837/1195/1076/files/DESAIN_STIKER_KACA-OFFLINE_STORE_BNS.png?v=1789183669"
+            "icon": "fishing",
+            "title": "Pilihan untuk Berbagai Teknik",
+            "text": "Jelajahi perlengkapan untuk berbagai gaya, target ikan, dan kondisi spot."
           }
         },
-        "s2": {
-          "type": "slide",
+        "benefit2": {
+          "type": "benefit",
           "settings": {
-            "image": "shopify://shop_images/Gemini_Generated_Image_5uf86i5uf86i5uf8.jpg",
-            "eyebrow": "READY FOR YOUR NEXT TRIP",
-            "title": "Siap ke mana pun arus membawa.",
-            "text": "",
-            "button_label": "TEMUKAN PERLENGKAPAN",
-            "link": "",
-            "alignment": "left",
-            "image_url": "https://cdn.shopify.com/s/files/1/0837/1195/1076/files/back.png?v=1788340231"
+            "icon": "search",
+            "title": "Informasi Produk Jelas",
+            "text": "Detail dan varian membantu kamu menentukan pilihan sebelum membeli."
+          }
+        },
+        "benefit3": {
+          "type": "benefit",
+          "settings": {
+            "icon": "handshake",
+            "title": "Dukungan untuk Mitra",
+            "text": "Ada jalur pendaftaran untuk toko, reseller, dan kebutuhan bisnis."
+          }
+        },
+        "benefit4": {
+          "type": "benefit",
+          "settings": {
+            "icon": "package",
+            "title": "Proses Pesanan Praktis",
+            "text": "Katalog dan keranjang membantu proses belanja tetap teratur."
+          }
+        },
+        "benefit5": {
+          "type": "benefit",
+          "settings": {
+            "icon": "heart",
+            "title": "Komunitas Angler",
+            "text": "Kami hadir untuk mendukung semangat dan pengalaman memancing."
+          }
+        },
+        "benefit6": {
+          "type": "benefit",
+          "settings": {
+            "icon": "star",
+            "title": "Fokus pada Kebutuhan Angler",
+            "text": "Kami terus membangun pengalaman belanja yang relevan untuk pemancing."
           }
         }
       },
       "block_order": [
-        "s1",
-        "s2"
+        "benefit1",
+        "benefit2",
+        "benefit3",
+        "benefit4",
+        "benefit5",
+        "benefit6"
       ],
-      "disabled": true,
       "settings": {
-        "label": "Pilihan BAITANDSTRIKE",
-        "height": 95,
-        "overlay": 15,
-        "autoplay": true,
-        "delay": 7
+        "eyebrow": "KENAPA BAIT&STRIKE",
+        "title": "Why Choose Us",
+        "intro": "<p>Kami membantu pemancing menemukan perlengkapan yang tepat, dengan informasi produk yang jelas dan pilihan untuk kebutuhan personal maupun bisnis.</p>"
       }
     },
-    "countdown": {
-      "type": "countdown-promo",
-      "disabled": true,
-      "settings": {
-        "title": "Pilihan untuk trip berikutnya",
-        "end": "2026-10-31T23:59:00+07:00",
-        "label": "Jelajahi koleksi",
-        "link": ""
-      }
-    },
-    "new_arrivals": {
-      "type": "featured-collection",
-      "settings": {
-        "collection": "new-arrival",
-        "product_handles": "lurekiller-black-rider-cq-reel-jigging-dan-trolling-rp007,lurekiller-flame-ks-reel-spinning-rp006,ecooda-emb1500-reel-overhead-slow-jigging-rp077,ecooda-hadera-reel-spinning-rp076",
-        "eyebrow": "PRODUK PILIHAN BNS",
-        "title": "New Arrival",
-        "limit": 4
-      }
-    },
-    "brands": {
-      "type": "brand-discovery",
+    "technique_collections": {
+      "type": "technique-collections",
       "blocks": {
-        "b0": {
-          "type": "brand",
+        "casting": {
+          "type": "technique",
           "settings": {
-            "vendor": "JEMMY",
-            "image": "shopify://shop_images/bns-brand-jemmy.png",
-            "fit": "contain"
+            "title": "Casting",
+            "collection": "casting"
           }
         },
-        "b1": {
-          "type": "brand",
+        "stream": {
+          "type": "technique",
           "settings": {
-            "vendor": "Ecooda",
-            "image": "shopify://shop_images/bns-brand-ecooda.png",
-            "fit": "contain"
+            "title": "Stream",
+            "collection": "stream"
           }
         },
-        "b2": {
-          "type": "brand",
+        "kolam": {
+          "type": "technique",
           "settings": {
-            "vendor": "Proberos",
-            "image": "shopify://shop_images/bns-brand-proberos.png",
-            "fit": "contain"
+            "title": "Kolam",
+            "collection": "kolam"
           }
         },
-        "b3": {
-          "type": "brand",
+        "jigging": {
+          "type": "technique",
           "settings": {
-            "vendor": "Lurekiller",
-            "image": "shopify://shop_images/bns-brand-lurekiller.jpg",
-            "fit": "cover"
+            "title": "Jigging",
+            "collection": "kolam"
           }
         },
-        "b4": {
-          "type": "brand",
+        "bottom": {
+          "type": "technique",
           "settings": {
-            "vendor": "Lemoren",
-            "image": "shopify://shop_images/bns-brand-lemoren.png",
-            "fit": "cover"
+            "title": "Bottom",
+            "collection": "bottom"
+          }
+        },
+        "popping": {
+          "type": "technique",
+          "settings": {
+            "title": "Popping",
+            "collection": "popping"
+          }
+        },
+        "surf": {
+          "type": "technique",
+          "settings": {
+            "title": "Surf",
+            "collection": "surf"
+          }
+        },
+        "travel": {
+          "type": "technique",
+          "settings": {
+            "title": "Travel",
+            "collection": "travel"
           }
         }
       },
       "block_order": [
-        "b0",
-        "b1",
-        "b2",
-        "b3",
-        "b4"
+        "casting",
+        "stream",
+        "kolam",
+        "jigging",
+        "bottom",
+        "popping",
+        "surf",
+        "travel"
+      ],
+      "settings": {}
+    },
+    "partners": {
+      "type": "promo-banner",
+      "settings": {
+        "eyebrow": "",
+        "title": "SIAP JADI MITRA?",
+        "text": "<p>Dapatkan produk berkualitas dengan harga kompetitif dan pendampingan bisnis untuk untuk membantu toko pancing Anda tumbuh bersama BNS Store.</p>",
+        "button_label": "KONSULTASI GRATIS",
+        "link": "https://wa.me/6287795361519?text=Halo%2C%20saya%20ingin%20konsultasi%20menjadi%20mitra%20BNS%20Store",
+        "asset": "bns-store-hero.jpg",
+        "background": "#123f5f",
+        "foreground": "#ffffff"
+      }
+    },
+    "how_to_buy_sell": {
+      "type": "how-to-buy-sell",
+      "blocks": {
+        "buy1": {
+          "type": "buy_step",
+          "settings": {
+            "title": "Pilih produk",
+            "text": "Jelajahi katalog dan pilih perlengkapan sesuai kebutuhan."
+          }
+        },
+        "buy2": {
+          "type": "buy_step",
+          "settings": {
+            "title": "Cek varian & detail",
+            "text": "Periksa spesifikasi, pilihan varian, dan ketersediaan produk."
+          }
+        },
+        "buy3": {
+          "type": "buy_step",
+          "settings": {
+            "title": "Checkout",
+            "text": "Masukkan produk ke keranjang dan lanjutkan proses pemesanan."
+          }
+        },
+        "sell1": {
+          "type": "sell_step",
+          "settings": {
+            "title": "Daftar sebagai mitra",
+            "text": "Isi formulir pendaftaran dengan data usaha dan kontak."
+          }
+        },
+        "sell2": {
+          "type": "sell_step",
+          "settings": {
+            "title": "Tim kami meninjau",
+            "text": "Tim BAIT&STRIKE akan meninjau informasi yang kamu kirim."
+          }
+        },
+        "sell3": {
+          "type": "sell_step",
+          "settings": {
+            "title": "Mulai berkolaborasi",
+            "text": "Setelah dihubungi tim kami, diskusikan kebutuhan dan peluang kerja sama."
+          }
+        }
+      },
+      "block_order": [
+        "buy1",
+        "buy2",
+        "buy3",
+        "sell1",
+        "sell2",
+        "sell3"
       ],
       "disabled": true,
       "settings": {
-        "title": "Belanja berdasarkan merek",
-        "text": "Temukan perlengkapan dari merek pilihanmu."
+        "eyebrow": "MULAI DI BAIT&STRIKE",
+        "title": "Mau belanja atau jadi mitra?",
+        "intro": "<p>Pilih jalur yang sesuai kebutuhanmu. Belanja untuk trip berikutnya atau kembangkan bisnis perlengkapan pancing bersama kami.</p>",
+        "buy_eyebrow": "UNTUK PEMANCING",
+        "buy_title": "Cara Membeli",
+        "buy_text": "<p>Temukan perlengkapan yang cocok untuk target ikan, teknik, dan budget kamu.</p>",
+        "buy_button_label": "Jelajahi Produk",
+        "buy_link": "/collections/all",
+        "sell_eyebrow": "UNTUK RESELLER & TOKO",
+        "sell_title": "Cara Menjual",
+        "sell_text": "<p>Punya toko atau ingin menjual perlengkapan BAIT&STRIKE? Mulai dengan mendaftarkan minat sebagai mitra bisnis.</p>",
+        "sell_button_label": "Daftar Jadi Mitra",
+        "sell_link": "/pages/wholesale-registration-form"
+      }
+    },
+    "guides": {
+      "type": "gear-guide",
+      "blocks": {
+        "pe": {
+          "type": "guide",
+          "settings": {
+            "title": "Pilih umpan sesuai spot",
+            "text": "<p>Sesuaikan jenis umpan dengan kedalaman air, arus, dan target ikan. Popper bekerja di permukaan dan cocok saat ikan aktif mengejar mangsa di lapisan atas.</p><p>Periksa berat umpan terhadap lure weight joran agar lemparan tetap aman dan seimbang. Pilih warna natural untuk air jernih atau warna kontras saat cahaya rendah.</p>",
+            "collection": "fishing-bait",
+            "x": 55,
+            "y": 68,
+            "mobile_x": 54,
+            "mobile_y": 73,
+            "panel_side": "right"
+          }
+        },
+        "ul": {
+          "type": "guide",
+          "settings": {
+            "title": "Memilih reel untuk ultralight",
+            "text": "<p>Mulai dari joran, bobot umpan, dan kapasitas senar yang dibutuhkan. Bandingkan bobot reel, ukuran spool, gear ratio, dan drag. Nomor ukuran antar merek tidak selalu setara.</p><p>Utamakan keseimbangan satu set dan pengaturan drag yang sesuai senar. Gunakan fitur Bandingkan untuk melihat spesifikasi varian berdampingan.</p>",
+            "collection": "reel",
+            "x": 72,
+            "y": 38,
+            "mobile_x": 72,
+            "mobile_y": 54,
+            "panel_side": "left"
+          }
+        },
+        "rod": {
+          "type": "guide",
+          "settings": {
+            "title": "Panjang dan action joran",
+            "text": "<p>Panjang joran memengaruhi jangkauan lempar dan ruang gerak. Sesuaikan dengan posisi memancing dan area di sekitar spot.</p><p>Action menjelaskan bagian joran yang melentur, sedangkan power menjelaskan kelas kekuatannya. Keduanya berbeda. Periksa rentang umpan serta line weight pada varian yang dipilih sebelum menyusun set.</p>",
+            "collection": "fishing-rods-joran",
+            "x": 84,
+            "y": 72,
+            "mobile_x": 84,
+            "mobile_y": 76,
+            "panel_side": "left"
+          }
+        }
+      },
+      "block_order": [
+        "pe",
+        "ul",
+        "rod"
+      ],
+      "disabled": true,
+      "settings": {
+        "image_url": "https://cdn.shopify.com/s/files/1/0838/8824/2905/files/bns-gear-guide-shopee-desktop.png?v=1791986990",
+        "mobile_image_url": "https://cdn.shopify.com/s/files/1/0838/8824/2905/files/bns-gear-guide-shopee-mobile.png?v=1791987005",
+        "height": 750,
+        "overlay": 35,
+        "text_color": "#ffffff",
+        "eyebrow": "PANDUAN BAITANDSTRIKE",
+        "title": "Pilih perlengkapan yang tepat.",
+        "text": "<p>Panduan ringkas untuk menyusun set pancing sesuai target ikan, teknik, dan lokasi memancing.</p>",
+        "button_label": "JELAJAHI PRODUK",
+        "link": "/collections/all",
+        "card_eyebrow": "TIPS PERLENGKAPAN"
       }
     },
     "intro": {
@@ -296,16 +482,6 @@
         "text": "<p>Temukan perlengkapan pilihan untuk strike berikutnya.</p>",
         "button_label": "Kenali BNS",
         "link": ""
-      }
-    },
-    "products": {
-      "type": "featured-collection",
-      "disabled": true,
-      "settings": {
-        "collection": "fishing-rods-joran",
-        "eyebrow": "",
-        "title": "Pilihan favorit",
-        "limit": 8
       }
     },
     "shopee_reviews": {
@@ -468,82 +644,6 @@
         "image_url": "https://cdn.shopify.com/s/files/1/0837/1195/1076/files/back.png?v=1788340231"
       }
     },
-    "partners": {
-      "type": "promo-banner",
-      "settings": {
-        "eyebrow": "",
-        "title": "SIAP JADI MITRA?",
-        "text": "<p>Dapatkan produk berkualitas dengan harga kompetitif dan pendampingan bisnis untuk untuk membantu toko pancing Anda tumbuh bersama BNS Store.</p>",
-        "button_label": "KONSULTASI GRATIS",
-        "link": "https://wa.me/6287795361519?text=Halo%2C%20saya%20ingin%20konsultasi%20menjadi%20mitra%20BNS%20Store",
-        "asset": "bns-store-hero.jpg",
-        "background": "#123f5f",
-        "foreground": "#ffffff"
-      }
-    },
-    "guides": {
-      "type": "gear-guide",
-      "blocks": {
-        "pe": {
-          "type": "guide",
-          "settings": {
-            "title": "Pilih umpan sesuai spot",
-            "text": "<p>Sesuaikan jenis umpan dengan kedalaman air, arus, dan target ikan. Popper bekerja di permukaan dan cocok saat ikan aktif mengejar mangsa di lapisan atas.</p><p>Periksa berat umpan terhadap lure weight joran agar lemparan tetap aman dan seimbang. Pilih warna natural untuk air jernih atau warna kontras saat cahaya rendah.</p>",
-            "collection": "fishing-bait",
-            "x": 55,
-            "y": 68,
-            "mobile_x": 54,
-            "mobile_y": 73,
-            "panel_side": "right"
-          }
-        },
-        "ul": {
-          "type": "guide",
-          "settings": {
-            "title": "Memilih reel untuk ultralight",
-            "text": "<p>Mulai dari joran, bobot umpan, dan kapasitas senar yang dibutuhkan. Bandingkan bobot reel, ukuran spool, gear ratio, dan drag. Nomor ukuran antar merek tidak selalu setara.</p><p>Utamakan keseimbangan satu set dan pengaturan drag yang sesuai senar. Gunakan fitur Bandingkan untuk melihat spesifikasi varian berdampingan.</p>",
-            "collection": "reel",
-            "x": 72,
-            "y": 38,
-            "mobile_x": 72,
-            "mobile_y": 54,
-            "panel_side": "left"
-          }
-        },
-        "rod": {
-          "type": "guide",
-          "settings": {
-            "title": "Panjang dan action joran",
-            "text": "<p>Panjang joran memengaruhi jangkauan lempar dan ruang gerak. Sesuaikan dengan posisi memancing dan area di sekitar spot.</p><p>Action menjelaskan bagian joran yang melentur, sedangkan power menjelaskan kelas kekuatannya. Keduanya berbeda. Periksa rentang umpan serta line weight pada varian yang dipilih sebelum menyusun set.</p>",
-            "collection": "fishing-rods-joran",
-            "x": 84,
-            "y": 72,
-            "mobile_x": 84,
-            "mobile_y": 76,
-            "panel_side": "left"
-          }
-        }
-      },
-      "block_order": [
-        "pe",
-        "ul",
-        "rod"
-      ],
-      "disabled": true,
-      "settings": {
-        "image_url": "https://cdn.shopify.com/s/files/1/0838/8824/2905/files/bns-gear-guide-shopee-desktop.png?v=1791986990",
-        "mobile_image_url": "https://cdn.shopify.com/s/files/1/0838/8824/2905/files/bns-gear-guide-shopee-mobile.png?v=1791987005",
-        "height": 750,
-        "overlay": 35,
-        "text_color": "#ffffff",
-        "eyebrow": "PANDUAN BAITANDSTRIKE",
-        "title": "Pilih perlengkapan yang tepat.",
-        "text": "<p>Panduan ringkas untuk menyusun set pancing sesuai target ikan, teknik, dan lokasi memancing.</p>",
-        "button_label": "JELAJAHI PRODUK",
-        "link": "/collections/all",
-        "card_eyebrow": "TIPS PERLENGKAPAN"
-      }
-    },
     "journal": {
       "type": "journal",
       "disabled": true,
@@ -552,214 +652,126 @@
         "blog": ""
       }
     },
-    "how_to_buy_sell": {
-      "type": "how-to-buy-sell",
+    "hero": {
+      "type": "hero-slideshow",
       "blocks": {
-        "buy1": {
-          "type": "buy_step",
+        "s1": {
+          "type": "slide",
           "settings": {
-            "title": "Pilih produk",
-            "text": "Jelajahi katalog dan pilih perlengkapan sesuai kebutuhan."
+            "eyebrow": "BAITANDSTRIKE",
+            "title": "Temukan strike berikutnya.",
+            "text": "",
+            "button_label": "JELAJAHI PRODUCT",
+            "link": "",
+            "alignment": "left",
+            "image_url": "https://cdn.shopify.com/s/files/1/0837/1195/1076/files/DESAIN_STIKER_KACA-OFFLINE_STORE_BNS.png?v=1789183669"
           }
         },
-        "buy2": {
-          "type": "buy_step",
+        "s2": {
+          "type": "slide",
           "settings": {
-            "title": "Cek varian & detail",
-            "text": "Periksa spesifikasi, pilihan varian, dan ketersediaan produk."
-          }
-        },
-        "buy3": {
-          "type": "buy_step",
-          "settings": {
-            "title": "Checkout",
-            "text": "Masukkan produk ke keranjang dan lanjutkan proses pemesanan."
-          }
-        },
-        "sell1": {
-          "type": "sell_step",
-          "settings": {
-            "title": "Daftar sebagai mitra",
-            "text": "Isi formulir pendaftaran dengan data usaha dan kontak."
-          }
-        },
-        "sell2": {
-          "type": "sell_step",
-          "settings": {
-            "title": "Tim kami meninjau",
-            "text": "Tim BAIT&STRIKE akan meninjau informasi yang kamu kirim."
-          }
-        },
-        "sell3": {
-          "type": "sell_step",
-          "settings": {
-            "title": "Mulai berkolaborasi",
-            "text": "Setelah dihubungi tim kami, diskusikan kebutuhan dan peluang kerja sama."
+            "image": "shopify://shop_images/Gemini_Generated_Image_5uf86i5uf86i5uf8.jpg",
+            "eyebrow": "READY FOR YOUR NEXT TRIP",
+            "title": "Siap ke mana pun arus membawa.",
+            "text": "",
+            "button_label": "TEMUKAN PERLENGKAPAN",
+            "link": "",
+            "alignment": "left",
+            "image_url": "https://cdn.shopify.com/s/files/1/0837/1195/1076/files/back.png?v=1788340231"
           }
         }
       },
       "block_order": [
-        "buy1",
-        "buy2",
-        "buy3",
-        "sell1",
-        "sell2",
-        "sell3"
+        "s1",
+        "s2"
       ],
       "disabled": true,
       "settings": {
-        "eyebrow": "MULAI DI BAIT&STRIKE",
-        "title": "Mau belanja atau jadi mitra?",
-        "intro": "<p>Pilih jalur yang sesuai kebutuhanmu. Belanja untuk trip berikutnya atau kembangkan bisnis perlengkapan pancing bersama kami.</p>",
-        "buy_eyebrow": "UNTUK PEMANCING",
-        "buy_title": "Cara Membeli",
-        "buy_text": "<p>Temukan perlengkapan yang cocok untuk target ikan, teknik, dan budget kamu.</p>",
-        "buy_button_label": "Jelajahi Produk",
-        "buy_link": "/collections/all",
-        "sell_eyebrow": "UNTUK RESELLER & TOKO",
-        "sell_title": "Cara Menjual",
-        "sell_text": "<p>Punya toko atau ingin menjual perlengkapan BAIT&STRIKE? Mulai dengan mendaftarkan minat sebagai mitra bisnis.</p>",
-        "sell_button_label": "Daftar Jadi Mitra",
-        "sell_link": "/pages/wholesale-registration-form"
+        "label": "Pilihan BAITANDSTRIKE",
+        "height": 95,
+        "overlay": 15,
+        "autoplay": true,
+        "delay": 7
       }
     },
-    "why_choose_us": {
-      "type": "why-choose-us",
-      "blocks": {
-        "benefit1": {
-          "type": "benefit",
-          "settings": {
-            "icon": "fishing",
-            "title": "Pilihan untuk Berbagai Teknik",
-            "text": "Jelajahi perlengkapan untuk berbagai gaya, target ikan, dan kondisi spot."
-          }
-        },
-        "benefit2": {
-          "type": "benefit",
-          "settings": {
-            "icon": "search",
-            "title": "Informasi Produk Jelas",
-            "text": "Detail dan varian membantu kamu menentukan pilihan sebelum membeli."
-          }
-        },
-        "benefit3": {
-          "type": "benefit",
-          "settings": {
-            "icon": "handshake",
-            "title": "Dukungan untuk Mitra",
-            "text": "Ada jalur pendaftaran untuk toko, reseller, dan kebutuhan bisnis."
-          }
-        },
-        "benefit4": {
-          "type": "benefit",
-          "settings": {
-            "icon": "package",
-            "title": "Proses Pesanan Praktis",
-            "text": "Katalog dan keranjang membantu proses belanja tetap teratur."
-          }
-        },
-        "benefit5": {
-          "type": "benefit",
-          "settings": {
-            "icon": "heart",
-            "title": "Komunitas Angler",
-            "text": "Kami hadir untuk mendukung semangat dan pengalaman memancing."
-          }
-        },
-        "benefit6": {
-          "type": "benefit",
-          "settings": {
-            "icon": "star",
-            "title": "Fokus pada Kebutuhan Angler",
-            "text": "Kami terus membangun pengalaman belanja yang relevan untuk pemancing."
-          }
-        }
-      },
-      "block_order": [
-        "benefit1",
-        "benefit2",
-        "benefit3",
-        "benefit4",
-        "benefit5",
-        "benefit6"
-      ],
+    "countdown": {
+      "type": "countdown-promo",
+      "disabled": true,
       "settings": {
-        "eyebrow": "KENAPA BAIT&STRIKE",
-        "title": "Why Choose Us",
-        "intro": "<p>Kami membantu pemancing menemukan perlengkapan yang tepat, dengan informasi produk yang jelas dan pilihan untuk kebutuhan personal maupun bisnis.</p>"
+        "title": "Pilihan untuk trip berikutnya",
+        "end": "2026-10-31T23:59:00+07:00",
+        "label": "Jelajahi koleksi",
+        "link": ""
       }
     },
-    "technique_collections": {
-      "type": "technique-collections",
+    "brands": {
+      "type": "brand-discovery",
       "blocks": {
-        "casting": {
-          "type": "technique",
+        "b0": {
+          "type": "brand",
           "settings": {
-            "title": "Casting",
-            "collection": "fishing-rod-casting-baitcasting"
+            "vendor": "JEMMY",
+            "image": "shopify://shop_images/bns-brand-jemmy.png",
+            "fit": "contain"
           }
         },
-        "stream": {
-          "type": "technique",
+        "b1": {
+          "type": "brand",
           "settings": {
-            "title": "Stream",
-            "collection": "fishing-rod-spinning-light-lure"
+            "vendor": "Ecooda",
+            "image": "shopify://shop_images/bns-brand-ecooda.png",
+            "fit": "contain"
           }
         },
-        "kolam": {
-          "type": "technique",
+        "b2": {
+          "type": "brand",
           "settings": {
-            "title": "Kolam",
-            "collection": "fishing-rod-ultralight"
+            "vendor": "Proberos",
+            "image": "shopify://shop_images/bns-brand-proberos.png",
+            "fit": "contain"
           }
         },
-        "jigging": {
-          "type": "technique",
+        "b3": {
+          "type": "brand",
           "settings": {
-            "title": "Jigging",
-            "collection": "fishing-rod-offshore-jigging"
+            "vendor": "Lurekiller",
+            "image": "shopify://shop_images/bns-brand-lurekiller.jpg",
+            "fit": "cover"
           }
         },
-        "bottom": {
-          "type": "technique",
+        "b4": {
+          "type": "brand",
           "settings": {
-            "title": "Bottom",
-            "collection": "reel-trolling-conventional"
-          }
-        },
-        "popping": {
-          "type": "technique",
-          "settings": {
-            "title": "Popping",
-            "collection": "bait-lure-topwater"
-          }
-        },
-        "surf": {
-          "type": "technique",
-          "settings": {
-            "title": "Surf",
-            "collection": "fishing-rod-surfcasting"
-          }
-        },
-        "travel": {
-          "type": "technique",
-          "settings": {
-            "title": "Travel",
-            "collection": "fishing-rods-joran"
+            "vendor": "Lemoren",
+            "image": "shopify://shop_images/bns-brand-lemoren.png",
+            "fit": "cover"
           }
         }
       },
       "block_order": [
-        "casting",
-        "stream",
-        "kolam",
-        "jigging",
-        "bottom",
-        "popping",
-        "surf",
-        "travel"
+        "b0",
+        "b1",
+        "b2",
+        "b3",
+        "b4"
       ],
-      "settings": {}
+      "disabled": true,
+      "settings": {
+        "title": "Belanja berdasarkan merek",
+        "text": "Temukan perlengkapan dari merek pilihanmu."
+      }
+    },
+    "products": {
+      "type": "featured-collection",
+      "disabled": true,
+      "settings": {
+        "collection": "fishing-rods-joran",
+        "featured_products": [],
+        "product_handles": "",
+        "eyebrow": "",
+        "title": "Pilihan favorit",
+        "limit": 8
+      }
     },
     "1792163588261cbf6d": {
       "type": "apps",
