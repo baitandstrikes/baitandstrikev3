@@ -29,8 +29,6 @@
 {{ 'listing-colors.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'shopping-tools.js' | asset_url }}" defer></script>
 {{ 'catalog-refresh.css' | asset_url | stylesheet_tag }}
-{{ 'whatsapp-widget.css' | asset_url | stylesheet_tag }}
-<script src="{{ 'whatsapp-widget.js' | asset_url }}" defer></script>
 </head>
 <body class="catalog-refresh page-{{ request.page_type }}{% if settings.animations %} motion-enabled{% endif %}"{% if product %} data-listing-color="{% if product.metafields.custom.listing_color.value != blank %}{{ product.metafields.custom.listing_color.value | color_to_hex | escape }}{% endif %}" data-listing-border-color="{% if product.metafields.custom.listing_border_color.value != blank %}{{ product.metafields.custom.listing_border_color.value | color_to_hex | escape }}{% endif %}" data-listing-badge="{{ product.metafields.custom.listing_badge.value | escape }}" data-listing-group="{{ product.metafields.custom.listing_group.value | escape }}" data-listing-variant-color="{% if product.selected_or_first_available_variant.metafields.custom.listing_color.value != blank %}{{ product.selected_or_first_available_variant.metafields.custom.listing_color.value | color_to_hex | escape }}{% endif %}" data-listing-variant-border-color="{% if product.selected_or_first_available_variant.metafields.custom.listing_border_color.value != blank %}{{ product.selected_or_first_available_variant.metafields.custom.listing_border_color.value | color_to_hex | escape }}{% endif %}" data-listing-variant-badge="{{ product.selected_or_first_available_variant.metafields.custom.listing_badge.value | escape }}" data-listing-enabled="{{ product.metafields.custom.listing_color_enabled.value }}"{% endif %}>
 <a href="#MainContent" class="skip-link">{{ 'general.skip' | t }}</a>
@@ -42,20 +40,5 @@
 <dialog id="QuickView" class="quick-dialog" aria-label="{{ 'product.quick_view' | t }}"><button class="icon-button dialog-close" data-close-dialog aria-label="{{ 'general.close' | t }}">{% render 'icon', name: 'close' %}</button><div data-quick-content></div></dialog>
 <dialog id="ImageZoom" class="zoom-dialog" aria-label="{{ 'general.zoom' | t }}"><button class="icon-button dialog-close" data-close-dialog aria-label="{{ 'general.close' | t }}">{% render 'icon', name: 'close' %}</button><img width="1800" height="1800" alt="" data-zoom-image></dialog>
 <div id="BnsStatus" class="toast" role="status" aria-live="polite"></div>
-<div class="whatsapp-widget" data-whatsapp-widget>
-  <div class="whatsapp-widget__hint" data-whatsapp-hint>
-    <strong>Butuh bantuan?</strong>
-    <span>Tim CS siap membantu via WhatsApp</span>
-    <button class="whatsapp-widget__dismiss" type="button" data-whatsapp-dismiss aria-label="Tutup pesan bantuan">&times;</button>
-  </div>
-  <a class="whatsapp-widget__link" href="https://wa.me/6287795361519" target="_blank" rel="noopener noreferrer" aria-label="Chat CS melalui WhatsApp">
-    <span class="whatsapp-widget__icon" aria-hidden="true">
-      <svg viewBox="0 0 24 24" focusable="false">
-        <path d="M20.1 11.8a8.2 8.2 0 0 1-12 7.2L3 20l1-4.8a8.2 8.2 0 1 1 16.1-3.4Z"></path>
-        <path d="M8.3 7.8c.2-.5.5-.6.8-.6h.4c.2 0 .4.1.5.4l.8 1.8c.1.2.1.4-.1.6l-.6.7c-.2.2-.2.4-.1.6.4.8 1.2 1.5 2 1.9.2.1.4.1.6-.1l.7-.7c.2-.2.4-.2.6-.1l1.8.9c.2.1.3.3.3.5v.5c0 .3-.1.5-.5.7-.5.3-1.4.4-2.4 0-1.1-.4-2.3-1.3-3.3-2.3-1-1-1.9-2.3-2.3-3.4-.3-.9-.2-1.8.1-2.4Z"></path>
-      </svg>
-    </span>
-    <span>Chat CS</span>
-  </a>
-</div>
+<a class="whatsapp-float" href="https://wa.me/6287795361519" target="_blank" rel="noopener noreferrer" aria-label="Hubungi kami lewat WhatsApp" title="Hubungi kami lewat WhatsApp">{% render 'icon', name: 'whatsapp' %}</a>
 </body></html>

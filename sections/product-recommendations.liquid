@@ -1,4 +1,4 @@
-<section class="section wrap product-recommendations" data-recommendations data-carousel data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit=4&intent=related">
+<section class="section wrap product-recommendations" data-recommendations data-carousel data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit=10&intent=related">
   {% if recommendations.performed and recommendations.products_count > 0 %}
     <div class="section-heading product-recommendations__heading">
       <h2>{{ 'product.recommendations' | t }}</h2>
@@ -9,7 +9,7 @@
         </div>
       {% endif %}
     </div>
-    <div class="product-grid" data-carousel-track role="region" aria-label="{{ 'product.recommendations' | t }}" style="display:flex!important">
+    <div class="product-grid" data-carousel-track role="region" aria-label="{{ 'product.recommendations' | t }}">
       {% for product in recommendations.products %}
         {% render 'product-card', product: product %}
       {% endfor %}
@@ -18,18 +18,11 @@
 </section>
 {% stylesheet %}
 .product-recommendations__heading{display:flex;align-items:center;justify-content:space-between;gap:16px}
-.product-recommendations.section{padding-block:48px}
-.product-recommendations .section-heading{margin-bottom:24px}
-.product-recommendations .product-recommendations__heading h2{min-width:0;max-width:900px;margin:0;text-align:left;font-size:clamp(22px,2.1vw,26px);line-height:1.3}
 .product-recommendations__controls{display:flex;flex:0 0 auto;gap:8px}
-.product-recommendations__controls button{width:36px;height:36px;border:1px solid var(--line,#ddd);border-radius:50%;background:#fff;color:var(--ink,#222);font-size:20px;line-height:1}
-.product-recommendations[data-carousel] .product-grid{max-width:1080px;margin-inline:auto;gap:16px;overflow-x:auto;overscroll-behavior-inline:contain;scroll-snap-type:x mandatory;scrollbar-width:none;padding:0 0 12px}
-.product-recommendations[data-carousel] .product-grid::-webkit-scrollbar{display:none}
-.product-recommendations[data-carousel] .product-card{flex:0 0 calc((100% - 48px)/4)!important;min-width:0;scroll-snap-align:start}
-.product-recommendations .product-card .shopping-actions--card .text-link{top:8px;left:8px;width:32px;height:32px;min-height:32px;padding:6px}
-.product-recommendations .product-card .shopping-actions--card .text-link .icon{width:16px;height:16px}
-.product-recommendations .product-card .shopping-actions--card [data-compare-toggle]{display:none}
-@media(max-width:749px){.product-recommendations.section{padding-block:36px}.product-recommendations .section-heading{margin-bottom:18px}.product-recommendations .product-recommendations__heading h2{font-size:21px}.product-recommendations__controls{gap:6px}.product-recommendations__controls button{width:32px;height:32px;font-size:18px}.product-recommendations[data-carousel] .product-grid{gap:12px}.product-recommendations[data-carousel] .product-card{flex-basis:76%!important}}
+.product-recommendations__controls button{width:40px;height:40px;border:1px solid var(--line,#ddd);border-radius:50%;background:#fff;color:var(--ink,#222);font-size:24px;line-height:1}
+.product-recommendations .product-grid{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,calc((100% - 48px)/4));grid-template-columns:none;gap:16px;overflow-x:auto;overscroll-behavior-inline:contain;scroll-snap-type:x mandatory;scrollbar-width:thin;padding:0 0 12px}
+.product-recommendations .product-card{min-width:0;scroll-snap-align:start}
+@media(max-width:749px){.product-recommendations .product-grid{grid-auto-columns:minmax(0,76%);gap:12px}}
 {% endstylesheet %}
 {% schema %}
 {

@@ -12,6 +12,14 @@
     "main": {
       "type": "main-product",
       "blocks": {
+        "shipping": {
+          "type": "accordion",
+          "settings": {
+            "heading": "Pengiriman & pembayaran",
+            "text": "<p>Opsi pengiriman dan pembayaran tersedia di checkout. Biaya akhir mengikuti alamat tujuan dan pengaturan toko.</p>",
+            "page": ""
+          }
+        },
         "sp_request_a_quote_rfq_add_product_to_quote_button_qjXrHz": {
           "type": "shopify://apps/sp-request-a-quote-rfq/blocks/add-product-to-quote-button/019a3441-fea6-7e7b-ada9-3c4f6e8c5569",
           "settings": {
@@ -36,19 +44,11 @@
             "button_margin_left": 0,
             "button_custom_css": ".mprfq-add-to-quote-button-pdp { }"
           }
-        },
-        "shipping": {
-          "type": "accordion",
-          "settings": {
-            "heading": "Pengiriman & pembayaran",
-            "text": "<p>Opsi pengiriman dan pembayaran tersedia di checkout. Biaya akhir mengikuti alamat tujuan dan pengaturan toko.</p>",
-            "page": ""
-          }
         }
       },
       "block_order": [
-        "sp_request_a_quote_rfq_add_product_to_quote_button_qjXrHz",
-        "shipping"
+        "shipping",
+        "sp_request_a_quote_rfq_add_product_to_quote_button_qjXrHz"
       ],
       "settings": {
         "show_vendor": true,

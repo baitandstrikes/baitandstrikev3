@@ -2,9 +2,7 @@
   Product-first homepage showcase inspired by large catalogue storefronts.
 {% endcomment %}
 {% assign highlight_collection = section.settings.collection | default: collections.all %}
-{% if section.settings.featured_products != blank %}
-  {% assign highlight_product_handles = section.settings.featured_products | map: 'handle' %}
-{% elsif section.settings.product_handles != blank %}
+{% if section.settings.product_handles != blank %}
   {% assign highlight_product_handles = section.settings.product_handles | split: ',' %}
 {% else %}
   {% assign highlight_product_handles = highlight_collection.products | map: 'handle' %}
@@ -58,7 +56,6 @@ body.page-index .site-header.is-transparent,body.page-index .site-header.is-tran
   "name": "Commerce Homepage",
   "settings": [
     {"type":"collection","id":"collection","label":"Koleksi product highlight"},
-    {"type":"product_list","id":"featured_products","label":"Pilih produk satu per satu","info":"Jika dipilih, produk ini akan menggantikan daftar handle atau koleksi.","limit":12},
     {"type":"textarea","id":"product_handles","label":"Handle produk pilihan (pisahkan dengan koma)","info":"Kosongkan untuk menggunakan produk dari koleksi di atas."},
     {"type":"text","id":"heading","label":"Judul produk","default":"Product Highlight"},
     {"type":"range","id":"limit","label":"Jumlah produk","min":4,"max":12,"step":1,"default":4}
