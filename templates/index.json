@@ -98,7 +98,13 @@
           "settings": {
             "title": "Umpan",
             "collection": "fishing-bait",
-            "featured_products": [],
+            "featured_products": [
+              "lurekiller-kail-umpan-pancing-bercahaya-jigbait-gurita-double-hook-sabiki-kotrekan-ku005",
+              "lurekiller-kail-umpan-pancing-bercahaya-gurita-5-hook-sabiki-kotrekan-ku004",
+              "lure-popper-42g-mata-3d-terdapat-rattle-umpan-popper-killer-bns-lp222",
+              "lure-popper-31g-95mm-umpan-popping-killer-mata-3d-bns-lp221",
+              "minnow-9cm-8-3g-mn042"
+            ],
             "asset": "category-bait.png"
           }
         },
