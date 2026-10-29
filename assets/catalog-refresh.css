@@ -1,18 +1,18 @@
 .catalog-refresh{--catalog-navy:#123f5f;--catalog-border:#dfe5e9;--catalog-muted:#61717d;--catalog-bg:#f4f6f8}
 .catalog-refresh :is(.header-main,.nav-inner,.mobile-search-row,.header-search .wrap,.commerce-home__inner,.catalog-body__inner){width:calc(100% - 48px);max-width:1280px;min-width:0;margin-inline:auto}
-.catalog-refresh .site-header,.catalog-refresh.page-index .site-header.is-transparent{background:var(--catalog-navy)!important;color:#fff;margin-bottom:0!important}
-.catalog-refresh .header-main{position:relative;grid-template-columns:200px minmax(0,1fr) 210px;gap:24px;height:88px}
+.catalog-refresh .site-header,.catalog-refresh.page-index .site-header.is-transparent{position:relative;background:var(--catalog-navy)!important;color:#fff;margin-bottom:0!important}
+.catalog-refresh .header-main{position:relative;display:grid;grid-template-columns:200px minmax(0,1fr) 210px;gap:24px;height:88px}
 .catalog-refresh .header-main .brand{grid-column:1;grid-row:1;justify-self:start}
 .catalog-refresh .site-header .brand img{width:180px;max-height:64px;transform:none}
 .catalog-refresh .header-main .header-left{display:none}
-.catalog-refresh .header-main .header-right{grid-column:3;gap:18px}
+.catalog-refresh .header-main .header-right{display:flex;align-items:center;justify-content:flex-end;grid-column:3;gap:18px}
 .catalog-refresh .header-main .header-action__label{font-size:11px}
 .catalog-header-search{position:absolute;top:22px;left:50%;transform:translateX(-50%);display:flex;height:46px;max-width:620px!important;width:calc(100% - 570px)!important;border:1px solid #fff;border-radius:4px;overflow:hidden;background:#fff;color:#213442}
 .catalog-header-search input{min-width:0;flex:1;border:0;padding:10px 16px;background:transparent;font-size:13px}
 .catalog-header-search button{display:flex;align-items:center;gap:8px;border:0;padding:0 18px;background:#ffda1a;color:#153b56;font-size:13px;font-weight:700}
 .catalog-header-search .icon{width:18px;height:18px}
 .catalog-refresh .main-nav{height:46px;border-top:1px solid #ffffff26}
-.catalog-refresh .nav-inner{justify-content:flex-start;gap:32px;min-width:0}
+.catalog-refresh .nav-inner{display:flex;justify-content:flex-start;gap:32px;min-width:0}
 .catalog-refresh .nav-inner>a,.catalog-refresh .mega-item>summary{font-size:13px}
 .catalog-refresh .announcement{font-size:11px;padding:5px 16px;min-height:28px}
 
