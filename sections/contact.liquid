@@ -1,18 +1,35 @@
 <section class="section contact-page">
   <div class="wrap">
-    <header class="contact-page__intro">
-      <p class="eyebrow">BAIT&amp;STRIKE SUPPORT</p>
-      <h1>{{ page.title | default: section.settings.title | escape }}</h1>
-      <div class="contact-page__lead rte">{{ section.settings.text }}{{ page.content }}</div>
+    <header class="contact-page__intro contact-page__hero">
+      <div class="contact-page__hero-copy">
+        <p class="eyebrow">BAIT&amp;STRIKE SUPPORT</p>
+        <h1>{{ page.title | default: section.settings.title | escape }}</h1>
+        <div class="contact-page__lead rte">{{ section.settings.text }}{{ page.content }}</div>
+        <a class="contact-page__hero-link" href="#ContactForm-{{ section.id }}">Kirim pesan <span aria-hidden="true">↓</span></a>
+      </div>
+      <div class="contact-page__hero-media">
+        <img src="{{ 'bns-store-hero.jpg' | asset_url }}" width="1680" height="944" fetchpriority="high" alt="">
+        <span class="contact-page__hero-caption">BAITANDSTRIKE <span>•</span> FISHING GEAR</span>
+      </div>
     </header>
 
     <div class="contact-layout contact-page__grid">
       <div class="contact-page__details">
         <section class="contact-page__card">
-          <p class="contact-page__eyebrow">VISIT US</p>
-          <h2>{{ section.settings.info_title | escape }}</h2>
+          <div class="contact-page__card-heading">
+            <span class="contact-page__card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M20 10.1c0 5-8 11-8 11s-8-6-8-11a8 8 0 1 1 16 0Z" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.7"/></svg>
+            </span>
+            <div>
+              <p class="contact-page__eyebrow">VISIT US</p>
+              <h2>{{ section.settings.info_title | escape }}</h2>
+            </div>
+          </div>
           {% if section.settings.address != blank %}
-            <address>{{ section.settings.address | escape }}</address>
+            <div class="contact-page__detail contact-page__detail--address">
+              <span>ALAMAT TOKO</span>
+              <address>{{ section.settings.address | escape }}</address>
+            </div>
           {% endif %}
           {% if section.settings.phone != blank %}
             <div class="contact-page__detail">
@@ -39,11 +56,11 @@
       </div>
 
       <section class="contact-page__form-card">
-        {% if section.settings.form_heading != blank %}
-          <h2>{{ section.settings.form_heading | escape }}</h2>
-        {% endif %}
+        <p class="contact-page__form-eyebrow">WE’RE HERE TO HELP</p>
+        {% if section.settings.form_heading != blank %}<h2>{{ section.settings.form_heading | escape }}</h2>{% endif %}
         <p class="contact-page__form-note">Fill in the form below and we’ll be in touch.</p>
-        {% form 'contact', id: 'ContactForm' %}
+        {% assign contact_form_id = 'ContactForm-' | append: section.id %}
+        {% form 'contact', id: contact_form_id, class: 'contact-page__form' %}
           {% if form.posted_successfully? %}
             <p class="contact-page__success" role="status">{{ section.settings.success_message | escape }}</p>
           {% endif %}
@@ -120,6 +137,7 @@
     .contact-page__actions{align-items:flex-start;flex-direction:column;gap:14px}
   }
 {% endstyle %}
+{{ 'contact-page.css' | asset_url | stylesheet_tag }}
 {% schema %}
 {
   "name": "Contact",

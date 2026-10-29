@@ -1,5 +1,9 @@
 {% assign c = section.settings.collection | default: collections.all %}
-{% assign product_handles = section.settings.product_handles | split: ',' %}
+{% if section.settings.featured_products != blank %}
+  {% assign product_handles = section.settings.featured_products | map: 'handle' %}
+{% else %}
+  {% assign product_handles = section.settings.product_handles | split: ',' %}
+{% endif %}
 <section class="section wrap reveal" data-carousel>
   <div class="section-heading">
     <div>
@@ -13,7 +17,7 @@
     </div>
   </div>
   <div class="product-carousel" data-carousel-track>
-    {% if section.settings.product_handles != blank %}
+    {% if section.settings.featured_products != blank or section.settings.product_handles != blank %}
       {% for product_handle in product_handles limit: section.settings.limit %}
         {% assign product_handle = product_handle | strip %}
         {% assign product = all_products[product_handle] %}
@@ -36,6 +40,13 @@
       "type": "collection",
       "id": "collection",
       "label": "Koleksi"
+    },
+    {
+      "type": "product_list",
+      "id": "featured_products",
+      "label": "Pilih produk satu per satu",
+      "info": "Jika dipilih, produk ini akan menggantikan daftar handle atau koleksi.",
+      "limit": 16
     },
     {
       "type": "textarea",
