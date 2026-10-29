@@ -317,11 +317,16 @@
 
 
 /* Persistent WhatsApp contact shortcut */
-.whatsapp-float{position:fixed;right:20px;bottom:84px;z-index:1000;display:grid;place-items:center;width:54px;height:54px;border:0;border-radius:50%;background:#25d366;color:#fff;box-shadow:0 3px 12px #0003;transition:transform .18s ease,background-color .18s ease}
+.whatsapp-float{position:fixed;right:24px;bottom:30px;z-index:1000;isolation:isolate;display:grid;place-items:center;width:82px;height:82px;border:0;border-radius:50%;background:#25d366;color:#fff;box-shadow:0 3px 12px #0003;animation:whatsapp-float-pulse 2s infinite;transition:transform .18s ease,background-color .18s ease}
+.whatsapp-float::before{position:absolute;z-index:-1;inset:0;border:2px solid #25d366;border-radius:50%;content:"";animation:whatsapp-float-ring 2s infinite;pointer-events:none}
+.whatsapp-float::after{position:absolute;top:calc(100% + 7px);left:50%;color:#555;font-size:12px;font-weight:600;line-height:1.3;white-space:nowrap;content:"Chat WhatsApp";transform:translateX(-50%)}
 .whatsapp-float:hover{background:#1fbd5b;color:#fff;transform:translateY(-2px)}
 .whatsapp-float:focus-visible{outline:3px solid #123f5f;outline-offset:3px}
-.whatsapp-float .icon{width:29px;height:29px;stroke-width:1.8}
-@media(max-width:749px){.whatsapp-float{right:14px;bottom:82px;width:50px;height:50px}.whatsapp-float .icon{width:27px;height:27px}}
+.whatsapp-float .icon{width:38px;height:38px;stroke-width:1.8}
+@keyframes whatsapp-float-pulse{0%,100%{box-shadow:0 3px 12px #0003}50%{box-shadow:0 3px 12px #0003,0 0 0 8px #25d36624}}
+@keyframes whatsapp-float-ring{0%{opacity:.55;transform:scale(1)}100%{opacity:0;transform:scale(1.38)}}
+@media(max-width:749px){.whatsapp-float{right:14px;bottom:82px;width:66px;height:66px}.whatsapp-float .icon{width:32px;height:32px}.whatsapp-float::after{font-size:11px}}
+@media(prefers-reduced-motion:reduce){.whatsapp-float,.whatsapp-float::before{animation:none}}
 
 /* WhatsApp contact is available through the floating shortcut, not the footer. */
 .footer-about .rte a.text-link{display:none!important}
