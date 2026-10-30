@@ -12,5 +12,43 @@
     "market": "id"
   },
   "parent": "index.json",
-  "sections": {}
+  "sections": {
+    "179333459002ca0ca0": {
+      "type": "apps",
+      "disabled": false,
+      "settings": {},
+      "blocks": {},
+      "block_order": []
+    },
+    "17933345944069ec8a": {
+      "type": "apps",
+      "disabled": false,
+      "settings": {},
+      "blocks": {},
+      "block_order": []
+    }
+  },
+  "order": [
+    "commerce",
+    "new_arrivals",
+    "recently_viewed",
+    "monotaro_category_structure_Qz6DcU",
+    "catalog_body",
+    "why_choose_us",
+    "technique_collections",
+    "partners",
+    "how_to_buy_sell",
+    "guides",
+    "intro",
+    "shopee_reviews",
+    "story",
+    "journal",
+    "hero",
+    "countdown",
+    "brands",
+    "products",
+    "1792163588261cbf6d",
+    "179333459002ca0ca0",
+    "17933345944069ec8a"
+  ]
 }
