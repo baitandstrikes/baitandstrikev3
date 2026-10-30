@@ -52,6 +52,11 @@ body.page-index .site-header.is-transparent,body.page-index .site-header.is-tran
 @media(min-width:990px){.commerce-home{padding:36px 0 20px}.commerce-home__inner.wrap{padding:0;background:transparent}.commerce-home__top{grid-template-columns:290px minmax(0,1fr);gap:16px;align-items:stretch}.commerce-promo,.commerce-promo__slide,.commerce-promo__copy{height:423px;min-height:0}.commerce-promo__copy{justify-content:flex-end}.commerce-highlight{display:flex;min-height:423px;flex-direction:column;padding:16px;background:#fff;border:1px solid #e1e4e6;border-radius:7px}.commerce-products{flex:1;grid-auto-columns:calc(25% - 1px)}}
 @media(max-width:749px){body.page-index .wrap{width:calc(100% - 24px)}.commerce-home{padding-top:16px}.commerce-home__inner.wrap{width:calc(100% - 24px);padding:0}.commerce-highlight{min-height:0;background:#fff;border-radius:7px}.commerce-products{grid-auto-columns:43vw}}
 @media(min-width:990px){body.page-index.catalog-refresh{background:#f3f4f5}body.page-index.catalog-refresh .commerce-home{padding:32px 0 14px}body.page-index.catalog-refresh .commerce-home__inner{display:block;width:calc(100% - 48px);max-width:1160px;margin-inline:auto}body.page-index.catalog-refresh .commerce-home__top{display:grid;height:423px;grid-template-columns:290px minmax(0,1fr);gap:16px;align-items:stretch}body.page-index.catalog-refresh .commerce-promo{grid-area:auto;align-self:stretch}body.page-index.catalog-refresh .commerce-highlight{grid-area:auto;height:423px;min-height:0}body.page-index.catalog-refresh .commerce-products{min-height:0}body.page-index.catalog-refresh .section.wrap{margin:24px auto;padding:24px 18px;background:#fff;border:1px solid #e1e4e6;border-radius:7px}body.page-index.catalog-refresh .section.wrap .card-media{max-width:220px;margin-inline:auto}}
+@media(min-width:990px){
+  body.page-index.catalog-refresh .commerce-home__top{height:auto;min-height:423px}
+  body.page-index.catalog-refresh .commerce-highlight{height:auto;min-height:423px;overflow:visible}
+  body.page-index.catalog-refresh .commerce-products{flex:0 0 auto;min-height:auto}
+}
 {% endstylesheet %}
 {% schema %}
 {
