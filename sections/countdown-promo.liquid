@@ -14,7 +14,6 @@
 {%- assign countdown_value = section.settings.end -%}
 {%- if coming_soon -%}{%- assign countdown_value = section.settings.launch_date -%}{%- endif -%}
 <section class="countdown-promo{% if coming_soon %} countdown-promo--coming{% endif %}" data-countdown="{{ countdown_value | escape }}">
-  <!--bns-cs-marker S={{ section.settings.mode }} H={{ section.settings.product_handle }} C={{ coming_soon }} P={{ launch_product.title }}-->
   {%- if coming_soon -%}
     <div class="countdown-promo__product">
       {%- if launch_product.featured_image -%}
