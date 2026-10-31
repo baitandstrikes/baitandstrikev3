@@ -1,5 +1,10 @@
+{%- assign launch_product = section.settings.product -%}
+{%- if launch_product == blank or launch_product.handle == blank -%}
+  {%- assign fallback_handle = section.settings.product_handle | strip -%}
+  {%- if fallback_handle != blank -%}{%- assign launch_product = all_products[fallback_handle] -%}{%- endif -%}
+{%- endif -%}
 {%- assign coming_soon = false -%}
-{%- if section.settings.mode == 'coming_soon' and section.settings.product != blank -%}{%- assign coming_soon = true -%}{%- endif -%}
+{%- if section.settings.mode == 'coming_soon' and launch_product != blank -%}{%- assign coming_soon = true -%}{%- endif -%}
 {%- assign launched = false -%}
 {%- if coming_soon and section.settings.launch_date != blank -%}
   {%- assign launch_epoch = section.settings.launch_date | date: '%s' | plus: 0 -%}
@@ -9,9 +14,8 @@
 {%- assign countdown_value = section.settings.end -%}
 {%- if coming_soon -%}{%- assign countdown_value = section.settings.launch_date -%}{%- endif -%}
 <section class="countdown-promo{% if coming_soon %} countdown-promo--coming{% endif %}" data-countdown="{{ countdown_value | escape }}">
-  <!--bns-cs-marker S={{ section.settings.mode }} P={{ section.settings.product }} PH={{ section.settings.product.handle }} PJ={{ section.settings.product | json }} L={{ section.settings.launch_date }} N={{ section.settings.notify_label }} B={{ section.settings.buy_label }}-->
+  <!--bns-cs-marker S={{ section.settings.mode }} H={{ section.settings.product_handle }} C={{ coming_soon }} P={{ launch_product.title }}-->
   {%- if coming_soon -%}
-    {%- assign launch_product = section.settings.product -%}
     <div class="countdown-promo__product">
       {%- if launch_product.featured_image -%}
         <img class="countdown-promo__image" src="{{ launch_product.featured_image | image_url: width: 160 }}" width="84" height="84" loading="lazy" alt="{{ launch_product.title | escape }}">
@@ -81,6 +85,12 @@
       "type": "product",
       "id": "product",
       "label": "Produk"
+    },
+    {
+      "type": "text",
+      "id": "product_handle",
+      "label": "Handle produk (cadangan)",
+      "info": "Dipakai otomatis bila picker produk tidak terbaca. Contoh: jemmy-bramastra-dc-reel-baitcasting-handle-kiri-rp044"
     },
     {
       "type": "text",
