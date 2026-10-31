@@ -1,7 +1,15 @@
 {%- assign launch_product = section.settings.product -%}
 {%- if launch_product == blank or launch_product.handle == blank -%}
+  {%- assign launch_product = '' -%}
+  {%- assign picked_id = section.settings.product | split: '/' | last -%}
   {%- assign fallback_handle = section.settings.product_handle | strip -%}
-  {%- if fallback_handle != blank -%}{%- assign launch_product = all_products[fallback_handle] -%}{%- endif -%}
+  {%- if fallback_handle != blank -%}
+    {%- assign fallback_product = all_products[fallback_handle] -%}
+    {%- assign fallback_id = fallback_product.id | append: '' -%}
+    {%- if fallback_product != blank and picked_id == fallback_id -%}
+      {%- assign launch_product = fallback_product -%}
+    {%- endif -%}
+  {%- endif -%}
 {%- endif -%}
 {%- assign coming_soon = false -%}
 {%- if section.settings.mode == 'coming_soon' and launch_product != blank -%}{%- assign coming_soon = true -%}{%- endif -%}
