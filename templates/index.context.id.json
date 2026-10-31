@@ -52,6 +52,7 @@
   },
   "order": [
     "commerce",
+    "coming_soon",
     "new_arrivals",
     "recently_viewed",
     "monotaro_category_structure_Qz6DcU",
@@ -67,7 +68,6 @@
     "journal",
     "hero",
     "countdown",
-    "coming_soon",
     "brands",
     "products",
     "1792163588261cbf6d",
