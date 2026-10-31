@@ -26,28 +26,6 @@
       "settings": {},
       "blocks": {},
       "block_order": []
-    },
-    "countdown": {
-      "type": "countdown-promo",
-      "disabled": true,
-      "settings": {
-        "title": "Flash Sale !",
-        "end": "2026-11-13T23:59:00+07:00",
-        "label": "Jelajahi koleksi",
-        "link": ""
-      }
-    },
-    "coming_soon": {
-      "type": "countdown-promo",
-      "settings": {
-        "mode": "coming_soon",
-        "title": "Segera Hadir",
-        "product": "gid://shopify/product/10335318835417",
-        "product_handle": "jemmy-bramastra-dc-reel-baitcasting-handle-kiri-rp044",
-        "launch_date": "2026-11-01T10:00:00+07:00",
-        "notify_label": "Segera Hadir",
-        "buy_label": "Beli Sekarang"
-      }
     }
   },
   "order": [
