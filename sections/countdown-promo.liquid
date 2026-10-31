@@ -1,19 +1,54 @@
-<section class="countdown-promo" data-countdown="{{ section.settings.end | escape }}"><h2>{{ section.settings.title | escape }}</h2><div class="countdown-clock" data-countdown-clock hidden>{% assign units = 'days,hours,minutes,seconds' | split: ',' %}{% for unit in units %}{% assign key = 'general.' | append: unit %}<span><b data-time="{{ unit }}">00</b><small>{{ key | t }}</small></span>{% endfor %}</div>{% if section.settings.label != blank %}<a class="button" href="{{ section.settings.link | default: routes.all_products_collection_url }}">{{ section.settings.label | escape }}</a>{% endif %}</section>
-<style>
-@media (min-width: 750px) {
-  body.catalog-refresh .shopify-section:has(.countdown-promo) { background: #fff !important; }
-  body.catalog-refresh .shopify-section:has(.countdown-promo) .countdown-promo {
-    box-sizing: border-box;
-    width: min(1280px, calc(100vw - 48px)) !important;
-    max-width: 1280px !important;
-    margin: 24px auto !important;
-  }
-}
-</style>
+{%- assign coming_soon = false -%}
+{%- if section.settings.mode == 'coming_soon' and section.settings.product != blank -%}{%- assign coming_soon = true -%}{%- endif -%}
+{%- assign launched = false -%}
+{%- if coming_soon and section.settings.launch_date != blank -%}
+  {%- assign launch_epoch = section.settings.launch_date | date: '%s' | plus: 0 -%}
+  {%- assign now_epoch = 'now' | date: '%s' | plus: 0 -%}
+  {%- if launch_epoch > 0 and now_epoch >= launch_epoch -%}{%- assign launched = true -%}{%- endif -%}
+{%- endif -%}
+{%- assign countdown_value = section.settings.end -%}
+{%- if coming_soon -%}{%- assign countdown_value = section.settings.launch_date -%}{%- endif -%}
+<section class="countdown-promo{% if coming_soon %} countdown-promo--coming{% endif %}" data-countdown="{{ countdown_value | escape }}">
+  {%- if coming_soon -%}
+    {%- assign launch_product = section.settings.product -%}
+    <div class="countdown-promo__product">
+      {%- if launch_product.featured_image -%}
+        <img class="countdown-promo__image" src="{{ launch_product.featured_image | image_url: width: 160 }}" width="84" height="84" loading="lazy" alt="{{ launch_product.title | escape }}">
+      {%- endif -%}
+      <div class="countdown-promo__copy">
+        <span class="countdown-promo__eyebrow">{% if launched %}BARU{% else %}SEGERA HADIR{% endif %}</span>
+        <h2>{{ launch_product.title | escape }}</h2>
+        {%- if launched -%}<span class="countdown-promo__price">{{ launch_product.price | money }}</span>{%- endif -%}
+      </div>
+    </div>
+  {%- else -%}
+    <h2>{{ section.settings.title | escape }}</h2>
+  {%- endif -%}
+  <div class="countdown-clock" data-countdown-clock hidden>{% assign units = 'days,hours,minutes,seconds' | split: ',' %}{% for unit in units %}{% assign key = 'general.' | append: unit %}<span><b data-time="{{ unit }}">00</b><small>{{ key | t }}</small></span>{% endfor %}</div>
+  {%- if coming_soon -%}
+    {%- if launched -%}
+      <a class="button" href="{{ launch_product.url }}">{{ section.settings.buy_label | default: 'Beli Sekarang' | escape }}</a>
+    {%- else -%}
+      <span class="button countdown-promo__button--disabled" aria-disabled="true">{{ section.settings.notify_label | default: 'Segera Hadir' | escape }}</span>
+    {%- endif -%}
+  {%- elsif section.settings.label != blank -%}
+    <a class="button" href="{{ section.settings.link | default: routes.all_products_collection_url }}">{{ section.settings.label | escape }}</a>
+  {%- endif -%}
+</section>
 {% schema %}
 {
   "name": "Countdown Promotion",
   "settings": [
+    {
+      "type": "select",
+      "id": "mode",
+      "label": "Mode",
+      "options": [
+        { "value": "flash_sale", "label": "Flash Sale" },
+        { "value": "coming_soon", "label": "Coming Soon" }
+      ],
+      "default": "flash_sale"
+    },
     {
       "type": "text",
       "id": "title",
@@ -36,6 +71,33 @@
       "type": "url",
       "id": "link",
       "label": "Tautan"
+    },
+    {
+      "type": "header",
+      "content": "Mode Coming Soon"
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Produk"
+    },
+    {
+      "type": "text",
+      "id": "launch_date",
+      "label": "Tanggal launch (ISO 8601)",
+      "info": "Contoh: 2026-11-01T10:00:00+07:00. Setelah tanggal ini tombol otomatis menjadi Beli Sekarang."
+    },
+    {
+      "type": "text",
+      "id": "notify_label",
+      "label": "Tombol sebelum launch",
+      "default": "Segera Hadir"
+    },
+    {
+      "type": "text",
+      "id": "buy_label",
+      "label": "Tombol setelah launch",
+      "default": "Beli Sekarang"
     }
   ],
   "presets": [

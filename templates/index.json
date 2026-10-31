@@ -703,10 +703,16 @@
       "type": "countdown-promo",
       "disabled": true,
       "settings": {
-        "title": "Pilihan untuk trip berikutnya",
-        "end": "2026-10-31T23:59:00+07:00",
+        "title": "Flash Sale !",
+        "end": "2026-11-13T23:59:00+07:00",
         "label": "Jelajahi koleksi",
         "link": ""
+      }
+    },
+    "coming_soon": {
+      "type": "countdown-promo",
+      "settings": {
+        "title": "Segera Hadir"
       }
     },
     "brands": {
@@ -785,8 +791,8 @@
   },
   "order": [
     "commerce",
-    "recently_viewed",
     "new_arrivals",
+    "recently_viewed",
     "monotaro_category_structure_Qz6DcU",
     "catalog_body",
     "why_choose_us",
@@ -800,6 +806,7 @@
     "journal",
     "hero",
     "countdown",
+    "coming_soon",
     "brands",
     "products",
     "1792163588261cbf6d"
