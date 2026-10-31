@@ -712,7 +712,12 @@
     "coming_soon": {
       "type": "countdown-promo",
       "settings": {
-        "title": "Segera Hadir"
+        "mode": "coming_soon",
+        "title": "Segera Hadir",
+        "product": "gid://shopify/product/10335318835417",
+        "launch_date": "2026-11-01T10:00:00+07:00",
+        "notify_label": "Segera Hadir",
+        "buy_label": "Beli Sekarang"
       }
     },
     "brands": {
