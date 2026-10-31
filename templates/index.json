@@ -60,7 +60,6 @@
     },
     "recently_viewed": {
       "type": "recently-viewed",
-      "disabled": true,
       "settings": {
         "title": "Terakhir dilihat",
         "clear_label": "Hapus riwayat"
@@ -786,8 +785,8 @@
   },
   "order": [
     "commerce",
-    "new_arrivals",
     "recently_viewed",
+    "new_arrivals",
     "monotaro_category_structure_Qz6DcU",
     "catalog_body",
     "why_choose_us",
