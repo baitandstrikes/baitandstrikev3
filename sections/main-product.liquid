@@ -39,10 +39,10 @@
       {% endif %}
     </div>
 
-    <div class="product-info product-detail-info">
+    <div class="product-info product-detail-info{% unless customer %} wholesale-off{% endunless %}">
       <div class="product-detail-summary">
         {% if section.settings.show_vendor and product.vendor != blank %}<div class="product-detail-row"><span>Merek</span><strong><a href="{{ routes.search_url }}?q={{ product.vendor | url_encode }}">{{ product.vendor | escape }}</a></strong></div>{% endif %}
-        <div class="product-detail-row product-detail-price"><span>Harga</span>{% if v != blank %}{% render 'price', product: product, variant: v %}{% else %}<p class="price">{{ 'product.unavailable' | t }}</p>{% endif %}</div>
+        <div class="product-detail-row product-detail-price"{% if customer %} data-wholesale-sync{% endif %}><span>Harga</span>{% if v != blank %}{% render 'price', product: product, variant: v %}{% else %}<p class="price">{{ 'product.unavailable' | t }}</p>{% endif %}</div>
         <div class="product-detail-row"><span>Ketersediaan</span><strong class="product-detail-stock{% unless v.available %} is-sold-out{% endunless %}">{% if v.available %}Ready Stock{% else %}Stok Habis{% endif %}</strong></div>
         <div class="product-detail-row"><span>SKU</span><strong class="product-sku">{% if v.sku != blank %}{{ v.sku | escape }}{% else %}-{% endif %}</strong></div>
       </div>
@@ -86,6 +86,13 @@
   </div>
 </section>
 <script type="application/ld+json">{{ product | structured_data }}</script>
+{% stylesheet %}
+.product-detail-info.wholesale-off .sp-wholesale-card,
+.product-detail-info.wholesale-off .sp-wholesale-qty-note{display:none!important}
+.product-detail-info.wholesale-merged .sp-wholesale-card{display:none!important}
+.product-detail-price .sp-wholesale-qty-note{grid-column:2;margin:0;font-size:12px;color:#627582}
+.price.is-wholesale .price-wholesale-tag{font-size:11px;font-weight:600;line-height:1.5;color:#123f5f;background:#e8f1f7;border-radius:999px;padding:2px 10px}
+{% endstylesheet %}
 {% schema %}
 {
   "name": "Main Product",

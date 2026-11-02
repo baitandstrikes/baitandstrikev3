@@ -244,6 +244,40 @@ const initCategoryMenu = (menu) => {
    header?.querySelectorAll('[data-menu-toggle]').forEach(button => button.setAttribute('aria-expanded', 'false'));
  });
 };
+const wholesaleMoney = (cents) => 'Rp ' + String(Math.floor(cents / 100)).replace(/\B(?=(\d{3})+(?!\d))/g, '.') + ',' + String(cents % 100).padStart(2, '0');
+const parseMoney = (text) => {
+ const cleaned = String(text || '').replace(/[^\d.,]/g, '');
+ const decimal = cleaned.match(/^(\d+(?:[.,]\d{3})*)[.,](\d{2})$/);
+ if (decimal) return Number(decimal[1].replace(/\D/g, '')) * 100 + Number(decimal[2]);
+ const digits = cleaned.replace(/\D/g, '');
+ return digits ? Number(digits) * 100 : NaN;
+};
+const mergeWholesalePrices = () => {
+ document.querySelectorAll('[data-wholesale-sync]').forEach(row => {
+ const host = row.closest('.product-detail-info'); const card = host?.querySelector('.sp-wholesale-card'); const price = row.querySelector('.price');
+ if (!price || !card) return;
+ const wholesale = parseMoney(card.querySelector('.sp-wholesale-new')?.textContent);
+ if (!Number.isFinite(wholesale)) return;
+ const retail = parseMoney(card.querySelector('.sp-wholesale-old')?.textContent);
+ const strikeText = Number.isFinite(retail) && retail > wholesale ? wholesaleMoney(retail) : '';
+ const signature = `${wholesale}|${strikeText}`;
+ const current = price.querySelector('.price-current');
+ if (!current || (price.dataset.wholesaleSignature === signature && current.textContent === wholesaleMoney(wholesale))) return;
+ price.dataset.wholesaleSignature = signature;
+ price.classList.add('is-wholesale');
+ current.textContent = wholesaleMoney(wholesale);
+ const strike = price.querySelector('s');
+ if (strikeText) { if (strike) strike.textContent = strikeText; else price.prepend(Object.assign(document.createElement('s'), { textContent: strikeText })); } else strike?.remove();
+ if (!price.querySelector('.price-wholesale-tag')) price.append(Object.assign(document.createElement('span'), { className: 'price-wholesale-tag', textContent: 'Harga grosir' }));
+ host.classList.add('wholesale-merged');
+ });
+};
+let wholesaleObserver;
+const watchWholesalePrices = () => {
+ if (wholesaleObserver || !('MutationObserver' in window)) return;
+ wholesaleObserver = new MutationObserver(mergeWholesalePrices);
+ wholesaleObserver.observe(document.body, { childList: true, subtree: true });
+};
 const init = (scope = document) => {
  scope.querySelectorAll('[data-slideshow]').forEach(initSlideshow); initCountries(scope);
  scope.querySelectorAll('[data-category-menu]').forEach(initCategoryMenu);
@@ -308,5 +342,5 @@ document.addEventListener('shopify:section:load', event => init(event.target));
 document.addEventListener('shopify:section:unload', event => event.target.querySelector('[data-slideshow]')?.dispatchEvent(new Event('bns:unload')));
 document.addEventListener('shopify:block:select', event => { const slide = event.target.closest('[data-slide]'); if (slide) { const hero = slide.closest('[data-slideshow]'); hero.dispatchEvent(new CustomEvent('bns:slide', { detail: [...hero.querySelectorAll('[data-slide]')].indexOf(slide) })); } });
 document.addEventListener('bns:cart-refresh', async () => { try { await refreshCart(); openDialog(document.getElementById('CartDrawer')); toast(config.added); } catch { window.location.assign(config.cart); } });
-updateHeader(); init();
+updateHeader(); init(); mergeWholesalePrices(); watchWholesalePrices();
 })();
