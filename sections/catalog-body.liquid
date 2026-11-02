@@ -1,12 +1,12 @@
 {% comment %}Dense product catalogue body inspired by industrial marketplace navigation.{% endcomment %}
 <section class="catalog-body" aria-label="{{ section.settings.heading | escape }}">
   <div class="wrap catalog-body__inner">
-    <header class="catalog-body__header">
+    <header class="catalog-body__header reveal">
       <h2>{{ section.settings.heading | escape }}</h2>
       {% if section.settings.text != blank %}<p>{{ section.settings.text | escape }}</p>{% endif %}
     </header>
 
-    <div class="catalog-body__categories">
+    <div class="catalog-body__categories reveal bns-stagger">
       {% for block in section.blocks %}{% if block.type == 'category' %}
         {% assign category_collection = block.settings.collection %}
         <a class="catalog-category" href="{{ category_collection.url | default: routes.all_products_collection_url }}" {{ block.shopify_attributes }}>

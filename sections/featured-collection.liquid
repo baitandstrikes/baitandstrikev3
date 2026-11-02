@@ -16,7 +16,7 @@
       <button class="icon-button" data-carousel-next aria-label="{{ 'general.next' | t }}">{% render 'icon', name: 'arrow' %}</button>
     </div>
   </div>
-  <div class="product-carousel" data-carousel-track>
+  <div class="product-carousel bns-stagger" data-carousel-track>
     {% if section.settings.featured_products != blank or section.settings.product_handles != blank %}
       {% for product_handle in product_handles limit: section.settings.limit %}
         {% assign product_handle = product_handle | strip %}

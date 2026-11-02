@@ -377,6 +377,31 @@
  .catalog-refresh .countdown-promo--coming>.button{grid-column:1;width:100%}
 }
 @media(max-width:749px){.catalog-refresh .site-footer--pdf{padding-bottom:calc(140px + env(safe-area-inset-bottom))}}
+
+/* Scroll reveal polish: spring easing, staggered grids, hover lift. */
+@keyframes bns-rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.catalog-refresh.motion-enabled .reveal{transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.22,.61,.36,1)}
+.catalog-refresh.motion-enabled .reveal.is-pending{opacity:0;transform:translateY(26px)}
+.catalog-refresh .reveal.is-pending :where(.bns-stagger)>*,.catalog-refresh .reveal.is-pending.bns-stagger>*{opacity:0}
+.catalog-refresh .reveal.is-visible :where(.bns-stagger)>*,.catalog-refresh .reveal.is-visible.bns-stagger>*{animation:bns-rise .55s cubic-bezier(.22,.61,.36,1) backwards}
+.catalog-refresh :where(.bns-stagger)>:nth-child(2){animation-delay:60ms}
+.catalog-refresh :where(.bns-stagger)>:nth-child(3){animation-delay:120ms}
+.catalog-refresh :where(.bns-stagger)>:nth-child(4){animation-delay:180ms}
+.catalog-refresh :where(.bns-stagger)>:nth-child(n+5){animation-delay:240ms}
+.catalog-refresh .recently-viewed:not([hidden]) .recently-viewed__card{animation:bns-rise .5s cubic-bezier(.22,.61,.36,1) backwards}
+.catalog-refresh .recently-viewed .recently-viewed__card:nth-child(2){animation-delay:60ms}
+.catalog-refresh .recently-viewed .recently-viewed__card:nth-child(3){animation-delay:120ms}
+.catalog-refresh .recently-viewed .recently-viewed__card:nth-child(n+4){animation-delay:180ms}
+@media(min-width:750px){
+ .catalog-refresh .product-card{transition:transform .25s cubic-bezier(.22,.61,.36,1),box-shadow .25s cubic-bezier(.22,.61,.36,1)}
+ .catalog-refresh .product-card:hover{transform:translateY(-4px)}
+ .catalog-refresh .countdown-promo__image{transition:transform .35s cubic-bezier(.22,.61,.36,1)}
+ .catalog-refresh .countdown-promo:hover .countdown-promo__image{transform:scale(1.05)}
+}
+@media(prefers-reduced-motion:reduce){
+ .catalog-refresh.motion-enabled .reveal{transition:none}
+ .catalog-refresh .reveal :where(.bns-stagger)>*,.catalog-refresh .recently-viewed .recently-viewed__card{animation:none;opacity:1}
+}
 @media(max-width:749px){.catalog-refresh.page-index .commerce-promo .commerce-arrow{bottom:2px}.catalog-refresh.page-index .commerce-promo .commerce-arrow--prev{left:18px}.catalog-refresh.page-index .commerce-promo .commerce-arrow--next{right:18px}}
 
 @media(min-width:990px){
