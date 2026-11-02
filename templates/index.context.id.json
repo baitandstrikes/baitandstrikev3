@@ -26,6 +26,25 @@
       "settings": {},
       "blocks": {},
       "block_order": []
+    },
+    "catalog_body": {
+      "settings": {},
+      "blocks": {
+        "cat_bait": {
+          "settings": {
+            "featured_products": [
+              "lurekiller-kail-umpan-pancing-bercahaya-jigbait-gurita-double-hook-sabiki-kotrekan-ku005",
+              "lure-popper-42g-mata-3d-terdapat-rattle-umpan-popper-killer-bns-lp222",
+              "lure-popper-31g-95mm-umpan-popping-killer-mata-3d-bns-lp221",
+              "minnow-9cm-8-3g-mn042",
+              "pak-umpan-pancing-softlure-bentuk-ikan-imitasi-bahan-silikon-6-7-5cm-sl183",
+              "30pcs-umpan-softlure-3cm-4cm-umpan-casting-softlure-padlle-tail",
+              "fishing-lure-sb006-wobbler-spinners-spoon-bait-tackle-all-artificial-metal-sequins-spinnerbait-mj168",
+              "hengjia-minnow-crank-tiger-ul-6cm-5-5g-mn197"
+            ]
+          }
+        }
+      }
     }
   },
   "order": [
