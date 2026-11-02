@@ -20,9 +20,11 @@
 .product-recommendations__heading{display:flex;align-items:center;justify-content:space-between;gap:16px}
 .product-recommendations__controls{display:flex;flex:0 0 auto;gap:8px}
 .product-recommendations__controls button{width:40px;height:40px;border:1px solid var(--line,#ddd);border-radius:50%;background:#fff;color:var(--ink,#222);font-size:24px;line-height:1}
-.product-recommendations .product-grid{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,calc((100% - 48px)/4));grid-template-columns:none;gap:16px;overflow-x:auto;overscroll-behavior-inline:contain;scroll-snap-type:x mandatory;scrollbar-width:thin;padding:0 0 12px}
-.product-recommendations .product-card{min-width:0;scroll-snap-align:start}
-@media(max-width:749px){.product-recommendations .product-grid{grid-auto-columns:minmax(0,76%);gap:12px}}
+.product-recommendations .product-grid{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 48px)/4);grid-template-columns:none;gap:16px;overflow-x:auto;overscroll-behavior-inline:contain;scroll-snap-type:x mandatory;scrollbar-width:thin;padding:0 0 12px}
+.product-recommendations .product-card{min-width:0;overflow:hidden;scroll-snap-align:start}
+.product-recommendations .card-spec-details{display:none}
+.product-recommendations .card-info h3{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+@media(max-width:749px){.product-recommendations .product-grid{grid-auto-columns:76%;gap:12px}}
 {% endstylesheet %}
 {% schema %}
 {

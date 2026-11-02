@@ -424,3 +424,9 @@
 .catalog-refresh .product-card .shopping-actions--card .text-link{position:static!important;inset:auto!important;display:inline-flex;flex:0 0 38px;width:38px;height:38px;min-height:38px;margin:0;padding:8px}
 .catalog-refresh .price:has(> s){flex-wrap:wrap}
 .catalog-refresh .price:has(> s)>s{order:-1;flex:0 0 100%}
+.catalog-refresh .card-info .price:has(.sp-wholesale-cardrow)>span:first-child,
+.catalog-refresh .sp-wholesale-card-from{display:none!important}
+.catalog-refresh .card-info .price:has(.sp-wholesale-cardrow){flex-wrap:nowrap;flex-direction:column;align-items:center;gap:1px}
+.catalog-refresh .sp-wholesale-cardrow{display:flex!important;flex-direction:column;align-items:center;gap:1px;width:100%}
+.catalog-refresh .sp-wholesale-card-price{order:-1;font-size:13px!important;font-weight:700;line-height:1.35!important}
+.catalog-refresh .sp-wholesale-card-old{font-size:11px!important;line-height:1.3!important}

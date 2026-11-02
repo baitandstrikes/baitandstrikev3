@@ -272,10 +272,18 @@ const mergeWholesalePrices = () => {
  host.classList.add('wholesale-merged');
  });
 };
+const formatWholesaleCards = () => {
+ document.querySelectorAll('.sp-wholesale-card-price').forEach(el => {
+ const cents = parseMoney(el.textContent);
+ if (!Number.isFinite(cents)) return;
+ const shown = wholesaleMoney(cents);
+ if (el.textContent !== shown) el.textContent = shown;
+ });
+};
 let wholesaleObserver;
 const watchWholesalePrices = () => {
  if (wholesaleObserver || !('MutationObserver' in window)) return;
- wholesaleObserver = new MutationObserver(mergeWholesalePrices);
+ wholesaleObserver = new MutationObserver(() => { mergeWholesalePrices(); formatWholesaleCards(); });
  wholesaleObserver.observe(document.body, { childList: true, subtree: true });
 };
 const init = (scope = document) => {
@@ -342,5 +350,5 @@ document.addEventListener('shopify:section:load', event => init(event.target));
 document.addEventListener('shopify:section:unload', event => event.target.querySelector('[data-slideshow]')?.dispatchEvent(new Event('bns:unload')));
 document.addEventListener('shopify:block:select', event => { const slide = event.target.closest('[data-slide]'); if (slide) { const hero = slide.closest('[data-slideshow]'); hero.dispatchEvent(new CustomEvent('bns:slide', { detail: [...hero.querySelectorAll('[data-slide]')].indexOf(slide) })); } });
 document.addEventListener('bns:cart-refresh', async () => { try { await refreshCart(); openDialog(document.getElementById('CartDrawer')); toast(config.added); } catch { window.location.assign(config.cart); } });
-updateHeader(); init(); mergeWholesalePrices(); watchWholesalePrices();
+updateHeader(); init(); mergeWholesalePrices(); formatWholesaleCards(); watchWholesalePrices();
 })();
