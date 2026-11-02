@@ -1,0 +1,14 @@
+{% liquid
+assign formatted = amount | money
+if currency
+  assign formatted = amount | money_with_currency
+endif
+assign zero = 0 | money
+assign cents_tail = ''
+if zero contains '.00'
+  assign cents_tail = '.00'
+elsif zero contains ',00'
+  assign cents_tail = ',00'
+endif
+echo formatted | remove_last: cents_tail
+%}

@@ -244,7 +244,23 @@ const initCategoryMenu = (menu) => {
    header?.querySelectorAll('[data-menu-toggle]').forEach(button => button.setAttribute('aria-expanded', 'false'));
  });
 };
-const wholesaleMoney = (cents) => 'Rp ' + String(Math.floor(cents / 100)).replace(/\B(?=(\d{3})+(?!\d))/g, '.') + ',' + String(cents % 100).padStart(2, '0');
+const moneyTemplate = (sample) => {
+ const start = sample.search(/\d/), end = sample.search(/\d(?=\D*$)/);
+ if (start < 0 || end < 0) return null;
+ const numeric = sample.slice(start, end + 1);
+ const groups = numeric.split(/\D+/);
+ const seps = numeric.match(/\D+/g) || [];
+ const decimals = Math.max(0, groups.join('').length - 7);
+ const decimalSep = decimals ? seps[seps.length - 1] : '';
+ const groupSep = seps.length > decimals ? seps[seps.length - decimals - 1] || '' : '';
+ const prefix = sample.slice(0, start), suffix = sample.slice(end + 1);
+ return (cents) => {
+ const whole = Math.round(cents / 100);
+ const body = groupSep ? String(whole).replace(/\B(?=(\d{3})+(?!\d))/g, groupSep) : String(whole);
+ return prefix + body + (decimals ? decimalSep + String(cents % 100).padStart(2, '0').slice(0, decimals) : '') + suffix;
+ };
+};
+const wholesaleMoney = moneyTemplate(config.money || '') || ((cents) => 'Rp ' + String(Math.floor(cents / 100)).replace(/\B(?=(\d{3})+(?!\d))/g, '.') + ',' + String(cents % 100).padStart(2, '0'));
 const parseMoney = (text) => {
  const cleaned = String(text || '').replace(/[^\d.,]/g, '');
  const decimal = cleaned.match(/^(\d+(?:[.,]\d{3})*)[.,](\d{2})$/);

@@ -30,7 +30,7 @@
       <div class="countdown-promo__copy">
         <span class="countdown-promo__eyebrow">{% if launched %}BARU{% else %}SEGERA HADIR{% endif %}</span>
         <h2>{{ launch_product.title | escape }}</h2>
-        {%- if launched -%}<span class="countdown-promo__price">{{ launch_product.price | money }}</span>{%- endif -%}
+        {%- if launched -%}<span class="countdown-promo__price">{% render 'money-without-cents', amount: launch_product.price %}</span>{%- endif -%}
       </div>
     </div>
   {%- else -%}
