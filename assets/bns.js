@@ -273,7 +273,7 @@ const mergeWholesalePrices = () => {
  });
 };
 const formatWholesaleCards = () => {
- document.querySelectorAll('.sp-wholesale-card-price').forEach(el => {
+ document.querySelectorAll('.sp-wholesale-card-price, .sp-wholesale-card-old').forEach(el => {
  const cents = parseMoney(el.textContent);
  if (!Number.isFinite(cents)) return;
  const shown = wholesaleMoney(cents);
