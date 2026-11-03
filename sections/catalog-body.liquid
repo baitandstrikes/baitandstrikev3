@@ -27,6 +27,9 @@
             {% if block.settings.image %}{{ block.settings.image | image_url: width: 260 | image_tag: loading: 'lazy', widths: '100, 180, 260', sizes: '130px', alt: block.settings.vendor }}{% else %}<strong>{{ block.settings.vendor | escape }}</strong>{% endif %}
           </a>
         {% endif %}{% endfor %}
+        <a href="{{ routes.collections_url }}/vendors?q=HANDING" aria-label="HANDING">
+          <img src="{{ 'logo-handing-tmall.webp' | asset_url }}" width="320" height="236" loading="lazy" alt="HANDING">
+        </a>
       </div>
     </div>
 
@@ -97,6 +100,8 @@
 @media(max-width:800px){.catalog-guarantees{grid-template-columns:minmax(0,360px) minmax(0,1fr);margin-top:14px}.catalog-guarantees__item{padding:20px 18px}.catalog-guarantees__item h3{font-size:14px}.catalog-guarantees__item p{font-size:12px}}
 @media(max-width:600px){.catalog-guarantees{grid-template-columns:1fr}.catalog-guarantees__visual{width:min(100%,360px);margin:0 auto}.catalog-guarantees__content{grid-template-columns:1fr}.catalog-guarantees__item{padding:16px 14px}.catalog-guarantees__item h3{margin-bottom:6px}}
 @media(min-width:750px){body.page-index.catalog-refresh .catalog-body__inner{width:calc(100% - 48px);max-width:1160px;margin-inline:auto}}
+#shop-by-brand .catalog-brands__list a[aria-label="HANDING"] img{width:100%;object-fit:contain}
+@media(max-width:749px){#shop-by-brand .catalog-brands__list a[aria-label="HANDING"]{overflow:hidden}#shop-by-brand .catalog-brands__list a[aria-label="HANDING"] img{transform:scale(1.25)}}
 {% endstylesheet %}
 
 {% schema %}
