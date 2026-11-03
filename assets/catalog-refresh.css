@@ -365,13 +365,13 @@
 @media(min-width:750px){.catalog-refresh .countdown-promo{width:min(1200px,calc(100vw - 48px));max-width:1200px;margin-right:auto;margin-left:auto}}
 
 /* Desktop Flash Sale: same content width, with a white full-width section behind it. */
-@media(min-width:750px){.catalog-refresh .shopify-section:has(.countdown-promo){background:#fff!important}.catalog-refresh .countdown-promo{box-sizing:border-box;width:min(1200px,calc(100vw - 48px));max-width:1200px;margin:24px auto;padding:18px 20px;background:#fff}}
+@media(min-width:750px){.catalog-refresh .shopify-section:has(.countdown-promo){background:#f4f6f8!important}.catalog-refresh .countdown-promo{box-sizing:border-box;width:min(1200px,calc(100vw - 48px));max-width:1200px;margin:24px auto;padding:18px 20px;background:#fff}}
 
 /* Fine-align desktop Flash Sale edges with the inset catalog sections. */
 @media(min-width:750px){.catalog-refresh .countdown-promo{width:min(1200px,calc(100vw - 72px));max-width:1200px;margin-right:auto;margin-left:auto}}
 
 /* Match the desktop Flash Sale card to the Catalog Body's 1280px content width. */
-@media(min-width:750px){body.catalog-refresh .shopify-section:has(.countdown-promo){background:#fff!important}body.catalog-refresh .countdown-promo{box-sizing:border-box;width:min(1160px,calc(100vw - 48px))!important;max-width:1160px!important;margin:24px auto!important;padding:18px 20px;background:#fff!important}}
+@media(min-width:750px){body.catalog-refresh .shopify-section:has(.countdown-promo){background:#f4f6f8!important}body.catalog-refresh .countdown-promo{box-sizing:border-box;width:min(1160px,calc(100vw - 48px))!important;max-width:1160px!important;margin:24px auto!important;padding:18px 20px;background:#fff!important}}
 @media(max-width:749px){.catalog-refresh .site-footer--pdf{padding-bottom:calc(140px + env(safe-area-inset-bottom))}}
 @media(max-width:749px){.catalog-refresh.page-index .commerce-promo .commerce-arrow{bottom:2px}.catalog-refresh.page-index .commerce-promo .commerce-arrow--prev{left:18px}.catalog-refresh.page-index .commerce-promo .commerce-arrow--next{right:18px}}
 
