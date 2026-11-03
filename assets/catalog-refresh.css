@@ -323,10 +323,10 @@
 .whatsapp-float__label::before{position:absolute;bottom:-5px;left:calc(50% - 5px);width:8px;height:8px;border-right:1px solid #25d366;border-bottom:1px solid #25d366;background:#fff;content:"";transform:rotate(45deg)}
 .whatsapp-float:hover{background:transparent;color:#fff;transform:translateY(-2px)}
 .whatsapp-float:focus-visible{outline:3px solid #123f5f;outline-offset:3px}
-.whatsapp-float__icon{display:block;width:100%;height:100%;border-radius:50%}
+.whatsapp-float__icon{display:block;width:72px;height:72px;border-radius:50%}
 @keyframes whatsapp-float-pulse{0%,100%{box-shadow:0 3px 12px #0003}50%{box-shadow:0 3px 12px #0003,0 0 0 8px #25d36624}}
 @keyframes whatsapp-float-ring{0%{opacity:.55;transform:scale(1)}100%{opacity:0;transform:scale(1.38)}}
-@media(max-width:749px){.whatsapp-float{right:14px;bottom:110px;width:66px;height:66px}.whatsapp-float__label{font-size:11px}}
+@media(max-width:749px){.whatsapp-float{right:14px;bottom:110px;width:66px;height:66px}.whatsapp-float__icon{width:58px;height:58px}.whatsapp-float__label{font-size:11px}}
 @media(prefers-reduced-motion:reduce){.whatsapp-float,.whatsapp-float::before{animation:none}}
 
 /* WhatsApp contact is available through the floating shortcut, not the footer. */
@@ -346,62 +346,32 @@
 }
 
 @media(min-width:750px){
- .catalog-refresh .shopify-section:has(.countdown-promo){background:var(--catalog-bg)}
- .catalog-refresh .countdown-promo{box-sizing:border-box;width:calc(100% - 48px);max-width:var(--catalog-content-width,1200px);margin:24px auto;padding:20px 24px;display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;justify-content:initial;gap:24px;border:1px solid #dfe5e9;border-radius:6px;background:#fff;color:#123f5f;text-align:left}
+ .catalog-refresh .countdown-promo{box-sizing:border-box;width:calc(100% - 48px);max-width:var(--catalog-content-width,1200px);margin:24px auto;padding:18px 20px;display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;justify-content:initial;gap:24px;border:1px solid #dfe5e9;border-radius:6px;background:#fff;color:#123f5f;text-align:left}
  .catalog-refresh .countdown-promo h2{width:auto;margin:0;font-size:22px;line-height:1.3;color:#123f5f;text-align:left}
  .catalog-refresh .countdown-clock{display:flex;justify-content:flex-end;gap:8px;min-width:0}
  .catalog-refresh .countdown-clock[hidden]{display:none}
  .catalog-refresh .countdown-clock span{display:grid;place-items:center;min-width:52px;padding:8px 7px;border:1px solid #e7edf1;border-radius:4px;background:#f4f6f8;font-size:20px;line-height:1.1}
- .catalog-refresh .countdown-clock small{margin-top:4px;font-size:9px;letter-spacing:.04em;color:#61717d}
+ .catalog-refresh .countdown-clock small{margin-top:4px;font-size:9px;letter-spacing:.04em}
  .catalog-refresh .countdown-promo>.button{display:flex;justify-content:center;align-items:center;box-sizing:border-box;min-width:170px;min-height:42px;margin:0;padding:10px 16px;border:1px solid #ffda1a;border-radius:4px;background:#ffda1a;color:#123f5f;font-size:11px;font-weight:700;line-height:1.3;text-align:center;text-decoration:none}
 }
-@media(min-width:750px) and (max-width:989px){
- .catalog-refresh .countdown-promo{grid-template-columns:minmax(0,1fr) auto;gap:16px 20px;padding:18px 20px}
- .catalog-refresh .countdown-promo>.button{grid-column:1/-1;width:100%}
-}
 
-/* Coming Soon mode: single product preview with launch countdown. */
-.catalog-refresh .countdown-promo--coming{gap:20px}
-.catalog-refresh .countdown-promo__product{display:flex;align-items:center;gap:14px;min-width:0}
-.catalog-refresh .countdown-promo__image{flex:none;width:84px;height:84px;object-fit:contain;padding:6px;border:1px solid #e4e9ec;border-radius:6px;background:#fff}
-.catalog-refresh .countdown-promo__copy{min-width:0}
-.catalog-refresh .countdown-promo__eyebrow{display:block;font-size:10px;font-weight:700;letter-spacing:.12em;color:#6b7b86}
-.catalog-refresh .countdown-promo--coming h2{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;margin-top:3px;font-size:18px;line-height:1.35}
-.catalog-refresh .countdown-promo__price{display:block;margin-top:4px;font-size:14px;font-weight:700;color:#d7271c}
-.catalog-refresh .countdown-promo>.countdown-promo__button--disabled{background:#eef1f3;border-color:#dfe5e9;color:#7a8a94;cursor:default}
-@media(max-width:749px){
- .catalog-refresh .countdown-promo--coming{grid-template-columns:minmax(0,1fr);gap:12px}
- .catalog-refresh .countdown-promo--coming .countdown-promo__product{grid-column:1}
- .catalog-refresh .countdown-promo--coming .countdown-promo__image{width:64px;height:64px}
- .catalog-refresh .countdown-promo--coming .countdown-clock{grid-column:1;justify-content:flex-start}
- .catalog-refresh .countdown-promo--coming>.button{grid-column:1;width:100%}
-}
+/* Keep the desktop Flash Sale heading clear and readable. */
+@media(min-width:750px){.catalog-refresh .countdown-promo h2{color:#123f5f!important;opacity:1!important;visibility:visible!important}}
+
+@media(min-width:750px){.catalog-refresh .countdown-promo{opacity:1!important;filter:none!important}.catalog-refresh .countdown-promo h2{font-weight:700!important;-webkit-text-fill-color:#123f5f!important;text-shadow:0 0 1px #123f5f}}
+
+/* Match the Flash Sale card to the shared desktop content gutters. */
+@media(min-width:750px){.catalog-refresh .countdown-promo{width:min(1200px,calc(100vw - 48px));max-width:1200px;margin-right:auto;margin-left:auto}}
+
+/* Desktop Flash Sale: same content width, with a white full-width section behind it. */
+@media(min-width:750px){.catalog-refresh .shopify-section:has(.countdown-promo){background:#fff!important}.catalog-refresh .countdown-promo{box-sizing:border-box;width:min(1200px,calc(100vw - 48px));max-width:1200px;margin:24px auto;padding:18px 20px;background:#fff}}
+
+/* Fine-align desktop Flash Sale edges with the inset catalog sections. */
+@media(min-width:750px){.catalog-refresh .countdown-promo{width:min(1200px,calc(100vw - 72px));max-width:1200px;margin-right:auto;margin-left:auto}}
+
+/* Match the desktop Flash Sale card to the Catalog Body's 1280px content width. */
+@media(min-width:750px){body.catalog-refresh .shopify-section:has(.countdown-promo){background:#fff!important}body.catalog-refresh .countdown-promo{box-sizing:border-box;width:min(1280px,calc(100vw - 58px))!important;max-width:1280px!important;margin:24px auto!important;padding:18px 20px;background:#fff!important}}
 @media(max-width:749px){.catalog-refresh .site-footer--pdf{padding-bottom:calc(140px + env(safe-area-inset-bottom))}}
-
-/* Scroll reveal polish: spring easing, staggered grids, hover lift. */
-@keyframes bns-rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
-.catalog-refresh.motion-enabled .reveal{transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.22,.61,.36,1)}
-.catalog-refresh.motion-enabled .reveal.is-pending{opacity:0;transform:translateY(26px)}
-.catalog-refresh .reveal.is-pending :where(.bns-stagger)>*,.catalog-refresh .reveal.is-pending.bns-stagger>*{opacity:0}
-.catalog-refresh .reveal.is-visible :where(.bns-stagger)>*,.catalog-refresh .reveal.is-visible.bns-stagger>*{animation:bns-rise .55s cubic-bezier(.22,.61,.36,1) backwards}
-.catalog-refresh :where(.bns-stagger)>:nth-child(2){animation-delay:60ms}
-.catalog-refresh :where(.bns-stagger)>:nth-child(3){animation-delay:120ms}
-.catalog-refresh :where(.bns-stagger)>:nth-child(4){animation-delay:180ms}
-.catalog-refresh :where(.bns-stagger)>:nth-child(n+5){animation-delay:240ms}
-.catalog-refresh .recently-viewed:not([hidden]) .recently-viewed__card{animation:bns-rise .5s cubic-bezier(.22,.61,.36,1) backwards}
-.catalog-refresh .recently-viewed .recently-viewed__card:nth-child(2){animation-delay:60ms}
-.catalog-refresh .recently-viewed .recently-viewed__card:nth-child(3){animation-delay:120ms}
-.catalog-refresh .recently-viewed .recently-viewed__card:nth-child(n+4){animation-delay:180ms}
-@media(min-width:750px){
- .catalog-refresh .product-card{transition:transform .25s cubic-bezier(.22,.61,.36,1),box-shadow .25s cubic-bezier(.22,.61,.36,1)}
- .catalog-refresh .product-card:hover{transform:translateY(-4px)}
- .catalog-refresh .countdown-promo__image{transition:transform .35s cubic-bezier(.22,.61,.36,1)}
- .catalog-refresh .countdown-promo:hover .countdown-promo__image{transform:scale(1.05)}
-}
-@media(prefers-reduced-motion:reduce){
- .catalog-refresh.motion-enabled .reveal{transition:none}
- .catalog-refresh .reveal :where(.bns-stagger)>*,.catalog-refresh .recently-viewed .recently-viewed__card{animation:none;opacity:1}
-}
 @media(max-width:749px){.catalog-refresh.page-index .commerce-promo .commerce-arrow{bottom:2px}.catalog-refresh.page-index .commerce-promo .commerce-arrow--prev{left:18px}.catalog-refresh.page-index .commerce-promo .commerce-arrow--next{right:18px}}
 
 @media(min-width:990px){
@@ -424,9 +394,3 @@
 .catalog-refresh .product-card .shopping-actions--card .text-link{position:static!important;inset:auto!important;display:inline-flex;flex:0 0 38px;width:38px;height:38px;min-height:38px;margin:0;padding:8px}
 .catalog-refresh .price:has(> s){flex-wrap:wrap}
 .catalog-refresh .price:has(> s)>s{order:-1;flex:0 0 100%}
-.catalog-refresh .card-info .price:has(.sp-wholesale-cardrow)>span:first-child,
-.catalog-refresh .sp-wholesale-card-from{display:none!important}
-.catalog-refresh .card-info .price:has(.sp-wholesale-cardrow){flex-wrap:nowrap;flex-direction:column;align-items:center;gap:1px}
-.catalog-refresh .sp-wholesale-cardrow{display:flex!important;flex-direction:column;align-items:center;gap:1px;width:100%}
-.catalog-refresh .sp-wholesale-card-price{order:-1;font-size:13px!important;font-weight:700;line-height:1.35!important}
-.catalog-refresh .sp-wholesale-card-old{font-size:11px!important;line-height:1.3!important}
