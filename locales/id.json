@@ -231,5 +231,29 @@
     "view_price": "Lihat harga varian",
     "open_guide": "Buka panduan: {{ title }}",
     "close_guide": "Tutup panduan"
+  },
+  "shopify": {
+    "checkout": {
+      "local_pickup": {
+        "stock_details": {
+          "in_stock": "Tersedia"
+        }
+      },
+      "split_delivery": {
+        "delivery_updated_toast": {
+          "shipping_only": "Pengiriman Anda telah diperbarui. {{shipping}}",
+          "removal_only": "Pengiriman Anda telah diperbarui. {{removal}}",
+          "shipping_and_removal": "Pengiriman Anda telah diperbarui. {{shipping}} {{removal}}",
+          "shipping": {
+            "one": "{{count}} item telah dipindahkan ke pengiriman.",
+            "other": "{{count}} item telah dipindahkan ke pengiriman."
+          },
+          "removal": {
+            "one": "{{count}} item telah dihapus.",
+            "other": "{{count}} item telah dihapus."
+          }
+        }
+      }
+    }
   }
 }
