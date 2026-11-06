@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -32,11 +41,52 @@
       ],
       "name": "Lacak Paket",
       "settings": {
-        "wa_number": "6287795361519"
+        "eyebrow": "LACAK PAKET",
+        "title": "Cek posisi paket kamu",
+        "subtitle": "Masukkan nomor resi dari KiriminAja atau TIKI, lalu kami buatkan halaman tracking-nya.",
+        "resi_label": "Nomor resi",
+        "resi_placeholder": "Contoh: 0123456789",
+        "carrier_label": "Kurir",
+        "submit_label": "LACAK PAKET",
+        "copy_label": "SALIN RESI",
+        "form_note": "Resi otomatis disalin. Halaman kurir terbuka di tab baru, tinggal tempel nomornya.",
+        "error_invalid": "Nomor resi minimal 5 karakter, tanpa simbol.",
+        "error_carrier": "Kurir ini belum punya link tracking. Pilih kurir lain atau hubungi admin.",
+        "help_title": "Belum punya resi?",
+        "help_text": "Resi muncul di email \"Pesanan kamu dikirim\" dan di halaman akun. Kalau paket belum keluar dari gudang, resi belum tersedia.",
+        "wa_number": "6287795361519",
+        "wa_label": "TANYA ADMIN",
+        "wa_message": "Halo BAITANDSTRIKE, saya mau tanya status pesanan saya.",
+        "when_title": "Kapan resi keluar?",
+        "when_text": "<p>Order yang masuk sebelum jam cut-off hari kerja akan diproses dan dibuatkan labelnya di hari yang sama. Setelah label terbit, resi langsung bisa dilacak. Weekend dan hari besar nasional biasanya molor satu hari.</p>"
       }
+    },
+    "1793955480ea8883ae": {
+      "type": "apps",
+      "blocks": {
+        "kiriminaja_tracking_XLfqeF": {
+          "type": "shopify://apps/kiriminaja/blocks/tracking/019bb184-ce68-7989-b632-cdeb18c63ab2",
+          "settings": {
+            "brand_color": "#581eb8",
+            "brand_color_foreground": "#FFFFFF",
+            "border_color": "#E3E3E3",
+            "background": "#FFFFFF",
+            "text_color": "#000000",
+            "border_radius": 12,
+            "container_width": 100,
+            "input_placeholder": "Enter your AWB number",
+            "input_button": "Track"
+          }
+        }
+      },
+      "block_order": [
+        "kiriminaja_tracking_XLfqeF"
+      ],
+      "settings": {}
     }
   },
   "order": [
-    "main"
+    "main",
+    "1793955480ea8883ae"
   ]
 }
