@@ -48,6 +48,7 @@
       </div>
 
       {% if section.settings.bulk_order %}{% render 'bulk-order', product: product, section_id: section.id %}{% endif %}
+      {% for block in section.blocks %}{% if block.type == '@app' %}<div class="product-app-blocks" {{ block.shopify_attributes }}>{% render block %}</div>{% endif %}{% endfor %}
       {% render 'product-form', product: product, section_id: section.id %}
 
       <div class="product-detail-assurance">
@@ -77,7 +78,6 @@
   <div class="product-detail-extras">
     {% for block in section.blocks %}
       {% case block.type %}
-        {% when '@app' %}{% render block %}
         {% when 'text' %}<div class="rte product-extra" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
         {% when 'accordion' %}<details class="product-accordion" {{ block.shopify_attributes }}><summary>{{ block.settings.heading | escape }}{% render 'icon', name: 'plus' %}</summary><div class="rte">{{ block.settings.text }}{{ block.settings.page.content }}</div></details>
       {% endcase %}
@@ -91,6 +91,8 @@
 .product-detail-info.wholesale-merged .sp-wholesale-card{display:none!important}
 .product-detail-price .sp-wholesale-qty-note{grid-column:2;margin:0;font-size:12px;color:#627582}
 .price.is-wholesale .price-wholesale-tag{font-size:11px;font-weight:600;line-height:1.5;color:#123f5f;background:#e8f1f7;border-radius:999px;padding:2px 10px}
+.catalog-refresh .product-detail-info .product-app-blocks{margin:0 0 14px}
+.catalog-refresh .product-detail-info .product-app-blocks .mprfq-add-to-quote-button-pdp{box-sizing:border-box;width:100%;min-height:44px;font-weight:600}
 {% endstylesheet %}
 {% schema %}
 {
