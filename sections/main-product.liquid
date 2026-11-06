@@ -47,6 +47,7 @@
         <div class="product-detail-row"><span>SKU</span><strong class="product-sku">{% if v.sku != blank %}{{ v.sku | escape }}{% else %}-{% endif %}</strong></div>
       </div>
 
+      {% if section.settings.bulk_order %}{% render 'bulk-order', product: product, section_id: section.id %}{% endif %}
       {% render 'product-form', product: product, section_id: section.id %}
 
       <div class="product-detail-assurance">
@@ -67,8 +68,6 @@
       {% render 'b2b-context' %}
     </div>
   </div>
-
-  {% if section.settings.bulk_order %}{% render 'bulk-order', product: product, section_id: section.id %}{% endif %}
 
   <section class="product-information-catalog" aria-labelledby="information-heading-{{ section.id }}">
     <h2 id="information-heading-{{ section.id }}">Informasi Produk</h2>
