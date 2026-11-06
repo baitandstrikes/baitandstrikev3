@@ -11,18 +11,18 @@
     <div class="track-card">
       <form class="track-form" data-track-form novalidate>
         <div class="track-fields">
-        <div class="track-field">
-          <label for="{{ uid }}-resi">{{ section.settings.resi_label | escape }}</label>
-          <input id="{{ uid }}-resi" class="track-resi" type="text" name="resi" inputmode="text" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="{{ section.settings.resi_placeholder | escape }}" aria-describedby="{{ uid }}-hint">
-        </div>
-        <div class="track-field">
-          <label for="{{ uid }}-kurir">{{ section.settings.carrier_label | escape }}</label>
-          <select id="{{ uid }}-kurir" data-track-carrier>
-            {% for block in section.blocks %}
-              <option value="{{ block.id }}" data-url="{{ block.settings.url_template | escape }}" {{ block.shopify_attributes }}>{{ block.settings.label | escape }}</option>
-            {% endfor %}
-          </select>
-        </div>
+          <div class="track-field">
+            <label for="{{ uid }}-resi">{{ section.settings.resi_label | escape }}</label>
+            <input id="{{ uid }}-resi" class="track-resi" data-track-resi type="text" name="resi" inputmode="text" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="{{ section.settings.resi_placeholder | escape }}" aria-describedby="{{ uid }}-hint">
+          </div>
+          <div class="track-field">
+            <label for="{{ uid }}-kurir">{{ section.settings.carrier_label | escape }}</label>
+            <select id="{{ uid }}-kurir" data-track-carrier>
+              {% for block in section.blocks %}
+                <option value="{{ block.id }}" data-url="{{ block.settings.url_template | escape }}" {{ block.shopify_attributes }}>{{ block.settings.label | escape }}</option>
+              {% endfor %}
+            </select>
+          </div>
         </div>
         <p class="track-error" data-track-error role="alert" hidden></p>
         <div class="track-actions">
