@@ -1,0 +1,279 @@
+{{ 'track-order.css' | asset_url | stylesheet_tag }}
+{% assign uid = 'track-' | append: section.id %}
+<section class="section wrap track-order reveal" data-track-root="{{ section.id }}" aria-labelledby="{{ uid }}-title">
+  <div class="track-head">
+    <p class="eyebrow">{{ section.settings.eyebrow | escape }}</p>
+    <h1 id="{{ uid }}-title">{{ section.settings.title | escape }}</h1>
+    {% if section.settings.subtitle != blank %}<p class="track-lead">{{ section.settings.subtitle | escape }}</p>{% endif %}
+  </div>
+
+  <div class="track-layout">
+    <div class="track-card">
+      <form class="track-form" data-track-form novalidate>
+        <div class="track-fields">
+        <div class="track-field">
+          <label for="{{ uid }}-resi">{{ section.settings.resi_label | escape }}</label>
+          <input id="{{ uid }}-resi" class="track-resi" type="text" name="resi" inputmode="text" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="{{ section.settings.resi_placeholder | escape }}" aria-describedby="{{ uid }}-hint">
+        </div>
+        <div class="track-field">
+          <label for="{{ uid }}-kurir">{{ section.settings.carrier_label | escape }}</label>
+          <select id="{{ uid }}-kurir" data-track-carrier>
+            {% for block in section.blocks %}
+              <option value="{{ block.id }}" data-url="{{ block.settings.url_template | escape }}" {{ block.shopify_attributes }}>{{ block.settings.label | escape }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        </div>
+        <p class="track-error" data-track-error role="alert" hidden></p>
+        <div class="track-actions">
+          <button class="button" type="submit">{{ section.settings.submit_label | escape }} <span aria-hidden="true">&#8599;</span></button>
+          <button class="button button-white" type="button" data-track-copy>{{ section.settings.copy_label | escape }}</button>
+        </div>
+        <p class="track-hint" id="{{ uid }}-hint">{{ section.settings.form_note | escape }}</p>
+      </form>
+    </div>
+
+    <aside class="track-help">
+      {% if section.settings.help_title != blank %}<h2>{{ section.settings.help_title | escape }}</h2>{% endif %}
+      {% if section.settings.help_text != blank %}<p>{{ section.settings.help_text | escape }}</p>{% endif %}
+      <div class="track-help__actions">
+        {% if shop.customer_accounts_enabled %}<a class="text-link" href="{{ routes.account_url }}">Lihat semua pesanan di akun saya</a>{% endif %}
+        {% if section.settings.wa_number != blank %}
+          <a class="button button-white button-small" href="https://wa.me/{{ section.settings.wa_number | remove: '+' | escape }}?text={{ section.settings.wa_message | url_encode }}" target="_blank" rel="noopener noreferrer">{{ section.settings.wa_label | escape }} <span aria-hidden="true">&#8599;</span></a>
+        {% endif %}
+      </div>
+      {% if section.settings.when_text != blank %}
+        <details class="track-when">
+          <summary>{{ section.settings.when_title | escape }}{% render 'icon', name: 'plus' %}</summary>
+          <div class="rte">{{ section.settings.when_text }}</div>
+        </details>
+      {% endif %}
+    </aside>
+  </div>
+</section>
+
+<script>
+(() => {
+  const root = document.querySelector('[data-track-root="{{ section.id }}"]');
+  if (!root) return;
+  const form = root.querySelector('[data-track-form]');
+  const input = root.querySelector('[data-track-resi]');
+  const carrier = root.querySelector('[data-track-carrier]');
+  const error = root.querySelector('[data-track-error]');
+  const copyButton = root.querySelector('[data-track-copy]');
+  const messages = { invalid: {{ section.settings.error_invalid | json }}, missing: {{ section.settings.error_carrier | json }} };
+
+  const status = (message) => {
+    const el = document.getElementById('BnsStatus');
+    if (!el) return;
+    el.textContent = message;
+    el.classList.add('is-visible');
+  };
+
+  const cleanResi = () => input.value.trim().toUpperCase().replace(/\s+/g, '');
+
+  const showError = (message) => {
+    error.textContent = message;
+    error.hidden = false;
+  };
+
+  const copyResi = async () => {
+    const resi = cleanResi();
+    if (!resi) return '';
+    try {
+      await navigator.clipboard.writeText(resi);
+      status('Resi ' + resi + ' disalin. Tinggal tempel (Ctrl+V) di halaman kurir.');
+    } catch (err) {
+      status('Resi kamu: ' + resi);
+    }
+    return resi;
+  };
+
+  copyButton.addEventListener('click', copyResi);
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const resi = cleanResi();
+    if (!/^[A-Z0-9_-]{5,40}$/.test(resi)) {
+      showError(messages.invalid);
+      input.focus();
+      return;
+    }
+    error.hidden = true;
+    const option = carrier.selectedOptions[0];
+    const urlTemplate = option && option.dataset.url ? option.dataset.url : '';
+    if (!urlTemplate) {
+      showError(messages.missing);
+      return;
+    }
+    await copyResi();
+    window.open(urlTemplate.replace('{resi}', encodeURIComponent(resi)), '_blank', 'noopener');
+  });
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Lacak Paket",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Teks kecil",
+      "default": "LACAK PAKET"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Judul",
+      "default": "Cek posisi paket kamu"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Pengantar",
+      "default": "Masukkan nomor resi dari KiriminAja atau TIKI, lalu kami buatkan halaman tracking-nya."
+    },
+    {
+      "type": "text",
+      "id": "resi_label",
+      "label": "Label input resi",
+      "default": "Nomor resi"
+    },
+    {
+      "type": "text",
+      "id": "resi_placeholder",
+      "label": "Placeholder input resi",
+      "default": "Contoh: 0123456789"
+    },
+    {
+      "type": "text",
+      "id": "carrier_label",
+      "label": "Label kurir",
+      "default": "Kurir"
+    },
+    {
+      "type": "text",
+      "id": "submit_label",
+      "label": "Tombol lacak",
+      "default": "LACAK PAKET"
+    },
+    {
+      "type": "text",
+      "id": "copy_label",
+      "label": "Tombol salin resi",
+      "default": "SALIN RESI"
+    },
+    {
+      "type": "text",
+      "id": "form_note",
+      "label": "Catatan di bawah tombol",
+      "default": "Resi otomatis disalin. Halaman kurir terbuka di tab baru, tinggal tempel nomornya."
+    },
+    {
+      "type": "text",
+      "id": "error_invalid",
+      "label": "Pesan resi tidak valid",
+      "default": "Nomor resi minimal 5 karakter, tanpa simbol."
+    },
+    {
+      "type": "text",
+      "id": "error_carrier",
+      "label": "Pesan kurir belum diatur",
+      "default": "Kurir ini belum punya link tracking. Pilih kurir lain atau hubungi admin."
+    },
+    {
+      "type": "text",
+      "id": "help_title",
+      "label": "Judul bantuan",
+      "default": "Belum punya resi?"
+    },
+    {
+      "type": "textarea",
+      "id": "help_text",
+      "label": "Teks bantuan",
+      "default": "Resi muncul di email \"Pesanan kamu dikirim\" dan di halaman akun. Kalau paket belum keluar dari gudang, resi belum tersedia."
+    },
+    {
+      "type": "text",
+      "id": "wa_number",
+      "label": "Nomor WhatsApp admin",
+      "info": "Format 628xxxx, tanpa tanda plus."
+    },
+    {
+      "type": "text",
+      "id": "wa_label",
+      "label": "Tombol WhatsApp",
+      "default": "TANYA ADMIN"
+    },
+    {
+      "type": "text",
+      "id": "wa_message",
+      "label": "Pesan WhatsApp otomatis",
+      "default": "Halo BAITANDSTRIKE, saya mau tanya status pesanan saya."
+    },
+    {
+      "type": "text",
+      "id": "when_title",
+      "label": "Judul detail kapan resi keluar",
+      "default": "Kapan resi keluar?"
+    },
+    {
+      "type": "richtext",
+      "id": "when_text",
+      "label": "Isi detail kapan resi keluar",
+      "default": "<p>Order yang masuk sebelum jam cut-off hari kerja akan diproses dan dibuatkan labelnya di hari yang sama. Setelah label terbit, resi langsung bisa dilacak. Weekend dan hari besar nasional biasanya molor satu hari.</p>"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "kurir",
+      "name": "Kurir",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Nama kurir",
+          "default": "KiriminAja"
+        },
+        {
+          "type": "text",
+          "id": "url_template",
+          "label": "Link tracking",
+          "info": "Tulis {resi} di URL kalau situs kurir mendukung pengisian otomatis.",
+          "default": "https://kiriminaja.com/tracking"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [
+    {
+      "name": "Lacak Paket",
+      "blocks": [
+        {
+          "type": "kurir",
+          "settings": {
+            "label": "Semua kurir (KiriminAja)",
+            "url_template": "https://kiriminaja.com/tracking"
+          }
+        },
+        {
+          "type": "kurir",
+          "settings": {
+            "label": "TIKI",
+            "url_template": "https://kiriminaja.com/tracking/tiki"
+          }
+        },
+        {
+          "type": "kurir",
+          "settings": {
+            "label": "TIKI (situs resmi)",
+            "url_template": "https://www.tiki.id/id/track"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

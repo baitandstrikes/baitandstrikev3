@@ -1,0 +1,42 @@
+{
+  "sections": {
+    "main": {
+      "type": "track-order",
+      "blocks": {
+        "kurir_kiriminaja": {
+          "type": "kurir",
+          "settings": {
+            "label": "Semua kurir (KiriminAja)",
+            "url_template": "https://kiriminaja.com/tracking"
+          }
+        },
+        "kurir_tiki": {
+          "type": "kurir",
+          "settings": {
+            "label": "TIKI",
+            "url_template": "https://kiriminaja.com/tracking/tiki"
+          }
+        },
+        "kurir_tiki_resmi": {
+          "type": "kurir",
+          "settings": {
+            "label": "TIKI (situs resmi)",
+            "url_template": "https://www.tiki.id/id/track"
+          }
+        }
+      },
+      "block_order": [
+        "kurir_kiriminaja",
+        "kurir_tiki",
+        "kurir_tiki_resmi"
+      ],
+      "name": "Lacak Paket",
+      "settings": {
+        "wa_number": "6287795361519"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
