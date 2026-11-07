@@ -396,3 +396,62 @@
     font-size: 9px;
   }
 }
+
+/*
+  Wholesale pricing app (sp-wholesale) takeover on listing cards.
+  The app hides the theme price and injects its own row, so the theme must drop
+  its own "Mulai" label and the app must drop its English "from" label: one
+  label only. The row then stacks so the strike-through retail price sits above
+  the real wholesale price, matching the native sale layout.
+*/
+.price:has(.sp-wholesale-cardrow) > span:not([class]) {
+  display: none !important;
+}
+
+.price > .sp-wholesale-cardrow .sp-wholesale-card-from,
+.price .sp-wholesale-cardrow .sp-wholesale-card-from {
+  display: none !important;
+}
+
+.product-card .price:has(.sp-wholesale-cardrow) .sp-wholesale-cardrow,
+.commerce-product__price:has(.sp-wholesale-cardrow) .sp-wholesale-cardrow {
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.product-card .price:has(.sp-wholesale-cardrow) .sp-wholesale-card-old,
+.commerce-product__price:has(.sp-wholesale-cardrow) .sp-wholesale-card-old {
+  order: -1;
+  margin: 0 !important;
+  color: #78818a;
+  font-size: 12px;
+  font-weight: 400;
+  text-decoration: line-through;
+}
+
+.product-card .price:has(.sp-wholesale-cardrow) .sp-wholesale-card-price,
+.commerce-product__price:has(.sp-wholesale-cardrow) .sp-wholesale-card-price {
+  margin: 0 !important;
+}
+
+/*
+  Product detail page: once bns.js merges the tag-rule wholesale price into the
+  price row, the app still forces its own inline display:none on the strike
+  element, so the comparison price needs !important to stay visible above the
+  wholesale price.
+*/
+.product-detail-info.wholesale-merged .price > s[data-spw-hidden="1"] {
+  display: block !important;
+}
+
+@media (max-width: 749px) {
+  .product-card .price:has(.sp-wholesale-cardrow) .sp-wholesale-card-old,
+  .product-card .price:has(.sp-wholesale-cardrow) .sp-wholesale-card-price,
+  .commerce-product__price:has(.sp-wholesale-cardrow) .sp-wholesale-card-old,
+  .commerce-product__price:has(.sp-wholesale-cardrow) .sp-wholesale-card-price {
+    display: block !important;
+    width: 100%;
+    text-align: center;
+  }
+}

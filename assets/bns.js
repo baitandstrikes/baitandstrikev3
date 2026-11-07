@@ -268,6 +268,11 @@ const parseMoney = (text) => {
  const digits = cleaned.replace(/\D/g, '');
  return digits ? Number(digits) * 100 : NaN;
 };
+const showMergedPrice = (el) => {
+ if (!el) return;
+ if (el.style.display === 'none') el.style.removeProperty('display');
+ if (el.hasAttribute('data-spw-hidden')) el.removeAttribute('data-spw-hidden');
+};
 const mergeWholesalePrices = () => {
  document.querySelectorAll('[data-wholesale-sync]').forEach(row => {
  const host = row.closest('.product-detail-info'); const card = host?.querySelector('.sp-wholesale-card'); const price = row.querySelector('.price');
@@ -278,12 +283,15 @@ const mergeWholesalePrices = () => {
  const strikeText = Number.isFinite(retail) && retail > wholesale ? wholesaleMoney(retail) : '';
  const signature = `${wholesale}|${strikeText}`;
  const current = price.querySelector('.price-current');
- if (!current || (price.dataset.wholesaleSignature === signature && current.textContent === wholesaleMoney(wholesale))) return;
+ if (!current) return;
+ const hidden = current.style.display === 'none' || current.hasAttribute('data-spw-hidden');
+ if (!hidden && price.dataset.wholesaleSignature === signature && current.textContent === wholesaleMoney(wholesale)) return;
  price.dataset.wholesaleSignature = signature;
  price.classList.add('is-wholesale');
  current.textContent = wholesaleMoney(wholesale);
+ showMergedPrice(current);
  const strike = price.querySelector('s');
- if (strikeText) { if (strike) strike.textContent = strikeText; else price.prepend(Object.assign(document.createElement('s'), { textContent: strikeText })); } else strike?.remove();
+ if (strikeText) { if (strike) { strike.textContent = strikeText; showMergedPrice(strike); } else price.prepend(Object.assign(document.createElement('s'), { textContent: strikeText })); } else strike?.remove();
  if (!price.querySelector('.price-wholesale-tag')) price.append(Object.assign(document.createElement('span'), { className: 'price-wholesale-tag', textContent: 'Harga grosir' }));
  host.classList.add('wholesale-merged');
  });
