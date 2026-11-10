@@ -26,11 +26,6 @@
     },
     "content_for_index": [],
     "blocks": {
-      "17370552890237093914": {
-        "type": "shopify://apps/b2b-signup-company/blocks/app-embed/019d4d47-ad3a-7055-b7c4-6b27d99ef86a",
-        "disabled": true,
-        "settings": {}
-      },
       "13759667579245410970": {
         "type": "shopify://apps/bmt-b2b-wholesale/blocks/app-embed/f476de00-6707-40af-8cee-f53b60634fe3",
         "disabled": false,
@@ -45,6 +40,11 @@
       },
       "10145915593124433170": {
         "type": "shopify://apps/sp-request-a-quote-rfq/blocks/mp-request-for-quote-embed/019a3441-fea6-7e7b-ada9-3c4f6e8c5569",
+        "disabled": false,
+        "settings": {}
+      },
+      "17370552890237093914": {
+        "type": "shopify://apps/b2b-signup-company/blocks/app-embed/019d4d47-ad3a-7055-b7c4-6b27d99ef86a",
         "disabled": false,
         "settings": {}
       }
