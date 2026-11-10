@@ -79,6 +79,18 @@ const addProduct = async (form) => {
  } catch (err) { displayError(form, err.message); }
  finally { form.dataset.busy = 'false'; button.disabled = false; }
 };
+const syncVariantGallery = (root) => {
+ if (!window.matchMedia('(max-width: 749px)').matches) return;
+ const gallery = root?.querySelector('[data-gallery-main]');
+ const active = gallery?.querySelector('.gallery-item.is-active');
+ if (!gallery || !active) return;
+ const align = () => {
+  if (!gallery.isConnected || !active.isConnected) return;
+  gallery.scrollLeft += active.getBoundingClientRect().left - gallery.getBoundingClientRect().left;
+ };
+ align();
+ requestAnimationFrame(align);
+};
 const changeVariant = async (select) => {
  const root = select.closest('[data-product-root]'); if (!root) return;
  const prior = productRequests.get(root); if (prior) prior.abort();
@@ -98,6 +110,7 @@ const changeVariant = async (select) => {
  const input = replacement.querySelector('[name=quantity]');
  if (input) { const min = Number(input.min || 1), step = Number(input.step || 1), max = Number(input.max || Infinity); input.value = Math.min(max, Math.max(min, min + Math.round((quantity - min) / step) * step)); }
  root.replaceWith(replacement);
+  syncVariantGallery(replacement);
  const focus = [...replacement.querySelectorAll('[data-option-select]')].find(el => el.dataset.optionPosition === select.dataset.optionPosition); focus?.focus();
  if (!replacement.closest('#QuickView')) {
  url.searchParams.delete('section_id');
@@ -128,6 +141,7 @@ const quickView = async (link) => {
  productLink.tabIndex = -1;
  product.prepend(productLink);
  content.replaceChildren(product);
+  syncVariantGallery(product);
  } catch (error) { if (error.name !== 'AbortError') { dialog.close(); lockBody(); window.location.assign(link.href); } }
 };
 const gallery = (button) => {
@@ -311,6 +325,7 @@ const watchWholesalePrices = () => {
  wholesaleObserver.observe(document.body, { childList: true, subtree: true });
 };
 const init = (scope = document) => {
+ scope.querySelectorAll('[data-product-root]').forEach(syncVariantGallery);
  scope.querySelectorAll('[data-slideshow]').forEach(initSlideshow); initCountries(scope);
  scope.querySelectorAll('[data-category-menu]').forEach(initCategoryMenu);
  scope.querySelectorAll('.reveal:not([data-revealed])').forEach(el => {
@@ -376,3 +391,4 @@ document.addEventListener('shopify:block:select', event => { const slide = event
 document.addEventListener('bns:cart-refresh', async () => { try { await refreshCart(); openDialog(document.getElementById('CartDrawer')); toast(config.added); } catch { window.location.assign(config.cart); } });
 updateHeader(); init(); mergeWholesalePrices(); formatWholesaleCards(); watchWholesalePrices();
 })();
+
