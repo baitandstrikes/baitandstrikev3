@@ -29,7 +29,9 @@
         "transparent": true,
         "sticky": true,
         "logo_url": "",
-        "track_link_label": "Online Quotation"
+        "show_track_link": false,
+        "track_link_label": "Online Quotation",
+        "track_link_url": ""
       }
     }
   },
