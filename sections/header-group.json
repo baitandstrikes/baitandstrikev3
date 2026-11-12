@@ -28,7 +28,8 @@
         "menu": "main-menu",
         "transparent": true,
         "sticky": true,
-        "logo_url": ""
+        "logo_url": "",
+        "track_link_label": "Online Quotation"
       }
     }
   },
