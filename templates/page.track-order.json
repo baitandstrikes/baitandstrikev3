@@ -11,7 +11,12 @@
   "sections": {
     "quotation": {
       "type": "quotation-request",
-      "settings": {}
+      "settings": {
+        "heading": "Online Quotation",
+        "intro": "Review produk dan jumlah, lalu kirim permintaan penawaran kepada tim kami.",
+        "endpoint": "",
+        "turnstile_site_key": ""
+      }
     }
   },
   "order": [
