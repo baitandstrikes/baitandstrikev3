@@ -1,7 +1,7 @@
 {% comment %}Quote cart for the unpublished BNS staging theme.{% endcomment %}
 <section class="bns-quote page-width" id="BnsQuote-{{ section.id }}"
-  data-endpoint="{{ section.settings.endpoint | escape }}"
-  data-sitekey="{{ section.settings.turnstile_site_key | escape }}"
+  data-endpoint="{{ section.settings.endpoint | default: 'https://bns-quotation-staging.baitandstrike-bns.workers.dev/api/quotations' | escape }}"
+  data-sitekey="{{ section.settings.turnstile_site_key | default: '0x4AAAAAAF81atbl4RCbQG5q' | escape }}"
   data-currency="{{ cart.currency.iso_code | default: shop.currency }}">
   <div class="bns-quote__wrap">
     <div class="bns-quote__search" data-quote-search>
@@ -12,8 +12,8 @@
       <p class="bns-quote__search-status" data-quote-search-status role="status" aria-live="polite"></p>
     </div>
     <header class="bns-quote__header">
-      <div><p class="bns-quote__eyebrow">BAIT&amp;STRIKE</p><h2>{{ section.settings.heading | escape }}</h2>
-      <p>{{ section.settings.intro | escape }}</p></div>
+      <div><p class="bns-quote__eyebrow">BAIT&amp;STRIKE</p><h2>{{ section.settings.heading | default: 'Quotation untuk Bisnis' | escape }}</h2>
+      <p>{{ section.settings.intro | default: 'Cari produk yang kamu butuhkan, pilih varian dan jumlah, lalu kirim permintaan penawaran ke tim BAIT&amp;STRIKE.' | escape }}</p></div>
     </header>
     {% if product %}
       {% assign qv = product.selected_or_first_available_variant %}
@@ -52,7 +52,7 @@
         </div>
         <label class="bns-quote__notes">Catatan / kebutuhan khusus<textarea name="notes" rows="5" maxlength="2000" placeholder="Tambahkan komentar atau kebutuhan Anda…"></textarea></label>
         <div class="bns-quote__summary"><span>Total harga acuan</span><strong data-quote-total>Rp0</strong><small>Harga quotation final akan dikonfirmasi tim BAIT&amp;STRIKE setelah permintaan ditinjau.</small></div>
-        <div class="bns-quote__verification"><div class="cf-turnstile" data-sitekey="{{ section.settings.turnstile_site_key | escape }}"></div></div>
+        <div class="bns-quote__verification"><div class="cf-turnstile" data-sitekey="{{ section.settings.turnstile_site_key | default: '0x4AAAAAAF81atbl4RCbQG5q' | escape }}"></div></div>
         <button class="bns-quote__submit" type="submit">Kirim permintaan quotation</button>
         <p class="bns-quote__status" role="status" aria-live="polite" data-quote-status></p>
       </form>
