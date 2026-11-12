@@ -50,7 +50,7 @@
       },
       "5170337520657561664": {
         "type": "shopify://apps/checkout-suite/blocks/terms-box-embed/01a0ec0f-ec92-7f33-b222-4b42a8284766",
-        "disabled": false,
+        "disabled": true,
         "settings": {}
       }
     }
