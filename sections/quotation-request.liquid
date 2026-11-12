@@ -1,0 +1,250 @@
+{% comment %}Quote cart for the unpublished BNS staging theme.{% endcomment %}
+<section class="bns-quote page-width" id="BnsQuote-{{ section.id }}"
+  data-endpoint="{{ section.settings.endpoint | escape }}"
+  data-sitekey="{{ section.settings.turnstile_site_key | escape }}"
+  data-currency="{{ cart.currency.iso_code | default: shop.currency }}">
+  <div class="bns-quote__wrap">
+    <div class="bns-quote__search" data-quote-search>
+      <label for="BnsQuoteSearch-{{ section.id }}">Cari produk untuk quotation</label>
+      <input id="BnsQuoteSearch-{{ section.id }}" type="search" autocomplete="off" placeholder="Cari nama produk, merek, atau SKU…" data-quote-search-input>
+      <div class="bns-quote__results" data-quote-search-results role="listbox" aria-label="Hasil pencarian produk"></div>
+      <div class="bns-quote__variant-picker" data-quote-variant-picker hidden></div>
+      <p class="bns-quote__search-status" data-quote-search-status role="status" aria-live="polite"></p>
+    </div>
+    <header class="bns-quote__header">
+      <div><p class="bns-quote__eyebrow">BAIT&amp;STRIKE</p><h2>{{ section.settings.heading | escape }}</h2>
+      <p>{{ section.settings.intro | escape }}</p></div>
+    </header>
+    {% if product %}
+      {% assign qv = product.selected_or_first_available_variant %}
+      <script type="application/json" data-quote-product>
+        {"productId":{{ product.id | json }},"title":{{ product.title | json }},"handle":{{ product.handle | json }},"image":{{ product.featured_image | image_url: width: 160 | json }},"variants":{{ product.variants | json }},"selectedVariantId":{{ qv.id | json }}}
+      </script>
+    {% endif %}
+    <div class="bns-quote__table-scroll">
+      <table class="bns-quote__table">
+        <thead><tr><th>Produk</th><th>Jumlah</th><th>Harga acuan</th><th>Harga yang diminta</th><th>Subtotal acuan</th><th></th></tr></thead>
+        <tbody data-quote-items></tbody>
+      </table>
+    </div>
+    <p class="bns-quote__empty" data-quote-empty>Keranjang quotation masih kosong.</p>
+    <div class="bns-quote__details">
+      <form class="bns-quote__form" data-quote-form>
+        <div class="bns-quote__panel">
+          <h3>Informasi kontak</h3>
+          <div class="bns-quote__grid">
+            <label>Nama depan *<input name="firstName" autocomplete="given-name" maxlength="100" required></label>
+            <label>Nama belakang *<input name="lastName" autocomplete="family-name" maxlength="100" required></label>
+            <label>Email *<input name="email" type="email" autocomplete="email" maxlength="254" required></label>
+            <label>Telepon<input name="phone" type="tel" autocomplete="tel" maxlength="40"></label>
+            <label class="wide">Perusahaan<input name="company" autocomplete="organization" maxlength="160"></label>
+          </div>
+        </div>
+        <div class="bns-quote__panel">
+          <h3>Alamat pengiriman</h3>
+          <div class="bns-quote__grid">
+            <label>Negara / wilayah *<input name="country" autocomplete="shipping country-name" maxlength="100" required></label>
+            <label class="wide">Alamat *<input name="address" autocomplete="shipping street-address" maxlength="500" required></label>
+            <label>Kota *<input name="city" autocomplete="shipping address-level2" maxlength="120" required></label>
+            <label>Provinsi<input name="region" autocomplete="shipping address-level1" maxlength="120"></label>
+            <label>Kode pos<input name="postalCode" autocomplete="shipping postal-code" maxlength="30"></label>
+          </div>
+        </div>
+        <label class="bns-quote__notes">Catatan / kebutuhan khusus<textarea name="notes" rows="5" maxlength="2000" placeholder="Tambahkan komentar atau kebutuhan Anda…"></textarea></label>
+        <div class="bns-quote__summary"><span>Total harga acuan</span><strong data-quote-total>Rp0</strong><small>Harga quotation final akan dikonfirmasi tim BAIT&amp;STRIKE setelah permintaan ditinjau.</small></div>
+        <div class="bns-quote__verification"><div class="cf-turnstile" data-sitekey="{{ section.settings.turnstile_site_key | escape }}"></div></div>
+        <button class="bns-quote__submit" type="submit">Kirim permintaan quotation</button>
+        <p class="bns-quote__status" role="status" aria-live="polite" data-quote-status></p>
+      </form>
+    </div>
+  </div>
+</section>
+<style>
+  #BnsQuote-{{ section.id }}{--bq-ink:#171717;--bq-line:#dedede;--bq-accent:#162c4a;color:var(--bq-ink);padding-top:40px;padding-bottom:56px}
+  #BnsQuote-{{ section.id }} .bns-quote__wrap{max-width:1120px;margin:auto;border:1px solid var(--bq-line);border-radius:12px;background:#fff;padding:clamp(18px,3vw,34px);box-shadow:0 8px 28px #1111110b}
+  #BnsQuote-{{ section.id }} .bns-quote__header{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;border-bottom:1px solid var(--bq-line);padding-bottom:20px;margin-bottom:8px}
+  #BnsQuote-{{ section.id }} .bns-quote__eyebrow{font-size:11px;letter-spacing:.16em;font-weight:700;color:#697386;margin:0 0 7px}
+  #BnsQuote-{{ section.id }} h2{font-size:clamp(24px,3vw,34px);margin:0 0 7px;color:var(--bq-ink)}
+  #BnsQuote-{{ section.id }} .bns-quote__header p:last-child{margin:0;color:#606775}
+  #BnsQuote-{{ section.id }} button{font:inherit;cursor:pointer;border-radius:6px}
+  #BnsQuote-{{ section.id }} .bns-quote__add{flex:0 0 auto;background:#fff;border:1px solid #b9c1ca;padding:10px 14px;font-weight:650}
+  #BnsQuote-{{ section.id }} .bns-quote__search{position:relative;margin:22px 0 18px;max-width:760px}
+  #BnsQuote-{{ section.id }} .bns-quote__search>label{display:block;margin-bottom:8px;font-weight:700;color:#25364b}
+  #BnsQuote-{{ section.id }} .bns-quote__search input{width:100%;min-height:48px;border:1px solid #cfd3d8;border-radius:7px;padding:11px 14px;font:inherit;background:#fff;color:inherit}
+  #BnsQuote-{{ section.id }} .bns-quote__results{display:grid;gap:8px;margin-top:8px}
+  #BnsQuote-{{ section.id }} .bns-quote__result{display:grid;grid-template-columns:56px 1fr auto;gap:12px;align-items:center;width:100%;padding:10px;border:1px solid #e1e5e9;border-radius:7px;background:#fff;text-align:left}
+  #BnsQuote-{{ section.id }} .bns-quote__result:hover{border-color:#7d91ab;background:#f8fafc}
+  #BnsQuote-{{ section.id }} .bns-quote__result img{width:56px;height:56px;object-fit:contain;background:#f6f6f6;border-radius:5px}
+  #BnsQuote-{{ section.id }} .bns-quote__result small{display:block;color:#6a707a}
+  #BnsQuote-{{ section.id }} .bns-quote__variant-picker{display:flex;gap:10px;align-items:end;flex-wrap:wrap;margin-top:12px;padding:14px;border:1px solid #dedede;border-radius:7px;background:#fafbfc}
+  #BnsQuote-{{ section.id }} .bns-quote__variant-picker label{min-width:min(280px,100%);flex:1}
+  #BnsQuote-{{ section.id }} .bns-quote__variant-picker select{width:100%;min-height:44px;padding:8px;border:1px solid #cfd3d8;border-radius:5px;background:#fff}
+  #BnsQuote-{{ section.id }} .bns-quote__search-add{min-height:44px;padding:8px 16px;border:0;background:#162c4a;color:#fff;font-weight:700}
+  #BnsQuote-{{ section.id }} .bns-quote__search-status{margin:6px 0 0;color:#616874;font-size:13px}
+  #BnsQuote-{{ section.id }} .bns-quote__table-scroll{overflow:auto}
+  #BnsQuote-{{ section.id }} .bns-quote__table{width:100%;border-collapse:collapse;min-width:770px;margin-top:12px}
+  #BnsQuote-{{ section.id }} th{font-size:12px;color:#616874;text-align:left;font-weight:650;padding:12px 10px;border-bottom:1px solid var(--bq-line);white-space:nowrap}
+  #BnsQuote-{{ section.id }} td{padding:13px 10px;border-bottom:1px solid #ececec;vertical-align:middle}
+  #BnsQuote-{{ section.id }} .bns-quote__product{display:flex;align-items:center;gap:12px;min-width:205px}
+  #BnsQuote-{{ section.id }} .bns-quote__product img{width:48px;height:48px;object-fit:contain;border-radius:5px;background:#f6f6f6}
+  #BnsQuote-{{ section.id }} .bns-quote__product-name{font-weight:650;font-size:13px}
+  #BnsQuote-{{ section.id }} .bns-quote__product-variant{font-size:12px;color:#6a707a;margin-top:3px}
+  #BnsQuote-{{ section.id }} input,#BnsQuote-{{ section.id }} textarea{width:100%;min-height:44px;border:1px solid #cfd3d8;border-radius:5px;padding:10px 11px;font:inherit;background:#fff;color:inherit}
+  #BnsQuote-{{ section.id }} input:focus,#BnsQuote-{{ section.id }} textarea:focus{outline:2px solid #8ba4c4;outline-offset:1px}
+  #BnsQuote-{{ section.id }} .bns-quote__qty{width:86px;min-width:86px;text-align:center}
+  #BnsQuote-{{ section.id }} .bns-quote__request-price{width:132px;min-width:132px}
+  #BnsQuote-{{ section.id }} .bns-quote__remove{border:0;background:#f9eded;color:#a52929;width:34px;height:34px;font-size:18px}
+  #BnsQuote-{{ section.id }} .bns-quote__empty{display:none;color:#616874;padding:22px 10px}
+  #BnsQuote-{{ section.id }} .bns-quote__details{display:grid;grid-template-columns:1fr;gap:16px;margin-top:26px}
+  #BnsQuote-{{ section.id }} .bns-quote__form{display:grid;grid-template-columns:1.2fr 1fr;gap:18px;align-items:start}
+  #BnsQuote-{{ section.id }} .bns-quote__panel{border:1px solid var(--bq-line);border-radius:8px;padding:18px}
+  #BnsQuote-{{ section.id }} h3{font-size:16px;margin:0 0 14px}
+  #BnsQuote-{{ section.id }} .bns-quote__grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  #BnsQuote-{{ section.id }} label{display:grid;gap:6px;font-size:12px;font-weight:600;color:#555d68}
+  #BnsQuote-{{ section.id }} .wide{grid-column:1/-1}
+  #BnsQuote-{{ section.id }} .bns-quote__notes{grid-column:1/2}
+  #BnsQuote-{{ section.id }} .bns-quote__summary{grid-column:2/3;display:flex;flex-direction:column;gap:8px;align-self:stretch;border:1px solid var(--bq-line);border-radius:8px;padding:18px}
+  #BnsQuote-{{ section.id }} .bns-quote__summary strong{font-size:24px}
+  #BnsQuote-{{ section.id }} .bns-quote__summary small{color:#666e79;line-height:1.45}
+  #BnsQuote-{{ section.id }} .bns-quote__verification{grid-column:1/-1}
+  #BnsQuote-{{ section.id }} .bns-quote__submit{grid-column:1/-1;border:0;background:var(--bq-accent);color:#fff;min-height:50px;font-weight:700}
+  #BnsQuote-{{ section.id }} .bns-quote__status{grid-column:1/-1;margin:0;min-height:1.4em;color:#354d36}
+  @media(max-width:760px){#BnsQuote-{{ section.id }} .bns-quote__header{align-items:flex-start;flex-direction:column}#BnsQuote-{{ section.id }} .bns-quote__form{grid-template-columns:1fr}#BnsQuote-{{ section.id }} .bns-quote__notes,#BnsQuote-{{ section.id }} .bns-quote__summary{grid-column:1/-1}#BnsQuote-{{ section.id }} .bns-quote__grid{grid-template-columns:1fr}#BnsQuote-{{ section.id }} .wide{grid-column:auto}}
+</style>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<script>
+(() => {
+  const root = document.getElementById('BnsQuote-{{ section.id }}');
+  if (!root || root.dataset.ready) return;
+  root.dataset.ready = 'true';
+  const storageKey = 'bns-quote-cart-v1';
+  const tbody = root.querySelector('[data-quote-items]');
+  const empty = root.querySelector('[data-quote-empty]');
+  const totalEl = root.querySelector('[data-quote-total]');
+  const status = root.querySelector('[data-quote-status]');
+  const form = root.querySelector('[data-quote-form]');
+  const productEl = root.querySelector('[data-quote-product]');
+  const searchInput = root.querySelector('[data-quote-search-input]');
+  const searchResults = root.querySelector('[data-quote-search-results]');
+  const variantPicker = root.querySelector('[data-quote-variant-picker]');
+  const searchStatus = root.querySelector('[data-quote-search-status]');
+  const searchUrl = {{ routes.predictive_search_url | append: '.json' | json }};
+  const endpoint = root.dataset.endpoint;
+  const currency = root.dataset.currency || 'IDR';
+  let product = productEl ? JSON.parse(productEl.textContent) : null;
+  let cart = [];
+  try { cart = JSON.parse(localStorage.getItem(storageKey) || '[]'); } catch (_) {}
+  cart = Array.isArray(cart) ? cart.filter(x => x && x.variantId && Number.isInteger(x.quantity)) : [];
+  const money = minor => new Intl.NumberFormat('id-ID', {style:'currency', currency, maximumFractionDigits:0}).format((Number(minor)||0)/100);
+  const save = () => localStorage.setItem(storageKey, JSON.stringify(cart));
+  const itemFromProduct = (p, variant) => ({productId:String(p.id), variantId:String(variant.id), title:p.title, variantTitle:variant.title === 'Default Title' ? '' : variant.title, sku:variant.sku||'', handle:p.handle, image:(typeof p.featured_image === 'string' ? p.featured_image : p.featured_image?.url)||p.image||'', quantity:1, unitPriceMinor:Number(variant.price||0), requestedUnitPriceMinor:null});
+  let chosenProduct = null;
+  let searchTimer = null;
+  let searchController = null;
+  const appendItem = item => {
+    const existing=cart.find(x=>String(x.variantId)===item.variantId);
+    if(existing) existing.quantity=Math.min(999,existing.quantity+item.quantity); else cart.push(item);
+    save();render();status.textContent='Produk ditambahkan ke keranjang quotation.';
+  };
+  if (!cart.length && productEl) {
+    const p=JSON.parse(productEl.textContent);
+    const v=p.variants.find(x=>String(x.id)===String(p.selectedVariantId))||p.variants[0];
+    if(v) { const item=itemFromProduct({id:p.productId,title:p.title,handle:p.handle,featured_image:{url:p.image}},v); cart=[item]; save(); }
+  }
+  const render = () => {
+    tbody.replaceChildren();
+    empty.style.display = cart.length ? 'none' : 'block';
+    let total = 0;
+    cart.forEach((item, index) => {
+      const row = document.createElement('tr');
+      const productCell = document.createElement('td');
+      const productBox = document.createElement('div'); productBox.className='bns-quote__product';
+      if (item.image) { const img=document.createElement('img'); img.src=item.image; img.alt=''; productBox.append(img); }
+      const nameBox=document.createElement('div'); const name=document.createElement('div'); name.className='bns-quote__product-name'; name.textContent=item.title;
+      const variant=document.createElement('div'); variant.className='bns-quote__product-variant'; variant.textContent=item.variantTitle||'';
+      nameBox.append(name,variant); productBox.append(nameBox); productCell.append(productBox); row.append(productCell);
+      const qtyCell=document.createElement('td'); const qty=document.createElement('input'); qty.className='bns-quote__qty'; qty.type='number'; qty.min='1'; qty.max='999'; qty.value=String(item.quantity); qty.setAttribute('aria-label','Jumlah '+item.title);
+      qty.addEventListener('change',()=>{item.quantity=Math.max(1,Math.min(999,Number(qty.value)||1));save();render();}); qtyCell.append(qty); row.append(qtyCell);
+      const priceCell=document.createElement('td'); priceCell.textContent=money(item.unitPriceMinor); row.append(priceCell);
+      const requestedCell=document.createElement('td'); const requested=document.createElement('input'); requested.className='bns-quote__request-price'; requested.type='number'; requested.min='0'; requested.step='1'; requested.placeholder='Opsional'; requested.value=item.requestedUnitPriceMinor==null?'':String(Math.round(item.requestedUnitPriceMinor/100)); requested.setAttribute('aria-label','Harga yang diminta untuk '+item.title);
+      requested.addEventListener('change',()=>{const v=requested.value===''?null:Number(requested.value);item.requestedUnitPriceMinor=v===null?null:Math.round(v*100);save();}); requestedCell.append(requested); row.append(requestedCell);
+      const subtotalCell=document.createElement('td'); const subtotal=item.unitPriceMinor*item.quantity; total+=subtotal; subtotalCell.textContent=money(subtotal); row.append(subtotalCell);
+      const removeCell=document.createElement('td'); const remove=document.createElement('button'); remove.type='button'; remove.className='bns-quote__remove'; remove.textContent='×'; remove.setAttribute('aria-label','Hapus '+item.title); remove.addEventListener('click',()=>{cart.splice(index,1);save();render();}); removeCell.append(remove); row.append(removeCell);
+      tbody.append(row);
+    });
+    totalEl.textContent=money(total);
+  };
+  render();
+  const drawResults = products => {
+    searchResults.replaceChildren();
+    products.forEach(p => {
+      const button=document.createElement('button');button.type='button';button.className='bns-quote__result';button.setAttribute('role','option');
+      if(p.featured_image||p.image){const img=document.createElement('img');img.src=(typeof p.featured_image === 'string' ? p.featured_image : p.featured_image?.url)||p.image;img.alt='';button.append(img);}
+      const info=document.createElement('span');info.textContent=p.title;
+      const meta=document.createElement('small');meta.textContent=[p.vendor,p.variants?.length>1?`${p.variants.length} varian`:null,p.variants?.[0]?.price?money(Number(p.variants[0].price)):null].filter(Boolean).join(' · ');info.append(meta);button.append(info);
+      const choose=document.createElement('span');choose.textContent='Pilih';button.append(choose);
+      button.addEventListener('click',()=>selectProduct(p));searchResults.append(button);
+    });
+  };
+  const selectProduct = async result => {
+    if(searchStatus)searchStatus.textContent='Memuat varian…';
+    try {
+      const url=new URL({{ routes.root_url | json }}+'products/'+encodeURIComponent(result.handle)+'.js',location.origin);
+      const response=await fetch(url,{headers:{Accept:'application/json'}});
+      if(!response.ok)throw new Error('Varian produk tidak dapat dimuat.');
+      const p=await response.json();
+      variantPicker.replaceChildren(); variantPicker.hidden=false;
+      const label=document.createElement('label');label.textContent='Pilih varian';
+      const select=document.createElement('select');select.setAttribute('aria-label','Pilih varian produk');
+      (p.variants||[]).forEach(v=>{const o=document.createElement('option');o.value=String(v.id);o.textContent=`${v.title==='Default Title'?'Default':v.title} — ${money(Number(v.price||0))}`;select.append(o);});label.append(select);variantPicker.append(label);
+      const add=document.createElement('button');add.type='button';add.className='bns-quote__search-add';add.textContent='+ Tambah ke quotation';
+      add.addEventListener('click',()=>{const v=p.variants.find(x=>String(x.id)===select.value);if(!v)return;appendItem(itemFromProduct(p,v));if(searchStatus)searchStatus.textContent=`${p.title} ditambahkan.`;});variantPicker.append(add);
+      if(searchStatus)searchStatus.textContent='Pilih varian produk.';
+    } catch(error) { if(searchStatus)searchStatus.textContent=error.message||'Varian produk gagal dimuat.'; }
+  };
+  searchInput?.addEventListener('input',()=>{
+    clearTimeout(searchTimer);const term=searchInput.value.trim();searchResults.replaceChildren();variantPicker.hidden=true;
+    if(term.length<2){if(searchStatus)searchStatus.textContent='Ketik minimal 2 karakter untuk mencari.';return;}
+    if(searchStatus)searchStatus.textContent='Mencari produk…';
+    searchTimer=setTimeout(async()=>{
+      if(searchController)searchController.abort();searchController=new AbortController();
+      try{
+        const url=new URL(searchUrl,location.origin);url.searchParams.set('q',term);url.searchParams.set('resources[type]','product');url.searchParams.set('resources[limit]','8');url.searchParams.set('resources[options][unavailable_products]','hide');
+        const res=await fetch(url,{signal:searchController.signal,headers:{Accept:'application/json'}});if(!res.ok)throw new Error('Pencarian produk gagal. Coba lagi.');
+        const data=await res.json();const products=data.resources?.results?.products||[];drawResults(products);searchStatus.textContent=products.length?`${products.length} produk ditemukan.`:'Produk tidak ditemukan.';
+      }catch(error){if(error.name!=='AbortError')searchStatus.textContent=error.message||'Pencarian produk gagal.';}
+    },250);
+  });
+  form.addEventListener('submit',async event=>{
+    event.preventDefault();
+    if(!cart.length){status.textContent='Tambahkan minimal satu produk.';return;}
+    if(!endpoint){status.textContent='Endpoint Worker staging belum diatur.';return;}
+    const token=form.querySelector('[name="cf-turnstile-response"]')?.value;
+    if(!token){status.textContent='Selesaikan verifikasi keamanan terlebih dahulu.';return;}
+    const button=form.querySelector('button[type="submit"]');button.disabled=true;status.textContent='Mengirim permintaan…';
+    const f=Object.fromEntries(new FormData(form).entries());
+    try{
+      const res=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json','Idempotency-Key':crypto.randomUUID()},body:JSON.stringify({
+        firstName:f.firstName,lastName:f.lastName,email:f.email,phone:f.phone,company:f.company,country:f.country,address:f.address,city:f.city,region:f.region,postalCode:f.postalCode,notes:f.notes,turnstileToken:token,
+        items:cart.map(x=>({productId:x.productId,variantId:x.variantId,title:x.title,variantTitle:x.variantTitle,sku:x.sku,handle:x.handle,image:x.image,quantity:x.quantity,unitPriceMinor:x.unitPriceMinor,requestedUnitPriceMinor:x.requestedUnitPriceMinor}))
+      })});
+      const result=await res.json();if(!res.ok||!result.ok)throw new Error(result.error||'Request failed');
+      localStorage.removeItem(storageKey);cart=[];render();form.reset();status.textContent='Permintaan quotation '+result.quote.id+' berhasil dikirim dan menunggu peninjauan tim kami.';
+      if(window.turnstile)window.turnstile.reset();
+    }catch(error){status.textContent=error.message||'Permintaan belum dapat dikirim. Coba lagi.';if(window.turnstile)window.turnstile.reset();}
+    finally{button.disabled=false;}
+  });
+})();
+</script>
+{% schema %}
+{
+  "name": "BNS Quote Cart (Staging)",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Quote Cart" },
+    { "type": "textarea", "id": "intro", "label": "Intro", "default": "Review produk dan jumlah, lalu kirim permintaan penawaran kepada tim kami." },
+    { "type": "url", "id": "endpoint", "label": "Quotation Worker endpoint" },
+    { "type": "text", "id": "turnstile_site_key", "label": "Turnstile site key" }
+  ],
+  "presets": [{ "name": "BNS Quote Cart (Staging)" }]
+}
+{% endschema %}
