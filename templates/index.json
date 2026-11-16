@@ -47,6 +47,16 @@
         "limit": 4
       }
     },
+    "coming_soon": {
+      "type": "countdown-promo",
+      "disabled": true,
+      "settings": {
+        "title": "Segera Hadir",
+        "end": "",
+        "label": "Jelajahi koleksi",
+        "link": ""
+      }
+    },
     "new_arrivals": {
       "type": "featured-collection",
       "settings": {
@@ -707,12 +717,6 @@
         "end": "2026-11-13T23:59:00+07:00",
         "label": "Jelajahi koleksi",
         "link": ""
-      }
-    },
-    "coming_soon": {
-      "type": "countdown-promo",
-      "settings": {
-        "title": "Segera Hadir"
       }
     },
     "brands": {
