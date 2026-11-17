@@ -29,10 +29,10 @@
           "settings": {
             "asset": "bns-store-hero.jpg",
             "image_url": "",
-            "eyebrow": "READY FOR YOUR NEXT TRIP",
-            "title": "Joran, reel, umpan dan aksesori dalam satu tempat",
-            "button_label": "LIHAT PRODUK BARU",
-            "link": "/collections/new-arrival"
+            "eyebrow": "PILIHAN LENGKAP UNTUK ANGLER",
+            "title": "Temukan perlengkapan yang pas untuk setiap teknik memancing",
+            "button_label": "JELAJAHI SEMUA PRODUK",
+            "link": "/collections/all"
           }
         }
       },
