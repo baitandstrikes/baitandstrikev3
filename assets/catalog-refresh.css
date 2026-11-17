@@ -326,7 +326,7 @@
 .whatsapp-float__icon{display:block;width:72px;height:72px;border-radius:50%}
 @keyframes whatsapp-float-pulse{0%,100%{box-shadow:0 3px 12px #0003}50%{box-shadow:0 3px 12px #0003,0 0 0 8px #25d36624}}
 @keyframes whatsapp-float-ring{0%{opacity:.55;transform:scale(1)}100%{opacity:0;transform:scale(1.38)}}
-@media(max-width:749px){.whatsapp-float{right:14px;bottom:48px;width:66px;height:66px}.whatsapp-float__icon{width:48px;height:48px}.whatsapp-float__label{right:0;left:auto;max-width:calc(100vw - 28px);font-size:11px;transform:none;animation:whatsapp-label-loop 5s ease-in-out infinite}.whatsapp-float__label::before{right:28px;left:auto}}
+@media(max-width:749px){.whatsapp-float__label{display:none!important}.whatsapp-float{right:14px;bottom:48px;width:66px;height:66px}.whatsapp-float__icon{width:48px;height:48px}.whatsapp-float__label{right:0;left:auto;max-width:calc(100vw - 28px);font-size:11px;transform:none;animation:whatsapp-label-loop 5s ease-in-out infinite}.whatsapp-float__label::before{right:28px;left:auto}}
 @keyframes whatsapp-label-loop{0%,100%{opacity:0;transform:translateY(5px)}10%,72%{opacity:1;transform:translateY(0)}84%{opacity:0;transform:translateY(5px)}}
 @media(prefers-reduced-motion:reduce){.whatsapp-float,.whatsapp-float::before,.whatsapp-float__label{animation:none}}
 
