@@ -7,7 +7,7 @@
   document.addEventListener('input', event => {
     if (!event.target.matches('[data-predictive-input]')) return;
     const input = event.target;
-    const results = document.getElementById('PredictiveResults');
+    const results = document.getElementById(input.dataset.predictiveResults || 'PredictiveResults');
     const query = input.value.trim();
     const version = ++searchVersion;
     clearTimeout(debounce);
