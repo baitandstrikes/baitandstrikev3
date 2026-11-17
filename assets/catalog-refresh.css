@@ -397,3 +397,16 @@
 .catalog-refresh .price:has(> s)>s{order:-1;flex:0 0 100%}
 
 @media(max-width:749px){#mp-rfq-widget-root .mprfq-show-mobile{display:none!important}}
+
+
+/* Keep predictive product suggestions readable and contained on all screens. */
+.predictive-results .predictive-link,
+.predictive-results .predictive-link *,
+.predictive-results .predictive-link:visited,
+.predictive-results .predictive-link:hover,
+.predictive-results .predictive-link:focus,
+.predictive-results .predictive-link:focus-visible{color:#14212b!important}
+.predictive-results .predictive-link{min-width:0;overflow:hidden;white-space:normal;overflow-wrap:anywhere}
+.predictive-results .predictive-link span{min-width:0;overflow-wrap:anywhere;word-break:normal}
+.desktop-predictive-results .predictive-grid{grid-template-columns:minmax(0,1fr)!important;gap:0!important}
+.desktop-predictive-results .predictive-link{width:100%;padding:10px 6px;border-bottom:1px solid #edf0f3}
