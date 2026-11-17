@@ -395,3 +395,5 @@
 .catalog-refresh .product-card .shopping-actions--card .text-link{position:static!important;inset:auto!important;display:inline-flex;flex:0 0 38px;width:38px;height:38px;min-height:38px;margin:0;padding:8px}
 .catalog-refresh .price:has(> s){flex-wrap:wrap}
 .catalog-refresh .price:has(> s)>s{order:-1;flex:0 0 100%}
+
+@media(max-width:749px){#mp-rfq-widget-root .mprfq-show-mobile{display:none!important}}
