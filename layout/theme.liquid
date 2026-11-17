@@ -1,6 +1,13 @@
 <!doctype html>
 <html lang="{{ request.locale.iso_code }}">
 <head>
+  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-PWH8K9ZD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag("js", new Date());
+</script>
+
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="{{ settings.color_accent }}">
 <title>{{ page_title }}{% unless page_title contains shop.name %} — {{ shop.name }}{% endunless %}</title>
 {% if page_description %}<meta name="description" content="{{ page_description | escape }}">{% endif %}
