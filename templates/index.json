@@ -15,8 +15,9 @@
         "promo_1": {
           "type": "promo",
           "settings": {
+            "image": "shopify://shop_images/bns-hero-galaxys-bramastra.png",
             "asset": "",
-            "image_url": "https://cdn.shopify.com/s/files/1/0837/1195/1076/files/back.png?v=1788340231",
+            "image_url": "",
             "eyebrow": "READY FOR YOUR NEXT TRIP",
             "title": "Joran, reel, umpan dan aksesori dalam satu tempat",
             "button_label": "LIHAT PRODUK BARU",
