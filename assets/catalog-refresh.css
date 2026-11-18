@@ -410,3 +410,12 @@
 .predictive-results .predictive-link span{min-width:0;overflow-wrap:anywhere;word-break:normal}
 .desktop-predictive-results .predictive-grid{grid-template-columns:minmax(0,1fr)!important;gap:0!important}
 .desktop-predictive-results .predictive-link{width:100%;padding:10px 6px;border-bottom:1px solid #edf0f3}
+
+.catalog-refresh .product-stock-breakdown{margin:12px 0;border:1px solid #dfe5e9;border-radius:8px;background:#fff}
+.catalog-refresh .product-stock-breakdown>summary{padding:11px 14px;color:#123f5f;font-size:13px;font-weight:600;cursor:pointer}
+.catalog-refresh .product-stock-breakdown[open]>summary{border-bottom:1px solid #edf0f2}
+.catalog-refresh .product-stock-breakdown ul{max-height:240px;overflow:auto;margin:0;padding:0 14px;list-style:none}
+.catalog-refresh .product-stock-breakdown li{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;padding:9px 0;border-bottom:1px solid #edf0f2;font-size:12px;line-height:1.45}
+.catalog-refresh .product-stock-breakdown li:last-child{border-bottom:0}
+.catalog-refresh .product-stock-breakdown li>span{min-width:0}
+.catalog-refresh .product-stock-breakdown li>strong{flex:0 0 auto;color:#138c36;font-weight:700}
