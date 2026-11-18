@@ -50,8 +50,13 @@ Renders a product card with quick view.
         {% endfor %}
       {% endunless %}
     </div>
+    {% assign card_stock_count = 0 %}{% assign card_stock_tracked = true %}
+    {% for inventory_variant in product.variants %}
+      {% if inventory_variant.inventory_management == blank %}{% assign card_stock_tracked = false %}{% break %}{% endif %}
+      {% if inventory_variant.inventory_quantity > 0 %}{% assign card_stock_count = card_stock_count | plus: inventory_variant.inventory_quantity %}{% endif %}
+    {% endfor %}
     <p class="card-availability{% unless product.available %} is-sold-out{% endunless %}">
-      {% if product.available %}{{ 'discovery.ready' | t }}{% else %}{{ 'product.sold_out' | t }}{% endif %}
+      {% if product.available %}{% if card_stock_tracked %}Stok: {{ card_stock_count }}{% else %}{{ 'discovery.ready' | t }}{% endif %}{% else %}{{ 'product.sold_out' | t }}{% endif %}
       {% unless product.has_only_default_variant %} · {{ 'discovery.variants' | t: count: product.variants.size }}{% endunless %}
     </p>
     <div class="card-swatches">
