@@ -47,6 +47,16 @@
         <div class="product-detail-row"><span>SKU</span><strong class="product-sku">{% if v.sku != blank %}{{ v.sku | escape }}{% else %}-{% endif %}</strong></div>
       </div>
 
+      {% if product.variants.size > 1 %}
+        <details class="product-stock-breakdown">
+          <summary>Lihat stok tiap varian</summary>
+          <ul>
+            {% for stock_variant in product.variants %}
+              <li><span>{{ stock_variant.title | escape }}</span><strong>{% if stock_variant.inventory_management != blank %}Stok: {{ stock_variant.inventory_quantity | at_least: 0 }}{% elsif stock_variant.available %}Ready Stock{% else %}Stok Habis{% endif %}</strong></li>
+            {% endfor %}
+          </ul>
+        </details>
+      {% endif %}
       {% if section.settings.bulk_order %}{% render 'bulk-order', product: product, section_id: section.id %}{% endif %}
       {% for block in section.blocks %}{% if block.type == '@app' %}<div class="product-app-blocks" {{ block.shopify_attributes }}>{% render block %}</div>{% endif %}{% endfor %}
       {% render 'product-form', product: product, section_id: section.id %}
