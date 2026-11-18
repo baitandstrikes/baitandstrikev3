@@ -43,7 +43,7 @@
       <div class="product-detail-summary">
         {% if section.settings.show_vendor and product.vendor != blank %}<div class="product-detail-row"><span>Merek</span><strong><a href="{{ routes.search_url }}?q={{ product.vendor | url_encode }}">{{ product.vendor | escape }}</a></strong></div>{% endif %}
         <div class="product-detail-row product-detail-price"{% if customer %} data-wholesale-sync{% endif %}><span>Harga</span>{% if v != blank %}{% render 'price', product: product, variant: v %}{% else %}<p class="price">{{ 'product.unavailable' | t }}</p>{% endif %}</div>
-        <div class="product-detail-row"><span>Ketersediaan</span><strong class="product-detail-stock{% unless v.available %} is-sold-out{% endunless %}">{% if v.available %}Ready Stock{% else %}Stok Habis{% endif %}</strong></div>
+        <div class="product-detail-row"><span>Ketersediaan</span><strong class="product-detail-stock{% unless v.available %} is-sold-out{% endunless %}">{% if v.available %}{% if v.inventory_management != blank %}Stok: {{ v.inventory_quantity | at_least: 0 }}{% else %}Ready Stock{% endif %}{% else %}Stok Habis{% endif %}</strong></div>
         <div class="product-detail-row"><span>SKU</span><strong class="product-sku">{% if v.sku != blank %}{{ v.sku | escape }}{% else %}-{% endif %}</strong></div>
       </div>
 
