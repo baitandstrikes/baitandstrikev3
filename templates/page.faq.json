@@ -1,1 +1,113 @@
-LyoKICogLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCiAqIElNUE9SVEFOVDogVGhlIGNvbnRlbnRzIG9mIHRoaXMgZmlsZSBhcmUgYXV0by1nZW5lcmF0ZWQuCiAqCiAqIFRoaXMgZmlsZSBtYXkgYmUgdXBkYXRlZCBieSB0aGUgU2hvcGlmeSBhZG1pbiB0aGVtZSBlZGl0b3IKICogb3IgcmVsYXRlZCBzeXN0ZW1zLiBQbGVhc2UgZXhlcmNpc2UgY2F1dGlvbiBhcyBhbnkgY2hhbmdlcwogKiBtYWRlIHRvIHRoaXMgZmlsZSBtYXkgYmUgb3ZlcndyaXR0ZW4uCiAqIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQogKi8KewogICJzZWN0aW9ucyI6IHsKICAgICJmYXEiOiB7CiAgICAgICJ0eXBlIjogImZhcSIsCiAgICAgICJibG9ja3MiOiB7CiAgICAgICAgImZhcV96OVdITkciOiB7CiAgICAgICAgICAidHlwZSI6ICJxdWVzdGlvbiIsCiAgICAgICAgICAic2V0dGluZ3MiOiB7CiAgICAgICAgICAgICJxdWVzdGlvbiI6ICJCYWdhaW1hbmEgY2FyYSBtZW1iZWxpIGxld2F0IHdlYnNpdGU/IiwKICAgICAgICAgICAgImFuc3dlciI6ICI8cD5CdWthIG1lbnUgUHJvZHVjdCBhdGF1IDxhIGhyZWY9XCIvY29sbGVjdGlvbnMvYWxsXCI+bGloYXQga2F0YWxvZzwvYT4sIGxhbHUgcGlsaWggcHJvZHVrLCB2YXJpYW4sIGRhbiBqdW1sYWguIEppa2Egb3BzaSBwZW1iZWxpYW4gbGFuZ3N1bmcgdGVyc2VkaWEsIHRhbWJhaGthbiBrZSBrZXJhbmphbmcgZGFuIGxhbmp1dGthbiBrZSBjaGVja291dC48L3A+IgogICAgICAgICAgfQogICAgICAgIH0sCiAgICAgICAgImZhcV9ObTc4S0ciOiB7CiAgICAgICAgICAidHlwZSI6ICJxdWVzdGlvbiIsCiAgICAgICAgICAic2V0dGluZ3MiOiB7CiAgICAgICAgICAgICJxdWVzdGlvbiI6ICJCYWdhaW1hbmEgY2FyYSBtZW1pbnRhIHBlbmF3YXJhbiBoYXJnYT8iLAogICAgICAgICAgICAiYW5zd2VyIjogIjxwPkppa2EgdG9tYm9sIDxzdHJvbmc+QWRkIHRvIFF1b3RlPC9zdHJvbmc+IHRlcnNlZGlhIGRpIGhhbGFtYW4gcHJvZHVrLCBwaWxpaCB2YXJpYW4gZGFuIGp1bWxhaCBsYWx1IGtsaWsgdG9tYm9sIHRlcnNlYnV0LiBCdWthIDxhIGhyZWY9XCIvcGFnZXMvcXVvdGUtY2FydFwiPlF1b3RlIENhcnQ8L2E+LCBwZXJpa3NhIGRhZnRhciBwcm9kdWssIGxhbHUga2lyaW0gcGVybWludGFhbiBwZW5hd2FyYW4gbWVsYWx1aSBmb3JtdWxpciB5YW5nIHRlcnNlZGlhLjwvcD4iCiAgICAgICAgICB9CiAgICAgICAgfSwKICAgICAgICAiZmFxX2IyYkRhZnRhciI6IHsKICAgICAgICAgICJ0eXBlIjogInF1ZXN0aW9uIiwKICAgICAgICAgICJzZXR0aW5ncyI6IHsKICAgICAgICAgICAgInF1ZXN0aW9uIjogIkJhZ2FpbWFuYSBjYXJhIGRhZnRhciBzZWJhZ2FpIG1pdHJhIEIyQj8iLAogICAgICAgICAgICAiYW5zd2VyIjogIjxwPkppa2Ega2FtdSBwdW55YSB0b2tvLCBtZW5qYWxhbmthbiB1c2FoYSByZXNlbGxlciwgYXRhdSBpbmdpbiBiZXJtaXRyYSB1bnR1ayBwZW5nYWRhYW4gcGVybGVuZ2thcGFuIHBhbmNpbmcsIGlzaSA8YSBocmVmPVwiL3BhZ2VzL3dob2xlc2FsZS1yZWdpc3RyYXRpb24tZm9ybVwiPmZvcm11bGlyIERhZnRhciBCMkI8L2E+IGRlbmdhbiBkYXRhIHVzYWhhIGRhbiBrb250YWsuIFRpbSBCQUlUQU5EU1RSSUtFIGFrYW4gbWVuaW5qYXUgcGVuZGFmdGFyYW5tdS48L3A+IgogICAgICAgICAgfQogICAgICAgIH0sCiAgICAgICAgImZhcV9iMmJMb2dpbiI6IHsKICAgICAgICAgICJ0eXBlIjogInF1ZXN0aW9uIiwKICAgICAgICAgICJzZXR0aW5ncyI6IHsKICAgICAgICAgICAgInF1ZXN0aW9uIjogIkJhZ2FpbWFuYSBjYXJhIG1hc3VrIGtlIGFrdW4gQjJCPyIsCiAgICAgICAgICAgICJhbnN3ZXIiOiAiPHA+QnVrYSA8YSBocmVmPVwiL3BhZ2VzL2IyYi1sb2dpblwiPkxvZ2luIEIyQjwvYT4gZGFuIGd1bmFrYW4gZW1haWwgeWFuZyB0ZXJkYWZ0YXIuIElrdXRpIHBldHVuanVrIG1hc3VrIGRhbiBtYXN1a2thbiBrb2RlIHZlcmlmaWthc2kgeWFuZyBkaWtpcmltIGtlIGVtYWlsbXUuPC9wPiIKICAgICAgICAgIH0KICAgICAgICB9LAogICAgICAgICJmYXFfSERUZTg2IjogewogICAgICAgICAgInR5cGUiOiAicXVlc3Rpb24iLAogICAgICAgICAgInNldHRpbmdzIjogewogICAgICAgICAgICAicXVlc3Rpb24iOiAiQmFnYWltYW5hIGNhcmEgbWVtYmF5YXI/IiwKICAgICAgICAgICAgImFuc3dlciI6ICI8cD5VbnR1ayBwZW1iZWxpYW4gbGFuZ3N1bmcsIGd1bmFrYW4gb3BzaSBwZW1iYXlhcmFuIHlhbmcgdGFtcGlsIGRpIGNoZWNrb3V0LiBKaWthIGthbXUgbWVtaW50YSBwZW5hd2FyYW4sIGlrdXRpIGluc3RydWtzaSBwZW1iYXlhcmFuIHNldGVsYWggcGVuYXdhcmFuIGRpa29uZmlybWFzaSBvbGVoIHRpbSBrYW1pLjwvcD4iCiAgICAgICAgICB9CiAgICAgICAgfSwKICAgICAgICAiZmFxX1hDVjZnRiI6IHsKICAgICAgICAgICJ0eXBlIjogInF1ZXN0aW9uIiwKICAgICAgICAgICJzZXR0aW5ncyI6IHsKICAgICAgICAgICAgInF1ZXN0aW9uIjogIkJhZ2FpbWFuYSBjYXJhIGNlayBvbmdraXIgZGFuIGVzdGltYXNpIHBlbmdpcmltYW4/IiwKICAgICAgICAgICAgImFuc3dlciI6ICI8cD5VbnR1ayBwZW1iZWxpYW4gbGFuZ3N1bmcsIG1hc3Vra2FuIGFsYW1hdCB0dWp1YW4gZGkgY2hlY2tvdXQgdW50dWsgbWVsaWhhdCBvcHNpIHBlbmdpcmltYW4geWFuZyB0ZXJzZWRpYS4gVW50dWsgcGVybWludGFhbiBwZW5hd2FyYW4sIHNlcnRha2FuIHR1anVhbiBwZW5naXJpbWFuIGppa2EgZGltaW50YSBhZ2FyIHRpbSBrYW1pIGJpc2EgbWVtYmFudHUgbWVuZ2hpdHVuZyBvbmdraXIgZGFuIGVzdGltYXNpLjwvcD4iCiAgICAgICAgICB9CiAgICAgICAgfSwKICAgICAgICAiZmFxX3BqaHlyeCI6IHsKICAgICAgICAgICJ0eXBlIjogInF1ZXN0aW9uIiwKICAgICAgICAgICJzZXR0aW5ncyI6IHsKICAgICAgICAgICAgInF1ZXN0aW9uIjogIkFwYWthaCB0ZXJzZWRpYSBwZXJsZW5na2FwYW4gdW50dWsgcGVtYW5jaW5nIHBlbXVsYT8iLAogICAgICAgICAgICAiYW5zd2VyIjogIjxwPllhLiBLYW11IGJpc2EgbXVsYWkgZGFyaSA8YSBocmVmPVwiL2NvbGxlY3Rpb25zL2Zpc2hpbmctcm9kcy1qb3JhblwiPmtvbGVrc2kgam9yYW48L2E+IGF0YXUgPGEgaHJlZj1cIi9jb2xsZWN0aW9ucy9hbGxcIj5saWhhdCBzZW11YSBwcm9kdWs8L2E+LiBDZWsgc3Blc2lmaWthc2kgZGFuIHZhcmlhbiBkaSBoYWxhbWFuIHByb2R1ayBzZWJlbHVtIG1lbWlsaWguPC9wPiIKICAgICAgICAgIH0KICAgICAgICB9LAogICAgICAgICJmYXFfYkRpbU1SIjogewogICAgICAgICAgInR5cGUiOiAicXVlc3Rpb24iLAogICAgICAgICAgInNldHRpbmdzIjogewogICAgICAgICAgICAicXVlc3Rpb24iOiAiQmFnYWltYW5hIGNhcmEgbWVtaWxpaCBqb3JhbiB5YW5nIHNlc3VhaT8iLAogICAgICAgICAgICAiYW5zd2VyIjogIjxwPlNlc3VhaWthbiBqb3JhbiBkZW5nYW4gdGFyZ2V0IGlrYW4sIGxva2FzaSwgdGVrbmlrLCBkYW4gYmVyYXQgdW1wYW4uIEthbGF1IGJ1dHVoIHJla29tZW5kYXNpLCBzZWJ1dGthbiBrZWJ1dHVoYW4gZGFuIGtpc2FyYW4gYW5nZ2FyYW5tdSBzYWF0IG1lbmdodWJ1bmdpIHRpbSBrYW1pLjwvcD4iCiAgICAgICAgICB9CiAgICAgICAgfSwKICAgICAgICAiZmFxXzNCQTRYTCI6IHsKICAgICAgICAgICJ0eXBlIjogInF1ZXN0aW9uIiwKICAgICAgICAgICJzZXR0aW5ncyI6IHsKICAgICAgICAgICAgInF1ZXN0aW9uIjogIkRpIG1hbmEgc2F5YSBiaXNhIG1lbGloYXQgbWVyZWssIHNwZXNpZmlrYXNpLCBkYW4gc3RvayBwcm9kdWs/IiwKICAgICAgICAgICAgImFuc3dlciI6ICI8cD5CdWthIGhhbGFtYW4gcHJvZHVrIHVudHVrIG1lbGloYXQgbWVyZWssIHNwZXNpZmlrYXNpLCBTS1UsIGRhbiBrZXRlcnNlZGlhYW4uIFBpbGloIHZhcmlhbiB5YW5nIGthbXUgaW5naW5rYW4gdW50dWsgbWVuZ2VjZWsgc3Rva255YS48L3A+IgogICAgICAgICAgfQogICAgICAgIH0sCiAgICAgICAgImZhcV9WaXRFZVQiOiB7CiAgICAgICAgICAidHlwZSI6ICJxdWVzdGlvbiIsCiAgICAgICAgICAic2V0dGluZ3MiOiB7CiAgICAgICAgICAgICJxdWVzdGlvbiI6ICJCYWdhaW1hbmEgY2FyYSBtZW5nYWp1a2FuIHJldHVyIGF0YXUgcGVudWthcmFuPyIsCiAgICAgICAgICAgICJhbnN3ZXIiOiAiPHA+SHVidW5naSBrYW1pIG1lbGFsdWkgaGFsYW1hbiA8YSBocmVmPVwiL3BhZ2VzL2NvbnRhY3RcIj5Db250YWN0PC9hPiBkYW4gc2VydGFrYW4gbm9tb3IgcGVzYW5hbiwgbmFtYSBwcm9kdWssIHNlcnRhIGtlbmRhbGFueWEuIFRpbSBrYW1pIGFrYW4gbWVtYmFudHUgbWVuZ2VjZWsga2V0ZW50dWFuIHlhbmcgYmVybGFrdSB1bnR1ayBwZXNhbmFubXUuPC9wPiIKICAgICAgICAgIH0KICAgICAgICB9CiAgICAgIH0sCiAgICAgICJibG9ja19vcmRlciI6IFsKICAgICAgICAiZmFxX3o5V0hORyIsCiAgICAgICAgImZhcV9ObTc4S0ciLAogICAgICAgICJmYXFfYjJiRGFmdGFyIiwKICAgICAgICAiZmFxX2IyYkxvZ2luIiwKICAgICAgICAiZmFxX0hEVGU4NiIsCiAgICAgICAgImZhcV9YQ1Y2Z0YiLAogICAgICAgICJmYXFfcGpoeXJ4IiwKICAgICAgICAiZmFxX2JEaW1NUiIsCiAgICAgICAgImZhcV8zQkE0WEwiLAogICAgICAgICJmYXFfVml0RWVUIgogICAgICBdLAogICAgICAibmFtZSI6ICJCQUlUQU5EU1RSSUtFIEZBUSIsCiAgICAgICJzZXR0aW5ncyI6IHsKICAgICAgICAiZXllYnJvdyI6ICJCQUlUQU5EU1RSSUtFIiwKICAgICAgICAidGl0bGUiOiAiUGVydGFueWFhbiB5YW5nIFNlcmluZyBEaWFqdWthbiIsCiAgICAgICAgInN1YnRpdGxlIjogIkNhcmEgYmVsYW5qYSwgbWludGEgcGVuYXdhcmFuLCBkYW4gZGFmdGFyIGF0YXUgbWFzdWsgc2ViYWdhaSBtaXRyYSBCMkIgZGkgQkFJVEFORFNUUklLRS4iLAogICAgICAgICJjb250YWN0X3RpdGxlIjogIk1hc2loIHB1bnlhIHBlcnRhbnlhYW4/IiwKICAgICAgICAiY29udGFjdF90ZXh0IjogIkJ1dHVoIGJhbnR1YW4gbWVtaWxpaCBwcm9kdWsgYXRhdSBtZW5pbmRha2xhbmp1dGkgcGVzYW5hbiBkYW4gcGVuYXdhcmFuPyBIdWJ1bmdpIHRpbSBrYW1pIGxld2F0IFdoYXRzQXBwLiIsCiAgICAgICAgImNvbnRhY3RfYnV0dG9uIjogIkNoYXQgV2hhdHNBcHAiLAogICAgICAgICJjb250YWN0X2xpbmsiOiAiaHR0cHM6Ly93YS5tZS82Mjg3Nzk1MzYxNTE5IgogICAgICB9CiAgICB9CiAgfSwKICAib3JkZXIiOiBbCiAgICAiZmFxIgogIF0KfQo=
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "faq_z9WHNG": {
+          "type": "question",
+          "settings": {
+            "question": "Bagaimana cara membeli lewat website?",
+            "answer": "<p>Buka menu Product atau <a href=\"/collections/all\">lihat katalog</a>, lalu pilih produk, varian, dan jumlah. Jika opsi pembelian langsung tersedia, tambahkan ke keranjang dan lanjutkan ke checkout.</p>"
+          }
+        },
+        "faq_Nm78KG": {
+          "type": "question",
+          "settings": {
+            "question": "Bagaimana cara meminta penawaran harga?",
+            "answer": "<p>Jika tombol <strong>Add to Quote</strong> tersedia di halaman produk, pilih varian dan jumlah lalu klik tombol tersebut. Buka <a href=\"/pages/quote-cart\">Quote Cart</a>, periksa daftar produk, lalu kirim permintaan penawaran melalui formulir yang tersedia.</p>"
+          }
+        },
+        "faq_b2bDaftar": {
+          "type": "question",
+          "settings": {
+            "question": "Bagaimana cara daftar sebagai mitra B2B?",
+            "answer": "<p>Jika kamu punya toko, menjalankan usaha reseller, atau ingin bermitra untuk pengadaan perlengkapan pancing, isi <a href=\"/pages/wholesale-registration-form\">formulir Daftar B2B</a> dengan data usaha dan kontak. Tim BAITANDSTRIKE akan meninjau pendaftaranmu.</p>"
+          }
+        },
+        "faq_b2bLogin": {
+          "type": "question",
+          "settings": {
+            "question": "Bagaimana cara masuk ke akun B2B?",
+            "answer": "<p>Buka <a href=\"/pages/b2b-login\">Login B2B</a> dan gunakan email yang terdaftar. Ikuti petunjuk masuk dan masukkan kode verifikasi yang dikirim ke emailmu.</p>"
+          }
+        },
+        "faq_HDTe86": {
+          "type": "question",
+          "settings": {
+            "question": "Bagaimana cara membayar?",
+            "answer": "<p>Untuk pembelian langsung, gunakan opsi pembayaran yang tampil di checkout. Jika kamu meminta penawaran, ikuti instruksi pembayaran setelah penawaran dikonfirmasi oleh tim kami.</p>"
+          }
+        },
+        "faq_XCV6gF": {
+          "type": "question",
+          "settings": {
+            "question": "Bagaimana cara cek ongkir dan estimasi pengiriman?",
+            "answer": "<p>Untuk pembelian langsung, masukkan alamat tujuan di checkout untuk melihat opsi pengiriman yang tersedia. Untuk permintaan penawaran, sertakan tujuan pengiriman jika diminta agar tim kami bisa membantu menghitung ongkir dan estimasi.</p>"
+          }
+        },
+        "faq_pjhyrx": {
+          "type": "question",
+          "settings": {
+            "question": "Apakah tersedia perlengkapan untuk pemancing pemula?",
+            "answer": "<p>Ya. Kamu bisa mulai dari <a href=\"/collections/fishing-rods-joran\">koleksi joran</a> atau <a href=\"/collections/all\">lihat semua produk</a>. Cek spesifikasi dan varian di halaman produk sebelum memilih.</p>"
+          }
+        },
+        "faq_bDimMR": {
+          "type": "question",
+          "settings": {
+            "question": "Bagaimana cara memilih joran yang sesuai?",
+            "answer": "<p>Sesuaikan joran dengan target ikan, lokasi, teknik, dan berat umpan. Kalau butuh rekomendasi, sebutkan kebutuhan dan kisaran anggaranmu saat menghubungi tim kami.</p>"
+          }
+        },
+        "faq_3BA4XL": {
+          "type": "question",
+          "settings": {
+            "question": "Di mana saya bisa melihat merek, spesifikasi, dan stok produk?",
+            "answer": "<p>Buka halaman produk untuk melihat merek, spesifikasi, SKU, dan ketersediaan. Pilih varian yang kamu inginkan untuk mengecek stoknya.</p>"
+          }
+        },
+        "faq_VitEeT": {
+          "type": "question",
+          "settings": {
+            "question": "Bagaimana cara mengajukan retur atau penukaran?",
+            "answer": "<p>Hubungi kami melalui halaman <a href=\"/pages/contact\">Contact</a> dan sertakan nomor pesanan, nama produk, serta kendalanya. Tim kami akan membantu mengecek ketentuan yang berlaku untuk pesananmu.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_z9WHNG",
+        "faq_Nm78KG",
+        "faq_b2bDaftar",
+        "faq_b2bLogin",
+        "faq_HDTe86",
+        "faq_XCV6gF",
+        "faq_pjhyrx",
+        "faq_bDimMR",
+        "faq_3BA4XL",
+        "faq_VitEeT"
+      ],
+      "name": "BAITANDSTRIKE FAQ",
+      "settings": {
+        "eyebrow": "BAITANDSTRIKE",
+        "title": "Pertanyaan yang Sering Diajukan",
+        "subtitle": "Cara belanja, minta penawaran, dan daftar atau masuk sebagai mitra B2B di BAITANDSTRIKE.",
+        "contact_title": "Masih punya pertanyaan?",
+        "contact_text": "Butuh bantuan memilih produk atau menindaklanjuti pesanan dan penawaran? Hubungi tim kami lewat WhatsApp.",
+        "contact_button": "Chat WhatsApp",
+        "contact_link": "https://wa.me/6287795361519"
+      }
+    }
+  },
+  "order": [
+    "faq"
+  ]
+}
