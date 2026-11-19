@@ -14,91 +14,63 @@
       "settings": {
         "hero_background_position": "center center",
         "hero_overlay": 35,
-        "eyebrow": "BAITANDSTRIKE B2B",
-        "heading": "Your Trusted B2B Fishing Partner",
-        "hero_text": "Partner bisnis untuk kebutuhan fishing, tackle, accessories, dan perlengkapan memancing dengan fokus pada supply, harga kompetitif, dan partnership jangka panjang.",
-        "primary_label": "Become a B2B Partner",
-        "secondary_label": "Contact Our Team",
-        "intro_eyebrow": "Built for Business",
-        "intro_heading": "Lebih dari sekadar supplier.",
-        "intro_text": "<p>Kami memahami bahwa kebutuhan bisnis berbeda dengan kebutuhan retail. BAITANDSTRIKE membantu toko fishing, reseller, marketplace seller, distributor, dan partner bisnis mendapatkan produk dengan proses pengadaan yang lebih praktis.</p>",
-        "services_eyebrow": "What We Offer",
-        "services_heading": "Solusi untuk kebutuhan bisnis Anda.",
-        "audience_eyebrow": "Who We Serve",
-        "audience_heading": "Partner untuk berbagai bisnis fishing.",
-        "why_eyebrow": "Why BAITANDSTRIKE",
-        "why_heading": "Dibangun dengan prinsip business first.",
-        "cta_eyebrow": "Let's Work Together",
-        "cta_heading": "Ready to grow your fishing business?",
-        "cta_text": "Mari berdiskusi mengenai kebutuhan produk dan pengadaan bisnis Anda.",
-        "cta_label": "Join B2B Program",
+        "eyebrow": "TENTANG BAITANDSTRIKE",
+        "heading": "Mitra pengadaan perlengkapan pancing untuk bisnis Anda",
+        "hero_text": "BAITANDSTRIKE membantu toko pancing, reseller, dan distributor mencari produk, meminta penawaran, dan merencanakan pengadaan stok.",
+        "primary_label": "Daftar Jadi Mitra B2B",
+        "secondary_label": "Lihat Katalog",
+        "intro_eyebrow": "CARA KERJA",
+        "intro_heading": "Dari pilih produk sampai minta penawaran",
+        "intro_text": "<p>Buka <a href=\"/collections/all\">katalog produk</a> untuk melihat pilihan joran, reel, senar, umpan, kail, dan aksesori. Jika tombol <strong>Add to Quote</strong> tersedia, pilih varian dan jumlah lalu tambah produk ke daftar penawaran. Periksa daftarnya di <a href=\"/pages/quote-cart\">Quote Cart</a> sebelum mengirim permintaan.</p><p>Sudah punya akun mitra? <a href=\"/pages/b2b-login\">Masuk ke akun B2B</a>. Untuk pertanyaan tentang produk atau kerja sama, hubungi tim kami lewat halaman <a href=\"/pages/contact\">Contact</a>.</p>",
+        "services_eyebrow": "LAYANAN",
+        "services_heading": "Dukungan untuk pengadaan stok",
+        "audience_eyebrow": "MITRA KAMI",
+        "audience_heading": "Siapa yang kami layani",
+        "why_eyebrow": "KERJA SAMA",
+        "why_heading": "Yang bisa Anda diskusikan dengan tim kami",
+        "cta_eyebrow": "PENDAFTARAN MITRA",
+        "cta_heading": "Siap mulai kerja sama?",
+        "cta_text": "Isi formulir dengan data usaha dan kontak Anda. Tim kami akan meninjau pendaftaran sebelum membahas kebutuhan bisnis Anda.",
+        "cta_label": "Daftar Jadi Mitra B2B",
         "primary_link": "/pages/wholesale-registration-form",
-        "secondary_link": "/pages/contact",
+        "secondary_link": "/collections/all",
         "cta_link": "/pages/wholesale-registration-form"
       },
       "blocks": {
-        "b0": {
-          "type": "stat",
-          "settings": {
-            "number": "01",
-            "label": "Business First"
-          }
-        },
-        "b1": {
-          "type": "stat",
-          "settings": {
-            "number": "02",
-            "label": "Reliable Supply"
-          }
-        },
-        "b2": {
-          "type": "stat",
-          "settings": {
-            "number": "03",
-            "label": "Competitive Pricing"
-          }
-        },
-        "b3": {
-          "type": "stat",
-          "settings": {
-            "number": "04",
-            "label": "Long-Term Partnership"
-          }
-        },
         "b4": {
           "type": "service",
           "settings": {
-            "title": "Wide Product Selection",
-            "text": "Beragam kebutuhan fishing, tackle, accessories, dan produk pendukung bisnis."
+            "title": "Katalog perlengkapan pancing",
+            "text": "Temukan joran, reel, senar, umpan, kail, dan aksesori sesuai kebutuhan pelanggan Anda."
           }
         },
         "b5": {
           "type": "service",
           "settings": {
-            "title": "Competitive Pricing",
-            "text": "Skema B2B yang membantu partner mendapatkan harga yang lebih kompetitif."
+            "title": "Permintaan penawaran",
+            "text": "Kirim daftar produk dan jumlah yang Anda butuhkan melalui Quote Cart."
           }
         },
         "b6": {
           "type": "service",
           "settings": {
-            "title": "Business Procurement",
-            "text": "Dukungan pengadaan untuk kebutuhan stok dan pemesanan dalam jumlah besar."
+            "title": "Pengadaan stok",
+            "text": "Diskusikan kebutuhan restok atau pesanan dalam jumlah besar dengan tim kami."
           }
         },
         "b7": {
           "type": "service",
           "settings": {
-            "title": "Long-Term Partnership",
-            "text": "Kami membangun hubungan bisnis jangka panjang melalui komunikasi dan konsistensi."
+            "title": "Pendaftaran mitra",
+            "text": "Daftarkan usaha Anda untuk mulai membahas kerja sama B2B."
           }
         },
         "b8": {
           "type": "audience",
           "settings": {
             "icon": "01",
-            "title": "Fishing Store",
-            "text": "Solusi pengadaan untuk toko fishing dan retail."
+            "title": "Toko Pancing",
+            "text": "Cari perlengkapan untuk melengkapi stok toko Anda."
           }
         },
         "b9": {
@@ -113,72 +85,68 @@
           "type": "audience",
           "settings": {
             "icon": "03",
-            "title": "Marketplace Seller",
-            "text": "Perluas katalog dan pilihan produk yang Anda jual."
+            "title": "Penjual Marketplace",
+            "text": "Temukan produk dan varian untuk katalog online Anda."
           }
         },
         "b11": {
           "type": "audience",
           "settings": {
             "icon": "04",
-            "title": "Distributor & Dealer",
-            "text": "Peluang kerja sama pengadaan dan distribusi."
+            "title": "Distributor dan Dealer",
+            "text": "Diskusikan kebutuhan pengadaan dan distribusi."
           }
         },
         "b12": {
           "type": "audience",
           "settings": {
             "icon": "05",
-            "title": "Community & Organization",
-            "text": "Kebutuhan event, komunitas, dan kegiatan fishing."
+            "title": "Komunitas dan Organisasi",
+            "text": "Ajukan kebutuhan perlengkapan untuk kegiatan memancing."
           }
         },
         "b13": {
           "type": "audience",
           "settings": {
             "icon": "06",
-            "title": "Other Business",
-            "text": "Punya kebutuhan khusus? Diskusikan dengan tim kami."
+            "title": "Usaha Lainnya",
+            "text": "Hubungi tim kami untuk membahas kebutuhan pengadaan Anda."
           }
         },
         "b14": {
           "type": "why",
           "settings": {
             "number": "01",
-            "title": "Business First",
-            "text": "Fokus pada nilai bisnis, margin, kualitas, dan kebutuhan partner."
+            "title": "Pilihan produk",
+            "text": "Sampaikan kategori, varian, dan jumlah produk yang Anda cari."
           }
         },
         "b15": {
           "type": "why",
           "settings": {
             "number": "02",
-            "title": "Reliable Supply",
-            "text": "Membantu partner menjaga ketersediaan produk untuk operasional toko."
+            "title": "Ketersediaan stok",
+            "text": "Tanyakan ketersediaan untuk jumlah dan varian yang dibutuhkan."
           }
         },
         "b16": {
           "type": "why",
           "settings": {
             "number": "03",
-            "title": "Competitive Pricing",
-            "text": "Skema B2B untuk mendukung struktur harga dan margin bisnis."
+            "title": "Harga dan pengiriman",
+            "text": "Diskusikan harga serta tujuan pengiriman saat meminta penawaran."
           }
         },
         "b17": {
           "type": "why",
           "settings": {
             "number": "04",
-            "title": "Long-Term Partnership",
-            "text": "Membangun hubungan yang berkelanjutan, bukan sekadar transaksi."
+            "title": "Rencana restok",
+            "text": "Sampaikan jadwal dan kebutuhan pengadaan rutin usaha Anda."
           }
         }
       },
       "block_order": [
-        "b0",
-        "b1",
-        "b2",
-        "b3",
         "b4",
         "b5",
         "b6",
