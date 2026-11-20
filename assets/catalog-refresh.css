@@ -420,22 +420,42 @@
 .catalog-refresh .product-stock-breakdown li>span{min-width:0}
 .catalog-refresh .product-stock-breakdown li>strong{flex:0 0 auto;color:#138c36;font-weight:700}
 
-/* Label the quote launcher without changing the app's click behavior. */
-#mp-rfq-widget-root [aria-label="Open quotes"] {
-  display: inline-flex;
+/* Match the quote launcher to the storefront's blue and yellow palette. */
+#mp-rfq-widget-root .mprfq-show-desktop [aria-label="Open quotes"] {
+  box-sizing: border-box;
+  display: inline-flex !important;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  width: auto;
-  padding-inline: 12px;
+  gap: 9px;
+  width: max-content !important;
+  height: auto !important;
+  min-height: 44px;
+  padding: 8px 14px !important;
+  border: 1px solid #123f5f;
+  border-radius: 999px !important;
+  background: #123f5f !important;
+  color: #fff !important;
+  box-shadow: 0 4px 14px rgb(18 63 95 / 24%);
+  cursor: pointer;
 }
 
-#mp-rfq-widget-root [aria-label="Open quotes"]::before {
+#mp-rfq-widget-root .mprfq-show-desktop [aria-label="Open quotes"] > * {
+  flex-shrink: 0;
+}
+
+#mp-rfq-widget-root .mprfq-show-desktop [aria-label="Open quotes"]::after {
   content: "Online Quotation" / "";
-  color: #123f5f;
-  font-family: inherit;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 700;
   line-height: 1.2;
   white-space: nowrap;
+}
+
+#mp-rfq-widget-root .mprfq-show-desktop [aria-label="Open quotes"]:hover {
+  background: #0d2e46 !important;
+}
+
+#mp-rfq-widget-root .mprfq-show-desktop [aria-label="Open quotes"]:focus-visible {
+  outline: 2px solid #ffda22;
+  outline-offset: 3px;
 }
