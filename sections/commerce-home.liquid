@@ -36,7 +36,7 @@
               {% unless variant.available %}{% continue %}{% endunless %}
               {% if variant.inventory_management != blank and variant.inventory_quantity <= 0 %}{% continue %}{% endif %}
               {% if variant != blank %}
-                {% assign card_image = variant.featured_image | default: product.featured_image %}
+                {% assign card_image = product.images | first %}
                 <article class="commerce-product" {{ block.shopify_attributes }}>
                   <a href="{{ variant.url }}" class="commerce-product__image">
                     {% if card_image %}
