@@ -33,6 +33,8 @@
               {% assign product = block.settings.product %}
               {% assign variant_id = block.settings.variant_id | plus: 0 %}
               {% assign variant = product.variants | where: 'id', variant_id | first %}
+              {% unless variant.available %}{% continue %}{% endunless %}
+              {% if variant.inventory_management != blank and variant.inventory_quantity <= 0 %}{% continue %}{% endif %}
               {% if variant != blank %}
                 {% assign card_image = variant.featured_image | default: product.featured_image %}
                 <article class="commerce-product" {{ block.shopify_attributes }}>
@@ -50,7 +52,7 @@
                       <p class="commerce-product__vendor">{{ variant.title | escape }}</p>
                     {% endunless %}
                     <p class="commerce-product__price">{% render 'money-without-cents', amount: variant.price %}</p>
-                    <p class="commerce-stock{% unless variant.available %} is-out{% endunless %}">{% if variant.available %}Ready Stock{% else %}Stok Habis{% endif %}</p>
+                    <p class="commerce-stock">Ready Stock</p>
                   </div>
                 </article>
               {% endif %}
