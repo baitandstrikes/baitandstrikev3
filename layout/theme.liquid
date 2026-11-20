@@ -61,7 +61,21 @@
 <dialog id="QuickView" class="quick-dialog" aria-label="{{ 'product.quick_view' | t }}"><button class="icon-button dialog-close" data-close-dialog aria-label="{{ 'general.close' | t }}">{% render 'icon', name: 'close' %}</button><div data-quick-content></div></dialog>
 <dialog id="ImageZoom" class="zoom-dialog" aria-label="{{ 'general.zoom' | t }}"><button class="icon-button dialog-close" data-close-dialog aria-label="{{ 'general.close' | t }}">{% render 'icon', name: 'close' %}</button><img width="1800" height="1800" alt="" data-zoom-image></dialog>
 <div id="BnsStatus" class="toast" role="status" aria-live="polite"></div>
-<a class="whatsapp-float" href="https://wa.me/6287795361519" target="_blank" rel="noopener noreferrer" aria-label="Hubungi kami lewat WhatsApp" title="Hubungi kami lewat WhatsApp"><img class="whatsapp-float__icon" src="{{ 'whatsapp-logo.png' | asset_url }}" width="82" height="82" alt=""><span class="whatsapp-float__label">Chat WhatsApp</span></a>
+{% if request.page_type == 'page' and page.handle == 'terima-kasih-whatsapp' %}
+  <script>
+    (() => {
+      const continueLink = document.getElementById('bns-whatsapp-continue');
+      if (!continueLink) return;
+
+      const redirect = window.setTimeout(() => {
+        window.location.replace(continueLink.href);
+      }, 3000);
+      continueLink.addEventListener('click', () => window.clearTimeout(redirect), { once: true });
+    })();
+  </script>
+{% else %}
+  <a class="whatsapp-float" href="{{ pages['terima-kasih-whatsapp'].url | default: 'https://wa.me/6287795361519' | escape }}" aria-label="Hubungi kami lewat WhatsApp" title="Hubungi kami lewat WhatsApp"><img class="whatsapp-float__icon" src="{{ 'whatsapp-logo.png' | asset_url }}" width="82" height="82" alt=""><span class="whatsapp-float__label">Chat WhatsApp</span></a>
+{% endif %}
 
 <nav class="mobile-bottom-nav" aria-label="Navigasi utama">
   <a class="mobile-bottom-nav__link" href="{{ routes.root_url }}"{% if request.page_type == 'index' %} aria-current="page"{% endif %}>
