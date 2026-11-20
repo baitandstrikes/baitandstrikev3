@@ -33,17 +33,257 @@
             "button_label": "JELAJAHI SEMUA PRODUK",
             "link": "/collections/all"
           }
+        },
+        "best_0_0": {
+          "type": "best_sku",
+          "settings": {
+            "product": "lurekiller-shore-jigging-3-0m-jp041",
+            "variant_id": "50732153176281",
+            "category": "Joran",
+            "category_pick": true
+          }
+        },
+        "best_0_1": {
+          "type": "best_sku",
+          "settings": {
+            "product": "jemmy-bima-shore-jig-full-fuji-3-0m-jp177",
+            "variant_id": "50639432909017",
+            "category": "Joran",
+            "category_pick": true
+          }
+        },
+        "best_0_2": {
+          "type": "best_sku",
+          "settings": {
+            "product": "jemmy-galaxis-joran-galatama-fuji-8-17lb-1-80m-jp176",
+            "variant_id": "50639348269273",
+            "category": "Joran",
+            "category_pick": true
+          }
+        },
+        "best_0_3": {
+          "type": "best_sku",
+          "settings": {
+            "product": "jemmy-joran-arjuna-jp175",
+            "variant_id": "50624886178009",
+            "category": "Joran",
+            "category_pick": true
+          }
+        },
+        "best_1_0": {
+          "type": "best_sku",
+          "settings": {
+            "product": "jemmy-bramastra-dc-reel-baitcasting-handle-kiri-rp044",
+            "variant_id": "50639432974553",
+            "category": "Reel",
+            "category_pick": false
+          }
+        },
+        "best_1_1": {
+          "type": "best_sku",
+          "settings": {
+            "product": "lurekiller-ocean-jigging-reel-overhead-rp023",
+            "variant_id": "50639575679193",
+            "category": "Reel",
+            "category_pick": true
+          }
+        },
+        "best_1_2": {
+          "type": "best_sku",
+          "settings": {
+            "product": "reel-baitcasting-proberos-cnc-black-green-dw-series-rp118",
+            "variant_id": "50624868974809",
+            "category": "Reel",
+            "category_pick": true
+          }
+        },
+        "best_1_3": {
+          "type": "best_sku",
+          "settings": {
+            "product": "lurekiller-ocean-jigging-reel-overhead-rp023",
+            "variant_id": "50639575711961",
+            "category": "Reel",
+            "category_pick": true
+          }
+        },
+        "best_2_0": {
+          "type": "best_sku",
+          "settings": {
+            "product": "senar-pancing-nilon-150m-fluoresens-monofilamen-kuat-tahan-lama",
+            "variant_id": "50624944341209",
+            "category": "Senar",
+            "category_pick": true
+          }
+        },
+        "best_2_1": {
+          "type": "best_sku",
+          "settings": {
+            "product": "senar-pancing-nilon-monofilamen-500m-kuat-lembut-tenggelam-tahan-gesekan",
+            "variant_id": "50624946274521",
+            "category": "Senar",
+            "category_pick": true
+          }
+        },
+        "best_2_2": {
+          "type": "best_sku",
+          "settings": {
+            "product": "senar-pancing-nilon-monofilamen-150m-lembut-kuat-tahan-gesekan",
+            "variant_id": "50624945619161",
+            "category": "Senar",
+            "category_pick": true
+          }
+        },
+        "best_2_3": {
+          "type": "best_sku",
+          "settings": {
+            "product": "senar-nilon-monofilamen-power-100m-kuat-lembut-mudah-tenggelam",
+            "variant_id": "50624945029337",
+            "category": "Senar",
+            "category_pick": true
+          }
+        },
+        "best_3_0": {
+          "type": "best_sku",
+          "settings": {
+            "product": "proberos-umpan-pancing-soft-bait-bentuk-udang-bahan-silikon-lembut-dengan-kail-ukuran-6-9-13g-le125",
+            "variant_id": "50624968655065",
+            "category": "Umpan",
+            "category_pick": false
+          }
+        },
+        "best_3_1": {
+          "type": "best_sku",
+          "settings": {
+            "product": "proberos-crankbait-floating-lidah-panjang-14g-10cm-mn124",
+            "variant_id": "50639387001049",
+            "category": "Umpan",
+            "category_pick": false
+          }
+        },
+        "best_3_2": {
+          "type": "best_sku",
+          "settings": {
+            "product": "proberos-crankbait-floating-lidah-panjang-14g-10cm-mn124",
+            "variant_id": "50639387033817",
+            "category": "Umpan",
+            "category_pick": false
+          }
+        },
+        "best_3_3": {
+          "type": "best_sku",
+          "settings": {
+            "product": "proberos-crankbait-floating-lidah-panjang-14g-10cm-mn124",
+            "variant_id": "50639387164889",
+            "category": "Umpan",
+            "category_pick": false
+          }
+        },
+        "best_4_0": {
+          "type": "best_sku",
+          "settings": {
+            "product": "10pcs-kail-pancing-high-carbon-steel-metalic-blue-kuat-tajam-kup023",
+            "variant_id": "50624979534041",
+            "category": "Kail",
+            "category_pick": false
+          }
+        },
+        "best_4_1": {
+          "type": "best_sku",
+          "settings": {
+            "product": "10pcs-kail-pancing-high-carbon-steel-metalic-blue-kuat-tajam-kup023",
+            "variant_id": "50624979370201",
+            "category": "Kail",
+            "category_pick": false
+          }
+        },
+        "best_4_2": {
+          "type": "best_sku",
+          "settings": {
+            "product": "10pcs-kail-pancing-high-carbon-steel-metalic-blue-kuat-tajam-kup023",
+            "variant_id": "50624979402969",
+            "category": "Kail",
+            "category_pick": false
+          }
+        },
+        "best_4_3": {
+          "type": "best_sku",
+          "settings": {
+            "product": "proberos-20pcs-kotak-kail-pancing-2-4-6-8-10-12-14-kail-pancing-treble-bahan-carbon-steel-untuk-memancing-di-laut-kup137",
+            "variant_id": "50624988217561",
+            "category": "Kail",
+            "category_pick": false
+          }
+        },
+        "best_5_0": {
+          "type": "best_sku",
+          "settings": {
+            "product": "box-lure-ukuran-19x11x3-box-penempatan-umpan-minnow-bp193",
+            "variant_id": "50625002143961",
+            "category": "Aksesori",
+            "category_pick": false
+          }
+        },
+        "best_5_1": {
+          "type": "best_sku",
+          "settings": {
+            "product": "lushazer-tali-sabuk-pengikat-joran-praktis-menempel-kuat-lmrn-sj001",
+            "variant_id": "50625006829785",
+            "category": "Aksesori",
+            "category_pick": true
+          }
+        },
+        "best_5_2": {
+          "type": "best_sku",
+          "settings": {
+            "product": "tang-split-pancing-ring-baja-multifungsi-tp191",
+            "variant_id": "50625006076121",
+            "category": "Aksesori",
+            "category_pick": true
+          }
+        },
+        "best_5_3": {
+          "type": "best_sku",
+          "settings": {
+            "product": "tang-lipgrip-ikan-stainless-steel-grip-plier-penjepit-bibir-ikan-lmrn-tp005",
+            "variant_id": "50625005945049",
+            "category": "Aksesori",
+            "category_pick": true
+          }
         }
       },
       "block_order": [
         "promo_1",
-        "promo_2"
+        "promo_2",
+        "best_0_0",
+        "best_0_1",
+        "best_0_2",
+        "best_0_3",
+        "best_1_0",
+        "best_1_1",
+        "best_1_2",
+        "best_1_3",
+        "best_2_0",
+        "best_2_1",
+        "best_2_2",
+        "best_2_3",
+        "best_3_0",
+        "best_3_1",
+        "best_3_2",
+        "best_3_3",
+        "best_4_0",
+        "best_4_1",
+        "best_4_2",
+        "best_4_3",
+        "best_5_0",
+        "best_5_1",
+        "best_5_2",
+        "best_5_3"
       ],
       "settings": {
         "collection": "new-arrival",
         "featured_products": [],
         "product_handles": "",
-        "heading": "Clearance Sale",
+        "heading": "Best Seller",
         "limit": 4
       }
     },
