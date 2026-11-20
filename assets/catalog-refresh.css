@@ -419,3 +419,23 @@
 .catalog-refresh .product-stock-breakdown li:last-child{border-bottom:0}
 .catalog-refresh .product-stock-breakdown li>span{min-width:0}
 .catalog-refresh .product-stock-breakdown li>strong{flex:0 0 auto;color:#138c36;font-weight:700}
+
+/* Label the quote launcher without changing the app's click behavior. */
+#mp-rfq-widget-root [aria-label="Open quotes"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: auto;
+  padding-inline: 12px;
+}
+
+#mp-rfq-widget-root [aria-label="Open quotes"]::before {
+  content: "Online Quotation" / "";
+  color: #123f5f;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.2;
+  white-space: nowrap;
+}
