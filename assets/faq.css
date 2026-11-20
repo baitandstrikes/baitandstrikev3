@@ -336,7 +336,7 @@
   .faq-hero__media,
   .faq-hero__media img {
     min-height: 0;
-    aspect-ratio: 1.7;
+    aspect-ratio: 1;
   }
 
   .faq-content {
