@@ -46,8 +46,8 @@
         "best_0_1": {
           "type": "best_sku",
           "settings": {
-            "product": "jemmy-bima-shore-jig-full-fuji-3-0m-jp177",
-            "variant_id": "50639432909017",
+            "product": "jemmy-galaxis-joran-galatama-fuji-8-17lb-1-80m-jp176",
+            "variant_id": "50639348269273",
             "category": "Joran",
             "category_pick": true
           }
@@ -55,8 +55,8 @@
         "best_0_2": {
           "type": "best_sku",
           "settings": {
-            "product": "jemmy-galaxis-joran-galatama-fuji-8-17lb-1-80m-jp176",
-            "variant_id": "50639348269273",
+            "product": "jemmy-joran-arjuna-jp175",
+            "variant_id": "50624886210777",
             "category": "Joran",
             "category_pick": true
           }
@@ -64,8 +64,8 @@
         "best_0_3": {
           "type": "best_sku",
           "settings": {
-            "product": "jemmy-joran-arjuna-jp175",
-            "variant_id": "50624886178009",
+            "product": "jemmy-joran-casting-nakya-ultralight-jp153",
+            "variant_id": "50624886014169",
             "category": "Joran",
             "category_pick": true
           }
@@ -83,7 +83,7 @@
           "type": "best_sku",
           "settings": {
             "product": "lurekiller-ocean-jigging-reel-overhead-rp023",
-            "variant_id": "50639575679193",
+            "variant_id": "50639575711961",
             "category": "Reel",
             "category_pick": true
           }
@@ -100,8 +100,8 @@
         "best_1_3": {
           "type": "best_sku",
           "settings": {
-            "product": "lurekiller-ocean-jigging-reel-overhead-rp023",
-            "variant_id": "50639575711961",
+            "product": "reel-spinning-proberos-yacuyu-tf-series-extra-handle-rp115",
+            "variant_id": "50624868286681",
             "category": "Reel",
             "category_pick": true
           }
@@ -173,7 +173,7 @@
           "type": "best_sku",
           "settings": {
             "product": "proberos-crankbait-floating-lidah-panjang-14g-10cm-mn124",
-            "variant_id": "50639387164889",
+            "variant_id": "50639387099353",
             "category": "Umpan",
             "category_pick": false
           }
@@ -182,7 +182,7 @@
           "type": "best_sku",
           "settings": {
             "product": "10pcs-kail-pancing-high-carbon-steel-metalic-blue-kuat-tajam-kup023",
-            "variant_id": "50624979534041",
+            "variant_id": "50624979370201",
             "category": "Kail",
             "category_pick": false
           }
@@ -191,7 +191,7 @@
           "type": "best_sku",
           "settings": {
             "product": "10pcs-kail-pancing-high-carbon-steel-metalic-blue-kuat-tajam-kup023",
-            "variant_id": "50624979370201",
+            "variant_id": "50624979534041",
             "category": "Kail",
             "category_pick": false
           }
@@ -199,8 +199,8 @@
         "best_4_2": {
           "type": "best_sku",
           "settings": {
-            "product": "10pcs-kail-pancing-high-carbon-steel-metalic-blue-kuat-tajam-kup023",
-            "variant_id": "50624979402969",
+            "product": "proberos-20pcs-kotak-kail-pancing-2-4-6-8-10-12-14-kail-pancing-treble-bahan-carbon-steel-untuk-memancing-di-laut-kup137",
+            "variant_id": "50624988020953",
             "category": "Kail",
             "category_pick": false
           }
@@ -209,7 +209,7 @@
           "type": "best_sku",
           "settings": {
             "product": "proberos-20pcs-kotak-kail-pancing-2-4-6-8-10-12-14-kail-pancing-treble-bahan-carbon-steel-untuk-memancing-di-laut-kup137",
-            "variant_id": "50624988217561",
+            "variant_id": "50624988053721",
             "category": "Kail",
             "category_pick": false
           }
@@ -227,7 +227,7 @@
           "type": "best_sku",
           "settings": {
             "product": "lushazer-tali-sabuk-pengikat-joran-praktis-menempel-kuat-lmrn-sj001",
-            "variant_id": "50625006829785",
+            "variant_id": "50625006862553",
             "category": "Aksesori",
             "category_pick": true
           }
