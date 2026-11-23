@@ -99,7 +99,7 @@
   <a class="mobile-bottom-nav__link" href="{{ routes.all_products_collection_url }}"{% if request.page_type == 'collection' %} aria-current="page"{% endif %}>
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l1 13H4L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2M8 12h8"/></svg><span>Products</span>
   </a>
-  <a class="mobile-bottom-nav__link" href="https://baitandstrike.myshopify.com/pages/quote-cart"{% if request.page_type == "page" and page.handle == "quote-cart" %} aria-current="page"{% endif %}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-3-6 3z"/><path d="M9 8h6M9 12h6"/></svg><span>Quotation</span></a>
+  <a class="mobile-bottom-nav__link" href="{{ pages['quote-cart'].url | default: '/pages/quote-cart' | escape }}"{% if request.page_type == "page" and page.handle == "quote-cart" %} aria-current="page"{% endif %}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-3-6 3z"/><path d="M9 8h6M9 12h6"/></svg><span>Quotation</span></a>
   <a class="mobile-bottom-nav__link" href="{{ routes.root_url }}#shop-by-brand">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m20.6 13.4-7.2 7.2a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8Z"/><circle cx="7.5" cy="7.5" r="1"/></svg><span>Brands</span>
   </a>

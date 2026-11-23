@@ -9,6 +9,7 @@
   <header class="product-detail-heading">
     <div>
       <h1>{{ product.title | escape }}</h1>
+      <a class="product-buy-jump text-link" href="#ProductBuy-{{ section.id }}">Pilih varian / beli</a>
       <p>#Grup produk {{ product.id }}</p>
     </div>
     <button class="text-link" type="button" data-share="{{ shop.url }}{{ product.url }}">Bagikan ↗</button>
@@ -59,7 +60,9 @@
       {% endif %}
       {% if section.settings.bulk_order %}{% render 'bulk-order', product: product, section_id: section.id %}{% endif %}
       {% for block in section.blocks %}{% if block.type == '@app' %}<div class="product-app-blocks" {{ block.shopify_attributes }}>{% render block %}</div>{% endif %}{% endfor %}
-      {% render 'product-form', product: product, section_id: section.id %}
+      <div id="ProductBuy-{{ section.id }}" class="product-buy-target" tabindex="-1">
+        {% render 'product-form', product: product, section_id: section.id %}
+      </div>
 
       <div class="product-detail-assurance">
         <div><strong>Produk resmi BAIT&amp;STRIKE</strong><span>Produk terpilih dengan informasi yang jelas.</span></div>

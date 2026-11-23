@@ -106,7 +106,7 @@ const mutateCart = async (line, quantity) => {
  finally { cartBusy = false; drawer.removeAttribute('aria-busy'); drawer.querySelectorAll('[data-cart-delta], [data-cart-quantity], .checkout-button').forEach(el => el.disabled = false); }
 };
 const addProduct = async (form) => {
- if (form.dataset.busy === 'true' || !form.reportValidity()) return;
+ if (form.dataset.busy === 'true' || form.closest('[data-product-root][aria-busy="true"]') || !form.reportValidity()) return;
  const button = form.querySelector('[type=submit]');
  if (button.disabled) return;
  const error = form.querySelector('[data-form-error]'); if (error) error.hidden = true;
@@ -115,7 +115,10 @@ const addProduct = async (form) => {
  await request(config.add, { method: 'POST', body, headers: { Accept: 'application/json' } });
  await afterCartAdd(form);
  } catch (err) { displayError(form, err.message); }
- finally { form.dataset.busy = 'false'; button.disabled = false; }
+ finally {
+ form.dataset.busy = 'false';
+ if (!form.closest('[data-product-root][aria-busy="true"]')) button.disabled = false;
+ }
 };
 const syncVariantGallery = (root) => {
  if (!window.matchMedia('(max-width: 749px)').matches) return;
@@ -138,6 +141,19 @@ const changeVariant = async (select) => {
  const url = new URL(chosen?.dataset.productUrl || root.dataset.productUrl, window.location.origin);
  url.searchParams.set('option_values', options.join(',')); url.searchParams.set('section_id', root.dataset.sectionId);
  root.setAttribute('aria-busy', 'true');
+ const productForm = root.querySelector('[data-product-form]');
+ const addButton = productForm?.querySelector('[type=submit]');
+ if (addButton) {
+  addButton.disabled = true;
+  let status = productForm.querySelector('[data-variant-loading]');
+  if (!status) {
+   status = document.createElement('p');
+   status.dataset.variantLoading = '';
+   status.setAttribute('role', 'status');
+   productForm.append(status);
+  }
+  status.textContent = config.loading;
+ }
  const quantity = Number(root.querySelector('[name=quantity]')?.value || 1);
  try {
  const response = await fetch(url, { signal: controller.signal, credentials: 'same-origin' });
@@ -157,7 +173,12 @@ const changeVariant = async (select) => {
  history.replaceState({}, '', url.pathname + url.search);
  }
  } catch (error) { if (error.name !== 'AbortError') { displayError(root, error.message); const add = root.querySelector('.add-button'); if (add) add.disabled = true; } }
- finally { root.removeAttribute('aria-busy'); }
+ finally {
+ if (productRequests.get(root) === controller) {
+  root.removeAttribute('aria-busy');
+  productForm?.querySelector('[data-variant-loading]')?.remove();
+ }
+ }
 };
 const quickView = async (link) => {
  if (quickRequest) quickRequest.abort(); quickRequest = new AbortController();
@@ -378,7 +399,7 @@ const init = (scope = document) => {
  });
 };
 document.addEventListener('click', async event => {
- const trigger = event.target.closest('[data-open-cart], [data-open-account], [data-close-dialog], [data-quick-view], [data-card-image], [data-menu-toggle], [data-search-toggle], [data-quantity], [data-cart-delta], [data-cart-remove], [data-gallery-select], [data-zoom], [data-carousel-prev], [data-carousel-next], [data-share]');
+ const trigger = event.target.closest('[data-open-cart], [data-open-account], [data-close-dialog], [data-quick-view], [data-card-image], [data-menu-toggle], [data-search-toggle], [data-quantity], [data-cart-delta], [data-gallery-select], [data-zoom], [data-carousel-prev], [data-carousel-next], [data-share]');
  if (!trigger) return;
  if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
  if (trigger.matches('[data-open-cart]')) { const drawer = document.getElementById('CartDrawer'); if (!drawer) return; event.preventDefault(); openDialog(drawer); try { await refreshCart(); } catch { displayError(drawer, config.error, '[data-cart-error]'); } }
@@ -394,7 +415,6 @@ document.addEventListener('click', async event => {
  if (trigger.matches('[data-search-toggle]')) { const panel = document.getElementById('HeaderSearch'); panel.hidden = !panel.hidden; document.querySelectorAll('[data-search-toggle]').forEach(el => el.setAttribute('aria-expanded', String(!panel.hidden))); if (!panel.hidden) panel.querySelector('input[type=search]').focus(); else { const launchers = [...document.querySelectorAll('[data-search-toggle]')]; const visibleLauncher = launchers.find(el => el.getClientRects().length && getComputedStyle(el).visibility !== 'hidden'); visibleLauncher?.focus(); } }
  if (trigger.matches('[data-quantity]')) { const input = trigger.parentElement.querySelector('input'); const min = Number(input.min || 1), max = Number(input.max || Infinity), step = Number(input.step || 1); const current = Number(input.value); input.value = Math.min(max, Math.max(min, (Number.isFinite(current) ? current : min) + Number(trigger.dataset.quantity) * step)); input.dispatchEvent(new Event('change', { bubbles: true })); }
  if (trigger.matches('[data-cart-delta]')) { const line = trigger.closest('[data-cart-line]'), input = line.querySelector('[data-cart-quantity]'), delta = Number(trigger.dataset.cartDelta) * Number(input.step || 1), quantity = Math.max(0, Number(input.value) + delta); if (line.closest('#CartDrawer')) await mutateCart(line, quantity); else input.value = quantity; }
- if (trigger.matches('[data-cart-remove]') && trigger.closest('#CartDrawer')) { event.preventDefault(); await mutateCart(trigger.closest('[data-cart-line]'), 0); }
  if (trigger.matches('[data-gallery-select]')) gallery(trigger);
  if (trigger.matches('[data-zoom]')) { const dialog = document.getElementById('ImageZoom'), img = dialog.querySelector('[data-zoom-image]'); img.src = trigger.dataset.zoom; img.alt = trigger.querySelector('img')?.alt || ''; openDialog(dialog); }
  if (trigger.matches('[data-carousel-prev], [data-carousel-next]')) { const track = trigger.closest('[data-carousel]').querySelector('[data-carousel-track]'); track.scrollBy({ left: track.clientWidth * (trigger.matches('[data-carousel-next]') ? 1 : -1), behavior: reduced ? 'auto' : 'smooth' }); }
