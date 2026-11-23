@@ -17,22 +17,35 @@ const toast = (message) => {
  el.textContent = message; el.classList.add('is-visible');
  clearTimeout(toastTimer); toastTimer = setTimeout(() => el.classList.remove('is-visible'), 4500);
 };
+let mobileCartConfirmation, mobileCartTimer;
 const showMobileCartConfirmation = (form) => {
  if (!form?.isConnected) { toast(config.added); return; }
- let confirmation = form.querySelector('[data-cart-confirmation]');
- if (!confirmation) {
-  confirmation = document.createElement('p');
-  confirmation.dataset.cartConfirmation = '';
-  const status = document.createElement('span');
-  status.setAttribute('role', 'status');
-  const link = document.createElement('a');
-  link.href = config.cart;
-  link.dataset.openCart = '';
-  link.textContent = config.viewCart;
-  confirmation.append(status, ' · ', link);
-  form.append(confirmation);
- }
- confirmation.firstElementChild.textContent = config.added;
+ clearTimeout(mobileCartTimer);
+ mobileCartConfirmation?.remove();
+
+ const confirmation = document.createElement('div');
+ confirmation.className = 'mobile-cart-toast';
+ const check = document.createElement('span');
+ check.className = 'mobile-cart-toast__check';
+ check.setAttribute('aria-hidden', 'true');
+ check.textContent = '✓';
+ const status = document.createElement('span');
+ status.setAttribute('role', 'status');
+ const link = document.createElement('a');
+ link.href = config.cart;
+ link.dataset.openCart = '';
+ link.textContent = config.viewCart;
+ confirmation.append(check, status, link);
+ (form.closest('dialog[open]') || document.body).append(confirmation);
+ mobileCartConfirmation = confirmation;
+ requestAnimationFrame(() => { status.textContent = config.added; });
+
+ const dismiss = () => {
+  if (confirmation.contains(document.activeElement)) {
+   link.addEventListener('blur', () => confirmation.remove(), { once: true });
+  } else confirmation.remove();
+ };
+ mobileCartTimer = setTimeout(dismiss, 4500);
 };
 const afterCartAdd = async (form) => {
  if (window.matchMedia('(max-width: 749px)').matches) {
