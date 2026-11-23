@@ -34,7 +34,7 @@
       const data = await response.json();
       if (!response.ok) throw new Error(typeof data.description === 'string' ? data.description : config.error);
       form.querySelectorAll('[data-bulk-quantity]').forEach(input => input.value = '0');
-      document.dispatchEvent(new CustomEvent('bns:cart-refresh'));
+      document.dispatchEvent(new CustomEvent('bns:cart-refresh', { detail: { form } }));
     } catch (failure) {error.textContent = failure.message || config.error; error.hidden = false;}
     finally {form.dataset.busy = 'false'; button.disabled = false; form.removeAttribute('aria-busy');}
   });

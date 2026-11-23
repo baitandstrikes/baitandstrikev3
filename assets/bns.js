@@ -17,6 +17,45 @@ const toast = (message) => {
  el.textContent = message; el.classList.add('is-visible');
  clearTimeout(toastTimer); toastTimer = setTimeout(() => el.classList.remove('is-visible'), 4500);
 };
+let mobileCartConfirmation, mobileCartTimer;
+const showMobileCartConfirmation = (form) => {
+ if (!form?.isConnected) { toast(config.added); return; }
+ clearTimeout(mobileCartTimer);
+ mobileCartConfirmation?.remove();
+
+ const confirmation = document.createElement('div');
+ confirmation.className = 'mobile-cart-toast';
+ const check = document.createElement('span');
+ check.className = 'mobile-cart-toast__check';
+ check.setAttribute('aria-hidden', 'true');
+ check.textContent = '✓';
+ const status = document.createElement('span');
+ status.setAttribute('role', 'status');
+ const link = document.createElement('a');
+ link.href = config.cart;
+ link.dataset.openCart = '';
+ link.textContent = config.viewCart;
+ confirmation.append(check, status, link);
+ (form.closest('dialog[open]') || document.body).append(confirmation);
+ mobileCartConfirmation = confirmation;
+ requestAnimationFrame(() => { status.textContent = config.added; });
+
+ const dismiss = () => {
+  if (confirmation.contains(document.activeElement)) {
+   link.addEventListener('blur', () => confirmation.remove(), { once: true });
+  } else confirmation.remove();
+ };
+ mobileCartTimer = setTimeout(dismiss, 4500);
+};
+const afterCartAdd = async (form) => {
+ if (window.matchMedia('(max-width: 749px)').matches) {
+  showMobileCartConfirmation(form);
+  try { await refreshCart(); } catch { /* The item was added. Refresh again when the cart is opened. */ }
+  return;
+ }
+ try { await refreshCart(); openDialog(document.getElementById('CartDrawer')); toast(config.added); }
+ catch { window.location.assign(config.cart); }
+};
 const errorText = (data) => typeof data.description === 'string' ? data.description : typeof data.message === 'string' ? data.message : config.error;
 const request = async (url, options = {}) => {
  const response = await fetch(url, { credentials: 'same-origin', ...options });
@@ -74,8 +113,7 @@ const addProduct = async (form) => {
  const body = new FormData(form); form.dataset.busy = 'true'; button.disabled = true;
  try {
  await request(config.add, { method: 'POST', body, headers: { Accept: 'application/json' } });
- try { await refreshCart(); openDialog(document.getElementById('CartDrawer')); toast(config.added); }
- catch { window.location.assign(config.cart); }
+ await afterCartAdd(form);
  } catch (err) { displayError(form, err.message); }
  finally { form.dataset.busy = 'false'; button.disabled = false; }
 };
@@ -343,7 +381,7 @@ document.addEventListener('click', async event => {
  const trigger = event.target.closest('[data-open-cart], [data-open-account], [data-close-dialog], [data-quick-view], [data-card-image], [data-menu-toggle], [data-search-toggle], [data-quantity], [data-cart-delta], [data-cart-remove], [data-gallery-select], [data-zoom], [data-carousel-prev], [data-carousel-next], [data-share]');
  if (!trigger) return;
  if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
- if (trigger.matches('[data-open-cart]')) { event.preventDefault(); const drawer = document.getElementById('CartDrawer'); openDialog(drawer); try { await refreshCart(); } catch { displayError(drawer, config.error, '[data-cart-error]'); } }
+ if (trigger.matches('[data-open-cart]')) { const drawer = document.getElementById('CartDrawer'); if (!drawer) return; event.preventDefault(); openDialog(drawer); try { await refreshCart(); } catch { displayError(drawer, config.error, '[data-cart-error]'); } }
  if (trigger.matches('[data-open-account]')) { event.preventDefault(); openDialog(document.getElementById('AccountDialog')); }
  if (trigger.matches('[data-close-dialog]')) { trigger.closest('dialog').close(); lockBody(); }
  if (trigger.matches('[data-card-image]') && window.matchMedia('(max-width: 749px)').matches) {
@@ -388,7 +426,7 @@ window.addEventListener('scroll', () => { if (!scrollQueued) { scrollQueued = tr
 document.addEventListener('shopify:section:load', event => init(event.target));
 document.addEventListener('shopify:section:unload', event => event.target.querySelector('[data-slideshow]')?.dispatchEvent(new Event('bns:unload')));
 document.addEventListener('shopify:block:select', event => { const slide = event.target.closest('[data-slide]'); if (slide) { const hero = slide.closest('[data-slideshow]'); hero.dispatchEvent(new CustomEvent('bns:slide', { detail: [...hero.querySelectorAll('[data-slide]')].indexOf(slide) })); } });
-document.addEventListener('bns:cart-refresh', async () => { try { await refreshCart(); openDialog(document.getElementById('CartDrawer')); toast(config.added); } catch { window.location.assign(config.cart); } });
+document.addEventListener('bns:cart-refresh', event => afterCartAdd(event.detail?.form));
 updateHeader(); init(); mergeWholesalePrices(); formatWholesaleCards(); watchWholesalePrices();
 })();
 
