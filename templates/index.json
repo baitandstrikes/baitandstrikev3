@@ -301,7 +301,12 @@
       "type": "featured-collection",
       "settings": {
         "collection": "new-arrival",
-        "featured_products": [],
+        "featured_products": [
+          "jemmy-bramastra-dc-reel-baitcasting-handle-kiri-rp044",
+          "jemmy-galaxis-joran-galatama-fuji-8-17lb-1-80m-jp176",
+          "jemmy-joran-solver-jp046",
+          "reel-spinning-orca-s2-power-handle-rp038"
+        ],
         "product_handles": "",
         "eyebrow": "PRODUK PILIHAN BNS",
         "title": "New Arrival",
