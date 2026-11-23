@@ -21,18 +21,49 @@
       <h2>Jawaban untuk mulai memancing dengan yakin.</h2>
       <p>Pilih pertanyaan untuk melihat informasi selengkapnya.</p>
     </div>
-    <div class="faq-list">
-      {% for block in section.blocks %}
-        <details class="faq-item" {{ block.shopify_attributes }}>
-          <summary>
-            <span class="faq-number">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span>
-            <span class="faq-question">{{ block.settings.question | escape }}</span>
-            <span class="faq-toggle" aria-hidden="true">{% render 'icon', name: 'plus' %}</span>
-          </summary>
-          <div class="rte faq-answer">{{ block.settings.answer }}</div>
-        </details>
-      {% endfor %}
-    </div>
+    {% assign topic_ids = 'pesanan|pengiriman|pembayaran|retur|b2b|akun' | split: '|' %}
+    {% assign topic_labels = 'Pesanan & stok|Pengiriman|Pembayaran|Retur, garansi & klaim|B2B & quotation|Akun & privasi' | split: '|' %}
+    {% capture topic_links %}{% endcapture %}
+    {% capture topic_sections %}{% endcapture %}
+    {% for topic_id in topic_ids %}
+      {% assign topic_label = topic_labels[forloop.index0] %}
+      {% assign topic_anchor = 'FaqTopic-' | append: section.id | append: '-' | append: topic_id %}
+      {% assign question_count = 0 %}
+      {% capture questions %}
+        {% for block in section.blocks %}
+          {% assign block_topic = block.settings.topic | default: 'pesanan' %}
+          {% if block_topic != topic_id %}{% continue %}{% endif %}
+          {% assign question_count = question_count | plus: 1 %}
+          <details class="faq-item" {{ block.shopify_attributes }}>
+            <summary>
+              <span class="faq-number" aria-hidden="true">{% if question_count < 10 %}0{% endif %}{{ question_count }}</span>
+              <span class="faq-question">{{ block.settings.question | escape }}</span>
+              <span class="faq-toggle" aria-hidden="true">{% render 'icon', name: 'plus' %}</span>
+            </summary>
+            <div class="rte faq-answer">{{ block.settings.answer }}</div>
+          </details>
+        {% endfor %}
+      {% endcapture %}
+      {% if question_count > 0 %}
+        {% capture topic_links %}{{ topic_links }}<a href="#{{ topic_anchor }}">{{ topic_label | escape }}</a>{% endcapture %}
+        {% capture topic_sections %}
+          {{ topic_sections }}
+          <section class="faq-topic" id="{{ topic_anchor }}" aria-labelledby="{{ topic_anchor }}-heading">
+            <h3 id="{{ topic_anchor }}-heading">{{ topic_label | escape }}</h3>
+            <div class="faq-list">{{ questions }}</div>
+          </section>
+        {% endcapture %}
+      {% endif %}
+    {% endfor %}
+    {% if topic_sections != blank %}
+      <div class="faq-topics">
+        <nav class="faq-topic-nav" aria-label="Topik FAQ">
+          <h3>Topik</h3>
+          {{ topic_links }}
+        </nav>
+        <div>{{ topic_sections }}</div>
+      </div>
+    {% endif %}
   </div>
 
   {% if section.settings.contact_title != blank %}
@@ -98,6 +129,7 @@
       "type": "question",
       "name": "Pertanyaan",
       "settings": [
+        {"type":"select","id":"topic","label":"Topik","options":[{"value":"pesanan","label":"Pesanan & stok"},{"value":"pengiriman","label":"Pengiriman"},{"value":"pembayaran","label":"Pembayaran"},{"value":"retur","label":"Retur, garansi & klaim"},{"value":"b2b","label":"B2B & quotation"},{"value":"akun","label":"Akun & privasi"}],"default":"pesanan"},
         {
           "type": "text",
           "id": "question",

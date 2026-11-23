@@ -16,70 +16,80 @@
           "type": "question",
           "settings": {
             "question": "Bagaimana cara membeli lewat website?",
-            "answer": "<p>Buka menu Product atau <a href=\"/collections/all\">lihat katalog</a>, lalu pilih produk, varian, dan jumlah. Jika opsi pembelian langsung tersedia, tambahkan ke keranjang dan lanjutkan ke checkout.</p>"
+            "answer": "<p>Buka menu Product atau <a href=\"/collections/all\">lihat katalog</a>, lalu pilih produk, varian, dan jumlah. Jika opsi pembelian langsung tersedia, tambahkan ke keranjang dan lanjutkan ke checkout.</p>",
+            "topic": "pesanan"
           }
         },
         "faq_Nm78KG": {
           "type": "question",
           "settings": {
             "question": "Bagaimana cara meminta penawaran harga?",
-            "answer": "<p>Jika tombol <strong>Add to Quote</strong> tersedia di halaman produk, pilih varian dan jumlah lalu klik tombol tersebut. Buka <a href=\"/pages/quote-cart\">Quote Cart</a>, periksa daftar produk, lalu kirim permintaan penawaran melalui formulir yang tersedia.</p>"
+            "answer": "<p>Jika tombol <strong>Add to Quote</strong> tersedia di halaman produk, pilih varian dan jumlah lalu klik tombol tersebut. Buka <a href=\"/pages/quote-cart\">Quote Cart</a>, periksa daftar produk, lalu kirim permintaan penawaran melalui formulir yang tersedia.</p>",
+            "topic": "b2b"
           }
         },
         "faq_b2bDaftar": {
           "type": "question",
           "settings": {
             "question": "Bagaimana cara daftar sebagai mitra B2B?",
-            "answer": "<p>Jika kamu punya toko, menjalankan usaha reseller, atau ingin bermitra untuk pengadaan perlengkapan pancing, isi <a href=\"/pages/wholesale-registration-form\">formulir Daftar B2B</a> dengan data usaha dan kontak. Tim BAITANDSTRIKE akan meninjau pendaftaranmu.</p>"
+            "answer": "<p>Jika kamu punya toko, menjalankan usaha reseller, atau ingin bermitra untuk pengadaan perlengkapan pancing, isi <a href=\"/pages/wholesale-registration-form\">formulir Daftar B2B</a> dengan data usaha dan kontak. Tim BAITANDSTRIKE akan meninjau pendaftaranmu.</p>",
+            "topic": "b2b"
           }
         },
         "faq_b2bLogin": {
           "type": "question",
           "settings": {
             "question": "Bagaimana cara masuk ke akun B2B?",
-            "answer": "<p>Buka <a href=\"/pages/b2b-login\">Login B2B</a> dan gunakan email yang terdaftar. Ikuti petunjuk masuk dan masukkan kode verifikasi yang dikirim ke emailmu.</p>"
+            "answer": "<p>Buka <a href=\"/pages/b2b-login\">Login B2B</a> dan gunakan email yang terdaftar. Ikuti petunjuk masuk dan masukkan kode verifikasi yang dikirim ke emailmu.</p>",
+            "topic": "akun"
           }
         },
         "faq_HDTe86": {
           "type": "question",
           "settings": {
             "question": "Bagaimana cara membayar?",
-            "answer": "<p>Untuk pembelian langsung, gunakan opsi pembayaran yang tampil di checkout. Jika kamu meminta penawaran, ikuti instruksi pembayaran setelah penawaran dikonfirmasi oleh tim kami.</p>"
+            "answer": "<p>Untuk pembelian langsung, gunakan opsi pembayaran yang tampil di checkout. Jika kamu meminta penawaran, ikuti instruksi pembayaran setelah penawaran dikonfirmasi oleh tim kami.</p>",
+            "topic": "pembayaran"
           }
         },
         "faq_XCV6gF": {
           "type": "question",
           "settings": {
             "question": "Bagaimana cara cek ongkir dan estimasi pengiriman?",
-            "answer": "<p>Untuk pembelian langsung, masukkan alamat tujuan di checkout untuk melihat opsi pengiriman yang tersedia. Untuk permintaan penawaran, sertakan tujuan pengiriman jika diminta agar tim kami bisa membantu menghitung ongkir dan estimasi.</p>"
+            "answer": "<p>Untuk pembelian langsung, masukkan alamat tujuan di checkout untuk melihat opsi pengiriman yang tersedia. Untuk permintaan penawaran, sertakan tujuan pengiriman jika diminta agar tim kami bisa membantu menghitung ongkir dan estimasi.</p>",
+            "topic": "pengiriman"
           }
         },
         "faq_pjhyrx": {
           "type": "question",
           "settings": {
             "question": "Apakah tersedia perlengkapan untuk pemancing pemula?",
-            "answer": "<p>Ya. Kamu bisa mulai dari <a href=\"/collections/fishing-rods-joran\">koleksi joran</a> atau <a href=\"/collections/all\">lihat semua produk</a>. Cek spesifikasi dan varian di halaman produk sebelum memilih.</p>"
+            "answer": "<p>Ya. Kamu bisa mulai dari <a href=\"/collections/fishing-rods-joran\">koleksi joran</a> atau <a href=\"/collections/all\">lihat semua produk</a>. Cek spesifikasi dan varian di halaman produk sebelum memilih.</p>",
+            "topic": "pesanan"
           }
         },
         "faq_bDimMR": {
           "type": "question",
           "settings": {
             "question": "Bagaimana cara memilih joran yang sesuai?",
-            "answer": "<p>Sesuaikan joran dengan target ikan, lokasi, teknik, dan berat umpan. Kalau butuh rekomendasi, sebutkan kebutuhan dan kisaran anggaranmu saat menghubungi tim kami.</p>"
+            "answer": "<p>Sesuaikan joran dengan target ikan, lokasi, teknik, dan berat umpan. Kalau butuh rekomendasi, sebutkan kebutuhan dan kisaran anggaranmu saat menghubungi tim kami.</p>",
+            "topic": "pesanan"
           }
         },
         "faq_3BA4XL": {
           "type": "question",
           "settings": {
             "question": "Di mana saya bisa melihat merek, spesifikasi, dan stok produk?",
-            "answer": "<p>Buka halaman produk untuk melihat merek, spesifikasi, SKU, dan ketersediaan. Pilih varian yang kamu inginkan untuk mengecek stoknya.</p>"
+            "answer": "<p>Buka halaman produk untuk melihat merek, spesifikasi, SKU, dan ketersediaan. Pilih varian yang kamu inginkan untuk mengecek stoknya.</p>",
+            "topic": "pesanan"
           }
         },
         "faq_VitEeT": {
           "type": "question",
           "settings": {
             "question": "Bagaimana cara mengajukan retur atau penukaran?",
-            "answer": "<p>Hubungi kami melalui halaman <a href=\"/pages/contact\">Contact</a> dan sertakan nomor pesanan, nama produk, serta kendalanya. Tim kami akan membantu mengecek ketentuan yang berlaku untuk pesananmu.</p>"
+            "answer": "<p>Hubungi kami melalui halaman <a href=\"/pages/contact\">Contact</a> dan sertakan nomor pesanan, nama produk, serta kendalanya. Tim kami akan membantu mengecek ketentuan yang berlaku untuk pesananmu.</p>",
+            "topic": "retur"
           }
         }
       },
@@ -99,7 +109,7 @@
       "settings": {
         "eyebrow": "BAITANDSTRIKE",
         "title": "Pertanyaan yang Sering Diajukan",
-        "subtitle": "Cara belanja, minta penawaran, dan daftar atau masuk sebagai mitra B2B di BAITANDSTRIKE.",
+        "subtitle": "Temukan jawaban tentang pesanan, stok, pengiriman, pembayaran, retur, dan layanan B2B BAITANDSTRIKE.",
         "contact_title": "Masih punya pertanyaan?",
         "contact_text": "Butuh bantuan memilih produk atau menindaklanjuti pesanan dan penawaran? Hubungi tim kami lewat WhatsApp.",
         "contact_button": "Chat WhatsApp",
