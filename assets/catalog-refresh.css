@@ -528,3 +528,20 @@
   .mobile-cart-toast,
   .mobile-cart-toast__check { animation: none; }
 }
+
+.product-buy-jump { display: none; }
+
+@media (max-width: 749px) {
+  .product-buy-jump {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    font-weight: 700;
+  }
+
+  .product-buy-target { scroll-margin-top: 165px; }
+
+  body:has(.mobile-bottom-nav) #mp-rfq-widget-root .mprfq-show-desktop {
+    display: none !important;
+  }
+}
