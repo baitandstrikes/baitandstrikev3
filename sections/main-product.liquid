@@ -97,7 +97,99 @@
     {% endfor %}
   </div>
 </section>
-<script type="application/ld+json">{{ product | structured_data }}</script>
+{% assign published_reviews = product.metafields.custom.bns_reviews.value %}
+{% assign review_count = 0 %}
+{% assign rating_total = 0 %}
+{% capture review_cards %}
+  {% for entry in published_reviews %}
+    {% assign rating = entry.rating.value %}
+    {% if rating == blank or rating < 1 or rating > 5 or entry.reviewer.value == blank or entry.body.value == blank %}{% continue %}{% endif %}
+    {% assign review_count = review_count | plus: 1 %}
+    {% assign rating_total = rating_total | plus: rating %}
+    <li>
+      <strong>{{ entry.reviewer.value | escape }}</strong>
+      <span aria-label="{{ rating }} dari 5 bintang"> · {{ rating }}/5</span>
+      <p>{{ entry.body.value | escape | newline_to_br }}</p>
+    </li>
+  {% endfor %}
+{% endcapture %}
+{% if review_count > 0 %}
+  {% assign average_rating = rating_total | times: 1.0 | divided_by: review_count | round: 2 %}
+{% endif %}
+
+<section class="section wrap bns-product-reviews" aria-labelledby="ProductReviews-{{ section.id }}">
+  <h2 id="ProductReviews-{{ section.id }}">Ulasan produk</h2>
+  {% if review_count > 0 %}
+    <p><strong>{{ average_rating }}/5</strong> dari {{ review_count }} ulasan</p>
+    <ul class="bns-product-reviews__list">{{ review_cards }}</ul>
+  {% else %}
+    <p>Belum ada ulasan untuk produk ini.</p>
+  {% endif %}
+
+  {% assign review_form_id = 'ProductReviewForm-' | append: section.id %}
+  {% form 'contact', id: review_form_id, class: 'bns-product-reviews__form' %}
+    <h3>Tulis ulasan</h3>
+    {% if form.posted_successfully? %}
+      <p role="status">Terima kasih! Ulasanmu sudah diterima dan akan diperiksa sebelum ditampilkan.</p>
+    {% else %}
+      {{ form.errors | default_errors }}
+      <input type="hidden" name="contact[Jenis kiriman]" value="Ulasan produk">
+      <input type="hidden" name="contact[Produk]" value="{{ product.title | escape }}">
+      <input type="hidden" name="contact[ID produk]" value="{{ product.id }}">
+      <input type="hidden" name="contact[URL produk]" value="{{ shop.url }}{{ product.url }}">
+      <label for="{{ review_form_id }}-name">Nama tampilan</label>
+      <input id="{{ review_form_id }}-name" name="contact[name]" type="text" autocomplete="name" maxlength="80" required>
+      <label for="{{ review_form_id }}-email">Email</label>
+      <input id="{{ review_form_id }}-email" name="contact[email]" type="email" autocomplete="email" required aria-describedby="{{ review_form_id }}-privacy">
+      <small id="{{ review_form_id }}-privacy">Email digunakan untuk moderasi dan tidak ditampilkan.</small>
+      <label for="{{ review_form_id }}-rating">Rating</label>
+      <select id="{{ review_form_id }}-rating" name="contact[Rating]" required>
+        <option value="" selected disabled>Pilih rating</option>
+        {% for stars in (1..5) %}
+          <option value="{{ stars }}">{{ stars }} dari 5 bintang</option>
+        {% endfor %}
+      </select>
+      <label for="{{ review_form_id }}-body">Ulasanmu</label>
+      <textarea id="{{ review_form_id }}-body" name="contact[body]" rows="4" maxlength="1500" required></textarea>
+      <button class="button" type="submit">Kirim ulasan</button>
+    {% endif %}
+  {% endform %}
+</section>
+
+{% assign product_schema = product | structured_data | strip %}
+{% if review_count > 0 %}
+  {% capture review_properties %}
+    {% unless product_schema contains '"aggregateRating"' %}
+      "aggregateRating": {"@type":"AggregateRating","ratingValue":{{ average_rating | json }},"reviewCount":{{ review_count | json }},"bestRating":5,"worstRating":1},
+    {% endunless %}
+    {% unless product_schema contains '"review"' %}
+      "review": [
+        {% assign emitted_reviews = 0 %}
+        {% for entry in published_reviews %}
+          {% assign rating = entry.rating.value %}
+          {% if rating == blank or rating < 1 or rating > 5 or entry.reviewer.value == blank or entry.body.value == blank %}{% continue %}{% endif %}
+          {% if emitted_reviews > 0 %},{% endif %}
+          {"@type":"Review","author":{"@type":"Person","name":{{ entry.reviewer.value | json | replace: '<', '\u003c' }}},"reviewRating":{"@type":"Rating","ratingValue":{{ rating | json }},"bestRating":5,"worstRating":1},"reviewBody":{{ entry.body.value | json | replace: '<', '\u003c' }}}
+          {% assign emitted_reviews = emitted_reviews | plus: 1 %}
+        {% endfor %}
+      ],
+    {% endunless %}
+  {% endcapture %}
+  {% assign schema_start = product_schema | slice: 0 %}
+  {% if schema_start == '{' %}
+    {% assign product_schema = product_schema | remove_first: '{' | prepend: review_properties | prepend: '{' %}
+  {% endif %}
+{% endif %}
+<script type="application/ld+json">{{ product_schema }}</script>
+
+{% style %}
+  .bns-product-reviews__list { display: grid; gap: 12px; padding: 0; list-style: none; }
+  .bns-product-reviews__list li { padding: 14px; border: 1px solid #dce5ed; border-radius: 8px; }
+  .bns-product-reviews__list p { margin: 8px 0 0; }
+  .bns-product-reviews__form { display: grid; gap: 8px; max-width: 560px; margin-top: 24px; }
+  .bns-product-reviews__form :is(input:not([type="hidden"]), select, textarea) { width: 100%; min-height: 44px; padding: 8px 12px; }
+  .bns-product-reviews__form .button { justify-self: start; min-height: 44px; }
+{% endstyle %}
 {% stylesheet %}
 .product-detail-info.wholesale-off .sp-wholesale-card,
 .product-detail-info.wholesale-off .sp-wholesale-qty-note{display:none!important}
