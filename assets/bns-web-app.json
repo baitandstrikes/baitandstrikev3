@@ -1,0 +1,25 @@
+{
+  "id": "/",
+  "name": "BAITANDSTRIKE",
+  "short_name": "Bait & Strike",
+  "lang": "id",
+  "start_url": "https://baitandstrike.com/",
+  "scope": "https://baitandstrike.com/",
+  "display": "standalone",
+  "theme_color": "#123f5f",
+  "background_color": "#ffffff",
+  "icons": [
+    {
+      "src": "https://cdn.shopify.com/s/files/1/0838/8824/2905/files/bns-install-icon.png?v=1795590492&width=192",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "https://cdn.shopify.com/s/files/1/0838/8824/2905/files/bns-install-icon.png?v=1795590492",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
