@@ -8,6 +8,10 @@
   <div class="bns-install" data-bns-install hidden>
     <button type="button" class="text-link" aria-expanded="false" aria-controls="BnsInstallHelp">Pasang aplikasi</button>
     <p id="BnsInstallHelp" hidden></p>
+    {% assign install_guide = pages['cara-instal-aplikasi'] %}
+    {% if install_guide != blank %}
+      <a class="text-link bns-install__guide" href="{{ install_guide.url }}">Panduan instal aplikasi</a>
+    {% endif %}
   </div>
   <script>
     (() => {
@@ -47,6 +51,7 @@
   </script>
   <style>
     .bns-install:not([hidden]) { border-top: 1px solid #dce7ec; padding-block: 6px; }
+    .bns-install__guide { display: inline-flex; align-items: center; min-height: 44px; }
     .bns-install button { min-height: 44px; color: #123f5f; font-weight: 700; }
     .bns-install p { margin: 0 0 8px; color: #25313e; font-size: 13px; line-height: 1.45; }
     @media (min-width: 750px) { .bns-install { display: none; } }
