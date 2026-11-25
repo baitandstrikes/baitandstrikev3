@@ -1,6 +1,8 @@
 <!doctype html>
 <html lang="{{ request.locale.iso_code }}">
 <head>
+<link rel="manifest" href="{{ 'bns-web-app.json' | asset_url }}" crossorigin="anonymous">
+<link rel="apple-touch-icon" sizes="180x180" href="https://cdn.shopify.com/s/files/1/0838/8824/2905/files/bns-install-icon.png?v=1795590492&amp;width=180">
  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-PWH8K9ZD"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -69,7 +71,55 @@
 <body class="catalog-refresh page-{{ request.page_type }}{% if settings.animations %} motion-enabled{% endif %}"{% if product %} data-listing-color="{% if product.metafields.custom.listing_color.value != blank %}{{ product.metafields.custom.listing_color.value | color_to_hex | escape }}{% endif %}" data-listing-border-color="{% if product.metafields.custom.listing_border_color.value != blank %}{{ product.metafields.custom.listing_border_color.value | color_to_hex | escape }}{% endif %}" data-listing-badge="{{ product.metafields.custom.listing_badge.value | escape }}" data-listing-group="{{ product.metafields.custom.listing_group.value | escape }}" data-listing-variant-color="{% if product.selected_or_first_available_variant.metafields.custom.listing_color.value != blank %}{{ product.selected_or_first_available_variant.metafields.custom.listing_color.value | color_to_hex | escape }}{% endif %}" data-listing-variant-border-color="{% if product.selected_or_first_available_variant.metafields.custom.listing_border_color.value != blank %}{{ product.selected_or_first_available_variant.metafields.custom.listing_border_color.value | color_to_hex | escape }}{% endif %}" data-listing-variant-badge="{{ product.selected_or_first_available_variant.metafields.custom.listing_badge.value | escape }}" data-listing-enabled="{{ product.metafields.custom.listing_color_enabled.value }}"{% endif %}>
 <a href="#MainContent" class="skip-link">{{ 'general.skip' | t }}</a>
 {% sections 'header-group' %}
-<main id="MainContent" tabindex="-1">{{ content_for_layout }}</main>
+<main id="MainContent" tabindex="-1">{% if request.page_type == 'index' %}
+  <div class="wrap bns-install" data-bns-install hidden>
+    <button type="button" class="text-link" aria-expanded="false" aria-controls="BnsInstallHelp">Pasang aplikasi Bait &amp; Strike</button>
+    <p id="BnsInstallHelp" hidden></p>
+  </div>
+  <script>
+    (() => {
+      const panel = document.querySelector('[data-bns-install]');
+      const button = panel.querySelector('button');
+      const help = panel.querySelector('p');
+      const apple = /iPhone|iPad|iPod/.test(navigator.userAgent) ||
+        (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+      const android = /Android/.test(navigator.userAgent);
+      if (window.matchMedia('(display-mode: standalone)').matches || navigator.standalone) return;
+      let installPrompt;
+      panel.hidden = !apple && !android;
+      window.addEventListener('beforeinstallprompt', event => {
+        if (!window.matchMedia('(max-width: 749px)').matches) return;
+        event.preventDefault();
+        installPrompt = event;
+        panel.hidden = false;
+      });
+      window.addEventListener('appinstalled', () => { panel.hidden = true; });
+      button.addEventListener('click', async () => {
+        if (installPrompt) {
+          const prompt = installPrompt;
+          installPrompt = null;
+          try {
+            const choice = await prompt.prompt();
+            if (choice?.outcome === 'accepted') panel.hidden = true;
+            return;
+          } catch { /* Show browser menu instructions if the native prompt is unavailable. */ }
+        }
+        help.textContent = apple
+          ? 'Buka di Safari, ketuk Bagikan, lalu pilih Tambahkan ke Layar Utama. Aktifkan Buka sebagai App Web jika tersedia.'
+          : 'Buka di Chrome, ketuk menu ⋮, lalu pilih Instal aplikasi atau Tambahkan ke layar utama.';
+        help.hidden = !help.hidden;
+        button.setAttribute('aria-expanded', String(!help.hidden));
+      });
+    })();
+  </script>
+  <style>
+    .bns-install:not([hidden]) { padding-block: 8px; }
+    .bns-install button { min-height: 44px; color: #123f5f; font-weight: 700; }
+    .bns-install p { margin: 0 0 8px; color: #25313e; }
+    @media (min-width: 750px) { .bns-install { display: none; } }
+  </style>
+{% endif %}
+{{ content_for_layout }}</main>
 {% render 'shopping-tools' %}
 {% sections 'footer-group' %}
 {% section 'cart-drawer' %}
