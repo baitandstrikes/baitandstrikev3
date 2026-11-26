@@ -180,6 +180,18 @@
     {% assign product_schema = product_schema | remove_first: '{' | prepend: review_properties | prepend: '{' %}
   {% endif %}
 {% endif %}
+{% assign product_schema_description = product.description | strip_html | strip | default: product.seo.description | default: product.title | truncate: 500 %}
+{% assign product_schema_description_json = product_schema_description | json %}
+{% if product_schema contains '"@type":"ProductGroup"' %}
+  {% assign product_group_marker = '"@type":"ProductGroup",' %}
+  {% assign product_group_with_description = '"@type":"ProductGroup","description":' | append: product_schema_description_json | append: ',' %}
+  {% unless product_schema contains '"description":' %}
+    {% assign product_schema = product_schema | replace: product_group_marker, product_group_with_description %}
+  {% endunless %}
+  {% assign variant_product_marker = '"@type":"Product",' %}
+  {% assign variant_product_with_description = '"@type":"Product","description":' | append: product_schema_description_json | append: ',' %}
+  {% assign product_schema = product_schema | replace: variant_product_marker, variant_product_with_description %}
+{% endif %}
 {% if shop.refund_policy != blank %}
   {% assign return_policy_id_json = shop.secure_url | append: "#return-policy" | json %}
   {% assign offer_marker = '"@type":"Offer",' %}
