@@ -180,6 +180,12 @@
     {% assign product_schema = product_schema | remove_first: '{' | prepend: review_properties | prepend: '{' %}
   {% endif %}
 {% endif %}
+{% if shop.refund_policy != blank %}
+  {% assign return_policy_id_json = shop.secure_url | append: "#return-policy" | json %}
+  {% assign offer_marker = '"@type":"Offer",' %}
+  {% assign offer_with_return_policy = '"@type":"Offer","hasMerchantReturnPolicy":{"@id":' | append: return_policy_id_json | append: '},' %}
+  {% assign product_schema = product_schema | replace: offer_marker, offer_with_return_policy %}
+{% endif %}
 <script type="application/ld+json">{{ product_schema }}</script>
 
 {% style %}
