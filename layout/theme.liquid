@@ -24,6 +24,10 @@
   "url": {{ shop.secure_url | json }},
   "hasMerchantReturnPolicy": {
     "@type": "MerchantReturnPolicy",
+    "@id": {{ shop.secure_url | append: "#return-policy" | json }},
+    "applicableCountry": "ID",
+    "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+    "merchantReturnDays": 3,
     "merchantReturnLink": {{ shop.secure_url | append: shop.refund_policy.url | json }}
   }
 }
