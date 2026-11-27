@@ -30,11 +30,11 @@
         "why_heading": "Yang bisa Anda diskusikan dengan tim kami",
         "cta_eyebrow": "PENDAFTARAN MITRA",
         "cta_heading": "Siap mulai kerja sama?",
-        "cta_text": "Isi formulir dengan data usaha dan kontak Anda. Tim kami akan meninjau pendaftaran sebelum membahas kebutuhan bisnis Anda.",
+        "cta_text": "Isi formulir dengan data usaha dan kontak Anda. Tim kami akan meninjau pendaftaran secara manual sebelum persetujuan.",
         "cta_label": "Daftar Jadi Mitra B2B",
-        "primary_link": "/pages/wholesale-registration-form",
+        "primary_link": "/wholesale-signup?sp_menu=wholesale-signup",
         "secondary_link": "/collections/all",
-        "cta_link": "/pages/wholesale-registration-form"
+        "cta_link": "/wholesale-signup?sp_menu=wholesale-signup"
       },
       "blocks": {
         "b4": {

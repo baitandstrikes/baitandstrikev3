@@ -12,18 +12,18 @@
     "contact": {
       "type": "contact",
       "settings": {
-        "title": "Contact Us",
-        "text": "<p>We're here to help with your fishing gear, orders, wholesale inquiries and more.</p>",
-        "info_title": "Our Location",
+        "title": "Hubungi Kami",
+        "text": "<p>Untuk mendaftar sebagai mitra B2B, klik menu <strong>Akun</strong> di bagian atas situs lalu pilih <strong>Daftar B2B</strong>. Untuk pertanyaan tentang produk, pesanan, atau kerja sama, kirim pesan melalui formulir di halaman ini.</p>",
+        "info_title": "Bait & Strike",
         "address": "Jl. Makaliwe Raya No.36, RT.2/RW.5, Grogol, Kec. Grogol Petamburan, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11450",
         "phone": "0877-9536-1519",
-        "hours": "MON — FRI 09:00 — 17:00 · SATURDAY 09:00 — 13:30 · SUNDAY CLOSED",
+        "hours": "Senin–Jumat 09.00–17.00 · Sabtu 09.00–13.30 · Minggu tutup",
         "map_url": "https://www.google.com/maps/search/?api=1&query=Jl.+Makaliwe+Raya+No.36+Jakarta+Barat",
-        "map_label": "GET DIRECTIONS",
+        "map_label": "Petunjuk Arah",
         "whatsapp": "https://wa.me/6287795361519",
-        "whatsapp_label": "CHAT ON WHATSAPP",
-        "form_heading": "Send Us Your Question",
-        "success_message": "Thank you. Your message has been sent."
+        "whatsapp_label": "Chat via WhatsApp",
+        "form_heading": "Kirim Pertanyaan",
+        "success_message": "Terima kasih. Pesan Anda sudah dikirim."
       }
     }
   },

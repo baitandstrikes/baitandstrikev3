@@ -65,6 +65,7 @@ const request = async (url, options = {}) => {
 };
 const parseHTML = (html) => new DOMParser().parseFromString(html, 'text/html');
 const lockBody = () => document.body.classList.toggle('dialog-open', Boolean(document.querySelector('dialog[open]')));
+window.addEventListener('click', (event) => { const target = event.target; const signupLink = target instanceof Element ? target.closest('a[href*="wholesale-signup"]') : null; if (!signupLink) return; const accountDialog = document.getElementById('AccountDialog'); if (accountDialog?.open) { accountDialog.close(); lockBody(); } }, true);
 const openDialog = (dialog) => {
  if (!dialog) return;
  document.querySelectorAll('dialog[open]').forEach(el => { if (el !== dialog) el.close(); });
