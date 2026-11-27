@@ -61,7 +61,7 @@
 <button type="button" class="dialog-close icon-button" data-close-dialog aria-label="{{ 'general.close' | t }}">{% render 'icon', name: 'close' %}</button>
 <h2 id="AccountDialogTitle">{{ 'general.account' | t }}</h2>
 {% if customer %}<p>{{ customer.first_name | escape }}</p><a class="button" href="{{ routes.account_url }}">{{ 'customer_access.orders' | t }}</a><a class="text-link" href="{{ routes.account_logout_url }}">{{ 'general.logout' | t }}</a>
-{% else %}<p>{{ 'customer_access.dialog_intro' | t }}</p><a class="button" href="{{ routes.account_login_url }}">{{ 'customer_access.login_button' | t }}</a>{% endif %}
+{% else %}<p>{{ 'customer_access.dialog_intro' | t }}</p><a class="button" href="{{ routes.account_login_url }}">{{ 'customer_access.login_button' | t }}</a>{% endif %}<a class="text-link" href="/wholesale-signup?sp_menu=wholesale-signup">Daftar B2B</a>
 </dialog>
 {% endif %}
 {% schema %}
