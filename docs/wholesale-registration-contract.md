@@ -18,7 +18,7 @@ The browser sends an `application/x-www-form-urlencoded` POST to the section set
 - `privacy_consent=yes`
 - `source=wholesale-registration-form` and `form_version=1` (untrusted metadata; never use these for authorization)
 
-The backend must validate and allowlist fields, apply anti-spam/rate limits, store a pending verification challenge, and send a one-time email code. It must not create or link a customer, approve an application, or trust browser-supplied tags/status at this stage.
+The backend must validate and allowlist fields, require `privacy_consent=yes`, apply anti-spam/rate limits, store a pending verification challenge, and send a one-time email code. It must not create or link a customer, approve an application, or trust browser-supplied tags/status at this stage.
 
 Success response (HTTP 200 or 202, JSON):
 
