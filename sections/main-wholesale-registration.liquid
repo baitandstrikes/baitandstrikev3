@@ -121,7 +121,7 @@
     </form>
   </div>
 
-  <div class="wholesale-registration__complete" data-wholesale-step="complete" role="status" aria-live="polite" aria-atomic="true" hidden>
+  <div class="wholesale-registration__complete" data-wholesale-step="complete" hidden>
     <h2 tabindex="-1">{{ 'wholesale_registration.complete_title' | t }}</h2>
     <p>{{ 'wholesale_registration.complete_message' | t }}</p>
   </div>
@@ -209,7 +209,12 @@
     };
 
     const setBusy = (form, busy, button, label) => {
-      form.setAttribute('aria-busy', busy ? 'true' : 'false');
+      form.dataset.busy = busy ? 'true' : 'false';
+      if (busy) form.setAttribute('aria-busy', 'true');
+      else form.removeAttribute('aria-busy');
+      form.querySelectorAll('button').forEach((control) => {
+        control.disabled = busy;
+      });
       if (button) {
         if (busy) {
           button.dataset.defaultLabel = button.textContent;
@@ -218,12 +223,12 @@
           button.textContent = button.dataset.defaultLabel;
           delete button.dataset.defaultLabel;
         }
-        button.disabled = busy;
       }
     };
 
     submitForm.addEventListener('submit', async (event) => {
       event.preventDefault();
+      if (submitForm.dataset.busy === 'true') return;
       announce(status, submitForm.dataset.sending);
       const button = submitForm.querySelector('[type="submit"]');
       setBusy(submitForm, true, button, submitForm.dataset.buttonSending);
@@ -245,9 +250,10 @@
 
     verifyForm.addEventListener('submit', async (event) => {
       event.preventDefault();
+      if (verifyForm.dataset.busy === 'true') return;
       const button = verifyForm.querySelector('[data-verify-submit]');
       setBusy(verifyForm, true, button, button.dataset.sendingLabel);
-      announce(status, '{{ "wholesale_registration.verifying" | t | escape }}');
+      announce(status, {{ 'wholesale_registration.verifying' | t | json }});
       try {
         await send(verifyEndpoint, {
           challenge_id: challengeId,
@@ -258,30 +264,32 @@
         completeStep.hidden = false;
         verifyForm.reset();
         challengeId = '';
-        announce(status, '{{ "wholesale_registration.complete_message" | t | escape }}');
+        announce(status, '');
         requestAnimationFrame(() => completeHeading.focus());
       } catch (_) {
-        announce(error, '{{ "wholesale_registration.code_error" | t | escape }}');
+        announce(error, {{ 'wholesale_registration.code_error' | t | json }});
       } finally {
         setBusy(verifyForm, false, button);
       }
     });
 
     root.querySelector('[data-wholesale-resend]').addEventListener('click', async (event) => {
+      if (verifyForm.dataset.busy === 'true') return;
       const button = event.currentTarget;
       setBusy(verifyForm, true, button, button.dataset.sendingLabel);
-      announce(status, '{{ "wholesale_registration.sending" | t | escape }}');
+      announce(status, {{ 'wholesale_registration.sending' | t | json }});
       try {
         await send(verifyEndpoint, {challenge_id: challengeId, action: 'resend'});
-        announce(status, '{{ "wholesale_registration.resent" | t | escape }}');
+        announce(status, {{ 'wholesale_registration.resent' | t | json }});
       } catch (_) {
-        announce(error, '{{ "wholesale_registration.error" | t | escape }}');
+        announce(error, {{ 'wholesale_registration.error' | t | json }});
       } finally {
         setBusy(verifyForm, false, button);
       }
     });
 
     root.querySelector('[data-wholesale-edit]').addEventListener('click', () => {
+      if (verifyForm.dataset.busy === 'true') return;
       verifyStep.hidden = true;
       detailsStep.hidden = false;
       challengeId = '';
