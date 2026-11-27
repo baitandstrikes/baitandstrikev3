@@ -122,7 +122,7 @@
   </div>
 
   <div class="wholesale-registration__complete" data-wholesale-step="complete" role="status" aria-live="polite" aria-atomic="true" hidden>
-    <h2>{{ 'wholesale_registration.complete_title' | t }}</h2>
+    <h2 tabindex="-1">{{ 'wholesale_registration.complete_title' | t }}</h2>
     <p>{{ 'wholesale_registration.complete_message' | t }}</p>
   </div>
 
@@ -177,6 +177,7 @@
     const error = root.querySelector('[data-wholesale-error]');
     const emailLabel = root.querySelector('[data-wholesale-email]');
     const codeInput = root.querySelector('[name="verification_code"]');
+    const completeHeading = completeStep.querySelector('h2');
     const verifyEndpoint = submitForm.dataset.verifyEndpoint;
     let challengeId = '';
     let announcementFrame = 0;
@@ -258,6 +259,7 @@
         verifyForm.reset();
         challengeId = '';
         announce(status, '{{ "wholesale_registration.complete_message" | t | escape }}');
+        requestAnimationFrame(() => completeHeading.focus());
       } catch (_) {
         announce(error, '{{ "wholesale_registration.code_error" | t | escape }}');
       } finally {

@@ -258,7 +258,21 @@
     "privacy_note": "I agree to the use of this information to review my wholesale application and have read the",
     "privacy_policy": "Privacy Policy",
     "submit": "Submit application",
-    "wholesale_link": "Apply for wholesale partnership"
+    "wholesale_link": "Apply for wholesale partnership",
+    "sending": "Sending...",
+    "email_sent": "A verification code has been sent. Check your email.",
+    "error": "We could not process that request. Check your connection and try again.",
+    "verify_title": "Verify your email",
+    "verify_intro": "Enter the 6-digit code we sent to",
+    "verification_code": "Verification code",
+    "verify": "Verify email",
+    "verifying": "Checking code...",
+    "resend_code": "Resend code",
+    "edit_details": "Edit details",
+    "complete_title": "Application submitted",
+    "complete_message": "Your email is verified. The wholesale application is waiting for review by the Bait & Strike team.",
+    "code_error": "That code is invalid or expired. Check your email and try again.",
+    "resent": "A new verification code has been sent."
   },
   "customer_access": {
     "dialog_intro": "Sign in to your customer account or apply for a wholesale partnership.",

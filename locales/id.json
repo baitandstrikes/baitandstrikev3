@@ -282,7 +282,21 @@
     "privacy_note": "Saya menyetujui penggunaan data ini untuk memproses pendaftaran kemitraan dan telah membaca",
     "privacy_policy": "Kebijakan Privasi",
     "submit": "Kirim pengajuan",
-    "wholesale_link": "Daftar sebagai mitra wholesale"
+    "wholesale_link": "Daftar sebagai mitra wholesale",
+    "sending": "Sedang mengirim...",
+    "email_sent": "Kode verifikasi sudah dikirim. Periksa email kamu.",
+    "error": "Belum berhasil memproses permintaan. Periksa koneksi lalu coba lagi.",
+    "verify_title": "Verifikasi email",
+    "verify_intro": "Masukkan kode 6 digit yang kami kirim ke",
+    "verification_code": "Kode verifikasi",
+    "verify": "Verifikasi email",
+    "verifying": "Memeriksa kode...",
+    "resend_code": "Kirim ulang kode",
+    "edit_details": "Ubah data",
+    "complete_title": "Pengajuan berhasil dikirim",
+    "complete_message": "Email terverifikasi. Pengajuan kemitraanmu sedang menunggu peninjauan tim Bait & Strike.",
+    "code_error": "Kode tidak valid atau sudah kedaluwarsa. Periksa email lalu coba lagi.",
+    "resent": "Kode verifikasi baru sudah dikirim."
   },
   "customer_access": {
     "dialog_intro": "Masuk ke akun pelanggan atau ajukan kemitraan wholesale.",
