@@ -1,14 +1,16 @@
 {% assign submit_endpoint = section.settings.submit_endpoint | strip %}
-{% assign endpoint_prefix = submit_endpoint | slice: 0, 6 %}
+{% assign verify_endpoint = section.settings.verify_endpoint | strip %}
+{% assign submit_prefix = submit_endpoint | slice: 0, 6 %}
+{% assign verify_prefix = verify_endpoint | slice: 0, 6 %}
 {% assign endpoint_ready = false %}
-{% if endpoint_prefix == '/apps/' %}
+{% if submit_prefix == '/apps/' and verify_prefix == '/apps/' %}
   {% assign endpoint_ready = true %}
 {% endif %}
 
-<section class="section wrap wholesale-registration" aria-labelledby="WholesaleRegistrationHeading">
+<section class="section wrap wholesale-registration" data-wholesale-registration aria-labelledby="WholesaleRegistrationHeading-{{ section.id }}" data-endpoints-ready="{{ endpoint_ready }}">
   <div class="wholesale-registration__intro">
     <p class="eyebrow">{{ 'wholesale_registration.eyebrow' | t }}</p>
-    <h1 id="WholesaleRegistrationHeading">
+    <h1 id="WholesaleRegistrationHeading-{{ section.id }}">
       {% if section.settings.heading != blank %}
         {{ section.settings.heading | escape }}
       {% else %}
@@ -23,92 +25,109 @@
   </div>
 
   {% unless endpoint_ready %}
-    <div id="WholesaleRegistrationNotice" class="wholesale-registration__notice" role="status">
+    <div id="WholesaleRegistrationNotice-{{ section.id }}" class="wholesale-registration__notice" role="status">
       <strong>{{ 'wholesale_registration.endpoint_missing_title' | t }}</strong>
       <p>{{ 'wholesale_registration.endpoint_missing' | t }} <a href="{{ routes.contact_url }}">{{ 'wholesale_registration.contact_link' | t }}</a>.</p>
     </div>
   {% endunless %}
 
-  <form class="wholesale-registration__form" {% if endpoint_ready %}action="{{ submit_endpoint | escape }}" method="post"{% else %}action="#" method="post" onsubmit="return false;" aria-describedby="WholesaleRegistrationNotice"{% endif %}>
-    {% unless endpoint_ready %}<fieldset disabled>{% endunless %}
-      <input type="hidden" name="source" value="wholesale-registration-form">
-      <input type="hidden" name="form_version" value="1">
+  <div class="wholesale-registration__card" data-wholesale-step="details">
+    <form class="wholesale-registration__form" {% if endpoint_ready %}action="{{ submit_endpoint | escape }}" method="post"{% else %}action="#" method="post" onsubmit="return false;" aria-describedby="WholesaleRegistrationNotice-{{ section.id }}"{% endif %} data-wholesale-submit data-verify-endpoint="{{ verify_endpoint | escape }}" data-endpoints-ready="{{ endpoint_ready }}" data-sending="{{ 'wholesale_registration.sending' | t | escape }}" data-success="{{ 'wholesale_registration.email_sent' | t | escape }}" data-error="{{ 'wholesale_registration.error' | t | escape }}" data-button-sending="{{ 'wholesale_registration.sending' | t | escape }}">
+      {% unless endpoint_ready %}<fieldset disabled>{% endunless %}
+        <input type="hidden" name="source" value="wholesale-registration-form">
+        <input type="hidden" name="form_version" value="1">
+        <p class="wholesale-registration__required-note">{{ 'wholesale_registration.required_note' | t }}</p>
 
-      <p class="wholesale-registration__required-note">{{ 'wholesale_registration.required_note' | t }}</p>
-
-      <div class="wholesale-registration__grid">
-        <div class="wholesale-registration__field">
-          <label for="WholesaleBusinessName-{{ section.id }}">{{ 'wholesale_registration.business_name' | t }} <span aria-hidden="true">*</span></label>
-          <input id="WholesaleBusinessName-{{ section.id }}" name="business_name" type="text" autocomplete="organization" required>
+        <div class="wholesale-registration__grid">
+          <div class="wholesale-registration__field">
+            <label for="WholesaleBusinessName-{{ section.id }}">{{ 'wholesale_registration.business_name' | t }} <span aria-hidden="true">*</span></label>
+            <input id="WholesaleBusinessName-{{ section.id }}" name="business_name" type="text" autocomplete="organization" required>
+          </div>
+          <div class="wholesale-registration__field">
+            <label for="WholesaleContactName-{{ section.id }}">{{ 'wholesale_registration.contact_name' | t }} <span aria-hidden="true">*</span></label>
+            <input id="WholesaleContactName-{{ section.id }}" name="contact_name" type="text" autocomplete="name" required>
+          </div>
+          <div class="wholesale-registration__field">
+            <label for="WholesaleEmail-{{ section.id }}">{{ 'wholesale_registration.email' | t }} <span aria-hidden="true">*</span></label>
+            <input id="WholesaleEmail-{{ section.id }}" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="wholesale-registration__field">
+            <label for="WholesalePhone-{{ section.id }}">{{ 'wholesale_registration.phone' | t }} <span aria-hidden="true">*</span></label>
+            <input id="WholesalePhone-{{ section.id }}" name="phone" type="tel" autocomplete="tel" required>
+          </div>
+          <div class="wholesale-registration__field">
+            <label for="WholesaleBusinessType-{{ section.id }}">{{ 'wholesale_registration.business_type' | t }} <span aria-hidden="true">*</span></label>
+            <select id="WholesaleBusinessType-{{ section.id }}" name="business_type" required>
+              <option value="" selected disabled>{{ 'wholesale_registration.business_type_placeholder' | t }}</option>
+              <option value="physical_store">{{ 'wholesale_registration.business_type_physical' | t }}</option>
+              <option value="online_store">{{ 'wholesale_registration.business_type_online' | t }}</option>
+              <option value="reseller">{{ 'wholesale_registration.business_type_reseller' | t }}</option>
+              <option value="marketplace">{{ 'wholesale_registration.business_type_marketplace' | t }}</option>
+              <option value="other">{{ 'wholesale_registration.business_type_other' | t }}</option>
+            </select>
+          </div>
+          <div class="wholesale-registration__field wholesale-registration__field--wide">
+            <label for="WholesaleAddress-{{ section.id }}">{{ 'wholesale_registration.address' | t }} <span aria-hidden="true">*</span></label>
+            <textarea id="WholesaleAddress-{{ section.id }}" name="address" rows="3" autocomplete="street-address" required></textarea>
+          </div>
+          <div class="wholesale-registration__field">
+            <label for="WholesaleCity-{{ section.id }}">{{ 'wholesale_registration.city' | t }} <span aria-hidden="true">*</span></label>
+            <input id="WholesaleCity-{{ section.id }}" name="city" type="text" autocomplete="address-level2" required>
+          </div>
+          <div class="wholesale-registration__field">
+            <label for="WholesaleStoreUrl-{{ section.id }}">{{ 'wholesale_registration.store_url' | t }}</label>
+            <input id="WholesaleStoreUrl-{{ section.id }}" name="store_url" type="url" autocomplete="url">
+          </div>
+          <div class="wholesale-registration__field wholesale-registration__field--wide">
+            <label for="WholesaleEstimate-{{ section.id }}">{{ 'wholesale_registration.purchase_estimate' | t }}</label>
+            <input id="WholesaleEstimate-{{ section.id }}" name="purchase_estimate" type="text">
+          </div>
         </div>
 
-        <div class="wholesale-registration__field">
-          <label for="WholesaleContactName-{{ section.id }}">{{ 'wholesale_registration.contact_name' | t }} <span aria-hidden="true">*</span></label>
-          <input id="WholesaleContactName-{{ section.id }}" name="contact_name" type="text" autocomplete="name" required>
+        <div class="wholesale-registration__consent">
+          <input id="WholesaleConsent-{{ section.id }}" name="privacy_consent" type="checkbox" value="yes" required>
+          <label for="WholesaleConsent-{{ section.id }}">
+            {{ 'wholesale_registration.privacy_note' | t }}
+            {% if shop.privacy_policy.url != blank %}
+              <a href="{{ shop.privacy_policy.url }}">{{ 'wholesale_registration.privacy_policy' | t }}</a>.
+            {% else %}
+              {{ 'wholesale_registration.privacy_policy' | t }}.
+            {% endif %}
+          </label>
         </div>
 
-        <div class="wholesale-registration__field">
-          <label for="WholesaleEmail-{{ section.id }}">{{ 'wholesale_registration.email' | t }} <span aria-hidden="true">*</span></label>
-          <input id="WholesaleEmail-{{ section.id }}" name="email" type="email" autocomplete="email" required>
-        </div>
+        {% if endpoint_ready %}
+          <button class="button wholesale-registration__submit" type="submit">{{ 'wholesale_registration.submit' | t }}</button>
+        {% else %}
+          <button class="button wholesale-registration__submit" type="button" disabled>{{ 'wholesale_registration.submit' | t }}</button>
+        {% endif %}
+      {% unless endpoint_ready %}</fieldset>{% endunless %}
+    </form>
+  </div>
 
-        <div class="wholesale-registration__field">
-          <label for="WholesalePhone-{{ section.id }}">{{ 'wholesale_registration.phone' | t }} <span aria-hidden="true">*</span></label>
-          <input id="WholesalePhone-{{ section.id }}" name="phone" type="tel" autocomplete="tel" required>
-        </div>
-
-        <div class="wholesale-registration__field">
-          <label for="WholesaleBusinessType-{{ section.id }}">{{ 'wholesale_registration.business_type' | t }} <span aria-hidden="true">*</span></label>
-          <select id="WholesaleBusinessType-{{ section.id }}" name="business_type" required>
-            <option value="" selected disabled>{{ 'wholesale_registration.business_type_placeholder' | t }}</option>
-            <option value="physical_store">{{ 'wholesale_registration.business_type_physical' | t }}</option>
-            <option value="online_store">{{ 'wholesale_registration.business_type_online' | t }}</option>
-            <option value="reseller">{{ 'wholesale_registration.business_type_reseller' | t }}</option>
-            <option value="marketplace">{{ 'wholesale_registration.business_type_marketplace' | t }}</option>
-            <option value="other">{{ 'wholesale_registration.business_type_other' | t }}</option>
-          </select>
-        </div>
-
-        <div class="wholesale-registration__field wholesale-registration__field--wide">
-          <label for="WholesaleAddress-{{ section.id }}">{{ 'wholesale_registration.address' | t }} <span aria-hidden="true">*</span></label>
-          <textarea id="WholesaleAddress-{{ section.id }}" name="address" rows="3" autocomplete="street-address" required></textarea>
-        </div>
-
-        <div class="wholesale-registration__field">
-          <label for="WholesaleCity-{{ section.id }}">{{ 'wholesale_registration.city' | t }} <span aria-hidden="true">*</span></label>
-          <input id="WholesaleCity-{{ section.id }}" name="city" type="text" autocomplete="address-level2" required>
-        </div>
-
-        <div class="wholesale-registration__field">
-          <label for="WholesaleStoreUrl-{{ section.id }}">{{ 'wholesale_registration.store_url' | t }}</label>
-          <input id="WholesaleStoreUrl-{{ section.id }}" name="store_url" type="url" autocomplete="url">
-        </div>
-
-        <div class="wholesale-registration__field wholesale-registration__field--wide">
-          <label for="WholesaleEstimate-{{ section.id }}">{{ 'wholesale_registration.purchase_estimate' | t }}</label>
-          <input id="WholesaleEstimate-{{ section.id }}" name="purchase_estimate" type="text">
-        </div>
+  <div class="wholesale-registration__card" data-wholesale-step="verify" hidden>
+    <h2>{{ 'wholesale_registration.verify_title' | t }}</h2>
+    <p>{{ 'wholesale_registration.verify_intro' | t }} <strong data-wholesale-email></strong></p>
+    <form class="wholesale-registration__form wholesale-registration__verify-form" data-wholesale-verify>
+      <div class="wholesale-registration__field">
+        <label for="WholesaleCode-{{ section.id }}">{{ 'wholesale_registration.verification_code' | t }}</label>
+        <input id="WholesaleCode-{{ section.id }}" name="verification_code" type="text" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" maxlength="6" required>
       </div>
-
-      <div class="wholesale-registration__consent">
-        <input id="WholesaleConsent-{{ section.id }}" name="privacy_consent" type="checkbox" value="yes" required>
-        <label for="WholesaleConsent-{{ section.id }}">
-          {{ 'wholesale_registration.privacy_note' | t }}
-          {% if shop.privacy_policy.url != blank %}
-            <a href="{{ shop.privacy_policy.url }}">{{ 'wholesale_registration.privacy_policy' | t }}</a>.
-          {% else %}
-            {{ 'wholesale_registration.privacy_policy' | t }}.
-          {% endif %}
-        </label>
+      <div class="wholesale-registration__actions">
+        <button class="button" type="submit" data-verify-submit data-default-label="{{ 'wholesale_registration.verify' | t | escape }}" data-sending-label="{{ 'wholesale_registration.verifying' | t | escape }}">{{ 'wholesale_registration.verify' | t }}</button>
+        <button class="text-link" type="button" data-wholesale-resend data-sending-label="{{ 'wholesale_registration.sending' | t | escape }}">{{ 'wholesale_registration.resend_code' | t }}</button>
+        <button class="text-link" type="button" data-wholesale-edit>{{ 'wholesale_registration.edit_details' | t }}</button>
       </div>
+    </form>
+  </div>
 
-      {% if endpoint_ready %}
-        <button class="button wholesale-registration__submit" type="submit">{{ 'wholesale_registration.submit' | t }}</button>
-      {% else %}
-        <button class="button wholesale-registration__submit" type="button" disabled>{{ 'wholesale_registration.submit' | t }}</button>
-      {% endif %}
-    {% unless endpoint_ready %}</fieldset>{% endunless %}
-  </form>
+  <div class="wholesale-registration__complete" data-wholesale-step="complete" role="status" aria-live="polite" aria-atomic="true" hidden>
+    <h2>{{ 'wholesale_registration.complete_title' | t }}</h2>
+    <p>{{ 'wholesale_registration.complete_message' | t }}</p>
+  </div>
+
+  <p class="wholesale-registration__status" data-wholesale-status role="status" aria-live="polite" aria-atomic="true"></p>
+  <p class="wholesale-registration__error" data-wholesale-error role="alert" aria-atomic="true" hidden></p>
 </section>
 
 <style>
@@ -120,7 +139,7 @@
   .wholesale-registration__notice{max-width:760px;margin:0 auto 24px;padding:16px 18px;border:1px solid #d8e6ed;background:#f1f8fb;color:#123f5f}
   .wholesale-registration__notice p{margin:4px 0 0}
   .wholesale-registration__notice a{text-decoration:underline;text-underline-offset:3px}
-  .wholesale-registration__form{max-width:760px;margin-inline:auto;padding:clamp(22px,4vw,42px);border:1px solid #dce4e8;background:var(--paper,#fff);box-shadow:0 16px 48px #123f5f0c}
+  .wholesale-registration__card{max-width:760px;margin-inline:auto;padding:clamp(22px,4vw,42px);border:1px solid #dce4e8;background:var(--paper,#fff);box-shadow:0 16px 48px #123f5f0c}
   .wholesale-registration__form fieldset{min-width:0;margin:0;padding:0;border:0}
   .wholesale-registration__required-note{margin-bottom:20px;color:#52626c;font-size:13px}
   .wholesale-registration__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
@@ -135,8 +154,142 @@
   .wholesale-registration__consent input{width:18px;height:18px;margin:2px 0 0;accent-color:var(--accent,#3282c0)}
   .wholesale-registration__consent label a{text-decoration:underline;text-underline-offset:3px}
   .wholesale-registration__submit{width:100%;margin-top:24px}
-  @media(max-width:749px){.wholesale-registration{padding-block:36px 48px}.wholesale-registration__grid{grid-template-columns:1fr;gap:16px}.wholesale-registration__field--wide{grid-column:auto}.wholesale-registration__form{padding:22px 18px}}
+  .wholesale-registration__verify-form{max-width:460px}
+  .wholesale-registration__verify-form input{text-align:center;font-size:22px;letter-spacing:.25em}
+  .wholesale-registration__actions{display:flex;flex-wrap:wrap;gap:18px;align-items:center;margin-top:22px}
+  .wholesale-registration__complete{max-width:760px;margin-inline:auto;padding:clamp(22px,4vw,42px);border:1px solid #b8dfc5;background:#f0fbf3;color:#14532d}
+  .wholesale-registration__status,.wholesale-registration__error{max-width:760px;margin:16px auto 0}
+  .wholesale-registration__error{color:#b42318}
+  @media(max-width:749px){.wholesale-registration{padding-block:36px 48px}.wholesale-registration__grid{grid-template-columns:1fr;gap:16px}.wholesale-registration__field--wide{grid-column:auto}.wholesale-registration__card{padding:22px 18px}.wholesale-registration__actions{align-items:stretch;flex-direction:column}.wholesale-registration__actions .button{width:100%}}
 </style>
+
+<script>
+  (() => {
+    const root = document.querySelector('[data-wholesale-registration][data-endpoints-ready="true"]');
+    if (!root) return;
+
+    const detailsStep = root.querySelector('[data-wholesale-step="details"]');
+    const verifyStep = root.querySelector('[data-wholesale-step="verify"]');
+    const completeStep = root.querySelector('[data-wholesale-step="complete"]');
+    const submitForm = root.querySelector('[data-wholesale-submit]');
+    const verifyForm = root.querySelector('[data-wholesale-verify]');
+    const status = root.querySelector('[data-wholesale-status]');
+    const error = root.querySelector('[data-wholesale-error]');
+    const emailLabel = root.querySelector('[data-wholesale-email]');
+    const codeInput = root.querySelector('[name="verification_code"]');
+    const verifyEndpoint = submitForm.dataset.verifyEndpoint;
+    let challengeId = '';
+    let announcementFrame = 0;
+
+    const announce = (target, message) => {
+      if (announcementFrame) cancelAnimationFrame(announcementFrame);
+      status.textContent = '';
+      error.textContent = '';
+      error.hidden = true;
+      announcementFrame = requestAnimationFrame(() => {
+        target.textContent = message;
+        if (target === error) error.hidden = false;
+      });
+    };
+
+    const send = async (endpoint, payload) => {
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+        },
+        body: new URLSearchParams(payload)
+      });
+      const result = await response.json();
+      if (!response.ok || result.ok !== true) throw new Error('request_failed');
+      return result;
+    };
+
+    const setBusy = (form, busy, button, label) => {
+      form.setAttribute('aria-busy', busy ? 'true' : 'false');
+      if (button) {
+        if (busy) {
+          button.dataset.defaultLabel = button.textContent;
+          button.textContent = label;
+        } else if (button.dataset.defaultLabel) {
+          button.textContent = button.dataset.defaultLabel;
+          delete button.dataset.defaultLabel;
+        }
+        button.disabled = busy;
+      }
+    };
+
+    submitForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      announce(status, submitForm.dataset.sending);
+      const button = submitForm.querySelector('[type="submit"]');
+      setBusy(submitForm, true, button, submitForm.dataset.buttonSending);
+      try {
+        const result = await send(submitForm.action, new FormData(submitForm));
+        if (typeof result.challenge_id !== 'string' || !result.challenge_id) throw new Error('challenge_missing');
+        challengeId = result.challenge_id;
+        emailLabel.textContent = submitForm.elements.email.value.trim();
+        detailsStep.hidden = true;
+        verifyStep.hidden = false;
+        announce(status, submitForm.dataset.success);
+        requestAnimationFrame(() => codeInput.focus());
+      } catch (_) {
+        announce(error, submitForm.dataset.error);
+      } finally {
+        setBusy(submitForm, false, button);
+      }
+    });
+
+    verifyForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const button = verifyForm.querySelector('[data-verify-submit]');
+      setBusy(verifyForm, true, button, button.dataset.sendingLabel);
+      announce(status, '{{ "wholesale_registration.verifying" | t | escape }}');
+      try {
+        await send(verifyEndpoint, {
+          challenge_id: challengeId,
+          verification_code: codeInput.value.trim(),
+          action: 'verify'
+        });
+        verifyStep.hidden = true;
+        completeStep.hidden = false;
+        verifyForm.reset();
+        challengeId = '';
+        announce(status, '{{ "wholesale_registration.complete_message" | t | escape }}');
+      } catch (_) {
+        announce(error, '{{ "wholesale_registration.code_error" | t | escape }}');
+      } finally {
+        setBusy(verifyForm, false, button);
+      }
+    });
+
+    root.querySelector('[data-wholesale-resend]').addEventListener('click', async (event) => {
+      const button = event.currentTarget;
+      setBusy(verifyForm, true, button, button.dataset.sendingLabel);
+      announce(status, '{{ "wholesale_registration.sending" | t | escape }}');
+      try {
+        await send(verifyEndpoint, {challenge_id: challengeId, action: 'resend'});
+        announce(status, '{{ "wholesale_registration.resent" | t | escape }}');
+      } catch (_) {
+        announce(error, '{{ "wholesale_registration.error" | t | escape }}');
+      } finally {
+        setBusy(verifyForm, false, button);
+      }
+    });
+
+    root.querySelector('[data-wholesale-edit]').addEventListener('click', () => {
+      verifyStep.hidden = true;
+      detailsStep.hidden = false;
+      challengeId = '';
+      codeInput.value = '';
+      announce(status, '');
+      const emailInput = submitForm.elements.email;
+      requestAnimationFrame(() => emailInput.focus());
+    });
+  })();
+</script>
 
 {% schema %}
 {
@@ -157,8 +310,14 @@
     {
       "type": "text",
       "id": "submit_endpoint",
-      "label": "App Proxy submit path",
-      "info": "Kosongkan sampai backend siap. Gunakan path satu asal toko yang dimulai dengan /apps/."
+      "label": "Submit endpoint (App Proxy path)",
+      "info": "Kosongkan sampai backend siap. Gunakan path toko yang dimulai dengan /apps/."
+    },
+    {
+      "type": "text",
+      "id": "verify_endpoint",
+      "label": "Verify endpoint (App Proxy path)",
+      "info": "Kosongkan sampai endpoint verifikasi tersedia. Gunakan path toko yang dimulai dengan /apps/."
     }
   ]
 }
