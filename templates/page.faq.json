@@ -39,8 +39,8 @@
         "faq_b2bLogin": {
           "type": "question",
           "settings": {
-            "question": "Bagaimana cara masuk ke akun B2B?",
-            "answer": "<p>Buka <a href=\"/pages/b2b-login\">Login B2B</a> dan gunakan email yang terdaftar. Ikuti petunjuk masuk dan masukkan kode verifikasi yang dikirim ke emailmu.</p>",
+            "question": "Bagaimana cara masuk ke akun Bait &amp; Strike?",
+            "answer": "<p>Buka <a href=\"/account/login\">halaman Masuk Akun</a> dan gunakan email yang terdaftar. Ikuti petunjuk masuk dan masukkan kode verifikasi yang dikirim ke emailmu.</p>",
             "topic": "akun"
           }
         },

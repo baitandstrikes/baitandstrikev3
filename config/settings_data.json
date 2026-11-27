@@ -28,7 +28,7 @@
     "blocks": {
       "13759667579245410970": {
         "type": "shopify://apps/bmt-b2b-wholesale/blocks/app-embed/f476de00-6707-40af-8cee-f53b60634fe3",
-        "disabled": false,
+        "disabled": true,
         "settings": {
           "enable_modification": true
         }

@@ -1,4 +1,15 @@
-<section class="section wrap auth-page"><h1>{{ 'general.login' | t }}</h1>{% form 'customer_login' %}{{ form.errors | default_errors }}<label for="LoginEmail">{{ 'general.email' | t }}</label><input id="LoginEmail" type="email" name="customer[email]" autocomplete="email" required><label for="LoginPassword">{{ 'general.password' | t }}</label><input id="LoginPassword" type="password" name="customer[password]" autocomplete="current-password" required><button class="button">{{ 'general.login' | t }}</button>{% endform %}<a class="text-link" href="{{ routes.account_register_url }}">{{ 'general.register' | t }}</a><details class="recover"><summary>{{ 'general.forgot' | t }}</summary>{% form 'recover_customer_password' %}{{ form.errors | default_errors }}{% if form.posted_successfully? %}<p role="status">{{ 'customer.recover_ok' | t }}</p>{% endif %}<label for="RecoverEmail">{{ 'general.email' | t }}</label><input id="RecoverEmail" name="email" type="email" autocomplete="email" required><button class="button">{{ 'general.submit' | t }}</button>{% endform %}</details></section>
+<section class="section wrap account-access" aria-labelledby="AccountLoginHeading">
+  <div class="account-access__card">
+    <p class="eyebrow">{{ 'customer_access.login_eyebrow' | t }}</p>
+    <h1 id="AccountLoginHeading">{{ 'customer_access.login_title' | t }}</h1>
+    <p class="account-access__copy">{{ 'customer_access.login_intro' | t }}</p>
+    <div class="account-access__actions">
+      <a class="button" href="{{ routes.account_login_url }}">{{ 'customer_access.login_button' | t }}</a>
+      <a class="text-link" href="{{ pages['wholesale-registration-form'].url | default: '/pages/wholesale-registration-form' }}">{{ 'wholesale_registration.wholesale_link' | t }}</a>
+    </div>
+    <p class="account-access__note">{{ 'customer_access.login_note' | t }}</p>
+  </div>
+</section>
 {% schema %}
 {
   "name": "Main Login",
