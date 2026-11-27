@@ -23,7 +23,7 @@
   </div>
 
   {% unless endpoint_ready %}
-    <div class="wholesale-registration__notice" role="status">
+    <div id="WholesaleRegistrationNotice" class="wholesale-registration__notice" role="status">
       <strong>{{ 'wholesale_registration.endpoint_missing_title' | t }}</strong>
       <p>{{ 'wholesale_registration.endpoint_missing' | t }} <a href="{{ routes.contact_url }}">{{ 'wholesale_registration.contact_link' | t }}</a>.</p>
     </div>
