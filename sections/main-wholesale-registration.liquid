@@ -1,0 +1,165 @@
+{% assign submit_endpoint = section.settings.submit_endpoint | strip %}
+{% assign endpoint_prefix = submit_endpoint | slice: 0, 6 %}
+{% assign endpoint_ready = false %}
+{% if endpoint_prefix == '/apps/' %}
+  {% assign endpoint_ready = true %}
+{% endif %}
+
+<section class="section wrap wholesale-registration" aria-labelledby="WholesaleRegistrationHeading">
+  <div class="wholesale-registration__intro">
+    <p class="eyebrow">{{ 'wholesale_registration.eyebrow' | t }}</p>
+    <h1 id="WholesaleRegistrationHeading">
+      {% if section.settings.heading != blank %}
+        {{ section.settings.heading | escape }}
+      {% else %}
+        {{ 'wholesale_registration.title' | t }}
+      {% endif %}
+    </h1>
+    {% if section.settings.intro != blank %}
+      <div class="wholesale-registration__lead rte">{{ section.settings.intro }}</div>
+    {% else %}
+      <p class="wholesale-registration__lead">{{ 'wholesale_registration.intro' | t }}</p>
+    {% endif %}
+  </div>
+
+  {% unless endpoint_ready %}
+    <div class="wholesale-registration__notice" role="status">
+      <strong>{{ 'wholesale_registration.endpoint_missing_title' | t }}</strong>
+      <p>{{ 'wholesale_registration.endpoint_missing' | t }} <a href="{{ routes.contact_url }}">{{ 'wholesale_registration.contact_link' | t }}</a>.</p>
+    </div>
+  {% endunless %}
+
+  <form class="wholesale-registration__form" {% if endpoint_ready %}action="{{ submit_endpoint | escape }}" method="post"{% else %}action="#" method="post" onsubmit="return false;" aria-describedby="WholesaleRegistrationNotice"{% endif %}>
+    {% unless endpoint_ready %}<fieldset disabled>{% endunless %}
+      <input type="hidden" name="source" value="wholesale-registration-form">
+      <input type="hidden" name="form_version" value="1">
+
+      <p class="wholesale-registration__required-note">{{ 'wholesale_registration.required_note' | t }}</p>
+
+      <div class="wholesale-registration__grid">
+        <div class="wholesale-registration__field">
+          <label for="WholesaleBusinessName-{{ section.id }}">{{ 'wholesale_registration.business_name' | t }} <span aria-hidden="true">*</span></label>
+          <input id="WholesaleBusinessName-{{ section.id }}" name="business_name" type="text" autocomplete="organization" required>
+        </div>
+
+        <div class="wholesale-registration__field">
+          <label for="WholesaleContactName-{{ section.id }}">{{ 'wholesale_registration.contact_name' | t }} <span aria-hidden="true">*</span></label>
+          <input id="WholesaleContactName-{{ section.id }}" name="contact_name" type="text" autocomplete="name" required>
+        </div>
+
+        <div class="wholesale-registration__field">
+          <label for="WholesaleEmail-{{ section.id }}">{{ 'wholesale_registration.email' | t }} <span aria-hidden="true">*</span></label>
+          <input id="WholesaleEmail-{{ section.id }}" name="email" type="email" autocomplete="email" required>
+        </div>
+
+        <div class="wholesale-registration__field">
+          <label for="WholesalePhone-{{ section.id }}">{{ 'wholesale_registration.phone' | t }} <span aria-hidden="true">*</span></label>
+          <input id="WholesalePhone-{{ section.id }}" name="phone" type="tel" autocomplete="tel" required>
+        </div>
+
+        <div class="wholesale-registration__field">
+          <label for="WholesaleBusinessType-{{ section.id }}">{{ 'wholesale_registration.business_type' | t }} <span aria-hidden="true">*</span></label>
+          <select id="WholesaleBusinessType-{{ section.id }}" name="business_type" required>
+            <option value="" selected disabled>{{ 'wholesale_registration.business_type_placeholder' | t }}</option>
+            <option value="physical_store">{{ 'wholesale_registration.business_type_physical' | t }}</option>
+            <option value="online_store">{{ 'wholesale_registration.business_type_online' | t }}</option>
+            <option value="reseller">{{ 'wholesale_registration.business_type_reseller' | t }}</option>
+            <option value="marketplace">{{ 'wholesale_registration.business_type_marketplace' | t }}</option>
+            <option value="other">{{ 'wholesale_registration.business_type_other' | t }}</option>
+          </select>
+        </div>
+
+        <div class="wholesale-registration__field wholesale-registration__field--wide">
+          <label for="WholesaleAddress-{{ section.id }}">{{ 'wholesale_registration.address' | t }} <span aria-hidden="true">*</span></label>
+          <textarea id="WholesaleAddress-{{ section.id }}" name="address" rows="3" autocomplete="street-address" required></textarea>
+        </div>
+
+        <div class="wholesale-registration__field">
+          <label for="WholesaleCity-{{ section.id }}">{{ 'wholesale_registration.city' | t }} <span aria-hidden="true">*</span></label>
+          <input id="WholesaleCity-{{ section.id }}" name="city" type="text" autocomplete="address-level2" required>
+        </div>
+
+        <div class="wholesale-registration__field">
+          <label for="WholesaleStoreUrl-{{ section.id }}">{{ 'wholesale_registration.store_url' | t }}</label>
+          <input id="WholesaleStoreUrl-{{ section.id }}" name="store_url" type="url" autocomplete="url">
+        </div>
+
+        <div class="wholesale-registration__field wholesale-registration__field--wide">
+          <label for="WholesaleEstimate-{{ section.id }}">{{ 'wholesale_registration.purchase_estimate' | t }}</label>
+          <input id="WholesaleEstimate-{{ section.id }}" name="purchase_estimate" type="text">
+        </div>
+      </div>
+
+      <div class="wholesale-registration__consent">
+        <input id="WholesaleConsent-{{ section.id }}" name="privacy_consent" type="checkbox" value="yes" required>
+        <label for="WholesaleConsent-{{ section.id }}">
+          {{ 'wholesale_registration.privacy_note' | t }}
+          {% if shop.privacy_policy.url != blank %}
+            <a href="{{ shop.privacy_policy.url }}">{{ 'wholesale_registration.privacy_policy' | t }}</a>.
+          {% else %}
+            {{ 'wholesale_registration.privacy_policy' | t }}.
+          {% endif %}
+        </label>
+      </div>
+
+      {% if endpoint_ready %}
+        <button class="button wholesale-registration__submit" type="submit">{{ 'wholesale_registration.submit' | t }}</button>
+      {% else %}
+        <button class="button wholesale-registration__submit" type="button" disabled>{{ 'wholesale_registration.submit' | t }}</button>
+      {% endif %}
+    {% unless endpoint_ready %}</fieldset>{% endunless %}
+  </form>
+</section>
+
+<style>
+  .wholesale-registration{max-width:980px;padding-block:48px 76px}
+  .wholesale-registration__intro{max-width:720px;margin:0 auto 28px;text-align:center}
+  .wholesale-registration__intro .eyebrow{color:var(--accent,#3282c0);margin-bottom:12px}
+  .wholesale-registration__intro h1{margin-bottom:16px}
+  .wholesale-registration__lead{max-width:660px;margin-inline:auto;color:#52626c}
+  .wholesale-registration__notice{max-width:760px;margin:0 auto 24px;padding:16px 18px;border:1px solid #d8e6ed;background:#f1f8fb;color:#123f5f}
+  .wholesale-registration__notice p{margin:4px 0 0}
+  .wholesale-registration__notice a{text-decoration:underline;text-underline-offset:3px}
+  .wholesale-registration__form{max-width:760px;margin-inline:auto;padding:clamp(22px,4vw,42px);border:1px solid #dce4e8;background:var(--paper,#fff);box-shadow:0 16px 48px #123f5f0c}
+  .wholesale-registration__form fieldset{min-width:0;margin:0;padding:0;border:0}
+  .wholesale-registration__required-note{margin-bottom:20px;color:#52626c;font-size:13px}
+  .wholesale-registration__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+  .wholesale-registration__field{min-width:0}
+  .wholesale-registration__field--wide{grid-column:1/-1}
+  .wholesale-registration__field label{display:block;margin-bottom:7px;font-size:14px;font-weight:600}
+  .wholesale-registration__field label span{color:#b42318}
+  .wholesale-registration__field input,.wholesale-registration__field select,.wholesale-registration__field textarea{display:block;width:100%;min-height:50px;margin:0;padding:12px 14px;border:1px solid #b8c5cd;border-radius:2px;background:#fff;color:var(--ink,#14212b)}
+  .wholesale-registration__field textarea{min-height:108px;resize:vertical}
+  .wholesale-registration__field input:focus,.wholesale-registration__field select:focus,.wholesale-registration__field textarea:focus{border-color:var(--accent,#3282c0)}
+  .wholesale-registration__consent{display:grid;grid-template-columns:20px 1fr;gap:10px;align-items:start;margin-top:24px;font-size:13px;line-height:1.55}
+  .wholesale-registration__consent input{width:18px;height:18px;margin:2px 0 0;accent-color:var(--accent,#3282c0)}
+  .wholesale-registration__consent label a{text-decoration:underline;text-underline-offset:3px}
+  .wholesale-registration__submit{width:100%;margin-top:24px}
+  @media(max-width:749px){.wholesale-registration{padding-block:36px 48px}.wholesale-registration__grid{grid-template-columns:1fr;gap:16px}.wholesale-registration__field--wide{grid-column:auto}.wholesale-registration__form{padding:22px 18px}}
+</style>
+
+{% schema %}
+{
+  "name": "Wholesale registration",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Daftar sebagai mitra Bait & Strike"
+    },
+    {
+      "type": "richtext",
+      "id": "intro",
+      "label": "Intro",
+      "default": "<p>Isi data usaha di bawah ini. Tim kami akan meninjau pengajuan dan menghubungi kamu setelah data diterima.</p>"
+    },
+    {
+      "type": "text",
+      "id": "submit_endpoint",
+      "label": "App Proxy submit path",
+      "info": "Kosongkan sampai backend siap. Gunakan path satu asal toko yang dimulai dengan /apps/."
+    }
+  ]
+}
+{% endschema %}

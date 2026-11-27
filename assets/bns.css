@@ -7,3 +7,15 @@
 .page-index .site-header.is-transparent{margin-bottom:-142px}
 @media(max-width:989px) and (min-width:750px){.page-index .site-header.is-transparent{margin-bottom:-131px}}
 @media(max-width:749px){.page-index .site-header.is-transparent{margin-bottom:-76px}}
+
+
+/* Customer account handoff */
+.account-access{max-width:920px}
+.account-access__card{max-width:760px;margin-inline:auto;padding:clamp(28px,5vw,64px);border:1px solid #dce4e8;background:var(--paper,#fff);box-shadow:0 16px 48px #123f5f0c}
+.account-access__card .eyebrow{color:var(--accent,#3282c0);margin-bottom:14px}
+.account-access__card h1{margin-bottom:18px}
+.account-access__copy{max-width:620px;color:#52626c}
+.account-access__actions{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:28px}
+.account-access__note{margin:24px 0 0;color:#52626c;font-size:14px}
+.account-access__note a{text-decoration:underline;text-underline-offset:3px}
+@media(max-width:749px){.account-access{padding-block:40px}.account-access__card{padding:26px 20px}.account-access__actions{align-items:stretch;flex-direction:column}.account-access__actions .button{width:100%}}
