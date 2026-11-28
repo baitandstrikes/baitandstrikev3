@@ -87,6 +87,7 @@
     (() => {
       const continueLink = document.getElementById('bns-whatsapp-continue');
       if (!continueLink) return;
+      continueLink.href = 'https://wa.me/6281312202698';
 
       const redirect = window.setTimeout(() => {
         window.location.replace(continueLink.href);
@@ -95,7 +96,7 @@
     })();
   </script>
 {% else %}
-  <a class="whatsapp-float" href="{{ pages['terima-kasih-whatsapp'].url | default: 'https://wa.me/6287795361519' | escape }}" aria-label="Hubungi kami lewat WhatsApp" title="Hubungi kami lewat WhatsApp"><img class="whatsapp-float__icon" src="{{ 'whatsapp-logo.png' | asset_url }}" width="82" height="82" alt=""><span class="whatsapp-float__label">Chat WhatsApp</span></a>
+  <a class="whatsapp-float" href="{{ pages['terima-kasih-whatsapp'].url | default: 'https://wa.me/6281312202698' | escape }}" aria-label="Hubungi kami lewat WhatsApp" title="Hubungi kami lewat WhatsApp"><img class="whatsapp-float__icon" src="{{ 'whatsapp-logo.png' | asset_url }}" width="82" height="82" alt=""><span class="whatsapp-float__label">Chat WhatsApp</span></a>
 {% endif %}
 
 <nav class="mobile-bottom-nav" aria-label="Navigasi utama">
